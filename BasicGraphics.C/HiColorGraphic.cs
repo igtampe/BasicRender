@@ -1,0 +1,52 @@
+﻿using System;
+using Igtampe.BasicRender;
+
+namespace Igtampe.BasicGraphics {
+
+    /// <summary>Holds a HiColorGraphic</summary>
+    public abstract class HiColorGraphic:Graphic {
+        public override void draw(int LeftPos,int TopPos) {
+            foreach(String Line in Contents) {
+                RenderUtils.SetPos(LeftPos,TopPos++);
+                HiColorDraw(Line);
+            }
+        }
+
+
+        /// <summary>
+        /// Draws a HiColorString, an example of which is '0F0-0F1-0F2', where the first character is ColorChar 1, second character is ColorChar 2, and the third character determines the gradient between the two colors
+        /// </summary>
+        /// <param name="HiColorString"></param>
+        public static void HiColorDraw(string HiColorString) {
+
+            //An example would be 0F1-0F2-1F3
+            String[] HiColorRow = HiColorString.Split('-');
+
+            foreach(String HiColorBlock in HiColorRow) {
+                if(String.IsNullOrWhiteSpace(HiColorBlock) || HiColorBlock.Length < 3) { Draw.Block(Console.BackgroundColor); } else {
+                    ConsoleColor BG = GraphicUtils.ColorCharToConsoleColor(HiColorBlock[0]);
+                    ConsoleColor FG = GraphicUtils.ColorCharToConsoleColor(HiColorBlock[1]);
+
+                    switch(HiColorBlock[2]) {
+                        case '0':
+                            Draw.Sprite("░",BG,FG);
+                            break;
+                        case '1':
+                            Draw.Sprite("▒",BG,FG);
+                            break;
+                        case '2':
+                            Draw.Sprite("▓",BG,FG);
+                            break;
+                        default:
+                            Draw.Block(Console.BackgroundColor);
+                            break;
+                    }
+                }
+
+            }
+
+        }
+
+    }
+
+}
