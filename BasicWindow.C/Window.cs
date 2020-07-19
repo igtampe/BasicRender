@@ -30,6 +30,52 @@ namespace Igtampe.BasicWindows
 
         protected ArrayList AllElements;
 
+        /// <summary>Creates an Animated, Shadowed, and centered window with a centered header with the default colors (Gray Main BG, dark blue header, White Header Text)</summary>
+        /// <param name="Title"></param>
+        /// <param name="Length"></param>
+        /// <param name="Height"></param>
+        public Window(String Title,int Length,int Height) : this(true,true,ConsoleColor.Gray,ConsoleColor.DarkBlue,ConsoleColor.White,HeaderPosition.CENTER,Title,Length,Height,-1,-1) { }
+
+        /// <summary>Creates an Animated, Shadowed, and Centered window with a centered header with the specified colors.</summary>
+        /// <param name="MainBG"></param>
+        /// <param name="HeaderBG"></param>
+        /// <param name="HeaderFG"></param>
+        /// <param name="Title"></param>
+        /// <param name="Length"></param>
+        /// <param name="Height"></param>
+        public Window(ConsoleColor MainBG,ConsoleColor HeaderBG,ConsoleColor HeaderFG,String Title,int Length,int Height) : this(true,true,MainBG,HeaderBG,HeaderFG,HeaderPosition.CENTER,Title,Length,Height,-1,-1) { }
+
+        /// <summary>Creates a centered window with a centered header with the default colors (Gray Main BG, dark blue header, White Header Text)</summary>
+        /// <param name="Animated"></param>
+        /// <param name="Shadowed"></param>
+        /// <param name="Title"></param>
+        /// <param name="Length"></param>
+        /// <param name="Height"></param>
+        public Window(Boolean Animated,Boolean Shadowed,String Title,int Length,int Height) : this(Animated,Shadowed,ConsoleColor.Gray,ConsoleColor.DarkBlue,ConsoleColor.White,HeaderPosition.CENTER,Title,Length,Height,-1,-1) { }
+
+        /// <summary>Creates a centered window with a centered header</summary>
+        /// <param name="Animated"></param>
+        /// <param name="Shadowed"></param>
+        /// <param name="MainBG"></param>
+        /// <param name="HeaderBG"></param>
+        /// <param name="HeaderFG"></param>
+        /// <param name="Title"></param>
+        /// <param name="Length"></param>
+        /// <param name="Height"></param>
+        public Window(Boolean Animated,Boolean Shadowed,ConsoleColor MainBG,ConsoleColor HeaderBG,ConsoleColor HeaderFG,String Title,int Length,int Height) : this(Animated,Shadowed,MainBG,HeaderBG,HeaderFG,HeaderPosition.CENTER,Title,Length,Height,-1,-1) { }
+
+        /// <summary>Creates a window centered on the screen</summary>
+        /// <param name="Animated"></param>
+        /// <param name="Shadowed"></param>
+        /// <param name="MainBG"></param>
+        /// <param name="HeaderBG"></param>
+        /// <param name="HeaderFG"></param>
+        /// <param name="HeadPos"></param>
+        /// <param name="Title"></param>
+        /// <param name="Length"></param>
+        /// <param name="Height"></param>
+        public Window(Boolean Animated,Boolean Shadowed,ConsoleColor MainBG,ConsoleColor HeaderBG,ConsoleColor HeaderFG,HeaderPosition HeadPos,String Title,int Length,int Height):this(Animated,Shadowed,MainBG,HeaderBG,HeaderFG,HeadPos,Title,Length,Height,-1,-1) { }
+
         /// <summary>Creates a window.</summary>
         /// <param name="Animated"></param>
         /// <param name="Shadowed"></param>

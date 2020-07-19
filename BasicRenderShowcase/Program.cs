@@ -32,4 +32,13 @@ namespace Igtampe.BasicRenderShowcase {
 
         }
     }
+
+    public class WelcomeWindow:Window {
+
+        public WelcomeWindow():base(true,true,ConsoleColor.Gray,ConsoleColor.DarkMagenta,ConsoleColor.White,HeaderPosition.LEFT,"Welcome to BasicRender!",20,40,-1,-1){ 
+        
+        }
+
+    }
+
 }
