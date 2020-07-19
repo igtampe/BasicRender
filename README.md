@@ -1,4 +1,5 @@
-# The BasicRender Toolkit
+![The Toolkit Logo](https://cdn.discordapp.com/attachments/733885325503627405/734308247540072509/BasicRender.png "BasicRender Toolkit Logo")
+
 The BasicRender Toolkit is a set of class libraries that make it easy to display graphics on a console screen. Three Libraries are included, and can all be downloaded over at the release page.
 
 This project also includes a small demo program. After a neat little BasicWindow, it tells the very very tiny 8 line story of a man who insulted an AI for the last time. It includes exactly one landscape I drew in henja that came out ~~horrible~~ great.
