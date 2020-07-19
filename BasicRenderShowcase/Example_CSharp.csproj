@@ -56,6 +56,7 @@
     <None Include="App.config" />
     <None Include="Resources\Landscape.df" />
     <None Include="Resources\LP.df" />
+    <None Include="Resources\Rainbow.HC" />
     <None Include="Resources\Textbox.hc" />
   </ItemGroup>
   <ItemGroup>

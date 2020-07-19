@@ -83,6 +83,16 @@ namespace Igtampe.BasicRenderShowcase.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Byte[].
         /// </summary>
+        internal static byte[] Rainbow {
+            get {
+                object obj = ResourceManager.GetObject("Rainbow", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
         internal static byte[] Textbox {
             get {
                 object obj = ResourceManager.GetObject("Textbox", resourceCulture);
