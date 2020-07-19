@@ -5,6 +5,9 @@ namespace Igtampe.BasicGraphics {
     /// <summary>Holds a BasicGraphic</summary>
     public abstract class BasicGraphic:Graphic {
 
+        /// <summary>Draws this BasicGraphic</summary>
+        /// <param name="LeftPos"></param>
+        /// <param name="TopPos"></param>
         public override void Draw(int LeftPos,int TopPos) {
             foreach(String Line in Contents) {
                 RenderUtils.SetPos(LeftPos,TopPos++);

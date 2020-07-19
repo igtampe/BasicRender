@@ -2,12 +2,20 @@
 
 namespace Igtampe.BasicGraphics
 {
+    /// <summary>Holder for any type of drawable graphic data</summary>
     public abstract class Graphic {
-        protected String[] Contents;
-        protected String Name;
 
+        /// <summary>Contents of this graphic</summary>
+        protected String[] Contents;
+
+        /// <summary>Name of this graphic</summary>
+        public String Name { get; set; }
+
+        /// <summary>Draws the graphic on screen</summary>
+        /// <param name="LeftPos"></param>
+        /// <param name="TopPos"></param>
         public abstract void Draw(int LeftPos,int TopPos);
-        public string GetName() { return Name; }
+
 
         /// <summary>Gets the width of the graphic</summary>
         /// <returns>Length of the first line</returns>

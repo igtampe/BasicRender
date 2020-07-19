@@ -24,11 +24,11 @@ namespace Igtampe.BasicRenderShowcase {
             Button ShowcaseButton = new LaunchShowcaseButton(this,2,Height-2);
             AllElements.Add(ShowcaseButton);
 
-            ShowcaseButton.SetNextElement(OKButton);
-            OKButton.SetPrevElement(ShowcaseButton);
+            ShowcaseButton.NextElement=OKButton;
+            OKButton.PreviousElement=ShowcaseButton;
 
             HighlightedElement = ShowcaseButton;
-            ShowcaseButton.SetHighlighted(true);
+            ShowcaseButton.Highlighted=true;
 
         }
 

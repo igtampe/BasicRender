@@ -8,6 +8,13 @@ namespace Igtampe.BasicWindows.WindowElements {
         private readonly ConsoleColor BG;
         private readonly ConsoleColor FG;
 
+        /// <summary>Creates a Label Window element</summary>
+        /// <param name="Parent"></param>
+        /// <param name="Text"></param>
+        /// <param name="BG"></param>
+        /// <param name="FG"></param>
+        /// <param name="LeftPos"></param>
+        /// <param name="TopPos"></param>
         public Label(Window Parent,string Text,ConsoleColor BG,ConsoleColor FG,int LeftPos,int TopPos) : base(Parent) {
             this.Text = Text;
             this.BG = BG;
@@ -16,10 +23,11 @@ namespace Igtampe.BasicWindows.WindowElements {
             this.TopPos = TopPos;
         }
 
-        public override void DrawElement(int WindowLeft,int WindowTop) {
+        /// <summary>Draws this label</summary>
+        public override void DrawElement() {
             int LineOffset = 0;
             foreach(String Line in Text.Split('\n')) {
-                Draw.Sprite(Line,BG,FG,WindowLeft + LeftPos,WindowTop + TopPos+LineOffset);
+                Draw.Sprite(Line,BG,FG,Parent.LeftPos + LeftPos,Parent.TopPos + TopPos+LineOffset);
                 LineOffset++;
             }
             

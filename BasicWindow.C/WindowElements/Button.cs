@@ -4,11 +4,27 @@ using Igtampe.BasicRender;
 namespace Igtampe.BasicWindows.WindowElements {
     /// <summary>Button, though it may as well be a clickable link.</summary>
     public abstract class Button:WindowElement {
+
+        /// <summary>Background when this button is highlighted</summary>
         protected ConsoleColor HighlightedBG;
+
+        /// <summary>Background of this Button when it isn't highlighted</summary>
         protected ConsoleColor BG;
+
+        /// <summary>Foreground of thie element</summary>
         protected ConsoleColor FG;
+
+        /// <summary>Text on this button</summary>
         protected String Text;
 
+        /// <summary>Creates a button</summary>
+        /// <param name="Parent"></param>
+        /// <param name="Text"></param>
+        /// <param name="BG"></param>
+        /// <param name="FG"></param>
+        /// <param name="HighlightedBG"></param>
+        /// <param name="LeftPos"></param>
+        /// <param name="TopPos"></param>
         public Button(Window Parent,String Text,ConsoleColor BG,ConsoleColor FG,ConsoleColor HighlightedBG,int LeftPos,int TopPos) : base(Parent) {
             this.Text = Text;
             this.BG = BG;
@@ -18,10 +34,14 @@ namespace Igtampe.BasicWindows.WindowElements {
             this.TopPos = TopPos;
         }
 
-        public override void DrawElement(int WindowLeft,int WindowTop) {
-            if(Highlighted) { Draw.Sprite(Text,HighlightedBG,FG,WindowLeft + LeftPos,WindowTop + TopPos); } else { Draw.Sprite(Text,BG,FG,WindowLeft + LeftPos,WindowTop + TopPos); }
+        /// <summary>Draws this button</summary>
+        public override void DrawElement() {
+            if(Highlighted) { Draw.Sprite(Text,HighlightedBG,FG,Parent.LeftPos + LeftPos,Parent.TopPos + TopPos); } else { Draw.Sprite(Text,BG,FG,Parent.LeftPos + LeftPos,Parent.TopPos + TopPos); }
         }
 
+        /// <summary>Handles what happens when a key is pressed and this button is highlighted</summary>
+        /// <param name="Key"></param>
+        /// <returns></returns>
         public override KeyPressReturn OnKeyPress(ConsoleKeyInfo Key) {
             switch(Key.Key) {
                 case ConsoleKey.Enter:
@@ -36,12 +56,27 @@ namespace Igtampe.BasicWindows.WindowElements {
                     return KeyPressReturn.NOTHING;
             }
         }
+
+        /// <summary>Abstract method that an actual button needs to override, so that an action happens when you hti enter.</summary>
+        /// <returns></returns>
         public abstract KeyPressReturn Action();
     }
 
     /// <summary>Button that signals the window to close when pressed.</summary>
     public class CloseButton:Button {
+
+        /// <summary>Creates a button that interacted with, will close the window</summary>
+        /// <param name="Parent"></param>
+        /// <param name="Text"></param>
+        /// <param name="BG"></param>
+        /// <param name="FG"></param>
+        /// <param name="HighlightedBG"></param>
+        /// <param name="LeftPos"></param>
+        /// <param name="TopPos"></param>
         public CloseButton(Window Parent,string Text,ConsoleColor BG,ConsoleColor FG,ConsoleColor HighlightedBG,int LeftPos,int TopPos) : base(Parent,Text,BG,FG,HighlightedBG,LeftPos,TopPos) { }
+
+        /// <summary>Closes the window</summary>
+        /// <returns></returns>
         public override KeyPressReturn Action() { return KeyPressReturn.CLOSE; }
     }
 

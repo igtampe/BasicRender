@@ -4,6 +4,7 @@ namespace Igtampe.BasicGraphics.ExampleGraphics {
     /// <summary>A Cloud graphic, used for testing.</summary>
     public class Cloud:BasicGraphic {
 
+        /// <summary>Creates an instance of this cloud graphic</summary>
         public Cloud() {
 
             string[] Cloud = {

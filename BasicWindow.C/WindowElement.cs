@@ -1,6 +1,8 @@
 ﻿using System;
 
 namespace Igtampe.BasicWindows {
+
+    /// <summary>Small Enum that tells what the parent window should do once this element is done being interacted with.</summary>
     public enum KeyPressReturn { 
         
         /// <summary>No response</summary>
@@ -18,27 +20,44 @@ namespace Igtampe.BasicWindows {
     /// <summary>Generic WindowElement</summary>
     public abstract class WindowElement {
 
-        protected WindowElement NextElement;
-        protected WindowElement PreviousElement;
+        /// <summary>Element to move to when hitting right arrow, or tab</summary>
+        public WindowElement NextElement { get; set; }
+
+        /// <summary>Element to move to when hitting the left or SHIFT+TAB</summary>
+        public WindowElement PreviousElement { get; set; }
+
+        /// <summary>Parent of this window element</summary>
         protected Window Parent;
 
+        /// <summary>Left position of this element with reference to the window's left position</summary>
         protected int LeftPos;
+
+        /// <summary>Top position of this element with reference to the window's top position</summary>
         protected int TopPos;
-        protected Boolean Highlighted;
 
-        public WindowElement(Window Parent) { this.Parent = Parent; }
+        private Boolean highlighted;
 
-        public WindowElement GetNextElement() { return NextElement; }
-        public WindowElement GetPrevElement() { return PreviousElement; }
-        public void SetNextElement(WindowElement NextElement) { this.NextElement = NextElement; }
-        public void SetPrevElement(WindowElement PrevElement) { this.PreviousElement = PrevElement; }
-
-        public virtual KeyPressReturn OnKeyPress(ConsoleKeyInfo Key) { return KeyPressReturn.NOTHING; }
-        public void SetHighlighted(Boolean Highlighted) { 
-            this.Highlighted = Highlighted;
-            DrawElement(Parent.LeftPos,Parent.TopPos);
+        /// <summary>Specifies whether or not this element is highlighted</summary>
+        public Boolean Highlighted {
+            get { return highlighted; }
+            set { 
+                highlighted = value;
+                DrawElement();
+            }
         }
-        public abstract void DrawElement(int WindowLeft,int WindowTop);
+
+
+        /// <summary>Most basic constructor for any window element</summary>
+        /// <param name="Parent"></param>
+        public WindowElement(Window Parent) { this.Parent = Parent; }
+        
+        /// <summary>Triggered when a key is hit, and handles any user interaction with this element</summary>
+        /// <param name="Key"></param>
+        /// <returns></returns>
+        public virtual KeyPressReturn OnKeyPress(ConsoleKeyInfo Key) { return KeyPressReturn.NOTHING; }
+        
+        /// <summary>Draws the element</summary>
+        public abstract void DrawElement();
 
     }
 }

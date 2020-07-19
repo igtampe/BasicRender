@@ -46,7 +46,9 @@ namespace Igtampe.BasicRender {
         public static void Block(ConsoleColor Color) { Block(Color,-1,-1); }
 
         /// <summary>Draws a block of a certain color at the specified position</summary>
-        /// <param name="Color">Color of the block</param>
+        /// <param name="Color"></param>
+        /// <param name="LeftPos"></param>
+        /// <param name="TopPos"></param>
         public static void Block(ConsoleColor Color,int LeftPos,int TopPos) { Sprite(" ",Color,Color,LeftPos,TopPos); }
 
         //--------------------------------[Box]--------------------------------

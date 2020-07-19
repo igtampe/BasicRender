@@ -2,7 +2,11 @@
 using Igtampe.BasicWindows.WindowElements;
 
 namespace Igtampe.BasicWindows.ExampleWindows {
+
+    /// <summary>A tiny window that says helloworld</summary>
     public class HelloWorldWindow:Window {
+
+        /// <summary>Creates an instance of the HelloWorld Window </summary>
         public HelloWorldWindow() : base(true,true,ConsoleColor.Gray,ConsoleColor.DarkBlue,ConsoleColor.White,HeaderPosition.CENTER,"Hello World!",20,6,-1,-1) {
 
             AllElements.Add(new Icon(this,Icon.IconType.INFORMATION,1,2));
@@ -12,7 +16,7 @@ namespace Igtampe.BasicWindows.ExampleWindows {
             AllElements.Add(OKButton);
 
             HighlightedElement = OKButton;
-            OKButton.SetHighlighted(true);
+            OKButton.Highlighted=true;
 
         }
 

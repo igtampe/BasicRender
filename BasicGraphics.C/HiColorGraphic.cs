@@ -5,6 +5,10 @@ namespace Igtampe.BasicGraphics {
 
     /// <summary>Holds a HiColorGraphic</summary>
     public abstract class HiColorGraphic:Graphic {
+
+        /// <summary>Draws this hicolor graphic at the specified position.</summary>
+        /// <param name="LeftPos"></param>
+        /// <param name="TopPos"></param>
         public override void Draw(int LeftPos,int TopPos) {
             foreach(String Line in Contents) {
                 RenderUtils.SetPos(LeftPos,TopPos++);

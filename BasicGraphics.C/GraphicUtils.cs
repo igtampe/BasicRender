@@ -1,8 +1,9 @@
-﻿using Igtampe.BasicGraphics.Properties;
-using System;
+﻿using System;
 using System.Text;
 
 namespace Igtampe.BasicGraphics{
+
+    /// <summary>Static class for utilities for drawing graphics</summary>
     public static class GraphicUtils {
 
         /// <summary>Takes a ColorCharacter and turns it into a consolecolor. The dictionary is as follows

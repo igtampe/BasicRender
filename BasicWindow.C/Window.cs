@@ -5,29 +5,57 @@ using Igtampe.BasicRender;
 namespace Igtampe.BasicWindows
 {
 
-    public enum HeaderPosition { LEFT, CENTER, RIGHT }
+    /// <summary>Position of the header on a window</summary>
+    public enum HeaderPosition { 
+        /// <summary>Align the header to the left of the window</summary>
+        LEFT, 
 
+        /// <summary>Align the header on the center of the window</summary>
+        CENTER, 
+
+        /// <summary>Align the header to the right</summary>
+        RIGHT }
+
+    /// <summary>Holds the base for a renderable window.</summary>
     public abstract class Window {
 
+        /// <summary>Color the close function will use to clear the window</summary>
         public const ConsoleColor WindowClearColor = ConsoleColor.DarkCyan;
 
         private readonly Boolean Animated;
         private readonly bool Shadowed;
         
+        /// <summary>Left position of this window</summary>
         public int LeftPos {get;}
+
+        /// <summary>Top position of this window</summary>
         public int TopPos { get; }
+
+        /// <summary>Length of this window</summary>
         public int Length { get; }
+
+        /// <summary>Height of this window.</summary>
         public int Height { get; }
 
+        /// <summary>Title of this window</summary>
         protected String Title;
 
+        /// <summary>Main background of this window</summary>
         protected ConsoleColor MainBG;
+
+        /// <summary>Background of the header on this window</summary>
         protected ConsoleColor HeaderBG;
+
+        /// <summary>Foreground of the header of this window</summary>
         protected ConsoleColor HeaderFG;
+        
+        /// <summary>Position of the header in this window</summary>
         protected HeaderPosition HeadPos;
 
+        /// <summary>Currently highlighted element on this window</summary>
         protected WindowElement HighlightedElement;
 
+        /// <summary>All elements of this window</summary>
         protected ArrayList AllElements;
 
         /// <summary>Creates an Animated, Shadowed, and centered window with a centered header with the default colors (Gray Main BG, dark blue header, White Header Text)</summary>
@@ -76,13 +104,20 @@ namespace Igtampe.BasicWindows
         /// <param name="Height"></param>
         public Window(Boolean Animated,Boolean Shadowed,ConsoleColor MainBG,ConsoleColor HeaderBG,ConsoleColor HeaderFG,HeaderPosition HeadPos,String Title,int Length,int Height):this(Animated,Shadowed,MainBG,HeaderBG,HeaderFG,HeadPos,Title,Length,Height,-1,-1) { }
 
-        /// <summary>Creates a window.</summary>
+        /// <summary>
+        /// Creates a window. You get basically full control of everything with this constructor.
+        /// </summary>
         /// <param name="Animated"></param>
         /// <param name="Shadowed"></param>
+        /// <param name="MainBG"></param>
+        /// <param name="HeaderBG"></param>
+        /// <param name="HeaderFG"></param>
+        /// <param name="HeadPos"></param>
+        /// <param name="Title"></param>
         /// <param name="Length"></param>
         /// <param name="Height"></param>
-        /// <param name="LeftPos">Left Position (Specify -1 for centered)</param>
-        /// <param name="TopPos">Top Position (Specify -1 for centered</param>
+        /// <param name="LeftPos"></param>
+        /// <param name="TopPos"></param>
         public Window(Boolean Animated,Boolean Shadowed,ConsoleColor MainBG,ConsoleColor HeaderBG,ConsoleColor HeaderFG,HeaderPosition HeadPos,String Title,int Length,int Height,int LeftPos,int TopPos) {
 
             this.Animated = Animated;
@@ -103,6 +138,7 @@ namespace Igtampe.BasicWindows
             AllElements = new ArrayList();
         }
 
+        /// <summary>Launches this window</summary>
         public void Execute() {
             DrawWindow(Animated);
 
@@ -170,9 +206,12 @@ namespace Igtampe.BasicWindows
             for(int i = 0; i < Length; i++) { RenderUtils.Echo("═"); }
 
             //Draw each subelement.
-            foreach(WindowElement element in AllElements) { element.DrawElement(LeftPos,TopPos); }
+            foreach(WindowElement element in AllElements) { element.DrawElement(); }
         }
 
+        /// <summary>Triggered when a key is pressed, and handles what to do with it.</summary>
+        /// <param name="PressedKey"></param>
+        /// <returns>Returns True if the window should remain open, otherwise false.</returns>
         public bool OnKeyPress(ConsoleKeyInfo PressedKey) {
 
             if(PressedKey.Modifiers == ConsoleModifiers.Control && PressedKey.Key == ConsoleKey.W) { Close(); return false; }
@@ -180,17 +219,17 @@ namespace Igtampe.BasicWindows
                 case KeyPressReturn.NOTHING:
                     break;
                 case KeyPressReturn.NEXT_ELEMENT:
-                    if(HighlightedElement.GetNextElement() != null) {
-                        HighlightedElement.SetHighlighted(false);
-                        HighlightedElement = HighlightedElement.GetNextElement();
-                        HighlightedElement.SetHighlighted(true);
+                    if(HighlightedElement.NextElement != null) {
+                        HighlightedElement.Highlighted= false;
+                        HighlightedElement = HighlightedElement.NextElement;
+                        HighlightedElement.Highlighted=true;
                     }
                     break;
                 case KeyPressReturn.PREV_ELEMENT:
-                    if(HighlightedElement.GetPrevElement() != null) {
-                        HighlightedElement.SetHighlighted(false);
-                        HighlightedElement = HighlightedElement.GetPrevElement();
-                        HighlightedElement.SetHighlighted(true);
+                    if(HighlightedElement.PreviousElement != null) {
+                        HighlightedElement.Highlighted=false;
+                        HighlightedElement = HighlightedElement.PreviousElement;
+                        HighlightedElement.Highlighted= true;
                     }
                     break;
                 case KeyPressReturn.CLOSE:
