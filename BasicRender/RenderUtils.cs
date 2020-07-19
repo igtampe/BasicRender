@@ -39,6 +39,19 @@ namespace Igtampe.BasicRender {
         /// <param name="FG"></param>
         public static void Color(ConsoleColor BG,ConsoleColor FG) { Console.BackgroundColor = BG; Console.ForegroundColor = FG; }
 
+        /// <summary>Types the specified text one character at a time at the default delay of 5ms between each character.</summary>
+        /// <param name="Text"></param>
+        public static void Type(String Text) { Type(Text,5); }
+
+        /// <summary>Types the specified text one character at a time, with the speciifed delay in miliseconds between each character.</summary>
+        /// <param name="Text"></param>
+        /// <param name="Delay"></param>
+        public static void Type(String Text, int Delay) {
+            foreach(char Character in Text) {
+                Console.Write(Character);
+                Sleep(Delay);
+            }
+        }
 
     }
 }

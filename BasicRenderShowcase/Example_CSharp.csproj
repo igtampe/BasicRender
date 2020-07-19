@@ -50,10 +50,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="WelcomeWindow.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Resources\Landscape.df" />
     <None Include="Resources\LP.df" />
+    <None Include="Resources\Textbox.hc" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BasicGraphics.C\Igtampe.BasicGraphics.csproj">

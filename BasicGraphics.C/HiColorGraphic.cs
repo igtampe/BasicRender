@@ -8,10 +8,19 @@ namespace Igtampe.BasicGraphics {
         public override void Draw(int LeftPos,int TopPos) {
             foreach(String Line in Contents) {
                 RenderUtils.SetPos(LeftPos,TopPos++);
-                HiColorDraw(Line);
+                if(!string.IsNullOrEmpty(Line)) { HiColorDraw(Line); }
+                
             }
         }
 
+
+        /// <summary>Gets the width of the graphic</summary>
+        /// <returns>Length of the first line</returns>
+        public override int GetWidth() {
+            if(Contents == null) { return 0; }
+            if(Contents[0] == null) { return 0; }
+            return Contents[0].Split('-').Length ;
+        }
 
         /// <summary>
         /// Draws a HiColorString, an example of which is '0F0-0F1-0F2', where the first character is ColorChar 1, second character is ColorChar 2, and the third character determines the gradient between the two colors

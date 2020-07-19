@@ -1,11 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Igtampe.BasicWindows {
-    public enum KeyPressReturn { NOTHING, NEXT_ELEMENT, PREV_ELEMENT, CLOSE, PROCEED }
+    public enum KeyPressReturn { 
+        
+        /// <summary>No response</summary>
+        NOTHING, 
+
+        /// <summary>Go to the next Element</summary>
+        NEXT_ELEMENT, 
+
+        /// <summary>Go back to the previous element</summary>
+        PREV_ELEMENT, 
+
+        /// <summary>Close the form</summary>
+        CLOSE}
 
     /// <summary>Generic WindowElement</summary>
     public abstract class WindowElement {

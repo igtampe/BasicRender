@@ -121,4 +121,10 @@
   <data name="LandingPadLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LP.df;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Landscape" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Landscape.df;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Textbox" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Textbox.hc;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

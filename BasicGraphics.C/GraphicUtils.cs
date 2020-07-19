@@ -63,8 +63,10 @@ namespace Igtampe.BasicGraphics{
                     return ConsoleColor.Yellow;
                 case 'F':
                     return ConsoleColor.White;
-                default:
+                case ' ':
                     return Console.BackgroundColor;
+                default:
+                    throw new ArgumentException();
             }
 
         }

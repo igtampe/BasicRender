@@ -11,7 +11,7 @@ namespace Igtampe.BasicGraphics
 
         /// <summary>Gets the width of the graphic</summary>
         /// <returns>Length of the first line</returns>
-        public int GetWidth() {
+        public virtual int GetWidth() {
             if(Contents == null) { return 0; }
             if(Contents[0] == null) { return 0; }
             return Contents[0].Length;

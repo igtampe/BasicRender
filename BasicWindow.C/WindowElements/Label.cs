@@ -16,6 +16,14 @@ namespace Igtampe.BasicWindows.WindowElements {
             this.TopPos = TopPos;
         }
 
-        public override void DrawElement(int WindowLeft,int WindowTop) { Draw.Sprite(Text,BG,FG,WindowLeft + LeftPos,WindowTop + TopPos); }
+        public override void DrawElement(int WindowLeft,int WindowTop) {
+            int LineOffset = 0;
+            foreach(String Line in Text.Split('\n')) {
+                Draw.Sprite(Line,BG,FG,WindowLeft + LeftPos,WindowTop + TopPos+LineOffset);
+                LineOffset++;
+            }
+            
+        
+        }
     }
 }
