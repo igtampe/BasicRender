@@ -48,6 +48,7 @@
     <Compile Include="WindowElement.cs" />
     <Compile Include="WindowElements\Box.cs" />
     <Compile Include="WindowElements\Button.cs" />
+    <Compile Include="WindowElements\CloseButton.cs" />
     <Compile Include="WindowElements\Icon.cs" />
     <Compile Include="WindowElements\Image.cs" />
     <Compile Include="WindowElements\Label.cs" />
