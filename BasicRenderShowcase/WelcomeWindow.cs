@@ -9,7 +9,7 @@ using Igtampe.BasicRenderShowcase.Properties;
 namespace Igtampe.BasicRenderShowcase {
     public class WelcomeWindow:Window {
 
-        public WelcomeWindow() : base(ConsoleColor.Gray,ConsoleColor.DarkMagenta,ConsoleColor.White,"Welcome to BasicRender!",44,15) {
+        public WelcomeWindow() : base(ConsoleColor.Gray,ConsoleColor.DarkMagenta,ConsoleColor.White,"Welcome to BasicRender!",44,10) {
 
             AllElements.Add(new Label(this,"Welcome to the BasicRender showcase\n" +
                                            "program! We hope you enjoy the super\n" + 
@@ -18,7 +18,7 @@ namespace Igtampe.BasicRenderShowcase {
                                            "library can do."
                 ,ConsoleColor.Gray,ConsoleColor.Black,2,2));
 
-            Button OKButton = new CloseButton(this,"[      CLOSE      ]",ConsoleColor.DarkGray,ConsoleColor.White,ConsoleColor.DarkBlue,Length-21,Height-2);
+            Button OKButton = new CloseButton(this,"[      Close      ]",ConsoleColor.DarkGray,ConsoleColor.White,ConsoleColor.DarkBlue,Length-21,Height-2);
             AllElements.Add(OKButton);
 
             Button ShowcaseButton = new LaunchShowcaseButton(this,2,Height-2);
@@ -78,7 +78,7 @@ namespace Igtampe.BasicRenderShowcase {
                 RenderUtils.Sleep(3000);
 
                 RenderUtils.SetPos(Landscape.GetWidth() - TextBox.GetWidth() - 2 + 6,3);
-                RenderUtils.Type("  t h e      e n d  ",200);
+                RenderUtils.Type("  t h e      e n d  ",100);
                 RenderUtils.Sleep(5000);
 
                 RenderUtils.Color(ConsoleColor.DarkCyan,ConsoleColor.White);

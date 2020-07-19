@@ -13,11 +13,11 @@ namespace Igtampe.BasicWindows
 
         private readonly Boolean Animated;
         private readonly bool Shadowed;
-
-        protected int LeftPos;
-        protected int TopPos;
-        protected int Length;
-        protected int Height;
+        
+        public int LeftPos {get;}
+        public int TopPos { get; }
+        public int Length { get; }
+        public int Height { get; }
 
         protected String Title;
 

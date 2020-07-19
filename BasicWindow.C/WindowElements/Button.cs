@@ -22,7 +22,20 @@ namespace Igtampe.BasicWindows.WindowElements {
             if(Highlighted) { Draw.Sprite(Text,HighlightedBG,FG,WindowLeft + LeftPos,WindowTop + TopPos); } else { Draw.Sprite(Text,BG,FG,WindowLeft + LeftPos,WindowTop + TopPos); }
         }
 
-        public override KeyPressReturn OnKeyPress(ConsoleKeyInfo Key) { if(Key.Key == ConsoleKey.Enter) { return Action(); } else { return KeyPressReturn.NOTHING; } }
+        public override KeyPressReturn OnKeyPress(ConsoleKeyInfo Key) {
+            switch(Key.Key) {
+                case ConsoleKey.Enter:
+                    return Action();
+                case ConsoleKey.LeftArrow:
+                    return KeyPressReturn.PREV_ELEMENT;
+                case ConsoleKey.RightArrow:
+                    return KeyPressReturn.NEXT_ELEMENT;
+                case ConsoleKey.Tab:
+                    if(Key.Modifiers == ConsoleModifiers.Shift) { return KeyPressReturn.PREV_ELEMENT; } else { return KeyPressReturn.NEXT_ELEMENT; }
+                default:
+                    return KeyPressReturn.NOTHING;
+            }
+        }
         public abstract KeyPressReturn Action();
     }
 
