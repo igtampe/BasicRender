@@ -146,6 +146,8 @@ namespace Igtampe.BasicWindows
             while(OnKeyPress(Console.ReadKey(true))) { }
         }
 
+        /// <summary>Draws the window</summary>
+        /// <param name="Animated"></param>
         private void DrawWindow(Boolean Animated) {
 
             //Render the shadow
@@ -212,7 +214,7 @@ namespace Igtampe.BasicWindows
         /// <summary>Triggered when a key is pressed, and handles what to do with it.</summary>
         /// <param name="PressedKey"></param>
         /// <returns>Returns True if the window should remain open, otherwise false.</returns>
-        public bool OnKeyPress(ConsoleKeyInfo PressedKey) {
+        private bool OnKeyPress(ConsoleKeyInfo PressedKey) {
 
             if(PressedKey.Modifiers == ConsoleModifiers.Control && PressedKey.Key == ConsoleKey.W) { Close(); return false; }
             switch(HighlightedElement.OnKeyPress(PressedKey)) {
@@ -242,7 +244,7 @@ namespace Igtampe.BasicWindows
         }
 
         /// <summary>Redraws the window without animations</summary>
-        public void Redraw() { DrawWindow(true); }
+        public void Redraw() { DrawWindow(false); }
 
         /// <summary>Closes the window</summary>
         public void Close() {

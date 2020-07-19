@@ -24,6 +24,15 @@ namespace Igtampe.BasicGraphics
             if(Contents[0] == null) { return 0; }
             return Contents[0].Length;
         }
+
+        /// <summary>Gets the height of the graphic</summary>
+        /// <returns>Length of the contents array</returns>
+        public virtual int GetHeight() {
+            if(Contents == null) { return 0; }
+            if(Contents[0] == null) { return 0; }
+            return Contents.Length;
+        }
+
     }
 
 }
