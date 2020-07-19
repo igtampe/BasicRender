@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example_CSharp", "BasicRend
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Igtampe.BasicGraphics", "BasicGraphics.C\Igtampe.BasicGraphics.csproj", "{41DBF856-B2E6-4A1C-A06A-A211186D2ACD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Igtampe.BasicWindow", "BasicWindow.C\Igtampe.BasicWindow.csproj", "{DE8C90F9-94C4-4264-805C-144F819F3197}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Igtampe.BasicWindows", "BasicWindow.C\Igtampe.BasicWindows.csproj", "{DE8C90F9-94C4-4264-805C-144F819F3197}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

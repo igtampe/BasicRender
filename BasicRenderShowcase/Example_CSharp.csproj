@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{84B6FFC2-B9E9-45E2-B9A9-56C00157F845}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>BasicRenderShowcase</RootNamespace>
+    <RootNamespace>Igtampe.BasicRenderShowcase</RootNamespace>
     <AssemblyName>BasicRenderShowcase</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -45,9 +45,15 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Resources\LP.df" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BasicGraphics.C\Igtampe.BasicGraphics.csproj">
@@ -58,10 +64,16 @@
       <Project>{cd2d4436-5b3e-458c-b17a-a6822c25635f}</Project>
       <Name>Igtampe.BasicRender</Name>
     </ProjectReference>
-    <ProjectReference Include="..\BasicWindow.C\Igtampe.BasicWindow.csproj">
+    <ProjectReference Include="..\BasicWindow.C\Igtampe.BasicWindows.csproj">
       <Project>{de8c90f9-94c4-4264-805c-144f819f3197}</Project>
-      <Name>Igtampe.BasicWindow</Name>
+      <Name>Igtampe.BasicWindows</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

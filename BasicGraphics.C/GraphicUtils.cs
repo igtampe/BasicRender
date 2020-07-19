@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Igtampe.BasicGraphics.Properties;
+using System;
+using System.Text;
 
 namespace Igtampe.BasicGraphics{
     public static class GraphicUtils {
@@ -66,6 +68,9 @@ namespace Igtampe.BasicGraphics{
             }
 
         }
+
+        /// <summary>Turns a resource into a string array split by lines</summary>
+        public static String[] ResourceToStringArray(byte[] Resource) {return Encoding.ASCII.GetString(Resource).Split('\n');}
 
     }
 }

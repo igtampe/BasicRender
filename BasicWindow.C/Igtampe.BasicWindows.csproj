@@ -7,8 +7,8 @@
     <ProjectGuid>{DE8C90F9-94C4-4264-805C-144F819F3197}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BasicWindow.C</RootNamespace>
-    <AssemblyName>BasicWindow.C</AssemblyName>
+    <RootNamespace>Igtampe.BasicWindows</RootNamespace>
+    <AssemblyName>BasicWindows</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,10 +41,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ExampleWindows\HelloWorldWindow.cs" />
+    <Compile Include="Window.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WindowElement.cs" />
+    <Compile Include="WindowElements\Box.cs" />
+    <Compile Include="WindowElements\Button.cs" />
+    <Compile Include="WindowElements\Icon.cs" />
+    <Compile Include="WindowElements\Image.cs" />
+    <Compile Include="WindowElements\Label.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BasicGraphics.C\Igtampe.BasicGraphics.csproj">
+      <Project>{41dbf856-b2e6-4a1c-a06a-a211186d2acd}</Project>
+      <Name>Igtampe.BasicGraphics</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BasicRender\Igtampe.BasicRender.csproj">
       <Project>{cd2d4436-5b3e-458c-b17a-a6822c25635f}</Project>
       <Name>Igtampe.BasicRender</Name>
