@@ -26,7 +26,7 @@ namespace Igtampe.BasicWindows {
         public void SetPrevElement(WindowElement PrevElement) { this.PreviousElement = PrevElement; }
 
         public virtual KeyPressReturn OnKeyPress(ConsoleKeyInfo Key) { return KeyPressReturn.NOTHING; }
-        public void setHighlighted(Boolean Highlighted) { this.Highlighted = Highlighted; }
+        public void SetHighlighted(Boolean Highlighted) { this.Highlighted = Highlighted; }
         public abstract void DrawElement(int WindowLeft,int WindowTop);
 
     }

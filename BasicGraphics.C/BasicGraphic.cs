@@ -5,7 +5,7 @@ namespace Igtampe.BasicGraphics {
     /// <summary>Holds a BasicGraphic</summary>
     public abstract class BasicGraphic:Graphic {
 
-        public override void draw(int LeftPos,int TopPos) {
+        public override void Draw(int LeftPos,int TopPos) {
             foreach(String Line in Contents) {
                 RenderUtils.SetPos(LeftPos,TopPos++);
                 DrawColorString(Line);
@@ -16,7 +16,7 @@ namespace Igtampe.BasicGraphics {
         /// For example, the colorstring '0123456789ABCDEF' will render a rainbow.
         /// </summary>
         /// <param name="ColorString"></param>
-        public static void DrawColorString(string ColorString) { foreach(char ColorChar in ColorString) { Draw.Block(GraphicUtils.ColorCharToConsoleColor(ColorChar)); } }
+        public static void DrawColorString(string ColorString) { foreach(char ColorChar in ColorString) { BasicRender.Draw.Block(GraphicUtils.ColorCharToConsoleColor(ColorChar)); } }
 
 
     }

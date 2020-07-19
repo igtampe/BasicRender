@@ -5,9 +5,9 @@ namespace Igtampe.BasicWindows.WindowElements {
     /// <summary>Image that holds a BasicRenderGraphic</summary>
     public class Box:WindowElement {
 
-        private int Length;
-        private int Height;
-        private ConsoleColor Color;
+        private readonly int Length;
+        private readonly int Height;
+        private readonly ConsoleColor Color;
 
 
         public Box(Window Parent,ConsoleColor Color,int Length,int Height,int LeftPos,int TopPos) : base(Parent) {

@@ -5,7 +5,7 @@ namespace Igtampe.BasicGraphics {
 
     /// <summary>Holds a HiColorGraphic</summary>
     public abstract class HiColorGraphic:Graphic {
-        public override void draw(int LeftPos,int TopPos) {
+        public override void Draw(int LeftPos,int TopPos) {
             foreach(String Line in Contents) {
                 RenderUtils.SetPos(LeftPos,TopPos++);
                 HiColorDraw(Line);
@@ -23,22 +23,22 @@ namespace Igtampe.BasicGraphics {
             String[] HiColorRow = HiColorString.Split('-');
 
             foreach(String HiColorBlock in HiColorRow) {
-                if(String.IsNullOrWhiteSpace(HiColorBlock) || HiColorBlock.Length < 3) { Draw.Block(Console.BackgroundColor); } else {
+                if(String.IsNullOrWhiteSpace(HiColorBlock) || HiColorBlock.Length < 3) { BasicRender.Draw.Block(Console.BackgroundColor); } else {
                     ConsoleColor BG = GraphicUtils.ColorCharToConsoleColor(HiColorBlock[0]);
                     ConsoleColor FG = GraphicUtils.ColorCharToConsoleColor(HiColorBlock[1]);
 
                     switch(HiColorBlock[2]) {
                         case '0':
-                            Draw.Sprite("░",BG,FG);
+                            BasicRender.Draw.Sprite("░",BG,FG);
                             break;
                         case '1':
-                            Draw.Sprite("▒",BG,FG);
+                            BasicRender.Draw.Sprite("▒",BG,FG);
                             break;
                         case '2':
-                            Draw.Sprite("▓",BG,FG);
+                            BasicRender.Draw.Sprite("▓",BG,FG);
                             break;
                         default:
-                            Draw.Block(Console.BackgroundColor);
+                            BasicRender.Draw.Block(Console.BackgroundColor);
                             break;
                     }
                 }

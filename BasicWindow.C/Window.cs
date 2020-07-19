@@ -11,8 +11,8 @@ namespace Igtampe.BasicWindows
 
         public const ConsoleColor WindowClearColor = ConsoleColor.DarkCyan;
 
-        private Boolean Animated;
-        private Boolean Shadowed;
+        private readonly Boolean Animated;
+        private readonly bool Shadowed;
 
         protected int LeftPos;
         protected int TopPos;
@@ -107,7 +107,7 @@ namespace Igtampe.BasicWindows
             DrawWindow(Animated);
 
             //OnKeyPress returns true if we should continue execution.
-            while(onKeyPress(Console.ReadKey(true))) { }
+            while(OnKeyPress(Console.ReadKey(true))) { }
         }
 
         private void DrawWindow(Boolean Animated) {
@@ -172,7 +172,7 @@ namespace Igtampe.BasicWindows
             foreach(WindowElement element in AllElements) { element.DrawElement(LeftPos,TopPos); }
         }
 
-        public bool onKeyPress(ConsoleKeyInfo PressedKey) {
+        public bool OnKeyPress(ConsoleKeyInfo PressedKey) {
 
             if(PressedKey.Modifiers == ConsoleModifiers.Control && PressedKey.Key == ConsoleKey.W) { Close(); return false; }
             switch(HighlightedElement.OnKeyPress(PressedKey)) {
@@ -180,16 +180,16 @@ namespace Igtampe.BasicWindows
                     break;
                 case KeyPressReturn.NEXT_ELEMENT:
                     if(HighlightedElement.GetNextElement() != null) {
-                        HighlightedElement.setHighlighted(false);
+                        HighlightedElement.SetHighlighted(false);
                         HighlightedElement = HighlightedElement.GetNextElement();
-                        HighlightedElement.setHighlighted(true);
+                        HighlightedElement.SetHighlighted(true);
                     }
                     break;
                 case KeyPressReturn.PREV_ELEMENT:
                     if(HighlightedElement.GetPrevElement() != null) {
-                        HighlightedElement.setHighlighted(false);
+                        HighlightedElement.SetHighlighted(false);
                         HighlightedElement = HighlightedElement.GetPrevElement();
-                        HighlightedElement.setHighlighted(true);
+                        HighlightedElement.SetHighlighted(true);
                     }
                     break;
                 case KeyPressReturn.CLOSE:

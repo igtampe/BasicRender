@@ -12,7 +12,7 @@ namespace Igtampe.BasicWindows.ExampleWindows {
             AllElements.Add(OKButton);
 
             HighlightedElement = OKButton;
-            OKButton.setHighlighted(true);
+            OKButton.SetHighlighted(true);
 
         }
 

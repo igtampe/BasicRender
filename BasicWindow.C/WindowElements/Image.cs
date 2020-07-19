@@ -13,7 +13,7 @@ namespace Igtampe.BasicWindows.WindowElements {
             this.TopPos = TopPos;
         }
 
-        public override void DrawElement(int WindowLeft,int WindowTop) { Graphic.draw(WindowLeft + LeftPos,WindowTop + TopPos); }
+        public override void DrawElement(int WindowLeft,int WindowTop) { Graphic.Draw(WindowLeft + LeftPos,WindowTop + TopPos); }
 
     }
 }

@@ -6,8 +6,8 @@ namespace Igtampe.BasicGraphics
         protected String[] Contents;
         protected String Name;
 
-        public abstract void draw(int LeftPos,int TopPos);
-        public string getName() { return Name; }
+        public abstract void Draw(int LeftPos,int TopPos);
+        public string GetName() { return Name; }
 
         /// <summary>Gets the width of the graphic</summary>
         /// <returns>Length of the first line</returns>

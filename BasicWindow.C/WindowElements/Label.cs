@@ -4,9 +4,9 @@ using Igtampe.BasicRender;
 namespace Igtampe.BasicWindows.WindowElements {
     /// <summary>Label that holds text</summary>
     public class Label:WindowElement {
-        private String Text;
-        private ConsoleColor BG;
-        private ConsoleColor FG;
+        private readonly String Text;
+        private readonly ConsoleColor BG;
+        private readonly ConsoleColor FG;
 
         public Label(Window Parent,string Text,ConsoleColor BG,ConsoleColor FG,int LeftPos,int TopPos) : base(Parent) {
             this.Text = Text;
