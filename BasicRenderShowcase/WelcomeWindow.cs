@@ -32,7 +32,7 @@ namespace Igtampe.BasicRenderShowcase {
 
         }
 
-        public class LaunchShowcaseButton:Button {
+        private class LaunchShowcaseButton:Button {
 
             public LaunchShowcaseButton(Window Parent,int leftpos, int toppos):base(Parent,"[ Launch Showcase ]",ConsoleColor.DarkGray,ConsoleColor.White,ConsoleColor.DarkBlue,leftpos,toppos) { }
 

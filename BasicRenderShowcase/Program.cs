@@ -3,7 +3,7 @@ using Igtampe.BasicRender;
 
 namespace Igtampe.BasicRenderShowcase {
     class Program {
-        static void Main(string[] args) {
+        static void Main() {
 
             RenderUtils.Color(ConsoleColor.DarkCyan,ConsoleColor.White);
             Console.Clear();
