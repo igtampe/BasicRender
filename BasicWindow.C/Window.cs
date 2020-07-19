@@ -117,10 +117,11 @@ namespace Igtampe.BasicWindows
 
             //Do the animation
             if(Animated) {
-                int SmallHeight = 1;
 
-                for(int SmallLength = 0; SmallLength < Length; SmallLength++) {
-                    if(SmallHeight != Height) { SmallHeight++; }
+                //Now we use scale because que lindo.
+                for(Double Scale = 0; Scale < 1; Scale+=.05) {
+                    int SmallLength = Convert.ToInt32(Math.Max(Length * Scale,1));
+                    int SmallHeight = Convert.ToInt32(Math.Max(Height * Scale,1));
                     Draw.Box(MainBG,SmallLength,SmallHeight,LeftPos,TopPos);
                 }
             }
@@ -208,10 +209,9 @@ namespace Igtampe.BasicWindows
         public void Close() {
             //Do the animation
             if(Animated) {
-                int SmallHeight = 1;
-
-                for(int SmallLength = 0; SmallLength < Length; SmallLength++) {
-                    if(SmallHeight != Height) { SmallHeight++; }
+                for(Double Scale = 0; Scale < 1; Scale += .05) {
+                    int SmallLength = Convert.ToInt32(Math.Max(Length * Scale,1));
+                    int SmallHeight = Convert.ToInt32(Math.Max(Height * Scale,1));
                     Draw.Box(WindowClearColor,SmallLength,SmallHeight,LeftPos,TopPos);
                 }
             }
