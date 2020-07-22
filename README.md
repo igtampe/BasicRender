@@ -2,7 +2,7 @@
 
 The BasicRender Toolkit is a set of class libraries that make it easy to display graphics on a console screen. Three libraries are included, and can all be downloaded over at the release page.
 
-This project also includes a small demo program. After a neat little BasicWindow, it tells the very very tiny 8 line story of a man who insulted an AI for the last time. It includes exactly one landscape I drew in henja that came out ~~horrible~~ great.
+This project also includes a small demo program. After a neat little BasicWindow, it tells the very very tiny 8 line story of a man who insulted an AI for the last time. It includes exactly one landscape I drew in [henja](https://github.com/igtampe/Henja3) that came out ~~horrible~~ great.
 ![And so the man died. The end.](https://cdn.discordapp.com/attachments/335464035921428480/734309006390067330/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f373333383835333235.png "And so the man died. The end.")
 
 Below is a nice bit of documentation on each class. Each method also has XML documentation so you don't have to have this markdown document open.
@@ -36,7 +36,7 @@ Utilities that help in rendering stuff on screen. Though, they're also useful in
 |Type()| "Types" text on screen one character at a time. Time between each character is either specified, or 5ms|
 
 ## BasicGraphics
-BasicGraphics includes tools for drawing DrawFile (DF) and Hi-Color DrawFiles (HC) files (Both from disk, as a resource, or as its own type of internal class). These files can be edited by the [Henja2 Editor](https://github.com/igtampe/Henja2) (Which is still a bit of a mess which I need to fix up but ahaha). BasicGraphics depends on BasicRender. It has several classes, mentioned below.
+BasicGraphics includes tools for drawing DrawFile (DF) and Hi-Color DrawFiles (HC) files (Both from disk, as a resource, or as its own type of internal class). These files can be edited by the [Henja3 Editor](https://github.com/igtampe/Henja3). BasicGraphics depends on BasicRender. It has several classes, mentioned below.
 
 ### Graphic
 Abstract class that basically everything inherits either directly or indirectly.
