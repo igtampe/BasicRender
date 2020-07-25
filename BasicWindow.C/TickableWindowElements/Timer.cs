@@ -42,7 +42,7 @@ namespace Igtampe.BasicWindows.TickableWindowElements {
         /// <summary>Ticks this element, and takes away 250ms from this timer</summary>
         /// <returns>True if there's still time, false otherwise</returns>
         public override bool Tick() {
-            TimeLeft -= .25;
+            TimeLeft -= 250;
             MyProgressBar.Percent = TimeLeft / Time;
             DrawElement();
 

@@ -19,10 +19,11 @@ namespace Igtampe.BasicWindows.Windows {
 
             while(CurrentWord < Words.Length && Lines.Count < MaxHeight) {
                 String Line = "";
-                while(CurrentWord < Words.Length && ((Line.Length + Words[CurrentWord].Length) < MaxWidth)) {
+                while(CurrentWord < Words.Length && ((Line.Length + Words[CurrentWord].Replace("\n","").Length) < MaxWidth)) {
                     //If we have a next word, and the word's length plus whatever we already have is shorter than the maximum width, add it to the line
                     Line += Words[CurrentWord] + " ";
                     CurrentWord++;
+                    if(Words[CurrentWord-1].EndsWith("\n")) { break; }
                 }
 
                 //The line is as long as its going to be.

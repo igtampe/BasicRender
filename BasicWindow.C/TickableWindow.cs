@@ -80,8 +80,16 @@ namespace Igtampe.BasicWindows {
             while(true) {
 
                 //If there's a key to read, read it, otherwise, do not.
-                if(Console.KeyAvailable) {if(!OnKeyPress(Console.ReadKey(true))) { return; }}
-                if(!Tick()) { break; }
+                if(Console.KeyAvailable) {
+                    if(!OnKeyPress(Console.ReadKey(true))) {
+                        Close();
+                        return; 
+                    }
+                }
+                if(!Tick()) {
+                    Close();
+                    return;
+                }
                 RenderUtils.Sleep(250);
                 
             }

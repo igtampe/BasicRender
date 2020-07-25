@@ -30,13 +30,12 @@ namespace Igtampe.BasicRenderShowcase {
             Console.Clear();
 
             //Time to test the tickable timer window and a new label.
-            TickableWindow LoadWindow = new TickableWindow(true,true,"Please Wait",20,5);
+            TickableWindow LoadWindow = new TickableWindow(true,true,"Please Wait",42,7);
 
             WindowElement[] Elements = {
                 new Icon(LoadWindow,Icon.IconType.INFORMATION,1,2),
                 new Label(LoadWindow,"Please Wait, BasicRender is Loading",ConsoleColor.Gray,ConsoleColor.Black,5,2),
-                new Timer(LoadWindow,10)
-
+                new Timer(LoadWindow,10,new Progressbar(LoadWindow,35,5,4))
             };
 
             LoadWindow.AddElements(Elements);
