@@ -22,12 +22,11 @@ namespace Igtampe.BasicWindows.TickableWindowElements {
 
         /// <summary>Creates a timer element that will cut execution when it reaches 0, and that will show a progress bar going from 100% to 0% as time progresses</summary>
         /// <param name="Parent"></param>
-        /// <param name="Time">In Seconds</param>
-        /// <param name="Length"></param>
-        /// <param name="LeftPos"></param>
-        /// <param name="TopPos"></param>
-        public Timer(Window Parent, int Time,int Length,int LeftPos,int TopPos):this(Parent,Time) {
-            MyProgressBar = new Progressbar(Parent,Length,LeftPos,TopPos) {Percent = 1};
+        /// <param name="Time"></param>
+        /// <param name="progressbar"></param>
+        public Timer(Window Parent, int Time, Progressbar progressbar):this(Parent,Time) {
+            MyProgressBar = progressbar;
+            progressbar.Percent = 1;
         }
 
         /// <summary>Creates a silent timer that will cut execution when it reaches 0.</summary>

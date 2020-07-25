@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using Igtampe.BasicGraphics;
 using Igtampe.BasicRender;
 using Igtampe.BasicRenderShowcase.Properties;
 using Igtampe.BasicWindows;
+using Igtampe.BasicWindows.TickableWindowElements;
+using Igtampe.BasicWindows.WindowElements;
 using Igtampe.BasicWindows.Windows;
 
 namespace Igtampe.BasicRenderShowcase {
@@ -27,8 +30,20 @@ namespace Igtampe.BasicRenderShowcase {
             Console.Clear();
 
             //Time to test the tickable timer window and a new label.
-            Window LoadWindow = new Window(true,true,"Please Wait",20,5);
-            
+            TickableWindow LoadWindow = new TickableWindow(true,true,"Please Wait",20,5);
+
+            WindowElement[] Elements = {
+                new Icon(LoadWindow,Icon.IconType.INFORMATION,1,2),
+                new Label(LoadWindow,"Please Wait, BasicRender is Loading",ConsoleColor.Gray,ConsoleColor.Black,5,2),
+                new Timer(LoadWindow,10)
+
+            };
+
+            LoadWindow.AddElements(Elements);
+
+            //LoadWindow should have a DialogBox pop up saying it's done.
+
+            LoadWindow.Execute();
 
             new HelloWorldWindow().Execute();
 
