@@ -15,9 +15,12 @@ namespace Igtampe.BasicWindows.WindowElements {
             set { percent = Math.Max(0,Math.Min(value,1)); }
         }
 
-        private ConsoleColor BG;
-        private ConsoleColor BarColor;
-        private int Length;
+        /// <summary>Background of this progressbar</summary>
+        protected ConsoleColor BG;
+        
+        /// <summary>Color of the bar that will be drawn on top of this progressbar to indicate progress.</summary>
+        protected ConsoleColor BarColor;
+        private readonly int Length;
 
         /// <summary>Creates a ProgressBar with the default colors (DarkGray BG, DarkBlue Bar Color)</summary>
         /// <param name="Parent"></param>

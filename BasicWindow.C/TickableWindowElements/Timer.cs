@@ -18,7 +18,7 @@ namespace Igtampe.BasicWindows.TickableWindowElements {
 
         /// <summary>Time left in Miliseconds</summary>
         public double TimeLeft { get; protected set; }
-        private Progressbar MyProgressBar;
+        private readonly Progressbar MyProgressBar;
 
         /// <summary>Creates a timer element that will cut execution when it reaches 0, and that will show a progress bar going from 100% to 0% as time progresses</summary>
         /// <param name="Parent"></param>
