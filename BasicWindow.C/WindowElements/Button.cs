@@ -57,7 +57,7 @@ namespace Igtampe.BasicWindows.WindowElements {
             }
         }
 
-        /// <summary>Abstract method that an actual button needs to override, so that an action happens when you hti enter.</summary>
+        /// <summary>Abstract method that an actual button needs to override, so that an action happens when you hit enter.</summary>
         /// <returns></returns>
         public abstract KeyPressReturn Action();
     }

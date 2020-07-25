@@ -10,6 +10,12 @@ namespace Igtampe.BasicWindows.TickableWindowElements {
 
         /// <summary>Window that will execute when time is up</summary>
         public Window TimeUpWindow { get; set; }
+        
+        /// <summary>
+        /// Indicates whether this timer should go from back to front or front to back. <br></br>
+        /// Should only be set if this is tied to a progressbar, and should not be set when the progressbar is running.
+        /// </summary>
+        public bool BackToFront { get; set; }
 
         /// <summary>Time left in Miliseconds</summary>
         public double TimeLeft { get; protected set; }
@@ -22,6 +28,7 @@ namespace Igtampe.BasicWindows.TickableWindowElements {
         public Timer(Window Parent, int Time, Progressbar progressbar):this(Parent,Time) {
             MyProgressBar = progressbar;
             progressbar.Percent = 1;
+            BackToFront = false;
         }
 
         /// <summary>Creates a silent timer that will cut execution when it reaches 0.</summary>
@@ -38,7 +45,9 @@ namespace Igtampe.BasicWindows.TickableWindowElements {
         /// <returns>True if there's still time, false otherwise</returns>
         public override bool Tick() {
             TimeLeft -= 250;
-            MyProgressBar.Percent = TimeLeft / Time;
+            if(BackToFront) { MyProgressBar.Percent = (Time-TimeLeft) / Time; } else { MyProgressBar.Percent = TimeLeft / Time; }
+
+            
             DrawElement();
 
             if(TimeLeft <= 0) {

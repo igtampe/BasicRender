@@ -21,7 +21,7 @@ namespace Igtampe.BasicGraphics {
         /// <param name="ColorString"></param>
         public static void DrawColorString(string ColorString) { 
             foreach(char ColorChar in ColorString) {
-                try {BasicRender.Draw.Block(GraphicUtils.ColorCharToConsoleColor(ColorChar));} catch(ArgumentException) {} //only catch arguement exception.
+                try {BasicRender.Draw.Block(GraphicUtils.ColorCharToConsoleColor(ColorChar));} catch(ArgumentException) {} //only catch argument exception.
                 
             }
         }

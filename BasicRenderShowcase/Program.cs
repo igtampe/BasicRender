@@ -33,19 +33,57 @@ namespace Igtampe.BasicRenderShowcase {
 
             WindowElement[] Elements = {
                 new Icon(LoadWindow,Icon.IconType.INFORMATION,1,2),
-                new Label(LoadWindow,"Please Wait, BasicRender is Loading",ConsoleColor.Gray,ConsoleColor.Black,5,2),
-                new Timer(LoadWindow,10,new Progressbar(LoadWindow,35,5,4))
+                new Label(LoadWindow,"Please Wait, BasicRender is loading",ConsoleColor.Gray,ConsoleColor.Black,5,2),
+                new Spinner(LoadWindow,ConsoleColor.Gray,ConsoleColor.Black,5,4),
+                new Timer(LoadWindow,10,new Progressbar(LoadWindow,33,7,4)){BackToFront=true}
             };
 
             LoadWindow.AddElements(Elements);
 
-            //LoadWindow should have a DialogBox pop up saying it's done.
-
             LoadWindow.Execute();
+
+            quiz();
 
             new HelloWorldWindow().Execute();
 
             new WelcomeWindow().Execute();
+
+
+        }
+
+        static void quiz() {
+            DialogBox.ShowDialogBox(Icon.IconType.INFORMATION,DialogBox.DialogBoxButtons.OK,"Test I hope this works.");
+
+            if(DialogBox.ShowDialogBox(Icon.IconType.QUESTION,DialogBox.DialogBoxButtons.YesNo,"Is this America?") == DialogBox.DialogBoxResult.Yes) {
+                if(DialogBox.ShowDialogBox(Icon.IconType.EXCLAMATION,DialogBox.DialogBoxButtons.OKCancel,"This is America")==DialogBox.DialogBoxResult.Cancel) {
+                    quiz();
+                    return;
+                }
+            } else {
+
+                switch(DialogBox.ShowDialogBox(Icon.IconType.QUESTION,DialogBox.DialogBoxButtons.YesNoCancel,"Are you absolutely sure?")) {
+                    case DialogBox.DialogBoxResult.Yes:
+                        if(DialogBox.ShowDialogBox(Icon.IconType.ERROR,DialogBox.DialogBoxButtons.AbortRetryIgnore,"Incorrect. This is America (woo, ayy) Don't catch you slippin' now(woo,woo,don't catch you slippin',now) Don't catch you slippin' now(ayy,woah) Look what I'm whippin' now(Slime!) This is America(yeah, yeah) Don't catch you slippin' now(woah,ayy) Don't catch you slippin' now(ayy,woo) Look what I'm whippin' now(ayy) Look how I'm geekin' out (hey)I'm so fitted (I'm so fitted,woo)I'm on Gucci (I'm on Gucci)I'm so pretty (yeah, yeah)I'm gon' get it(ayy,I'm gon' get it)Watch me move(blaow)This a celly(ha)That's a tool (yeah)On my Kodak(woo,Black)Ooh, know that(yeah,know that,hold on)Get it(get it,get it)Ooh, work it(21)Hunnid bands, hunnid bands, hunnid bands(hunnid bands)Contraband, contraband, contraband(contraband)I got the plug on Oaxaca(woah)They gonna find you like blocka(blaow)")==DialogBox.DialogBoxResult.Retry) {
+                            quiz();
+                            return;
+                        };
+                        break;
+                    case DialogBox.DialogBoxResult.No:
+                        if(DialogBox.ShowDialogBox(Icon.IconType.EXCLAMATION,DialogBox.DialogBoxButtons.OKCancel,"This is America") == DialogBox.DialogBoxResult.Cancel) {
+                            quiz();
+                            return;
+                        }
+                        break;
+                    case DialogBox.DialogBoxResult.Nothing:
+                    case DialogBox.DialogBoxResult.OK:
+                    case DialogBox.DialogBoxResult.Cancel:
+                    case DialogBox.DialogBoxResult.Abort:
+                    case DialogBox.DialogBoxResult.Retry:
+                    case DialogBox.DialogBoxResult.Ignore:
+                    default:
+                        break;
+                }
+            }
 
 
         }

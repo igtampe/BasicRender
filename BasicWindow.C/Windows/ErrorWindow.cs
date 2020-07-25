@@ -1,4 +1,5 @@
-﻿using Igtampe.BasicWindows.WindowElements;
+﻿using Igtampe.BasicWindows.Utils;
+using Igtampe.BasicWindows.WindowElements;
 using System;
 
 namespace Igtampe.BasicWindows.Windows {
@@ -20,7 +21,7 @@ namespace Igtampe.BasicWindows.Windows {
             AllElements.Add(new Icon(this,Icon.IconType.ERROR,1,2));
       
             //Add the Label
-            AllElements.Add(new Label(this,WindowUtils.TextFormat(Text,40,3),ConsoleColor.Gray,ConsoleColor.Black,5,2));
+            AllElements.Add(new Label(this,FormattedText.Format(Text,40,3),ConsoleColor.Gray,ConsoleColor.Black,5,2));
 
             CloseButton OK = new CloseButton(this,"[     O K     ]",ConsoleColor.DarkGray,ConsoleColor.White,ConsoleColor.DarkBlue,Length - "[     O K     ] ".Length,Height - 2);
 

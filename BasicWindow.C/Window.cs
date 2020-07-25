@@ -28,6 +28,9 @@ namespace Igtampe.BasicWindows
         /// <summary>Indicates whether this window should have a shadow when being drawn</summary>
         protected readonly bool Shadowed;
         
+        /// <summary>Indicates whether the window is currently drawn.</summary>
+        public bool Drawn { get; protected set; }
+
         /// <summary>Left position of this window</summary>
         public int LeftPos {get;}
 
@@ -161,6 +164,8 @@ namespace Igtampe.BasicWindows
         /// <param name="Animated"></param>
         protected virtual void DrawWindow(Boolean Animated) {
 
+            Drawn = true;
+
             //Render the shadow
             if(Shadowed) { Draw.Box(ConsoleColor.Black,Length,Height - 1,LeftPos + 2,TopPos + 2); }
 
@@ -273,7 +278,7 @@ namespace Igtampe.BasicWindows
 
             //if shadowed, delete the main shadow
             if(Shadowed) { Draw.Box(WindowClearColor,Length,Height - 1,LeftPos + 2,TopPos + 2); }
-
+            Drawn = false;
         }
     }
 

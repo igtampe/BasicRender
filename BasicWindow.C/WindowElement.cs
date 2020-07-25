@@ -42,7 +42,7 @@ namespace Igtampe.BasicWindows {
             get { return highlighted; }
             set { 
                 highlighted = value;
-                DrawElement();
+                if(Parent.Drawn) { DrawElement(); }
             }
         }
 

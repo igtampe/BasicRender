@@ -42,8 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DialogBox.cs" />
     <Compile Include="TickableWindow.cs" />
     <Compile Include="TickableWindowElement.cs" />
+    <Compile Include="TickableWindowElements\Spinner.cs" />
     <Compile Include="TickableWindowElements\Timer.cs" />
     <Compile Include="WindowElements\Progressbar.cs" />
     <Compile Include="Windows\ErrorWindow.cs" />
@@ -62,7 +64,7 @@
     <Compile Include="WindowElements\NumericalTextBox.cs" />
     <Compile Include="WindowElements\Slider.cs" />
     <Compile Include="WindowElements\Textbox.cs" />
-    <Compile Include="WindowUtils.cs" />
+    <Compile Include="Utils\FormattedText.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BasicGraphics.C\Igtampe.BasicGraphics.csproj">
