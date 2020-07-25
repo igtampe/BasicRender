@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="WindowElements\Progressbar.cs" />
+    <Compile Include="Windows\ErrorWindow.cs" />
     <Compile Include="Windows\HelloWorldWindow.cs" />
     <Compile Include="Window.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
