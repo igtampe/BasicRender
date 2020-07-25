@@ -1,5 +1,6 @@
 ﻿using System;
 using Igtampe.BasicRender;
+using Igtampe.BasicWindows.Windows;
 
 namespace Igtampe.BasicWindows.WindowElements {
     /// <summary>Label that holds text</summary>
@@ -16,7 +17,11 @@ namespace Igtampe.BasicWindows.WindowElements {
         /// <param name="LeftPos"></param>
         /// <param name="TopPos"></param>
         public Label(Window Parent,string Text,ConsoleColor BG,ConsoleColor FG,int LeftPos,int TopPos) : base(Parent) {
-            this.Text = Text;
+            //this.Text = Text;
+
+            //Let's actually format the text.
+            this.Text = WindowUtils.TextFormat(Text,Parent.Length - LeftPos,Parent.Height - TopPos);
+
             this.BG = BG;
             this.FG = FG;
             this.LeftPos = LeftPos;

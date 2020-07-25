@@ -62,6 +62,7 @@
     <Compile Include="WindowElements\NumericalTextBox.cs" />
     <Compile Include="WindowElements\Slider.cs" />
     <Compile Include="WindowElements\Textbox.cs" />
+    <Compile Include="WindowUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BasicGraphics.C\Igtampe.BasicGraphics.csproj">

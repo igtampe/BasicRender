@@ -2,6 +2,7 @@
 using Igtampe.BasicGraphics;
 using Igtampe.BasicRender;
 using Igtampe.BasicRenderShowcase.Properties;
+using Igtampe.BasicWindows;
 using Igtampe.BasicWindows.Windows;
 
 namespace Igtampe.BasicRenderShowcase {
@@ -24,6 +25,10 @@ namespace Igtampe.BasicRenderShowcase {
 
             RenderUtils.Color(ConsoleColor.DarkCyan,ConsoleColor.White);
             Console.Clear();
+
+            //Time to test the tickable timer window and a new label.
+            Window LoadWindow = new Window(true,true,"Please Wait",20,5);
+            
 
             new HelloWorldWindow().Execute();
 
