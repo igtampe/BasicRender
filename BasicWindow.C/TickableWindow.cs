@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Igtampe.BasicRender;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -71,6 +72,39 @@ namespace Igtampe.BasicWindows {
         /// <param name="TopPos"></param>
         public TickableWindow(Boolean Animated,Boolean Shadowed,ConsoleColor MainBG,ConsoleColor HeaderBG,ConsoleColor HeaderFG,HeaderPosition HeadPos,String Title,int Length,int Height,int LeftPos,int TopPos):base(Animated,Shadowed,MainBG,HeaderBG,HeaderFG,HeadPos,Title,Length,Height,LeftPos,TopPos) {}
 
+        /// <summary>Executes this tickable window</summary>
+        public override void Execute() {
+            DrawWindow(Animated);
+
+            //OnKeyPress returns true if we should continue execution.
+            while(true) {
+
+                //If there's a key to read, read it, otherwise, do not.
+                if(Console.KeyAvailable) {if(!OnKeyPress(Console.ReadKey(true))) { return; }}
+                if(!Tick()) { break; }
+                RenderUtils.Sleep(250);
+                
+            }
+        }
+
+        /// <summary>
+        /// Subroutine that runs every 250ms while the window is waiting for user input.
+        /// At Base, it ticks every tickable element.
+        /// </summary>
+        /// <returns>True if execution should continue</returns>
+        protected virtual bool Tick() {
+
+            //tick each element.
+            foreach(WindowElement element in AllElements) {
+
+                //Look at us making some nice code and using the question mark cosa
+                TickableWindowElement TickableElement = element as TickableWindowElement;
+                bool? cont = TickableElement?.Tick();
+                if(cont ==false) { return false; }
+            }
+
+            return true;
+        }
 
     }
 }

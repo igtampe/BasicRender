@@ -23,8 +23,11 @@ namespace Igtampe.BasicWindows
         /// <summary>Color the close function will use to clear the window</summary>
         public static ConsoleColor WindowClearColor = ConsoleColor.DarkCyan;
 
-        private readonly bool Animated;
-        private readonly bool Shadowed;
+        /// <summary>Indicates whether this window should "animate" itself when being drawn</summary>
+        protected readonly bool Animated;
+
+        /// <summary>Indicates whether this window should have a shadow when being drawn</summary>
+        protected readonly bool Shadowed;
         
         /// <summary>Left position of this window</summary>
         public int LeftPos {get;}
