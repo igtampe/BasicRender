@@ -136,7 +136,7 @@ namespace Igtampe.BasicWindows
             if(LeftPos == -1) { this.LeftPos = ((Console.WindowWidth) - Length) / 2; } else { this.LeftPos = LeftPos; }
             if(TopPos == -1) { this.TopPos = ((Console.WindowHeight) - Height) / 2; } else { this.TopPos = TopPos; }
 
-            AllElements = new ArrayList();
+            AllElements = new List<WindowElement>();
         }
 
         /// <summary>Adds an Element to the Window</summary>

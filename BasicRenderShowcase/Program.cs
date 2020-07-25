@@ -2,7 +2,7 @@
 using Igtampe.BasicGraphics;
 using Igtampe.BasicRender;
 using Igtampe.BasicRenderShowcase.Properties;
-using Igtampe.BasicWindows.ExampleWindows;
+using Igtampe.BasicWindows.Windows;
 
 namespace Igtampe.BasicRenderShowcase {
     class Program {
