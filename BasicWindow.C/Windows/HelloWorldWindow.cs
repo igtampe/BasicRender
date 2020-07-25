@@ -1,7 +1,7 @@
 ﻿using System;
 using Igtampe.BasicWindows.WindowElements;
 
-namespace Igtampe.BasicWindows.ExampleWindows {
+namespace Igtampe.BasicWindows.Windows {
 
     /// <summary>A tiny window that says helloworld</summary>
     public class HelloWorldWindow:Window {

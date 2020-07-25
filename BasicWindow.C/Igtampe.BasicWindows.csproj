@@ -42,7 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExampleWindows\HelloWorldWindow.cs" />
+    <Compile Include="WindowElements\Progressbar.cs" />
+    <Compile Include="Windows\HelloWorldWindow.cs" />
     <Compile Include="Window.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WindowElement.cs" />
