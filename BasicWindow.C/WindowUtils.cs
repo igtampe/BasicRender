@@ -11,8 +11,9 @@ namespace Igtampe.BasicWindows.Windows {
         /// <param name="MaxHeight"></param>
         /// <returns></returns>
         public static String TextFormat(String Text, int MaxWidth, int MaxHeight) {
-        
+
             //Split the text with spaces
+            Text = Text.Replace("\n"," \n ");
             String[] Words = Text.Split(' ');
             int CurrentWord = 0;
             List<String> Lines = new List<String>();
