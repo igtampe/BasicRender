@@ -24,7 +24,7 @@ namespace Igtampe.BasicRenderShowcase {
 
             Rainbow.Draw(17,10);
             Draw.CenterText("BasicRender",12,ConsoleColor.White,ConsoleColor.Black);
-            RenderUtils.Sleep(5000);
+            //RenderUtils.Sleep(5000);
 
             RenderUtils.Color(ConsoleColor.DarkCyan,ConsoleColor.White);
             Console.Clear();
@@ -42,12 +42,11 @@ namespace Igtampe.BasicRenderShowcase {
 
             //LoadWindow should have a DialogBox pop up saying it's done.
 
-            LoadWindow.Execute();
+            //LoadWindow.Execute();
 
-            new HelloWorldWindow().Execute();
+            //new HelloWorldWindow().Execute();
 
-            WelcomeWindow Hello = new WelcomeWindow();
-            Hello.Execute();
+            new WelcomeWindow().Execute();
 
 
         }

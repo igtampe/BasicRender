@@ -11,10 +11,10 @@ namespace Igtampe.BasicRenderShowcase {
 
         public WelcomeWindow() : base(ConsoleColor.Gray,ConsoleColor.DarkMagenta,ConsoleColor.White,"Welcome to BasicRender!",44,10) {
 
-            AllElements.Add(new Label(this,"Welcome to the BasicRender showcase\n" +
-                                           "program! We hope you enjoy the super\n" + 
-                                           "tiny story we have created to show\n" +
-                                           "some of the things this class\n" + 
+            AllElements.Add(new Label(this,"Welcome to the BasicRender showcase \n " +
+                                           "program! We hope you enjoy the super \n " + 
+                                           "tiny story we have created to show \n " +
+                                           "some of the things this class \n " + 
                                            "library can do."
                 ,ConsoleColor.Gray,ConsoleColor.Black,1,2));
 
