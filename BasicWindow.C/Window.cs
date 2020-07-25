@@ -18,7 +18,7 @@ namespace Igtampe.BasicWindows
         RIGHT }
 
     /// <summary>Holds the base for a renderable window.</summary>
-    public abstract class Window {
+    public class Window {
 
         /// <summary>Color the close function will use to clear the window</summary>
         public static ConsoleColor WindowClearColor = ConsoleColor.DarkCyan;
