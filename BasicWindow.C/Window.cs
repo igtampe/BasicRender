@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using Igtampe.BasicRender;
 
 namespace Igtampe.BasicWindows
@@ -22,7 +23,7 @@ namespace Igtampe.BasicWindows
         /// <summary>Color the close function will use to clear the window</summary>
         public const ConsoleColor WindowClearColor = ConsoleColor.DarkCyan;
 
-        private readonly Boolean Animated;
+        private readonly bool Animated;
         private readonly bool Shadowed;
         
         /// <summary>Left position of this window</summary>
@@ -32,10 +33,10 @@ namespace Igtampe.BasicWindows
         public int TopPos { get; }
 
         /// <summary>Length of this window</summary>
-        public int Length { get; }
+        public int Length { get; protected set; }
 
         /// <summary>Height of this window.</summary>
-        public int Height { get; }
+        public int Height { get; protected set; }
 
         /// <summary>Title of this window</summary>
         protected String Title;
@@ -53,10 +54,10 @@ namespace Igtampe.BasicWindows
         protected HeaderPosition HeadPos;
 
         /// <summary>Currently highlighted element on this window</summary>
-        protected WindowElement HighlightedElement;
+        public WindowElement HighlightedElement { get; set; }
 
         /// <summary>All elements of this window</summary>
-        protected ArrayList AllElements;
+        protected List<WindowElement> AllElements;
 
         /// <summary>Creates an Animated, Shadowed, and centered window with a centered header with the default colors (Gray Main BG, dark blue header, White Header Text)</summary>
         /// <param name="Title"></param>
@@ -138,8 +139,16 @@ namespace Igtampe.BasicWindows
             AllElements = new ArrayList();
         }
 
+        /// <summary>Adds an Element to the Window</summary>
+        /// <param name="NewElement"></param>
+        public void AddElement(WindowElement NewElement ) {AllElements.Add(NewElement);}
+
+        /// <summary>Adds a range of elements to the window</summary>
+        /// <param name="NewElements"></param>
+        public void AddElements(IEnumerable<WindowElement> NewElements) { AllElements.AddRange(NewElements); }
+
         /// <summary>Launches this window</summary>
-        public void Execute() {
+        public virtual void Execute() {
             DrawWindow(Animated);
 
             //OnKeyPress returns true if we should continue execution.
@@ -148,7 +157,7 @@ namespace Igtampe.BasicWindows
 
         /// <summary>Draws the window</summary>
         /// <param name="Animated"></param>
-        private void DrawWindow(Boolean Animated) {
+        protected virtual void DrawWindow(Boolean Animated) {
 
             //Render the shadow
             if(Shadowed) { Draw.Box(ConsoleColor.Black,Length,Height - 1,LeftPos + 2,TopPos + 2); }
@@ -214,7 +223,7 @@ namespace Igtampe.BasicWindows
         /// <summary>Triggered when a key is pressed, and handles what to do with it.</summary>
         /// <param name="PressedKey"></param>
         /// <returns>Returns True if the window should remain open, otherwise false.</returns>
-        private bool OnKeyPress(ConsoleKeyInfo PressedKey) {
+        protected virtual bool OnKeyPress(ConsoleKeyInfo PressedKey) {
 
             if(PressedKey.Modifiers == ConsoleModifiers.Control && PressedKey.Key == ConsoleKey.W) { Close(); return false; }
             switch(HighlightedElement.OnKeyPress(PressedKey)) {
@@ -244,10 +253,10 @@ namespace Igtampe.BasicWindows
         }
 
         /// <summary>Redraws the window without animations</summary>
-        public void Redraw() { DrawWindow(false); }
+        public virtual void Redraw() { DrawWindow(false); }
 
         /// <summary>Closes the window</summary>
-        public void Close() {
+        public virtual void Close() {
             //Do the animation
             if(Animated) {
                 for(Double Scale = 0; Scale < 1; Scale += .05) {
