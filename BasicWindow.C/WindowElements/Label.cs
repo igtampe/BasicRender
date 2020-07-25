@@ -9,6 +9,8 @@ namespace Igtampe.BasicWindows.WindowElements {
         private readonly ConsoleColor BG;
         private readonly ConsoleColor FG;
 
+
+
         /// <summary>Creates a Label Window element</summary>
         /// <param name="Parent"></param>
         /// <param name="Text"></param>
@@ -26,6 +28,25 @@ namespace Igtampe.BasicWindows.WindowElements {
             this.FG = FG;
             this.LeftPos = LeftPos;
             this.TopPos = TopPos;
+        }
+
+        /// <summary>Creates a label window element of the specified maximum width and maximum height</summary>
+        /// <param name="Parent"></param>
+        /// <param name="Text"></param>
+        /// <param name="MaxWidth"></param>
+        /// <param name="MaxHeight"></param>
+        /// <param name="BG"></param>
+        /// <param name="FG"></param>
+        /// <param name="LeftPos"></param>
+        /// <param name="TopPos"></param>
+        public Label(Window Parent,string Text,int MaxWidth,int MaxHeight,ConsoleColor BG,ConsoleColor FG,int LeftPos,int TopPos):base(Parent) {
+            
+            this.Text = WindowUtils.TextFormat(Text,Math.Min(Parent.Length - LeftPos,MaxWidth),Math.Min(Parent.Height - TopPos,MaxHeight));
+            this.BG = BG;
+            this.FG = FG;
+            this.LeftPos = LeftPos;
+            this.TopPos = TopPos;
+
         }
 
         /// <summary>Draws this label</summary>
