@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TickableWindow.cs" />
     <Compile Include="WindowElements\Progressbar.cs" />
     <Compile Include="Windows\ErrorWindow.cs" />
     <Compile Include="Windows\HelloWorldWindow.cs" />

@@ -21,7 +21,7 @@ namespace Igtampe.BasicWindows
     public abstract class Window {
 
         /// <summary>Color the close function will use to clear the window</summary>
-        public const ConsoleColor WindowClearColor = ConsoleColor.DarkCyan;
+        public static ConsoleColor WindowClearColor = ConsoleColor.DarkCyan;
 
         private readonly bool Animated;
         private readonly bool Shadowed;
