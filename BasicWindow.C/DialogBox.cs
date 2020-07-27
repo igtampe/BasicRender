@@ -1,20 +1,16 @@
 ﻿using Igtampe.BasicWindows.Utils;
 using Igtampe.BasicWindows.WindowElements;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Igtampe.BasicWindows {
     /// <summary>Class that can create Dialog Boxes</summary>
     public class DialogBox {
 
         /// <summary>Maximum width of dialogboxes</summary>
-        public static int MaxWidth=65; //46
+        public static int MaxWidth=70; //46
 
         /// <summary>Maximum height of dialogboxes</summary>
-        public static int MaxHeight = 20; //10
+        public static int MaxHeight = 22; //10
 
         /// <summary>Enum that holds available button combinations for dialog boxes</summary>
         public enum DialogBoxButtons { 
@@ -52,13 +48,13 @@ namespace Igtampe.BasicWindows {
         }
 
         //-[All the buttons]-----------------------------------
-        private FlaggedCloseButton OKButton;     //[    OK    ]
-        private FlaggedCloseButton CancelButton; //[  CANCEL  ]
-        private FlaggedCloseButton YesButton;    //[   YES    ]
-        private FlaggedCloseButton NoButton;     //[    NO    ]
-        private FlaggedCloseButton AbortButton;  //[  ABORT   ]
-        private FlaggedCloseButton RetryButton;  //[  RETRY   ]
-        private FlaggedCloseButton IgnoreButton; //[  IGNORE  ]
+        private readonly FlaggedCloseButton OKButton;     //[    OK    ]
+        private readonly FlaggedCloseButton CancelButton; //[  CANCEL  ]
+        private readonly FlaggedCloseButton YesButton;    //[   YES    ]
+        private readonly FlaggedCloseButton NoButton;     //[    NO    ]
+        private readonly FlaggedCloseButton AbortButton;  //[  ABORT   ]
+        private readonly FlaggedCloseButton RetryButton;  //[  RETRY   ]
+        private readonly FlaggedCloseButton IgnoreButton; //[  IGNORE  ]
         //Buttons have a length of 12.
 
         private const string OKButtonText= "[    OK    ]";
@@ -70,7 +66,7 @@ namespace Igtampe.BasicWindows {
         private const string IgnoreButtonText = "[  IGNORE  ]";
 
         //the window that we will render
-        private Window MainWindow;
+        private readonly Window MainWindow;
 
         /// <summary>Creates a dialog box</summary>
         /// <param name="Type"></param>
