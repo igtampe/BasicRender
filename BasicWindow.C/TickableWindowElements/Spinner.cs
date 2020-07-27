@@ -13,8 +13,8 @@ namespace Igtampe.BasicWindows.TickableWindowElements {
         private int State = 0;
         private readonly String[] Frames = { "|","/","-","\\"};
 
-        private ConsoleColor BG;
-        private ConsoleColor FG;
+        private readonly ConsoleColor BG;
+        private readonly ConsoleColor FG;
 
         /// <summary>Creates a spinner window element</summary>
         /// <param name="Parent"></param>
