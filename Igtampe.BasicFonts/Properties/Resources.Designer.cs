@@ -59,5 +59,15 @@ namespace Igtampe.BasicFonts.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] DefaultFont {
+            get {
+                object obj = ResourceManager.GetObject("DefaultFont", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Igtampe.DictionaryOnDisk;
 using Igtampe.BasicGraphics;
 using Igtampe.BasicRender;
+using Igtampe.BasicFonts.Properties;
 
 namespace Igtampe.BasicFonts{
     public class BasicFont {
@@ -118,6 +119,10 @@ namespace Igtampe.BasicFonts{
 
         }
 
+        /// <summary>Draw a null character in case it isn't included in this font.</summary>
+        /// <param name="Leftpos"></param>
+        /// <param name="Toppos"></param>
+        /// <param name="FG"></param>
         private void DrawNullChar(int Leftpos,int Toppos,ConsoleColor FG) {Draw.Box(FG,Width,Height,Leftpos,Toppos);}
 
         //-[Static methods]---------------------------------------------------------------------
@@ -131,7 +136,6 @@ namespace Igtampe.BasicFonts{
         /// <param name="Resource"></param>
         /// <returns></returns>
         public static BasicFont LoadFromResource(Byte[] Resource) { return new BasicFont(DOD.Parse(GraphicUtils.ResourceToStringArray(Resource))); }
-
 
         /// <summary>Reverse function for ColorCharToConsoleColor</summary>
         /// <param name="color"></param>
@@ -174,6 +178,15 @@ namespace Igtampe.BasicFonts{
                     return '0';
             }
         }
+
+        /// <summary>Holder for the default font</summary>
+        private static BasicFont defaultFont;
+
+        /// <summary>Default Font from the BasicFont Package (5x6)</summary>
+        public static BasicFont DefaultFont { get {
+                if(defaultFont == null) { defaultFont = LoadFromResource(Resources.DefaultFont); } //LazyLoad the whole thing
+                return defaultFont;
+            } }
 
         //-[Internal Graphic Class]---------------------------------------------------------------------
 
