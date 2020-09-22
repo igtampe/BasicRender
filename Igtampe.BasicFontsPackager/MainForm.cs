@@ -120,6 +120,8 @@ namespace Igtampe.BasicFontsPackager {
 
             if(MessageBox.Show("Are you sure you want to delete " + CharacterListBox.SelectedItem + "?","Are you sure?",MessageBoxButtons.YesNo,MessageBoxIcon.Question) == DialogResult.Yes) {
                 if((string)CharacterListBox.SelectedItem == ":") { FontBeingBuilt.Remove("Char" + "Colon"); } else { FontBeingBuilt.Remove("Char" + CharacterListBox.SelectedItem); }
+                Searchbox.Text = "";
+                LoadCharacters("");
             }
         }
 
@@ -131,7 +133,10 @@ namespace Igtampe.BasicFontsPackager {
         private void NameBox_TextChanged(object sender,EventArgs e) { FontBeingBuilt["Name"] = NameBox.Text; }
         private void AuthorBox_TextChanged(object sender,EventArgs e) { FontBeingBuilt["Author"] = AuthorBox.Text; }
         private void Searchbox_TextChanged(object sender,EventArgs e) { LoadCharacters(Searchbox.Text); }
-        private void CharacterListBox_SelectedIndexChanged(object sender,EventArgs e) { newCharacterToolStripMenuItem.Enabled = true; }
+        private void CharacterListBox_SelectedIndexChanged(object sender,EventArgs e) { 
+            openCharacterToolStripMenuItem.Enabled = true; 
+            deleteToolStripMenuItem.Enabled = true;
+        }
 
         //-[Internal Functions]------------------------------------------------------------------------------------------------
 

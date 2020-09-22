@@ -70,7 +70,6 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dictrionary.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
