@@ -162,3 +162,29 @@ When drawing elements, a window doesn't take into account if the element bleeds 
 
 ### HelloWorldWindow
 This window is a tiny demo of what a window is. It says Hello.
+
+## BasicFonts
+BasicFonts draws text using slightly altered DF data stored on a [Dictionary On Disk](https://github.com/igtampe/DictionaryOnDisk) file with a Bfnt Extension. It comes with a singular class which handles everything. The following properties and methods are there:
+
+|Property|Description|
+|-|-|
+|Name|Name of the font|
+|Author|Author of the font|
+|Width|Width of this font's characters|
+|Height|Height of this font's characters|
+
+|Method|Result|
+|-|-|
+|DrawText()|This method (and overloads) draws text onto the console screen, with default or specified leftpos, toppos, color, and spacing. Fonts can be drawn with any given foreground color.|
+
+|Static Method|Result|
+|-|-|
+|LoadFromFile()|Loads a font from a BFnt file|
+|LoadFromResource()|Loads a font from a BFnt File stored as a resource|
+
+## BasicFont Editor
+A Basic editor/packager for BasicFonts. Fonts can be created and saved, and each character can be individually edited in the bundled/dependency copy of Henja3. BasicFonts interprets White on Henja3 as transparent, and Black as colorable pixels when transforming DF data into BasicFont Character Data. While currently untested, putting any other colors should be preserved when transforming/writing the text.
+
+The editor also brings up a Console Window, which is used to preview text when hitting the "Preview" menustrip item. I should probably make it look a little nicer though... Maybe someday.
+
+The editor is meant to be an end product, and does not have anything aside from its forms. I dont think anything of use can be found here.
