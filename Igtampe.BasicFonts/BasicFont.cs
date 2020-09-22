@@ -27,7 +27,7 @@ namespace Igtampe.BasicFonts{
 
         /// <summary>Creates a BasicFont.</summary>
         /// <param name="FontDictionary">Dictionary that holds all font data. MUST Include the keys Name, Author, CharWidth, CharHeight and Chars.</param>
-        private BasicFont(Dictionary<string,string> FontDictionary) {
+        public BasicFont(Dictionary<string,string> FontDictionary) {
             this.FontDictionary = FontDictionary;
 
             //Check that the font has all the required keys
@@ -48,37 +48,42 @@ namespace Igtampe.BasicFonts{
             return FontDictionary.ContainsKey("Char" + C); 
         }
 
-        /// <summary>Writes text on screen using this font with the current colors and 1 column of space between each character.</summary>
+        /// <summary>Writes text on screen using this font with the current color and 1 column of space between each character.</summary>
         /// <param name="Text">Text to write </param>
-        public void DrawText(BasicFont Font, string Text) {DrawText(Text,Console.CursorLeft,Console.CursorTop);}
+        public void DrawText(string Text) {DrawText(Text,Console.CursorLeft,Console.CursorTop);}
 
-        /// <summary>Writes text on screen using this font with the current colors and 1 column of space between each character</summary>
+        /// <summary>Writes text on screen using this font with the current color and 1 column of space between each character</summary>
         /// <param name="Text">Text to write</param>
         /// <param name="Leftpos">Leftpos of the text</param>
         /// <param name="Toppos">Toppos of the text</param>
-        public void DrawText(string Text,int Leftpos,int Toppos) {DrawText(Text,Leftpos,Toppos,Console.BackgroundColor,Console.ForegroundColor);}
+        public void DrawText(string Text,int Leftpos,int Toppos) {DrawText(Text,Leftpos,Toppos,Console.ForegroundColor);}
 
         /// <summary>Writes text on screen with this font with 1 console column of space between each character</summary>
         /// <param name="Text">Text to write</param>
         /// <param name="Leftpos">Leftpos of the text</param>
         /// <param name="Toppos">Toppos of the text</param>
-        /// <param name="BG">Background color of this text</param>
-        /// <param name="FG">Foreground color of this text</param>
-        public void DrawText(string Text, int Leftpos, int Toppos, ConsoleColor BG, ConsoleColor FG){DrawText(Text,Leftpos,Toppos,BG,FG,1);}
+        /// <param name="FG">Color of this text</param>
+        public void DrawText(string Text, int Leftpos, int Toppos, ConsoleColor FG){DrawText(Text,Leftpos,Toppos,FG,1);}
 
         /// <summary>Writes text on screen with this font.</summary>
         /// <param name="Text">Text to write.</param>
         /// <param name="Leftpos">Leftpos of the text</param>
         /// <param name="Toppos">TopPos of the text </param>
-        /// <param name="BG">Background Color of the text</param>
         /// <param name="FG">Foreground color of the text</param>
         /// <param name="Spacing">Spacing between characters (In cols)</param>
-        public void DrawText(string Text, int Leftpos, int Toppos, ConsoleColor BG, ConsoleColor FG, int Spacing) {
+        public void DrawText(string Text, int Leftpos, int Toppos, ConsoleColor FG, int Spacing) {
             int HorizontalOffset = 0;
+            int VerticalOffset = 0;
 
             foreach(Char C in Text) {
-                DrawChar(C,Leftpos + HorizontalOffset,Toppos,BG,FG);
-                HorizontalOffset += Width + Spacing;
+                if(C == '\n') { 
+                    VerticalOffset += Height + 1;
+                    HorizontalOffset = 0;
+                } else { 
+                    DrawChar(C,Leftpos + HorizontalOffset,Toppos + VerticalOffset,FG);
+                    HorizontalOffset += Width + Spacing;
+                }
+                
             }
         
         }
@@ -95,26 +100,25 @@ namespace Igtampe.BasicFonts{
         /// <param name="C"></param>
         /// <param name="Leftpos"></param>
         /// <param name="Toppos"></param>
-        /// <param name="BG"></param>
         /// <param name="FG"></param>
         /// <returns></returns>
-        private void DrawChar(Char C,int Leftpos,int Toppos,ConsoleColor BG,ConsoleColor FG) {
+        private void DrawChar(Char C,int Leftpos,int Toppos,ConsoleColor FG) {
+
+            //Draw a space
+            if(C == ' ') { }
+
             //If the character is not in this font, draw a box.
-            if(!ContainsChar(C)) {DrawNullChar(Leftpos,Toppos,BG,FG); return;}
+            if(!ContainsChar(C)) {DrawNullChar(Leftpos,Toppos,FG); return;}
 
             //Turn the BasicFontData into BasicGraphic
-            BasicGraphic Character = new CharacterGraphic(GetChar(C),BG,FG);
+            BasicGraphic Character = new CharacterGraphic(GetChar(C),FG);
 
             //Draw it
             Character.Draw(Leftpos,Toppos);
 
         }
 
-        private void DrawNullChar(int Leftpos,int Toppos,ConsoleColor BG,ConsoleColor FG) {
-            Draw.Box(BG,Width,Height,Leftpos,Toppos);
-            Draw.Box(FG,Width - 4,Height - 2,Leftpos + 2,Toppos + 1);
-            Draw.Box(BG,Width - 8,Height - 4,Leftpos + 4,Toppos + 2);
-        }
+        private void DrawNullChar(int Leftpos,int Toppos,ConsoleColor FG) {Draw.Box(FG,Width - 4,Height - 2,Leftpos + 2,Toppos + 1);}
 
         //-[Static methods]---------------------------------------------------------------------
 
@@ -175,9 +179,9 @@ namespace Igtampe.BasicFonts{
 
         /// <summary>Private graphic file to turn Character Data to a BasicGraphic</summary>
         private class CharacterGraphic:BasicGraphic {
-            public CharacterGraphic(string CharacterData, ConsoleColor BG, ConsoleColor FG) {
+            public CharacterGraphic(string CharacterData, ConsoleColor FG) {
                 Name = "TempCharacter";
-                Contents = CharacterData.Replace(' ',ConsoleColorToColorChar(BG)).Replace('#',ConsoleColorToColorChar(FG)).Split('\n');
+                Contents = CharacterData.Replace('#',ConsoleColorToColorChar(FG)).Split('\n');
             }               
         }
 

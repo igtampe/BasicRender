@@ -13,7 +13,8 @@ namespace Igtampe.BasicFontsPackager {
         static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+
+            if(Environment.GetCommandLineArgs().Length > 1) {Application.Run(new MainForm(Environment.GetCommandLineArgs()[1]));} else { Application.Run(new MainForm()); }
         }
     }
 }

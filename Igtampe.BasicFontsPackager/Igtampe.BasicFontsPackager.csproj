@@ -5,9 +5,9 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{37D7A3B7-FA70-40FF-AD3A-C1486FC1B808}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>Igtampe.BasicFontsPackager</RootNamespace>
-    <AssemblyName>Igtampe.BasicFontsPackager</AssemblyName>
+    <AssemblyName>BasicFontsEditor</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,7 +32,16 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DictionaryOnDisk">
+      <HintPath>..\..\DictionaryOnDisk\DictionaryOnDisk\bin\Debug\DictionaryOnDisk.dll</HintPath>
+    </Reference>
+    <Reference Include="Henja3">
+      <HintPath>..\..\Henja3\bin\Debug\Henja3.exe</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,16 +55,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewCharacterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewCharacterForm.Designer.cs">
+      <DependentUpon>NewCharacterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewFontForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewFontForm.Designer.cs">
+      <DependentUpon>NewFontForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PreviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PreviewForm.Designer.cs">
+      <DependentUpon>PreviewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewCharacterForm.resx">
+      <DependentUpon>NewCharacterForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewFontForm.resx">
+      <DependentUpon>NewFontForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PreviewForm.resx">
+      <DependentUpon>PreviewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -78,6 +123,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BasicGraphics.C\Igtampe.BasicGraphics.csproj">
+      <Project>{41dbf856-b2e6-4a1c-a06a-a211186d2acd}</Project>
+      <Name>Igtampe.BasicGraphics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BasicRender\Igtampe.BasicRender.csproj">
+      <Project>{cd2d4436-5b3e-458c-b17a-a6822c25635f}</Project>
+      <Name>Igtampe.BasicRender</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Igtampe.BasicFonts\Igtampe.BasicFonts.csproj">
+      <Project>{4b167887-d61f-4e7e-955d-556fcf6627bd}</Project>
+      <Name>Igtampe.BasicFonts</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
