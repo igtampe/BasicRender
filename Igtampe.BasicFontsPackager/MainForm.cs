@@ -37,8 +37,9 @@ namespace Igtampe.BasicFontsPackager {
 
         /// <summary>Creates a new Font</summary>
         private void NewToolStripMenuItem_Click(object sender,EventArgs e) {
-            FontBeingBuilt = NewFontForm.CreateNewFont();
-            if(FontBeingBuilt != null) {
+            var PreBuilt = NewFontForm.CreateNewFont();
+            if(PreBuilt != null) {
+                FontBeingBuilt = PreBuilt;
                 NameBox.Text = FontBeingBuilt["Name"];
                 AuthorBox.Text = FontBeingBuilt["Author"];
                 MainTableLayout.Enabled = true; 

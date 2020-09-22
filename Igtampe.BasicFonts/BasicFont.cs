@@ -105,7 +105,7 @@ namespace Igtampe.BasicFonts{
         private void DrawChar(Char C,int Leftpos,int Toppos,ConsoleColor FG) {
 
             //Draw a space
-            if(C == ' ') { }
+            if(C == ' ') { return; }
 
             //If the character is not in this font, draw a box.
             if(!ContainsChar(C)) {DrawNullChar(Leftpos,Toppos,FG); return;}
@@ -118,7 +118,7 @@ namespace Igtampe.BasicFonts{
 
         }
 
-        private void DrawNullChar(int Leftpos,int Toppos,ConsoleColor FG) {Draw.Box(FG,Width - 4,Height - 2,Leftpos + 2,Toppos + 1);}
+        private void DrawNullChar(int Leftpos,int Toppos,ConsoleColor FG) {Draw.Box(FG,Width,Height,Leftpos,Toppos);}
 
         //-[Static methods]---------------------------------------------------------------------
 

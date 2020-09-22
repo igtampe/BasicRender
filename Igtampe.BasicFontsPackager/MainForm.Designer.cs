@@ -338,8 +338,9 @@
             this.ClientSize = new System.Drawing.Size(234, 520);
             this.Controls.Add(this.MainTableLayout);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MaximumSize = new System.Drawing.Size(250, 700);
+            this.MaximumSize = new System.Drawing.Size(250, 1200);
             this.MinimumSize = new System.Drawing.Size(250, 500);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

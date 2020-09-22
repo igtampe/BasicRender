@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Igtampe.BasicFontsPackager")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("BasicFonts Editor")]
+[assembly: AssemblyDescription("BasicFonts Font Editor")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Igtampe.BasicFontsPackager")]

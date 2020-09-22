@@ -35,6 +35,15 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>BasicFonts.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>TheChopoSignature.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="DictionaryOnDisk">
       <HintPath>..\..\DictionaryOnDisk\DictionaryOnDisk\bin\Debug\DictionaryOnDisk.dll</HintPath>
@@ -61,6 +70,7 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dictrionary.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +130,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="TheChopoSignature.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -137,6 +148,9 @@
       <Project>{4b167887-d61f-4e7e-955d-556fcf6627bd}</Project>
       <Name>Igtampe.BasicFonts</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BasicFonts.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
