@@ -102,10 +102,10 @@ BasicWindows is a very basic window generator utility. Windows are made up of a 
 A BasicWindow Window's design is based on the ones I made for ITOS.
 
 ### Window
-Window is an abstract class that must be inherited to build actual windows. It still has most things a user would need. The only thing the user has to do is write a constructor that places in the needed window elements. Window has a variety of constructors, ranging from just title and dimensions, to basically every property. Feel free to play around with it.
+Window is a class that can be extended to build actual windows, or provided with WindowElements to execute. Window has a variety of constructors, ranging from just title and dimensions, to basically every property. Feel free to play around with it.
 
 <b>Take Note!</b>
-When closing themselves, Windows will draw a box of the WindowClearColor. This build has it set to DarkCyan. Perhaps in the future I should have a constructor that can set this but the constructors by this point are huge so aaaaaaaaaaaaaaaaaaaaaaaaaaaa
+When closing themselves, Windows will draw a box of the WindowClearColor. Its a static variable set for all windows.
 
 |Property|Description|
 |-|-|
@@ -153,15 +153,67 @@ When drawing elements, a window doesn't take into account if the element bleeds 
 
 |Element|Description|
 |-|-|
+|BasicFontLabel|Draws text with a BasicFont. This is sorta beta so be careful.|
 |Box|Draws a box of a specified color on the window|
 |Button|Interactable button that performs an action when a user hits Enter on it.<br>Button is an abstract element because a user must create a new button class that holds the Action() which occurs when a user hits enter.|
 |CloseButton| Preconfigured button that when interacted with, will close the window.|
+|FlaggedCloseButton|Extends Close Button and adds a "flag" to indicate if it was activated.|
 |Icon|Draws one of four 3x3 Icons: <br><br> ERROR: A red box with an X in the center <br> EXCLAMATION: A yellow box with an exclamation mark in the center.<br> INFORMATION: A blue box with an i in the center<br> QUESTION: A blue box with a question mark in the center.<br><br> This would probably be most useful for dialog boxes. I've found that using a DF file with an icon is far too large.|
 |Image|A Window Element that can hold and draw a BasicGraphics Graphic on a window.|
 |Label| A label that can draw text in a specific color. Label has been coded to also properly work with linebreaks.|
+|LeftRightSelect|Allows a user to select an element from a specified list of strings by hitting left or right.|
+|NumericalTextBox|TextBox that only allows numbers to be inputted (with a specified maximum value)|
+|ProgressBar|Shows a Progressbar on the window with a given percentage|
+|Slider|Shows a slider that can be moved left or right|
+|Textbox|Allows a user to type in text|
 
-### HelloWorldWindow
-This window is a tiny demo of what a window is. It says Hello.
+### TickableWindow
+TickableWindow is a window with Tickable elements, that ticks all elements every 250ms. It's basically exactly the same as a normal window except for that.
+
+|Method|Result|
+|-|-|
+|Tick()|Attempts to tick all elements. Returns false if an element has requested the window to close|
+
+### TickableWindowElements (And Bndled Eements)
+These are just elements that can tick if placed in a TickableWindow. If not then it just doesn't tick.
+
+|Method|Result|
+|-|-|
+|Tick()|Ticks the element. Should return false if the ParentWindow should close.|
+
+Below is a table with all included elements. TickableWindowElement is also a public abstract class, so you can make more.<br><br>
+|Element|Description|
+|-|-|
+|Spinner|Generates a one character spinner with the following frames: |/-\. It spins every tick|
+|Timer|Counts down from a provided time, assuming ticks occur every 250ms. Can be created with a ProgressBar to show remaining time on screen. Once time runs out, if set, will execute TimeUpWindow, then ask the ParentWindow to close.|
+
+### DialogBox
+DialogBox is a dynamically sizable, configurable window that shows a specified icon, specified button set, and provided text when executed, and returns a DialogBoxResult upon closing.
+
+|Static Method|Result|
+|-|-|
+|ShowDialogBox()|Creates, executes, and returns the result of a DialogBox|
+|ShowExceptionError()|Creates and executes a dialogbox based on an exception, showing message and as much of the stacktrace as it can fit. The trace is stripped using StrippedStackTrace()|
+|StrippedStackTrace()|Strips a stack trace of paths (IE Namespace Paths and Filename paths) so that its easier to display.|
+
+![ExceptionError](https://media.discordapp.net/attachments/335464035921428480/770415215035940884/unknown.png)
+<br>ShowExceptionError()
+
+### GuruMeditationErrorScreen
+Draws over the entire screen and shows a STOP error (Using included STOP.df), along with exception details and stack trace (as much as it can fit). Can be flagged to use a StrippedStackTrace(). Also saves error info to Error.log <br><br>
+
+![STOP error in Demo](https://media.discordapp.net/attachments/335464035921428480/770415195063320589/unknown.png)
+
+<b>NOTE:</b><br>
+Requires a minimum window size of 80x25. If its not met, it will fall back onto the error DialogBox. It also falls back if there's an error displaying itself.
+
+### Included Windows:
+There are a few windows included with BasicWindows. These are the following:
+
+|Window|Description|
+|-|-|
+|HelloWorldWindow|This window is a tiny demo of what a window is. It says Hello.|
+|ErrorWindow|Legacy window (46x8) that shows the first three lines of an error|
 
 ## BasicFonts
 BasicFonts draws text using slightly altered DF data stored on a [Dictionary On Disk](https://github.com/igtampe/DictionaryOnDisk) file with a Bfnt Extension. It comes with a singular class which handles everything. The following properties and methods are there:
