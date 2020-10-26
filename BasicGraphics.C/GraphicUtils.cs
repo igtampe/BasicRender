@@ -73,7 +73,7 @@ namespace Igtampe.BasicGraphics{
         }
 
         /// <summary>Turns a resource into a string array split by lines</summary>
-        public static String[] ResourceToStringArray(byte[] Resource) {return Encoding.ASCII.GetString(Resource).Split('\n');}
+        public static String[] ResourceToStringArray(byte[] Resource) {return Encoding.ASCII.GetString(Resource).Replace("\r","").Split('\n');}
 
     }
 }

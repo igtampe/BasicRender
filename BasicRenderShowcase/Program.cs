@@ -6,6 +6,7 @@ using Igtampe.BasicWindows;
 using Igtampe.BasicWindows.TickableWindowElements;
 using Igtampe.BasicWindows.WindowElements;
 using Igtampe.BasicWindows.Windows;
+using Igtampe.BasicFonts;
 
 namespace Igtampe.BasicRenderShowcase {
     class Program {
@@ -17,6 +18,22 @@ namespace Igtampe.BasicRenderShowcase {
             //Draw the splash
             BasicRenderSplash();
             RenderUtils.Sleep(2000);
+
+            Window WelcomeSplash = new Window(false,true,"Welcome",47,10);
+            CloseButton SplashWelcomeBTN = new CloseButton(WelcomeSplash,"[   OK   ]",ConsoleColor.DarkGray,ConsoleColor.White,ConsoleColor.DarkBlue,19,8);
+
+            WindowElement[] SplashElements = {
+                new BasicFontLabel(WelcomeSplash,"WELCOME",BasicFont.DefaultFont,ConsoleColor.Black,3,1),
+                SplashWelcomeBTN
+            };
+
+            WelcomeSplash.AddElements(SplashElements);
+
+            WelcomeSplash.HighlightedElement = SplashWelcomeBTN;
+            SplashWelcomeBTN.Highlighted = true;
+            WelcomeSplash.Execute();
+
+            //5x6
 
             //Clear the screen, set up for the "window Environment"
             RenderUtils.Color(ConsoleColor.DarkCyan,ConsoleColor.White);

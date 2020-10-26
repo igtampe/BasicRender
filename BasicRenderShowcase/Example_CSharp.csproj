@@ -79,6 +79,10 @@
       <Project>{de8c90f9-94c4-4264-805c-144f819f3197}</Project>
       <Name>Igtampe.BasicWindows</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Igtampe.BasicFonts\Igtampe.BasicFonts.csproj">
+      <Project>{4b167887-d61f-4e7e-955d-556fcf6627bd}</Project>
+      <Name>Igtampe.BasicFonts</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

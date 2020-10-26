@@ -53,6 +53,8 @@
     <Compile Include="TickableWindowElement.cs" />
     <Compile Include="TickableWindowElements\Spinner.cs" />
     <Compile Include="TickableWindowElements\Timer.cs" />
+    <Compile Include="Utils\BasicFontFormattedText.cs" />
+    <Compile Include="WindowElements\BasicFontLabel.cs" />
     <Compile Include="WindowElements\Progressbar.cs" />
     <Compile Include="Windows\ErrorWindow.cs" />
     <Compile Include="Windows\HelloWorldWindow.cs" />
@@ -80,6 +82,10 @@
     <ProjectReference Include="..\BasicRender\Igtampe.BasicRender.csproj">
       <Project>{cd2d4436-5b3e-458c-b17a-a6822c25635f}</Project>
       <Name>Igtampe.BasicRender</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Igtampe.BasicFonts\Igtampe.BasicFonts.csproj">
+      <Project>{4b167887-d61f-4e7e-955d-556fcf6627bd}</Project>
+      <Name>Igtampe.BasicFonts</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
