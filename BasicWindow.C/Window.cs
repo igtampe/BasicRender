@@ -233,7 +233,7 @@ namespace Igtampe.BasicWindows
         protected virtual bool OnKeyPress(ConsoleKeyInfo PressedKey) {
 
             if(PressedKey.Modifiers == ConsoleModifiers.Control && PressedKey.Key == ConsoleKey.W) { Close(); return false; }
-            switch(HighlightedElement.OnKeyPress(PressedKey)) {
+            switch(HighlightedElement?.OnKeyPress(PressedKey)) {
                 case KeyPressReturn.NOTHING:
                     break;
                 case KeyPressReturn.NEXT_ELEMENT:

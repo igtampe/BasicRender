@@ -7,10 +7,11 @@ namespace Igtampe.BasicWindows {
     public class DialogBox {
 
         /// <summary>Maximum width of dialogboxes</summary>
-        public static int MaxWidth=70; //46
+        public static int MaxWidth { get { return Console.WindowWidth - 5; } }
+
 
         /// <summary>Maximum height of dialogboxes</summary>
-        public static int MaxHeight = 22; //10
+        public static int MaxHeight { get { return Console.WindowHeight - 3; } }
 
         /// <summary>Enum that holds available button combinations for dialog boxes</summary>
         public enum DialogBoxButtons { 
@@ -241,6 +242,33 @@ namespace Igtampe.BasicWindows {
         /// <returns>Returns a DialogBoxResult based on whichever button was pressed.</returns>
         public static DialogBoxResult ShowDialogBox(Icon.IconType Type,DialogBoxButtons Buttons,String Text) {return new DialogBox(Type,Buttons,Text).Execute();}
 
+        /// <summary>Shows an error dialog box by using the data in the provided exception.</summary>
+        /// <param name="E"></param>
+        /// <returns></returns>
+        public static DialogBoxResult ShowExceptionError(Exception E) {return new DialogBox(Icon.IconType.ERROR,DialogBoxButtons.OK,"An unhandled exception has occurred: " + E.Message + "\n\n" + StrippedStackTrace(E)).Execute();}
+
+        /// <summary>Strips the stacktrace of an exception of long paths to classes and files.</summary>
+        /// <param name="E"></param>
+        /// <returns></returns>
+        public static String StrippedStackTrace(Exception E) {
+
+            String StackTrace = E.StackTrace.Replace("   at","at");
+
+            //Split text into words
+            String[] Words = StackTrace.Replace("\n"," \n ").Split(' ');
+
+            for(int i = 0; i < Words.Length; i++) {
+                if(Words[i].Contains("\\")) {
+                    Words[i] = Words[i].Split('\\')[Words[i].Split('\\').Length - 1];
+                } //only the file name, not the path
+                else if(Words[i].Contains(".")) {
+                    Words[i] = Words[i].Split('.')[Words[i].Split('.').Length - 1];
+                } //Only the method name, not the path
+            }
+
+            return String.Join(" ",Words);
+
+        }
 
     }
 }

@@ -55,7 +55,7 @@ namespace Igtampe.BasicWindows.WindowElements {
         /// <summary>Draws this label</summary>
         public override void DrawElement() {
             int LineOffset = 0;
-            foreach(String Line in Text.Split('\n')) {
+            foreach(String Line in Text.Replace("\r","").Split('\n')) {
                 Draw.Sprite(Line,BG,FG,Parent.LeftPos + LeftPos,Parent.TopPos + TopPos+LineOffset);
                 LineOffset++;
             }

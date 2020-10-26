@@ -19,6 +19,7 @@ namespace Igtampe.BasicRenderShowcase {
             BasicRenderSplash();
             RenderUtils.Sleep(2000);
 
+
             Window WelcomeSplash = new Window(false,true,"Welcome",47,10);
             CloseButton SplashWelcomeBTN = new CloseButton(WelcomeSplash,"[   OK   ]",ConsoleColor.DarkGray,ConsoleColor.White,ConsoleColor.DarkBlue,19,8);
 
@@ -66,8 +67,19 @@ namespace Igtampe.BasicRenderShowcase {
             //Show the welcome window
             new WelcomeWindow().Execute();
 
+            //
+            DialogBox.ShowDialogBox(Icon.IconType.INFORMATION,DialogBox.DialogBoxButtons.OK,"The system will now attempt to divide by 0 to showcase error screens.");
+            try { GenerateStackedError(7); } catch(Exception E) {
+                ErrorWindow.ShowErrorWindow(E.Message);
+                DialogBox.ShowExceptionError(E);
+                GuruMeditationErrorScreen.Show(E,true);
+            }
 
         }
+
+        /// <summary>Generates a stacked error by dividing by zero after calling itself LENGTH times</summary>
+        /// <param name="Length"></param>
+        static void GenerateStackedError(int Length) {if(Length > 0) { GenerateStackedError(Length - 1); } else { decimal _ = 1 / Length; }}
 
         /// <summary>Shows the BasicRender SplashScreen (which also shows the logo)</summary>
         static void BasicRenderSplash() {

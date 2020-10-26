@@ -31,5 +31,9 @@ namespace Igtampe.BasicWindows.Windows {
         
         }
 
+        /// <summary>Shows an error window with an OK button</summary>
+        /// <param name="Text"></param>
+        public static void ShowErrorWindow(string Text) { new ErrorWindow(Text).Execute(); }
+
     }
 }

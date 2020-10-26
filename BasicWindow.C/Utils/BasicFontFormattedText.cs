@@ -35,6 +35,7 @@ namespace Igtampe.BasicWindows.Utils {
 
             while(CurrentWord < Words.Length && (Lines.Count*Font.Height) < MaxHeight) {
                 String Line = "";
+                if(Words[CurrentWord].Length*Font.Width > MaxWidth) { Words[CurrentWord] = Words[CurrentWord].Substring(0,MaxWidth - 1); }
                 while(CurrentWord < Words.Length && (((Line.Length + Words[CurrentWord].Replace("\n","").Length)*Font.Width) < MaxWidth)) {
                     //If we have a next word, and the word's length plus whatever we already have is shorter than the maximum width, add it to the line
                     if(Words[CurrentWord] == "\n") {
