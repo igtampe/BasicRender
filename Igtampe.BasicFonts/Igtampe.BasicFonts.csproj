@@ -78,6 +78,7 @@
   <ItemGroup>
     <None Include="Resources\default.bfnt" />
     <None Include="Resources\DigitalClock.bfnt" />
+    <None Include="Resources\DigitalClockWide.bfnt" />
     <None Include="TheChopoSignature.pfx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

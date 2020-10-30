@@ -181,12 +181,37 @@ namespace Igtampe.BasicFonts{
 
         /// <summary>Holder for the default font</summary>
         private static BasicFont defaultFont;
+        
+        /// <summary>Holder for the default font</summary>
+        private static BasicFont digitalClockFont;
+        
+        /// <summary>Holder for the default font</summary>
+        private static BasicFont digitalClockWideFont;
+
+        //-[Font Getters]---------------------------------------------------------------------
 
         /// <summary>Default Font from the BasicFont Package (5x6)</summary>
         public static BasicFont DefaultFont { get {
                 if(defaultFont == null) { defaultFont = LoadFromResource(Resources.DefaultFont); } //LazyLoad the whole thing
                 return defaultFont;
-            } }
+            } 
+        }
+
+        /// <summary>DigitalClock Font from the BasicFont Package (6x6) (ONLY INCLUDES NUMBERS 0-9, a, p, AND m)</summary>
+        public static BasicFont DigitalClockFont{
+            get {
+                if(digitalClockFont == null) { digitalClockFont = LoadFromResource(Resources.DigitalClock); } //LazyLoad the whole thing
+                return digitalClockFont;
+            }
+        }
+
+        /// <summary>DigitalClock Wide Font from the BasicFont Package (11x6) (ONLY INCLUDES NUMBERS 0-9, a, p, AND m)</summary>
+        public static BasicFont DigitalClockWideFont {
+            get {
+                if(digitalClockWideFont == null) { digitalClockWideFont = LoadFromResource(Resources.DigitalClockWide); } //LazyLoad the whole thing
+                return digitalClockWideFont;
+            }
+        }
 
         //-[Internal Graphic Class]---------------------------------------------------------------------
 

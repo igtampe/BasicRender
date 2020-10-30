@@ -6,13 +6,24 @@ using Igtampe.BasicGraphics;
 namespace Igtampe.BasicClockExample {
     class Program {
 
-        static Clock MainClock = new Clock(2,1) {
-            ShowDate = true,
-            ShowSeconds = true
-        };
+        static Clock MainClock;
+        static BasicFont ClockFont;
 
         static void Main(string[] args) {
 
+            ClockFont = BasicFont.DigitalClockFont;
+
+            if(args.Length > 1) {
+                if(args[1].ToUpper().EndsWith(".BFNT")) {
+                    //try to load the basicfont
+                    try {ClockFont = BasicFont.LoadFromFile(args[1]);} catch(Exception) {} //if we can't load it, that's ok
+                }
+            }
+
+            MainClock = new Clock(ClockFont,2,1) {
+                ShowDate = true,
+                ShowSeconds = true
+            };
 
             MainClock.Init();
             Draw.Sprite(":",Console.BackgroundColor,Console.ForegroundColor,0,10);
@@ -86,7 +97,7 @@ namespace Igtampe.BasicClockExample {
                 case "RESET":
                     MainClock.Stop();
                     Draw.Box(ConsoleColor.Black,MainClock.Width,MainClock.Height,2,1);
-                    MainClock = new Clock(2,1) {
+                    MainClock = new Clock(ClockFont,2,1) {
                         MilitaryTime = true,
                         ShowDate = true,
                         ShowSeconds = true

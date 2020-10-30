@@ -79,5 +79,15 @@ namespace Igtampe.BasicFonts.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] DigitalClockWide {
+            get {
+                object obj = ResourceManager.GetObject("DigitalClockWide", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }
