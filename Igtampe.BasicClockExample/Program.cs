@@ -25,28 +25,11 @@ namespace Igtampe.BasicClockExample {
             };
             MainClock.Init();
 
-            Console.SetBufferSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),30);
-            Console.SetWindowSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),30);
+            Console.SetBufferSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),32);
+            Console.SetWindowSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),32);
 
-            //Render help 
-            Draw.Sprite(":",Console.BackgroundColor,Console.ForegroundColor,0,10);
-            RenderUtils.SetPos(0,14);
-            RenderUtils.Echo("Welcome to the BasicFont Clock Demo!\n\n" +
-                "" +
-                "Here you can use the following commands to modify this clock:\n" +
-                "SetBG (Color)     : Set the background of this clock (Needs a redraw to fully come into effect)\n" +
-                "SetFG (Color)     : Set the foreground of this clock (Needs a redraw to fully come into effect)\n" +
-                "MilitTime (bool)  : Set Military Time on or off (True or false)\n" +
-                "ShowDate (bool)   : Set date showing on or off (True or false)\n" +
-                "ShowSeconds (bool): Set second showing on or off (True or false)\n" +
-                "AdjustHours (int) : Set the hour adjustment on this clock\n" +
-                "Pause             : Pause the clock\n" +
-                "Resume            : Resume the clock\n" +
-                "Reset             : Resets the clock to its original state\n" +
-                "Close             : Close this demo\n\n" +
-                "" +
-                "If the clock is showing seconds, it is not recommended you do anything until you pause it.");
-            
+            DrawHelp();
+
             MainClock.RunAsync();
             string[] ReadSplit;
 
@@ -92,6 +75,12 @@ namespace Igtampe.BasicClockExample {
                     if(Read.Length == 2) { if(int.TryParse(Read[1],out int Flag)) { MainClock.HourAdjust = Flag; } } 
                     else { Draw.Sprite("Incorrect syntax: ShowSeconds (bool)",ConsoleColor.Black,ConsoleColor.Red); }
                     break;
+                case "COLLAPSE":
+                    Collapse();
+                    break;
+                case "EXPAND":
+                    Expand();
+                    break;
                 case "PAUSE":
                     MainClock.Pause();
                     break;
@@ -115,5 +104,49 @@ namespace Igtampe.BasicClockExample {
                     break;
             }
         }
+
+        /// <summary>Collapse the window to a smaller size</summary>
+        static void Collapse() {
+            MainClock.Pause();
+            Console.SetWindowSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),13);
+            Console.SetBufferSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),13);
+            Console.Clear();
+            MainClock.Render();
+            Draw.Sprite(":",Console.BackgroundColor,Console.ForegroundColor,0,10);
+            MainClock.Resume();
+        }
+
+        /// <summary>Expand the window and resize it to a larger size</summary>
+        static void Expand() {
+            MainClock.Pause();
+            Console.SetBufferSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),32);
+            Console.SetWindowSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),32);
+            DrawHelp();
+            MainClock.Resume();
+        }
+
+        /// <summary>Draws the help</summary>
+        static void DrawHelp() {
+            Draw.Sprite(":",Console.BackgroundColor,Console.ForegroundColor,0,10);
+            RenderUtils.SetPos(0,14);
+            RenderUtils.Echo("Welcome to the BasicFont Clock Demo!\n\n" +
+                "" +
+                "Here you can use the following commands to modify this clock:\n" +
+                "SetBG (Color)     : Set the background of this clock (Needs a redraw to fully come into effect)\n" +
+                "SetFG (Color)     : Set the foreground of this clock (Needs a redraw to fully come into effect)\n" +
+                "MilitTime (bool)  : Set Military Time on or off (True or false)\n" +
+                "ShowDate (bool)   : Set date showing on or off (True or false)\n" +
+                "ShowSeconds (bool): Set second showing on or off (True or false)\n" +
+                "AdjustHours (int) : Set the hour adjustment on this clock\n" +
+                "Collapse          : Collapses the help menu\n" +
+                "Expand            : Expands to show this help menu again." +
+                "Pause             : Pause the clock\n" +
+                "Resume            : Resume the clock\n" +
+                "Reset             : Resets the clock to its original state\n" +
+                "Close             : Close this demo\n\n" +
+                "" +
+                "If the clock is showing seconds, it is not recommended you do anything until you pause it.");
+        }
+
     }
 }
