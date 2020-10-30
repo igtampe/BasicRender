@@ -197,7 +197,7 @@ namespace Igtampe.BasicFonts{
             } 
         }
 
-        /// <summary>DigitalClock Font from the BasicFont Package (6x6) (ONLY INCLUDES NUMBERS 0-9, a, p, AND m)</summary>
+        /// <summary>DigitalClock Font from the BasicFont Package (6x6) (ONLY INCLUDES NUMBERS 0-9, :, a, p, AND m)</summary>
         public static BasicFont DigitalClockFont{
             get {
                 if(digitalClockFont == null) { digitalClockFont = LoadFromResource(Resources.DigitalClock); } //LazyLoad the whole thing
@@ -205,7 +205,7 @@ namespace Igtampe.BasicFonts{
             }
         }
 
-        /// <summary>DigitalClock Wide Font from the BasicFont Package (11x6) (ONLY INCLUDES NUMBERS 0-9, a, p, AND m)</summary>
+        /// <summary>DigitalClock Wide Font from the BasicFont Package (11x6) (ONLY INCLUDES NUMBERS 0-9, :, a, p, AND m)</summary>
         public static BasicFont DigitalClockWideFont {
             get {
                 if(digitalClockWideFont == null) { digitalClockWideFont = LoadFromResource(Resources.DigitalClockWide); } //LazyLoad the whole thing

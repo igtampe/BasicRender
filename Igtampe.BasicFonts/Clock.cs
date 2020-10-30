@@ -78,7 +78,7 @@ namespace Igtampe.BasicFonts {
         public Clock(int LeftPos, int TopPos):this(BasicFont.LoadFromResource(Properties.Resources.DigitalClock),LeftPos,TopPos) { }
         
         /// <summary>Constructs a clock</summary>
-        /// <param name="ClockFont">A font that must contain numbers from 0-9 and the letters 'A', 'P', and 'M'</param>
+        /// <param name="ClockFont">A font that must contain numbers from 0-9, a colon (':'), and the letters 'A', 'P', and 'M'</param>
         /// <param name="LeftPos"></param>
         /// <param name="TopPos"></param>
         public Clock(BasicFont ClockFont, int LeftPos, int TopPos) {
