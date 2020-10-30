@@ -146,7 +146,7 @@ namespace Igtampe.BasicFonts {
             SetColor();
             if(RenderedTime != DisplayTime) {
                 //Time to hunt for the differences
-                for(int i = 0; i < RenderedTime.Length; i++) {
+                for(int i = RenderedTime.Length-1; i > 0; i--) {
                     if(RenderedTime[i] != DisplayTime[i]) {ClockFont.DrawText("" + DisplayTime[i],LeftPos+CalculateLeftposAdjustment(i),TopPos);} //render only the changed text
                 }
                 RenderedTime = DisplayTime; //Save the new rendered time.
