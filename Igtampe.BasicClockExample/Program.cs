@@ -10,13 +10,12 @@ namespace Igtampe.BasicClockExample {
         static BasicFont ClockFont;
 
         static void Main(string[] args) {
-
             ClockFont = BasicFont.DigitalClockFont;
 
-            if(args.Length > 1) {
-                if(args[1].ToUpper().EndsWith(".BFNT")) {
+            if(args.Length > 0) {
+                if(args[0].ToUpper().EndsWith(".BFNT")) {
                     //try to load the basicfont
-                    try {ClockFont = BasicFont.LoadFromFile(args[1]);} catch(Exception) {} //if we can't load it, that's ok
+                    try {ClockFont = BasicFont.LoadFromFile(args[0]);} catch(Exception) {} //if we can't load it, that's ok
                 }
             }
 
@@ -24,8 +23,12 @@ namespace Igtampe.BasicClockExample {
                 ShowDate = true,
                 ShowSeconds = true
             };
-
             MainClock.Init();
+
+            Console.SetBufferSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),30);
+            Console.SetWindowSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),30);
+
+            //Render help 
             Draw.Sprite(":",Console.BackgroundColor,Console.ForegroundColor,0,10);
             RenderUtils.SetPos(0,14);
             RenderUtils.Echo("Welcome to the BasicFont Clock Demo!\n\n" +
@@ -43,8 +46,8 @@ namespace Igtampe.BasicClockExample {
                 "Close             : Close this demo\n\n" +
                 "" +
                 "If the clock is showing seconds, it is not recommended you do anything until you pause it.");
+            
             MainClock.RunAsync();
-
             string[] ReadSplit;
 
             do {
@@ -58,10 +61,11 @@ namespace Igtampe.BasicClockExample {
             } while(ReadSplit[0].ToUpper()!="CLOSE");
 
             MainClock.Stop();
-
-
         }
 
+
+        /// <summary>Parser for the commands of the demo</summary>
+        /// <param name="Read"></param>
         static void Parse(String[] Read) {
             switch(Read[0].ToUpper()) {
                 case "SETBG":
@@ -110,8 +114,6 @@ namespace Igtampe.BasicClockExample {
                     Draw.Sprite("Unable to parse command, see HELP",ConsoleColor.Black,ConsoleColor.Red);
                     break;
             }
-
-
         }
     }
 }
