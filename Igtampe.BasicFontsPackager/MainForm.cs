@@ -195,14 +195,17 @@ namespace Igtampe.BasicFontsPackager {
             //Convert character contents to DF Data
             CharContents = CharContents.Replace(' ','F').Replace('#','0');
 
+            //Get the directory of the assembly so we can actually launch Henja3
+            string dir = AppDomain.CurrentDomain.BaseDirectory;
+
             //Save this to a temp file for Henja 3 to open.
-            File.WriteAllText("TempFile.DF",CharContents);
+            File.WriteAllText(dir+"/TempFile.DF",CharContents);
 
             //Start HENJA3 and wait for it.
             Process Henja3 = new Process {
                 StartInfo = new ProcessStartInfo {
-                    FileName = "Henja3.exe",
-                    Arguments = "TempFile.DF",
+                    FileName = dir+"/Henja3.exe",
+                    Arguments = dir+"/TempFile.DF",
                 }
             };
 
@@ -210,7 +213,7 @@ namespace Igtampe.BasicFontsPackager {
             Henja3.WaitForExit();
 
             //Load back the contents from the DF.
-            CharContents = File.ReadAllText("TempFile.DF");
+            CharContents = File.ReadAllText(dir+"/TempFile.DF");
 
             //Turn it back into CharacterData
             CharContents = CharContents.Replace('F',' ').Replace('0','#');
@@ -219,7 +222,7 @@ namespace Igtampe.BasicFontsPackager {
             if(character == ':') { FontBeingBuilt["CharColon"]= CharContents; } else { FontBeingBuilt["Char" + character]= CharContents; }
 
             //Delete the temp file
-            File.Delete("TempFile.df");
+            File.Delete(dir+"/TempFile.df");
 
         }
 
