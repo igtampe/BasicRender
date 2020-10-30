@@ -147,6 +147,7 @@ namespace Igtampe.BasicFonts {
             if(RenderedTime != DisplayTime) {
                 //Time to hunt for the differences
                 for(int i = RenderedTime.Length-1; i > 0; i--) {
+                    if(RenderedTime[i] != ' ' && DisplayTime[i] == ' ') { Draw.Box(Console.BackgroundColor,ClockFont.Width,ClockFont.Height,LeftPos + CalculateLeftposAdjustment(i),TopPos); } //If what is rendered isn't a space, but what is to be rendered *is* a space, draw a box.
                     if(RenderedTime[i] != DisplayTime[i]) {ClockFont.DrawText("" + DisplayTime[i],LeftPos+CalculateLeftposAdjustment(i),TopPos);} //render only the changed text
                 }
                 RenderedTime = DisplayTime; //Save the new rendered time.
@@ -191,7 +192,10 @@ namespace Igtampe.BasicFonts {
 
         /// <summary>Calculates the necessary leftpos offset to render a character at the specified characterindex with the set clockfont</summary>
         /// <param name="CharacterIndex"></param>
-        private int CalculateLeftposAdjustment(int CharacterIndex) {return ((CharacterIndex) * ClockFont.Width)+CharacterIndex;}
+        private int CalculateLeftposAdjustment(int CharacterIndex) {
+            if(CharacterIndex == 0) { return 0; }
+            return ((CharacterIndex) * ClockFont.Width)+CharacterIndex;
+        }
 
         //-[Execution]------------------------------------------------------------------------------------------
 
