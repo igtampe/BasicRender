@@ -176,9 +176,9 @@ namespace Igtampe.BasicClockExample {
             try {
                 Clock ReturnClock;
 
-                if(FontDir == "") { FontDir = LoadDict["FONT"]; }
+                if(string.IsNullOrWhiteSpace(FontDir)) { FontDir = LoadDict["FONT"]; }
 
-                if(FontDir != "") { ReturnClock = new Clock(BasicFont.LoadFromFile(FontDir),2,1); } 
+                if(!string.IsNullOrWhiteSpace(FontDir)) { ReturnClock = new Clock(BasicFont.LoadFromFile(FontDir),2,1); } 
                 else { ReturnClock = new Clock(2,1); }
 
                 ReturnClock.BG = GraphicUtils.ColorCharToConsoleColor(LoadDict["BG"][0]);
@@ -205,17 +205,18 @@ namespace Igtampe.BasicClockExample {
         }
 
         public static void Save() {
-            Dictionary<String,String> SaveDict = new Dictionary<string,string>();
-            SaveDict.Add("FONT",FontDir);
-            SaveDict.Add("BG",BasicFont.ConsoleColorToColorChar(MainClock.BG) + "");
-            SaveDict.Add("FG",BasicFont.ConsoleColorToColorChar(MainClock.FG) + "");
-            SaveDict.Add("MILITTIME",MainClock.MilitaryTime.ToString());
-            SaveDict.Add("SHOWDATE",MainClock.ShowDate.ToString());
-            SaveDict.Add("SHOWSECONDS",MainClock.ShowSeconds.ToString());
-            SaveDict.Add("ADJUSTHOURS",MainClock.HourAdjust.ToString());
-            SaveDict.Add("AUDIO",Audio.ToString());
-            SaveDict.Add("VOICE",Voice.ToString());
-            SaveDict.Add("COLLAPSED",Collapsed.ToString());
+            Dictionary<string,string> SaveDict = new Dictionary<string,string> {
+                { "FONT",FontDir },
+                { "BG",BasicFont.ConsoleColorToColorChar(MainClock.BG) + "" },
+                { "FG",BasicFont.ConsoleColorToColorChar(MainClock.FG) + "" },
+                { "MILITTIME",MainClock.MilitaryTime.ToString() },
+                { "SHOWDATE",MainClock.ShowDate.ToString() },
+                { "SHOWSECONDS",MainClock.ShowSeconds.ToString() },
+                { "ADJUSTHOURS",MainClock.HourAdjust.ToString() },
+                { "AUDIO",Audio.ToString() },
+                { "VOICE",Voice.ToString() },
+                { "COLLAPSED",Collapsed.ToString() }
+            };
             DOD.Save(SaveDict,dir);
         }
 
