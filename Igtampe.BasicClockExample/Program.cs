@@ -124,8 +124,9 @@ namespace Igtampe.BasicClockExample {
         static void Collapse(){
             Collapsed = true;
             MainClock.Pause();
-            Console.SetWindowSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),13);
-            Console.SetBufferSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),13);
+            RenderUtils.ResizeConsole(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),13);
+            //Console.SetWindowSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),13);
+            //Console.SetBufferSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),13);
             Console.Clear();
             MainClock.Render();
             Draw.Sprite(":",Console.BackgroundColor,Console.ForegroundColor,0,10);
@@ -136,8 +137,9 @@ namespace Igtampe.BasicClockExample {
         static void Expand() {
             Collapsed = false;
             MainClock.Pause();
-            Console.SetBufferSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),34);
-            Console.SetWindowSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),34);
+            RenderUtils.ResizeConsole(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),34);
+            //Console.SetBufferSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),34);
+            //Console.SetWindowSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),34);
             DrawHelp();
             MainClock.Resume();
         }

@@ -12,8 +12,15 @@ namespace Igtampe.BasicRenderShowcase {
     class Program {
         static void Main() {
 
-            Console.SetWindowSize(80,25);
-            Console.SetBufferSize(80,25);
+            RenderUtils.ResizeConsole(100,50);
+            RenderUtils.Sleep(250);
+            RenderUtils.ResizeConsole(50,25);
+            RenderUtils.Sleep(250);
+            RenderUtils.ResizeConsole(Console.LargestWindowWidth,Console.LargestWindowHeight);
+            RenderUtils.Sleep(250);
+            RenderUtils.ResizeConsole(30,15);
+            RenderUtils.Sleep(250);
+            RenderUtils.ResizeConsole(80,25);
 
             //Draw the splash
             BasicRenderSplash();
