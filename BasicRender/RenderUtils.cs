@@ -39,6 +39,33 @@ namespace Igtampe.BasicRender {
         /// <param name="FG"></param>
         public static void Color(ConsoleColor BG,ConsoleColor FG) { Console.BackgroundColor = BG; Console.ForegroundColor = FG; }
 
+        /// <summary>Resizes the console window and buffer together.</summary>
+        /// <param name="Width">Width in Columns</param>
+        /// <param name="Height">Height in </param>
+        public static void ResizeConsole(int Width,int Height) {
+            //Determine if the width needs to be bigger or smaller
+            if(Width > Console.WindowWidth) {
+                //If you need to grow the window, set the buffer first, then the window
+                Console.SetBufferSize(Width,Console.BufferHeight);
+                Console.SetWindowSize(Width,Console.WindowHeight);
+            } else {
+                //If we need to shrink the window, set the window size first, then the buffer
+                Console.SetWindowSize(Width,Console.WindowHeight);
+                Console.SetBufferSize(Width,Console.BufferHeight);
+            }
+
+            //Determine if the height needs to be bigger or smaller
+            if(Height > Console.WindowHeight) {
+                //If you need to grow the window, set the buffer first, then the window
+                Console.SetBufferSize(Width,Height);
+                Console.SetWindowSize(Width,Height);
+            } else {
+                //If we need to shrink the window, set the window size first, then the buffer
+                Console.SetWindowSize(Width,Height);
+                Console.SetBufferSize(Width,Height);
+            }
+        }
+
         /// <summary>Types the specified text one character at a time at the default delay of 5ms between each character.</summary>
         /// <param name="Text"></param>
         public static void Type(String Text) { Type(Text,5); }
