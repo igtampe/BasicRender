@@ -46,7 +46,7 @@ namespace Igtampe.BasicWindows {
                 Draw.Box(ConsoleColor.Black,Console.WindowWidth,Console.WindowHeight - 4,0,2);
 
                 //Draw the stop sign
-                BasicGraphic StopSign = new BasicGraphicFromResource(Properties.Resources.Stop);
+                BasicGraphic StopSign = BasicGraphic.LoadFromResource(Properties.Resources.Stop);
                 StopSign.Draw(1,3);
 
                 //Draw STOP!

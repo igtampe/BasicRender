@@ -1,9 +1,15 @@
 ﻿using System;
+using System.IO;
 using Igtampe.BasicRender;
 
 namespace Igtampe.BasicGraphics {
     /// <summary>Holds a BasicGraphic</summary>
-    public abstract class BasicGraphic:Graphic {
+    public class BasicGraphic:Graphic {
+
+        /// <summary>Creates a basicGraphic with specified contents and name</summary>
+        /// <param name="Contents"></param>
+        /// <param name="Name"></param>
+        public BasicGraphic(string[] Contents,string Name) : base(Contents,Name) { }
 
         /// <summary>Draws this BasicGraphic</summary>
         /// <param name="LeftPos"></param>
@@ -25,6 +31,19 @@ namespace Igtampe.BasicGraphics {
                 
             }
         }
+
+        /// <summary>Loads a BasicGraphic from a file. Supersedes BasicGraphicFromFile</summary>
+        /// <param name="Filename"></param>
+        /// <returns></returns>
+        public static BasicGraphic LoadFromFile(string Filename) {
+             if(!File.Exists(Filename)) { throw new FileNotFoundException(); }
+            return new BasicGraphic(File.ReadAllLines(Filename),Filename);
+        }
+
+        /// <summary>Loads a BasicGraphic from a Resource. Supersedes BasicGraphicFromResource</summary>
+        /// <param name="Resource"></param>
+        /// <returns></returns>
+        public static BasicGraphic LoadFromResource(byte[] Resource) {return new BasicGraphic(GraphicUtils.ResourceToStringArray(Resource),"Graphic from Resource");}
 
 
     }

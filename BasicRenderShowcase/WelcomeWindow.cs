@@ -64,12 +64,12 @@ namespace Igtampe.BasicRenderShowcase {
                 Console.Clear();
                 RenderUtils.Sleep(3000);
 
-                Graphic Landscape = new BasicGraphicFromResource(Resources.Landscape);
+                Graphic Landscape = BasicGraphic.LoadFromResource(Resources.Landscape);
                 
                 Landscape.Draw(0,0);
                 RenderUtils.Sleep(5000);
 
-                Graphic TextBox = new HiColorGraphicFromResource(Resources.Textbox);
+                Graphic TextBox = HiColorGraphic.LoadFromResource(Resources.Textbox);
                 TextBox.Draw(Landscape.GetWidth()-TextBox.GetWidth()-2,2);
 
                 RenderUtils.Color(ConsoleColor.Gray,ConsoleColor.Black);

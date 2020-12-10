@@ -93,7 +93,7 @@ namespace Igtampe.BasicRenderShowcase {
             RenderUtils.Color(ConsoleColor.DarkGray,ConsoleColor.White);
             Console.Clear();
 
-            Graphic Rainbow = new HiColorGraphicFromResource(Resources.Rainbow);
+            Graphic Rainbow = HiColorGraphic.LoadFromResource(Resources.Rainbow);
 
             Draw.Box(ConsoleColor.Black,Rainbow.GetWidth(),Rainbow.GetHeight() - 1,19,11);
 

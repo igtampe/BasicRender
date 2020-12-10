@@ -217,10 +217,7 @@ namespace Igtampe.BasicFonts{
 
         /// <summary>Private graphic file to turn Character Data to a BasicGraphic</summary>
         private class CharacterGraphic:BasicGraphic {
-            public CharacterGraphic(string CharacterData, ConsoleColor FG) {
-                Name = "TempCharacter";
-                Contents = CharacterData.Replace('#',ConsoleColorToColorChar(FG)).Split('\n');
-            }               
+            public CharacterGraphic(string CharacterData, ConsoleColor FG) : base(CharacterData.Replace('#',ConsoleColorToColorChar(FG)).Split('\n'),"TempCharacter") {}               
         }
 
     }

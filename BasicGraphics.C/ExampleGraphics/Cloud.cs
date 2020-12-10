@@ -4,10 +4,7 @@ namespace Igtampe.BasicGraphics.ExampleGraphics {
     /// <summary>A Cloud graphic, used for testing.</summary>
     public class Cloud:BasicGraphic {
 
-        /// <summary>Creates an instance of this cloud graphic</summary>
-        public Cloud() {
-
-            string[] Cloud = {
+        private static string[] CloudContent = {
                 "111111111111111111111111",
                 "111111111111111111111111",
                 "111111111111111111111111",
@@ -23,9 +20,9 @@ namespace Igtampe.BasicGraphics.ExampleGraphics {
                 "111111111111111111111111",
             };
 
-            Contents = Cloud;
-            Name = "Cloud Graphic";
-        }
+
+        /// <summary>Creates an instance of this cloud graphic</summary>
+        public Cloud() : base(CloudContent,"Cloud Graphic"){}
 
 
     }

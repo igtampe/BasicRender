@@ -1,10 +1,16 @@
 ﻿using System;
+using System.IO;
 using Igtampe.BasicRender;
 
 namespace Igtampe.BasicGraphics {
 
     /// <summary>Holds a HiColorGraphic</summary>
-    public abstract class HiColorGraphic:Graphic {
+    public class HiColorGraphic:Graphic {
+
+        /// <summary>Creates a basicGraphic with specified contents and name</summary>
+        /// <param name="Contents"></param>
+        /// <param name="Name"></param>
+        public HiColorGraphic(string[] Contents,string Name) : base(Contents,Name) { }
 
         /// <summary>Draws this hicolor graphic at the specified position.</summary>
         /// <param name="LeftPos"></param>
@@ -58,6 +64,17 @@ namespace Igtampe.BasicGraphics {
 
             }
 
+        }
+
+        /// <summary>Generates a HiColorGraphic item from a file. Supersedes HiColorGraphicFromFile.</summary>
+        public static HiColorGraphic LoadFromFile(string Filename) {
+            if(!File.Exists(Filename)) { throw new FileNotFoundException(); }
+            return new HiColorGraphic(File.ReadAllLines(Filename),Filename);
+        }
+
+        /// <summary>Generates a HiColorGraphic item from a Resource. Supersedes HiColorGraphicFromResource.</summary>
+        public static HiColorGraphic LoadFromResource(byte[] Resource) {
+            return new HiColorGraphic(GraphicUtils.ResourceToStringArray(Resource),"Graphic From Resource");
         }
 
     }
