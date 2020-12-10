@@ -49,9 +49,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BasicGraphic.cs" />
+    <Compile Include="BasicGraphicFromFile.cs" />
+    <Compile Include="BasicGraphicFromResource.cs" />
     <Compile Include="ExampleGraphics\Cloud.cs" />
     <Compile Include="Graphic.cs" />
     <Compile Include="HiColorGraphic.cs" />
+    <Compile Include="HiColorGraphicFromFile.cs" />
+    <Compile Include="HiColorGraphicFromResource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="GraphicUtils.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
