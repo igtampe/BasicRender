@@ -4,7 +4,7 @@ namespace Igtampe.BasicGraphics.ExampleGraphics {
     /// <summary>A Cloud graphic, used for testing.</summary>
     public class Cloud:BasicGraphic {
 
-        private static string[] CloudContent = {
+        private static readonly string[] CloudContent = {
                 "111111111111111111111111",
                 "111111111111111111111111",
                 "111111111111111111111111",
