@@ -1,6 +1,6 @@
 ![The Toolkit Logo](https://cdn.discordapp.com/attachments/335464035921428480/734308914786598912/BasicRender.png "BasicRender Toolkit Logo")
 
-The BasicRender Toolkit is a set of class libraries that make it easy to display graphics on a console screen. Three libraries are included, and can all be downloaded over at the release page.
+BasicRender is a graphics library that makes it easy to display graphics on a console screen. Four libraries are included, and can all be downloaded over at the release page.
 
 This project also includes a small demo program. After a neat little BasicWindow, it tells the very very tiny 8 line story of a man who insulted an AI for the last time. It includes exactly one landscape I drew in [henja](https://github.com/igtampe/Henja3) that came out ~~horrible~~ great.
 ![And so the man died. The end.](https://cdn.discordapp.com/attachments/335464035921428480/734309006390067330/68747470733a2f2f6d656469612e646973636f72646170702e6e65742f6174746163686d656e74732f373333383835333235.png "And so the man died. The end.")
@@ -78,19 +78,23 @@ A Static class that holds some utilities that are used by the graphic drawers, b
 |F|Bright White|
 
 
-### BasicGraphic (And FromFile, FromResource)
-Abstract class that holds the way to process DF file data. Its extended by BasicGraphicFromFile and BasicGraphicFromResource, which read their contents from a file and from a resource respectively.
+### BasicGraphic
+Class that holds the way to process DF file data. It is **no longer extended** by BasicGraphicFromFile and BasicGraphicFromResource. Instead, use LoadFromFile() and LoadFromResource() in BasicGraphic
 
 |Method|Result|
 |-|-|
 |DrawColorString()|This method is publicly accessible in case a user wants to access it directly to draw a single line of DF data.<br><br> A ColorString is a string made up of ColorChars. Take a look at GraphicUtils's ColorCharToConsoleColor() method for a more in depth explination.|
+|LoadFromFile()|Loads DF Data from a file and returns a BasicGraphic|
+|LoadFromResource()|Loads DF Data from a resource, and returns a BascGraphic|
 
-### HiColorGraphic (And FromFile, FromResource)
-Abstract class that holds the way to process HC file data. Its extended by HiColorGraphicFromFile and HiColorGraphicFromResource, which read their contents from a file and from a resource respectively.
+### HiColorGraphic
+Abstract class that holds the way to process HC file data. It is **no longer extended** by HiColorGraphicFromFile and HiColorGraphicFromResource. Instead use LoadFromFile() and LoadFromResource() in HiColorGraphic.
 
 |Method|Result|
 |-|-|
 |HiColorDraw()|This method is also publicly accessible in case a user wants to access it directly to draw a single line of HC data. <br><br>A string of HiColor Data is comprised of multiple 3 character long strings, linked with hyphens. The first two characters are ColorChars (one for background and one for foreground), and the 3rd is a digit from 0 to 2, which indicates the gradient between the colorchars, with ░ as 0, ▒ as 1, ▓ as 2. <br><br> The following string holds a HiColor Rainbow `441-460-461-C61-CE0-CE1-CE2-EE2-E10-EA1-AE2-AE1-AA2-AB1-AB2-BB2-3B2-B31-3B2-3B1-3B0-331-932-392-992-192-912-190-110-512-152-551-D52-D51-D50-DD0-4D2-4D1-4D0-440`. This rainbow doesn't use dark yellow or dark green, along with a few shades of gray so there are a few colors that aren't visible here. According to this, there should be just about 55-60 _usable_ colors.|
+|LoadFromFile()|Loads HC Data from a file and returns a HiColorGraphic
+|LoadFromResource()|Loads HC Data from a resource, and returns a HiColorGraphic
 
 ### Cloud
 Cloud is a DF graphic class which holds its own data. Its contents are the cloud graphic from AirportBoard's weather information.<br>
