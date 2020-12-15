@@ -51,6 +51,7 @@
     <Compile Include="Draw.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RenderUtils.cs" />
+    <Compile Include="SpecialChars.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TheChopoSignature.pfx" />

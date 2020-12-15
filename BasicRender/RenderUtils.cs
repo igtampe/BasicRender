@@ -80,5 +80,18 @@ namespace Igtampe.BasicRender {
             }
         }
 
+        /// <summary>Repeats the specified characer for the specified amount of times.</summary>
+        /// <param name="Repeat">Character to repeat</param>
+        /// <param name="Amount">Times to repeat it</param>
+        /// <returns>
+        /// The character, repeated Amount times. IE: <br></br>
+        /// Repeater('-',4) --> "----"
+        /// </returns>
+        public static string Repeater(char Repeat, int Amount) {
+            string ReturnString = "";
+            for(int i = 0; i < Amount; i++) {ReturnString += Repeat;}
+            return ReturnString;
+        }
+
     }
 }

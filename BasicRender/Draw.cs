@@ -86,7 +86,7 @@ namespace Igtampe.BasicRender {
             RenderUtils.Color(RowColor,RowColor);
 
             //Draw the row
-            for(int i = 0; i < Length; i++) { Console.Write(" "); }
+            for(int i = 0; i < Length; i++) { Console.Write(SpecialChars.BLOCK); }
 
             //Set the color back to whatever it was.
             RenderUtils.Color(OldBG,OldFG);

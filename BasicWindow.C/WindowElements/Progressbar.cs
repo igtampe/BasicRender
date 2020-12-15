@@ -48,6 +48,9 @@ namespace Igtampe.BasicWindows.WindowElements {
         public override void DrawElement() {
             Draw.Row(BG,Length,LeftPos + Parent.LeftPos,TopPos + Parent.TopPos);
             Draw.Row(BarColor,Convert.ToInt32(Length * Percent),LeftPos + Parent.LeftPos,TopPos + Parent.TopPos);
+            if((Length * Percent)%1>.5) { 
+                Draw.Sprite(SpecialChars.LEFT_HALF_BLOCK + "",BG,BarColor); 
+            }
         }
 
     }

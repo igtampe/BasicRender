@@ -12,6 +12,9 @@ namespace Igtampe.BasicRenderShowcase {
     class Program {
         static void Main() {
 
+            RenderUtils.Echo("Stand by...\n\n");
+            SpecialChars.TestChars();
+
             RenderUtils.ResizeConsole(100,50);
             RenderUtils.Sleep(250);
             RenderUtils.ResizeConsole(50,25);
