@@ -194,25 +194,25 @@ namespace Igtampe.BasicWindows
             switch(HeadPos) {
                 case HeaderPosition.LEFT:
                     RenderUtils.Echo("═ " + Title + " ");
-                    for(int i = 3 + Title.Length; i < Length; i++) { RenderUtils.Echo("═"); }
+                    for(int i = 3 + Title.Length; i < Length; i++) { RenderUtils.Echo(SpecialChars.DOUBLE_HORIZONTAL+""); }
                     break;
                 case HeaderPosition.CENTER:
                     //calculate lengths of the two side bars.
                     int SidesLength = (Length - (Title.Length + 2)) / 2;
 
                     //Do the first side
-                    for(int i = 0; i < SidesLength; i++) { RenderUtils.Echo("="); }
+                    for(int i = 0; i < SidesLength; i++) { RenderUtils.Echo(SpecialChars.DOUBLE_HORIZONTAL + ""); }
 
                     //Echo the title
                     RenderUtils.Echo(" " + Title + " ");
 
                     //Do the other side
-                    for(int i = 0; i < SidesLength; i++) { RenderUtils.Echo("="); }
+                    for(int i = 0; i < SidesLength; i++) { RenderUtils.Echo(SpecialChars.DOUBLE_HORIZONTAL + ""); }
 
                     break;
                 case HeaderPosition.RIGHT:
-                    for(int i = 0; i < Length - 3 + Title.Length; i++) { RenderUtils.Echo("═"); }
-                    RenderUtils.Echo(" " + Title + " =");
+                    for(int i = 0; i < Length - 3 + Title.Length; i++) { RenderUtils.Echo(SpecialChars.DOUBLE_HORIZONTAL + ""); }
+                    RenderUtils.Echo(" " + Title + " "+ SpecialChars.DOUBLE_HORIZONTAL);
                     break;
                 default:
                     break;

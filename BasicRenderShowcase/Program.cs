@@ -27,7 +27,8 @@ namespace Igtampe.BasicRenderShowcase {
 
             //Draw the splash
             BasicRenderSplash();
-            RenderUtils.Sleep(2000);
+            //RenderUtils.Sleep(2000);
+            RenderUtils.Pause();
 
 
             Window WelcomeSplash = new Window(false,true,"Welcome",47,10);
@@ -102,6 +103,8 @@ namespace Igtampe.BasicRenderShowcase {
 
             Rainbow.Draw(17,10);
             Draw.CenterText("BasicRender",12,ConsoleColor.White,ConsoleColor.Black);
+
+            Draw.CenterText("P r e s s     a     k e y",20,ConsoleColor.DarkGray,ConsoleColor.White);
 
         }
 
