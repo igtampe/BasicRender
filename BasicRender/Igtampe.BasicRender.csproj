@@ -52,6 +52,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RenderUtils.cs" />
     <Compile Include="SpecialChars.cs" />
+    <Compile Include="Cycler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="TheChopoSignature.pfx" />

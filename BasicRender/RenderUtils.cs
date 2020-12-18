@@ -41,7 +41,7 @@ namespace Igtampe.BasicRender {
 
         /// <summary>Resizes the console window and buffer together.</summary>
         /// <param name="Width">Width in Columns</param>
-        /// <param name="Height">Height in </param>
+        /// <param name="Height">Height in Rows</param>
         public static void ResizeConsole(int Width,int Height) {
             //Determine if the width needs to be bigger or smaller
             if(Width > Console.WindowWidth) {
@@ -65,6 +65,26 @@ namespace Igtampe.BasicRender {
                 Console.SetBufferSize(Width,Height);
             }
         }
+
+        /// <summary>Tries to resize the console window and buffer</summary>
+        /// <param name="Width">Width in columns</param>
+        /// <param name="Height">Height in Rows</param>
+        /// <returns>True if the change occurred, False otherwise</returns>
+        public static bool TryResizeConsole(int Width,int Height) {
+            try {ResizeConsole(Width,Height);} catch(Exception) {return false;}
+            return true;
+        }
+
+        /// <summary>Alias for ResizeConsole</summary>
+        /// <param name="Width"></param>
+        /// <param name="Height"></param>
+        public static void SetSize(int Width,int Height) { ResizeConsole(Width,Height); }
+
+        /// <summary>Alias for TryResizeConsole</summary>
+        /// <param name="Width"></param>
+        /// <param name="Height"></param>
+        /// <returns></returns>
+        public static bool TrySetSize(int Width,int Height) { return TryResizeConsole(Width,Height); }
 
         /// <summary>Types the specified text one character at a time at the default delay of 5ms between each character.</summary>
         /// <param name="Text"></param>
