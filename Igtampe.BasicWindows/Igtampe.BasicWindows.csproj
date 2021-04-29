@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Igtampe.BasicFonts\Igtampe.BasicFonts.csproj" />
+    <ProjectReference Include="..\Igtampe.BasicGraphics\Igtampe.BasicGraphics.csproj" />
+    <ProjectReference Include="..\Igtampe.BasicRender\Igtampe.BasicRender.csproj" />
+  </ItemGroup>
+
+</Project>
