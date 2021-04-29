@@ -23,7 +23,7 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <Optimize>false</Optimize>
-    <DocumentationFile>C:\Users\igtam\source\repos\BasicRender\Igtampe.BasicWindows\Igtampe.BasicWindows.xml</DocumentationFile>
+    <DocumentationFile>C:\Users\igtam\source\repos\BasicRender\Igtampe.BasicWindows\BasicWindows.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

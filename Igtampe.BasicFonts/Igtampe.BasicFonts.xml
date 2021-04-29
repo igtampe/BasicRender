@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Igtampe.BasicFonts</name>
+        <name>BasicFonts</name>
     </assembly>
     <members>
         <member name="F:Igtampe.BasicFonts.BasicFont.FontDictionary">

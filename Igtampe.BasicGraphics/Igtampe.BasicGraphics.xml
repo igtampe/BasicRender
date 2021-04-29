@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Igtampe.BasicGraphics</name>
+        <name>BasicGraphics</name>
     </assembly>
     <members>
         <member name="T:Igtampe.BasicGraphics.BasicGraphic">
