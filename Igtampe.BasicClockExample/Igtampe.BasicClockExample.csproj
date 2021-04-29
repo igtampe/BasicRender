@@ -33,9 +33,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DictionaryOnDisk, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\DictionaryOnDisk\DictionaryOnDisk\bin\Debug\DictionaryOnDisk.dll</HintPath>
+    <Reference Include="DictionaryOnDisk, Version=2.0.0.0, Culture=neutral, PublicKeyToken=71f2084e3069f9d2, processorArchitecture=MSIL">
+      <HintPath>..\packages\Igtampe.DictionaryOnDisk.1.0.0\lib\netstandard2.0\DictionaryOnDisk.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -91,6 +90,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\Bong.wav" />
   </ItemGroup>
   <ItemGroup>

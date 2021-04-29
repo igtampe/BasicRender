@@ -45,8 +45,8 @@
     <AssemblyOriginatorKeyFile>TheChopoSignature.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DictionaryOnDisk">
-      <HintPath>..\..\DictionaryOnDisk\DictionaryOnDisk\bin\Debug\DictionaryOnDisk.dll</HintPath>
+    <Reference Include="DictionaryOnDisk, Version=2.0.0.0, Culture=neutral, PublicKeyToken=71f2084e3069f9d2, processorArchitecture=MSIL">
+      <HintPath>..\packages\Igtampe.DictionaryOnDisk.1.0.0\lib\netstandard2.0\DictionaryOnDisk.dll</HintPath>
     </Reference>
     <Reference Include="Henja3">
       <HintPath>..\..\Henja3\bin\Debug\Henja3.exe</HintPath>
@@ -120,6 +120,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
