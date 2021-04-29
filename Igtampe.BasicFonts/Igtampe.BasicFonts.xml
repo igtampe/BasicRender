@@ -1,0 +1,243 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Igtampe.BasicFonts</name>
+    </assembly>
+    <members>
+        <member name="F:Igtampe.BasicFonts.BasicFont.FontDictionary">
+            <summary>Dictionary that holds all the relevant data for the font.</summary>
+        </member>
+        <member name="P:Igtampe.BasicFonts.BasicFont.Name">
+            <summary>Name of this font</summary>
+        </member>
+        <member name="P:Igtampe.BasicFonts.BasicFont.Author">
+            <summary>Author of this font</summary>
+        </member>
+        <member name="P:Igtampe.BasicFonts.BasicFont.Width">
+            <summary>Width of this font's characters</summary>
+        </member>
+        <member name="P:Igtampe.BasicFonts.BasicFont.Height">
+            <summary>Height of this font's characters</summary>
+        </member>
+        <member name="M:Igtampe.BasicFonts.BasicFont.#ctor(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>Creates a BasicFont.</summary>
+            <param name="FontDictionary">Dictionary that holds all font data. MUST Include the keys Name, Author, CharWidth, CharHeight and Chars.</param>
+        </member>
+        <member name="M:Igtampe.BasicFonts.BasicFont.ContainsChar(System.Char)">
+            <summary>Checks if a font has the given character.</summary>
+            <param name="C"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicFonts.BasicFont.DrawText(System.String)">
+            <summary>Writes text on screen using this font with the current color and 1 column of space between each character.</summary>
+            <param name="Text">Text to write </param>
+        </member>
+        <member name="M:Igtampe.BasicFonts.BasicFont.DrawText(System.String,System.Int32,System.Int32)">
+            <summary>Writes text on screen using this font with the current color and 1 column of space between each character</summary>
+            <param name="Text">Text to write</param>
+            <param name="Leftpos">Leftpos of the text</param>
+            <param name="Toppos">Toppos of the text</param>
+        </member>
+        <member name="M:Igtampe.BasicFonts.BasicFont.DrawText(System.String,System.Int32,System.Int32,System.ConsoleColor)">
+            <summary>Writes text on screen with this font with 1 console column of space between each character</summary>
+            <param name="Text">Text to write</param>
+            <param name="Leftpos">Leftpos of the text</param>
+            <param name="Toppos">Toppos of the text</param>
+            <param name="FG">Color of this text</param>
+        </member>
+        <member name="M:Igtampe.BasicFonts.BasicFont.DrawText(System.String,System.Int32,System.Int32,System.ConsoleColor,System.Int32)">
+            <summary>Writes text on screen with this font.</summary>
+            <param name="Text">Text to write.</param>
+            <param name="Leftpos">Leftpos of the text</param>
+            <param name="Toppos">TopPos of the text </param>
+            <param name="FG">Foreground color of the text</param>
+            <param name="Spacing">Spacing between characters (In cols)</param>
+        </member>
+        <member name="M:Igtampe.BasicFonts.BasicFont.GetChar(System.Char)">
+            <summary>Gets character BasicFontData</summary>
+            <param name="C"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicFonts.BasicFont.DrawChar(System.Char,System.Int32,System.Int32,System.ConsoleColor)">
+            <summary>Gets and converts BasicFontData to a BasicGraphic, then draws it.</summary>
+            <param name="C"></param>
+            <param name="Leftpos"></param>
+            <param name="Toppos"></param>
+            <param name="FG"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicFonts.BasicFont.DrawNullChar(System.Int32,System.Int32,System.ConsoleColor)">
+            <summary>Draw a null character in case it isn't included in this font.</summary>
+            <param name="Leftpos"></param>
+            <param name="Toppos"></param>
+            <param name="FG"></param>
+        </member>
+        <member name="M:Igtampe.BasicFonts.BasicFont.LoadFromFile(System.String)">
+            <summary>Creates a BasicFont from a file</summary>
+            <param name="Filename"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicFonts.BasicFont.LoadFromResource(System.Byte[])">
+            <summary>Creates a BasicFont from a resource</summary>
+            <param name="Resource"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicFonts.BasicFont.ConsoleColorToColorChar(System.ConsoleColor)">
+            <summary>Reverse function for ColorCharToConsoleColor</summary>
+            <param name="color"></param>
+            <returns></returns>
+        </member>
+        <member name="F:Igtampe.BasicFonts.BasicFont.defaultFont">
+            <summary>Holder for the default font</summary>
+        </member>
+        <member name="F:Igtampe.BasicFonts.BasicFont.digitalClockFont">
+            <summary>Holder for the default font</summary>
+        </member>
+        <member name="F:Igtampe.BasicFonts.BasicFont.digitalClockWideFont">
+            <summary>Holder for the default font</summary>
+        </member>
+        <member name="P:Igtampe.BasicFonts.BasicFont.DefaultFont">
+            <summary>Default Font from the BasicFont Package (5x6)</summary>
+        </member>
+        <member name="P:Igtampe.BasicFonts.BasicFont.DigitalClockFont">
+            <summary>DigitalClock Font from the BasicFont Package (6x6) (ONLY INCLUDES NUMBERS 0-9, :, a, p, AND m)</summary>
+        </member>
+        <member name="P:Igtampe.BasicFonts.BasicFont.DigitalClockWideFont">
+            <summary>DigitalClock Wide Font from the BasicFont Package (11x6) (ONLY INCLUDES NUMBERS 0-9, :, a, p, AND m)</summary>
+        </member>
+        <member name="T:Igtampe.BasicFonts.BasicFont.CharacterGraphic">
+            <summary>Private graphic file to turn Character Data to a BasicGraphic</summary>
+        </member>
+        <member name="T:Igtampe.BasicFonts.Clock">
+            <summary>Handles the rendering of a BasicFont Clock</summary>
+        </member>
+        <member name="P:Igtampe.BasicFonts.Clock.ClockFont">
+            <summary>Font the clock uses</summary>
+        </member>
+        <member name="F:Igtampe.BasicFonts.Clock.RenderedTime">
+            <summary>Rendered string for the clock</summary>
+        </member>
+        <member name="F:Igtampe.BasicFonts.Clock.RenderedDate">
+            <summary>Rendered string for the date</summary>
+        </member>
+        <member name="F:Igtampe.BasicFonts.Clock.LeftPos">
+            <summary>Leftmost corner of the clock</summary>
+        </member>
+        <member name="F:Igtampe.BasicFonts.Clock.TopPos">
+            <summary>Topmost corner of the clock</summary>
+        </member>
+        <member name="P:Igtampe.BasicFonts.Clock.HourAdjust">
+            <summary>Adjustment to the hour (for timezones)</summary>
+        </member>
+        <member name="P:Igtampe.BasicFonts.Clock.MilitaryTime">
+            <summary>Enable or disable military time</summary>
+        </member>
+        <member name="P:Igtampe.BasicFonts.Clock.ShowSeconds">
+            <summary>Enable or disable Seconds</summary>
+        </member>
+        <member name="P:Igtampe.BasicFonts.Clock.ShowDate">
+            <summary>Enable or disable showing the date on a line below it.</summary>
+        </member>
+        <member name="P:Igtampe.BasicFonts.Clock.BG">
+            <summary>Background of this Clock</summary>
+        </member>
+        <member name="P:Igtampe.BasicFonts.Clock.FG">
+            <summary>Foreground of this clock</summary>
+        </member>
+        <member name="P:Igtampe.BasicFonts.Clock.Width">
+            <summary>Width of this clock</summary>
+        </member>
+        <member name="P:Igtampe.BasicFonts.Clock.Height">
+            <summary>Height of this clock</summary>
+        </member>
+        <member name="M:Igtampe.BasicFonts.Clock.#ctor(System.Int32,System.Int32)">
+            <summary>Constructs a clock using the default DigitalClock.bfnt</summary>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicFonts.Clock.#ctor(Igtampe.BasicFonts.BasicFont,System.Int32,System.Int32)">
+            <summary>Constructs a clock</summary>
+            <param name="ClockFont">A font that must contain numbers from 0-9, a colon (':'), and the letters 'A', 'P', and 'M'</param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicFonts.Clock.PrepareRenderedDate">
+            <summary>Returns the current date in DDDD MM/DD/YYYY</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicFonts.Clock.Init">
+            <summary>Initializes renderedtime to make calculations on clock width before rendering</summary>
+        </member>
+        <member name="M:Igtampe.BasicFonts.Clock.Render">
+            <summary>Render the clock (for the first time)</summary>
+        </member>
+        <member name="M:Igtampe.BasicFonts.Clock.Rerender">
+            <summary>Re-render the clock </summary>
+        </member>
+        <member name="M:Igtampe.BasicFonts.Clock.RenderDate">
+            <summary>Renders only the date</summary>
+        </member>
+        <member name="M:Igtampe.BasicFonts.Clock.SetColor">
+            <summary>Sets colors for the clock to render, saving old color, and old cursor position.</summary>
+        </member>
+        <member name="M:Igtampe.BasicFonts.Clock.ResetColor">
+            <summary>Resets colors and cursor position to what they were before</summary>
+        </member>
+        <member name="M:Igtampe.BasicFonts.Clock.ClearClock">
+            <summary>Clears this clock based on the last rendered time.</summary>
+        </member>
+        <member name="M:Igtampe.BasicFonts.Clock.ClearDate">
+            <summary>Clears this clock's date based on the last rendered date.</summary>
+        </member>
+        <member name="M:Igtampe.BasicFonts.Clock.CalculateLeftposAdjustment(System.Int32)">
+            <summary>Calculates the necessary leftpos offset to render a character at the specified characterindex with the set clockfont</summary>
+            <param name="CharacterIndex"></param>
+        </member>
+        <member name="M:Igtampe.BasicFonts.Clock.Stop">
+            <summary>Stops the clock if its running asynchronously</summary>
+        </member>
+        <member name="M:Igtampe.BasicFonts.Clock.Pause">
+            <summary>Pauses updating the clock</summary>
+        </member>
+        <member name="M:Igtampe.BasicFonts.Clock.Resume">
+            <summary>Resumes updating the clock</summary>
+        </member>
+        <member name="M:Igtampe.BasicFonts.Clock.Run">
+            <summary>Runs the clock SYNCHRONOUSLY</summary>
+        </member>
+        <member name="M:Igtampe.BasicFonts.Clock.RunAsync">
+            <summary>Runs the clock asynchronously</summary>
+        </member>
+        <member name="T:Igtampe.BasicFonts.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Igtampe.BasicFonts.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Igtampe.BasicFonts.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Igtampe.BasicFonts.Properties.Resources.DefaultFont">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Igtampe.BasicFonts.Properties.Resources.DigitalClock">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="P:Igtampe.BasicFonts.Properties.Resources.DigitalClockWide">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+    </members>
+</doc>

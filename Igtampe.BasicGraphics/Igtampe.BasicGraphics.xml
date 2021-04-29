@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Igtampe.BasicGraphics</name>
+    </assembly>
+    <members>
+        <member name="T:Igtampe.BasicGraphics.BasicGraphic">
+            <summary>Holds a BasicGraphic</summary>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.BasicGraphic.#ctor(System.String[],System.String)">
+            <summary>Creates a basicGraphic with specified contents and name</summary>
+            <param name="Contents"></param>
+            <param name="Name"></param>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.BasicGraphic.Draw(System.Int32,System.Int32)">
+            <summary>Draws this BasicGraphic</summary>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.BasicGraphic.DrawColorString(System.String)">
+            <summary>Draws a ColorString comprised of ColorChars.<br></br><br></br>
+            For example, the colorstring '0123456789ABCDEF' will render a rainbow.
+            </summary>
+            <param name="ColorString"></param>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.BasicGraphic.LoadFromFile(System.String)">
+            <summary>Loads a BasicGraphic from a file. Supersedes BasicGraphicFromFile</summary>
+            <param name="Filename"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.BasicGraphic.LoadFromResource(System.Byte[])">
+            <summary>Loads a BasicGraphic from a Resource. Supersedes BasicGraphicFromResource</summary>
+            <param name="Resource"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Igtampe.BasicGraphics.BasicGraphicFromFile">
+            <summary>Holds a BasicGraphic from a file</summary>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.BasicGraphicFromFile.#ctor(System.String)">
+            <summary>Generates a BasicGraphic item from a file</summary>
+        </member>
+        <member name="T:Igtampe.BasicGraphics.BasicGraphicFromResource">
+            <summary>Holds a BasicGraphic from a Resource</summary>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.BasicGraphicFromResource.#ctor(System.Byte[])">
+            <summary>Creates and loads this BasicGraphic</summary>
+            <param name="Resource"></param>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.BasicGraphicFromResource.#ctor(System.String,System.Byte[])">
+            <summary>Generates a BasicGraphic item from a file</summary>
+            <param name="Name">Name of this graphic</param>
+            <param name="Resource">Resource Byte Array</param>
+        </member>
+        <member name="T:Igtampe.BasicGraphics.ExampleGraphics.Cloud">
+            <summary>A Cloud graphic, used for testing.</summary>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.ExampleGraphics.Cloud.#ctor">
+            <summary>Creates an instance of this cloud graphic</summary>
+        </member>
+        <member name="T:Igtampe.BasicGraphics.Graphic">
+            <summary>Holder for any type of drawable graphic data</summary>
+        </member>
+        <member name="F:Igtampe.BasicGraphics.Graphic.Contents">
+            <summary>Contents of this graphic</summary>
+        </member>
+        <member name="P:Igtampe.BasicGraphics.Graphic.Name">
+            <summary>Name of this graphic</summary>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.Graphic.#ctor(System.String[],System.String)">
+            <summary>Creates a graphic with specified contents and name</summary>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.Graphic.Draw(System.Int32,System.Int32)">
+            <summary>Draws the graphic on screen</summary>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.Graphic.GetWidth">
+            <summary>Gets the width of the graphic</summary>
+            <returns>Length of the first line</returns>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.Graphic.GetHeight">
+            <summary>Gets the height of the graphic</summary>
+            <returns>Length of the contents array</returns>
+        </member>
+        <member name="T:Igtampe.BasicGraphics.GraphicUtils">
+            <summary>Static class for utilities for drawing graphics</summary>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.GraphicUtils.ColorCharToConsoleColor(System.Char)">
+            <summary>Takes a ColorCharacter and turns it into a consolecolor. The dictionary is as follows
+            <list type="table">
+            <listheader><term>Char</term><term>Color</term></listheader>
+            <item><term>0</term><term>Black</term></item>
+            <item><term>1</term><term>Blue</term></item>
+            <item><term>2</term><term>Green</term></item>
+            <item><term>3</term><term>Aqua</term></item>
+            <item><term>4</term><term>Red</term></item>
+            <item><term>5</term><term>Purple</term></item>
+            <item><term>6</term><term>Yellow</term></item>
+            <item><term>7</term><term>White</term></item>
+            <item><term>8</term><term>Gray</term></item>
+            <item><term>9</term><term>Light Blue</term></item>
+            <item><term>A</term><term>Light Green</term></item>
+            <item><term>B</term><term>Light Aqua</term></item>
+            <item><term>C</term><term>Light Red</term></item>
+            <item><term>D</term><term>Light Purple</term></item>
+            <item><term>E</term><term>Light Yellow</term></item>
+            <item><term>F</term><term>Bright White</term></item>
+            </list>
+            </summary>
+            <param name="ColorChar"></param>
+            <returns>The corresponding consolecolor</returns>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.GraphicUtils.ResourceToStringArray(System.Byte[])">
+            <summary>Turns a resource into a string array split by lines</summary>
+        </member>
+        <member name="T:Igtampe.BasicGraphics.HiColorGraphic">
+            <summary>Holds a HiColorGraphic</summary>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.HiColorGraphic.#ctor(System.String[],System.String)">
+            <summary>Creates a basicGraphic with specified contents and name</summary>
+            <param name="Contents"></param>
+            <param name="Name"></param>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.HiColorGraphic.Draw(System.Int32,System.Int32)">
+            <summary>Draws this hicolor graphic at the specified position.</summary>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.HiColorGraphic.GetWidth">
+            <summary>Gets the width of the graphic</summary>
+            <returns>Length of the first line</returns>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.HiColorGraphic.HiColorDraw(System.String)">
+            <summary>
+            Draws a HiColorString, an example of which is '0F0-0F1-0F2', where the first character is ColorChar 1, second character is ColorChar 2, and the third character determines the gradient between the two colors
+            </summary>
+            <param name="HiColorString"></param>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.HiColorGraphic.LoadFromFile(System.String)">
+            <summary>Generates a HiColorGraphic item from a file. Supersedes HiColorGraphicFromFile.</summary>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.HiColorGraphic.LoadFromResource(System.Byte[])">
+            <summary>Generates a HiColorGraphic item from a Resource. Supersedes HiColorGraphicFromResource.</summary>
+        </member>
+        <member name="T:Igtampe.BasicGraphics.HiColorGraphicFromFile">
+            <summary>Holds a HiColorGraphic from a file</summary>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.HiColorGraphicFromFile.#ctor(System.String)">
+            <summary>Generates a HiColorGraphic item from a file</summary>
+        </member>
+        <member name="T:Igtampe.BasicGraphics.HiColorGraphicFromResource">
+            <summary>Holds a HiColorGraphic from a resource</summary>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.HiColorGraphicFromResource.#ctor(System.Byte[])">
+            <summary>Creates and loads this hicolor graphic.</summary>
+            <param name="Resource"></param>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.HiColorGraphicFromResource.#ctor(System.String,System.Byte[])">
+            <summary>Generates a HiColorGraphic item from a file</summary>
+        </member>
+        <member name="T:Igtampe.BasicGraphics.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Igtampe.BasicGraphics.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Igtampe.BasicGraphics.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

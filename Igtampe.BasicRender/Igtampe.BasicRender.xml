@@ -1,0 +1,396 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Igtampe.BasicRender</name>
+    </assembly>
+    <members>
+        <member name="T:Igtampe.BasicRender.Cycler">
+            <summary>Holds a cycler object, which holds an array of strings to cycle through</summary>
+        </member>
+        <member name="M:Igtampe.BasicRender.Cycler.#ctor(System.String[])">
+            <summary>Creates a cycler with a specified array of strings to cycle through</summary>
+            <param name="SpinnerObjects"></param>
+        </member>
+        <member name="M:Igtampe.BasicRender.Cycler.Cycle">
+            <summary>Gets the next string from this cycler's list, and cycles it one position forward</summary>
+            <returns></returns>
+        </member>
+        <member name="T:Igtampe.BasicRender.Draw">
+            <summary>Class that handles BasicRender's rendering capabilities.</summary>
+        </member>
+        <member name="M:Igtampe.BasicRender.Draw.Sprite(System.String,System.ConsoleColor,System.ConsoleColor)">
+            <summary>Renders a sprite at the current cursor position</summary>
+            <param name="sprite">Sprite to draw</param>
+            <param name="BackgroundColor">Background color</param>
+            <param name="ForegroundColor">Foreground color</param>
+        </member>
+        <member name="M:Igtampe.BasicRender.Draw.Sprite(System.String,System.ConsoleColor,System.ConsoleColor,System.Int32,System.Int32)">
+            <summary>renders a sprite at the specified cursor position</summary>
+            <param name="sprite"></param>
+            <param name="BackgroundColor"></param>
+            <param name="ForegroundColor"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicRender.Draw.Block(System.ConsoleColor)">
+            <summary>Draws a block of a certain color at the current cursor position</summary>
+            <param name="Color">Color of the block</param>
+        </member>
+        <member name="M:Igtampe.BasicRender.Draw.Block(System.ConsoleColor,System.Int32,System.Int32)">
+            <summary>Draws a block of a certain color at the specified position</summary>
+            <param name="Color"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicRender.Draw.Box(System.ConsoleColor,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>Draws a box of the specified color of the specified height and width at the specified position</summary>
+            <param name="Color"></param>
+            <param name="Length"></param>
+            <param name="Height"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicRender.Draw.Row(System.ConsoleColor,System.Int32)">
+            <summary>Draws a row of blocks of the specified color of specified length at the current cursor position</summary>
+            <param name="RowColor"></param>
+            <param name="Length"></param>
+        </member>
+        <member name="M:Igtampe.BasicRender.Draw.Row(System.ConsoleColor,System.Int32,System.Int32,System.Int32)">
+            <summary>Draws a row of blocks of the specified color of specified length at the specified position</summary>
+            <param name="RowColor"></param>
+            <param name="Length"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicRender.Draw.ClearLine(System.Int32)">
+            <summary>Clears the specified line using the Console's current background color</summary>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicRender.Draw.CenterText(System.String)">
+            <summary>Draws text centered on the screen at the current row, and with curent colors</summary>
+            <param name="Text"></param>
+        </member>
+        <member name="M:Igtampe.BasicRender.Draw.CenterText(System.String,System.Int32)">
+            <summary>Draws text centered on the screen at the specified row, with the current colors</summary>
+            <param name="Text"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicRender.Draw.CenterText(System.String,System.Int32,System.ConsoleColor,System.ConsoleColor)">
+            <summary>Draws text centered on the screen at the specified row, with the specified colors</summary>
+            <param name="Text"></param>
+            <param name="TopPos"></param>
+            <param name="BG"></param>
+            <param name="FG"></param>
+        </member>
+        <member name="T:Igtampe.BasicRender.RenderUtils">
+            <summary>Utilities that BasicRender provides and uses</summary>
+        </member>
+        <member name="M:Igtampe.BasicRender.RenderUtils.Sleep(System.Int32)">
+            <summary>Halt execution of the program for the specified number of miliseconds</summary>
+            <param name="Time"></param>
+        </member>
+        <member name="M:Igtampe.BasicRender.RenderUtils.Pause">
+            <summary>Halt execution of the program until the user presses a key to continue</summary>
+        </member>
+        <member name="M:Igtampe.BasicRender.RenderUtils.Echo(System.String)">
+            <summary>displays text at the currentline, without a linebreak. <br></br>WILL LINEBREAK IF ONLY '.' IS SPECIFIED</summary>
+            <param name="text"></param>
+        </member>
+        <member name="M:Igtampe.BasicRender.RenderUtils.Echo(System.String,System.Boolean)">
+            <summary>displays text at the currentline, possibly with a linebreak if specified. <br></br>WILL LINEBREAK IF ONLY '.' IS SPECIFIED</summary>
+            <param name="text"></param>
+            <param name="Linebreak"></param>
+        </member>
+        <member name="M:Igtampe.BasicRender.RenderUtils.SetPos(System.Int32,System.Int32)">
+            <summary>Sets the cursor position to the specified one</summary>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicRender.RenderUtils.Color(System.ConsoleColor)">
+            <summary>Sets the foreground color of the console</summary>
+            <param name="FG"></param>
+        </member>
+        <member name="M:Igtampe.BasicRender.RenderUtils.Color(System.ConsoleColor,System.ConsoleColor)">
+            <summary>sets the background color of the console</summary>
+            <param name="BG"></param>
+            <param name="FG"></param>
+        </member>
+        <member name="M:Igtampe.BasicRender.RenderUtils.ResizeConsole(System.Int32,System.Int32)">
+            <summary>Resizes the console window and buffer together.</summary>
+            <param name="Width">Width in Columns</param>
+            <param name="Height">Height in Rows</param>
+        </member>
+        <member name="M:Igtampe.BasicRender.RenderUtils.TryResizeConsole(System.Int32,System.Int32)">
+            <summary>Tries to resize the console window and buffer</summary>
+            <param name="Width">Width in columns</param>
+            <param name="Height">Height in Rows</param>
+            <returns>True if the change occurred, False otherwise</returns>
+        </member>
+        <member name="M:Igtampe.BasicRender.RenderUtils.SetSize(System.Int32,System.Int32)">
+            <summary>Alias for ResizeConsole</summary>
+            <param name="Width"></param>
+            <param name="Height"></param>
+        </member>
+        <member name="M:Igtampe.BasicRender.RenderUtils.TrySetSize(System.Int32,System.Int32)">
+            <summary>Alias for TryResizeConsole</summary>
+            <param name="Width"></param>
+            <param name="Height"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicRender.RenderUtils.Type(System.String)">
+            <summary>Types the specified text one character at a time at the default delay of 5ms between each character.</summary>
+            <param name="Text"></param>
+        </member>
+        <member name="M:Igtampe.BasicRender.RenderUtils.Type(System.String,System.Int32)">
+            <summary>Types the specified text one character at a time, with the speciifed delay in miliseconds between each character.</summary>
+            <param name="Text"></param>
+            <param name="Delay"></param>
+        </member>
+        <member name="M:Igtampe.BasicRender.RenderUtils.Repeater(System.Char,System.Int32)">
+            <summary>Repeats the specified characer for the specified amount of times.</summary>
+            <param name="Repeat">Character to repeat</param>
+            <param name="Amount">Times to repeat it</param>
+            <returns>
+            The character, repeated Amount times. IE: <br></br>
+            Repeater('-',4) --> "----"
+            </returns>
+        </member>
+        <member name="T:Igtampe.BasicRender.SpecialChars">
+            <summary>
+            Class that holds special characters for extended rendering. <br></br>
+            <br></br>
+            N     D     D-S   S-D<br></br>
+            ┌─┬┐  ╔═╦╗  ╓─╥╖  ╒═╤╕<br></br>
+            ├─┼┤  ╠═╬╣  ╟─╫╢  ╞═╪╡<br></br>
+            └─┴┘  ╚═╩╝  ╙─╨╜  ╘═╧╛<br></br>
+            <br></br>
+            N : single box characters<br></br>
+            D : double box characters<br></br>
+            DS: Double vertical, Single Horizontal Box Characters<br></br>
+            SD: Single Vertical, Double Horizontal Box Characters<br></br>
+            </summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.TOP_LEFT">
+            <summary>┌</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.TOP_RIGHT">
+            <summary>┐</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.BOTTOM_LEFT">
+            <summary>└</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.BOTTOM_RIGHT">
+            <summary>┘</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.VERTICAL">
+            <summary>│</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.HORIZONTAL">
+            <summary>─</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.T_LEFT">
+            <summary>├</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.T_RIGHT">
+            <summary>┤</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.T_BOTTOM">
+            <summary>┴</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.T_TOP">
+            <summary>┬</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.T">
+            <summary>┼</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_TOP_LEFT">
+            <summary>╔</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_TOP_RIGHT">
+            <summary>╗</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_BOTTOM_LEFT">
+            <summary>╚</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_BOTTOM_RIGHT">
+            <summary>╝</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_VERTICAL">
+            <summary>║</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_HORIZONTAL">
+            <summary>═</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_T_LEFT">
+            <summary>╠</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_T_RIGHT">
+            <summary>╣</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_T_BOTTOM">
+            <summary>╩</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_T_TOP">
+            <summary>╦</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_T">
+            <summary>╬</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_SINGLE_TOP_LEFT">
+            <summary>╓</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_SINGLE_TOP_RIGHT">
+            <summary>╖</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_SINGLE_BOTTOM_LEFT">
+            <summary>╙</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_SINGLE_BOTTOM_RIGHT">
+            <summary>╜</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_SINGLE_VERTICAL">
+            <summary>║</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_SINGLE_HORIZONTAL">
+            <summary>─</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_SINGLE_T_LEFT">
+            <summary>╟</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_SINGLE_T_RIGHT">
+            <summary>╢</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_SINGLE_T_TOP">
+            <summary>╥</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_SINGLE_T_BOTTOM">
+            <summary>╨</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DOUBLE_SINGLE_T">
+            <summary>╫</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.SINGLE_DOUBLE_TOP_LEFT">
+            <summary>╒</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.SINGLE_DOUBLE_TOP_RIGHT">
+            <summary>╕</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.SINGLE_DOUBLE_BOTTOM_LEFT">
+            <summary>╘</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.SINGLE_DOUBLE_BOTTOM_RIGHT">
+            <summary>╛</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.SINGLE_DOUBLE_VERTICAL">
+            <summary>│</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.SINGLE_DOUBLE_HORIZONTAL">
+            <summary>═</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.SINGLE_DOUBLE_T_LEFT">
+            <summary>╞</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.SINGLE_DOUBLE_T_RIGHT">
+            <summary>╡</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.SINGLE_DOUBLE_T_TOP">
+            <summary>╤</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.SINGLE_DOUBLE_T_BOTTOM">
+            <summary>╧</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.SINGLE_DOUBLE_T">
+            <summary>╪</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.BOTTOM_HALF_BLOCK">
+            <summary>Bottom half of a block</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.BLOCK">
+            <summary>Full block</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.LEFT_HALF_BLOCK">
+            <summary>Left half of a block</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.TRIANGLE_UP">
+            <summary>▲</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.TRIANGLE_DOWN">
+            <summary>▼</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.TRIANGLE_LEFT">
+            <summary>◄</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.TRIANGLE_RIGHT">
+            <summary>►</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.ARROW_UP">
+            <summary>↑</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.ARROW_DOWN">
+            <summary>↓</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.ARROW_LEFT">
+            <summary>←</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.ARROW_RIGHT">
+            <summary>→</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.ARROW_UP_DOWN">
+            <summary>↕</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.ARROW_LEFT_RIGHT">
+            <summary>↔</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.ARROW_DOUBLE_LEFT">
+            <summary>«</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.ARROW_DOUBLE_RIGHT">
+            <summary>»</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.HOLLOW_SMILEY">
+            <summary>☺</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.FULL_SMILEY">
+            <summary>☻</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.HEART">
+            <summary></summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DIAMOND">
+            <summary>♦</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.CLOVER">
+            <summary>♣</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.SPADE">
+            <summary>♠</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.NOTE">
+            <summary>♫</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.SUN">
+            <summary>☼</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.SECTION_SIGN">
+            <summary>§</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.QUARTER">
+            <summary>¼</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.HALF">
+            <summary>½</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.DEGREE">
+            <summary>°</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.PLUS_MINUS">
+            <summary>±</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.SpecialChars.SQUARE">
+            <summary>²</summary>
+        </member>
+        <member name="M:Igtampe.BasicRender.SpecialChars.TestChars">
+            <summary>Writelines all test characters</summary>
+        </member>
+    </members>
+</doc>
