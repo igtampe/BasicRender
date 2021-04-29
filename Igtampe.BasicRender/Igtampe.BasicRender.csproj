@@ -17,6 +17,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>The Chopo Signature.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyName>BasicRender</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

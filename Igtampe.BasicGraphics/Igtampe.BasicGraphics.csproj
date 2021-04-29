@@ -17,6 +17,7 @@
     <FileVersion>3.0.0.0</FileVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>The Chopo Signature.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyName>BasicGraphics</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
