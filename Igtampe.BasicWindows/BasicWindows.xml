@@ -1,0 +1,878 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BasicWindows</name>
+    </assembly>
+    <members>
+        <member name="T:Igtampe.BasicWindows.DialogBox">
+            <summary>Class that can create Dialog Boxes</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.DialogBox.MaxWidth">
+            <summary>Maximum width of dialogboxes</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.DialogBox.MaxHeight">
+            <summary>Maximum height of dialogboxes</summary>
+        </member>
+        <member name="T:Igtampe.BasicWindows.DialogBox.DialogBoxButtons">
+            <summary>Enum that holds available button combinations for dialog boxes</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.DialogBox.DialogBoxButtons.OK">
+            <summary>OK Only</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.DialogBox.DialogBoxButtons.OKCancel">
+            <summary>OK and Cancel buttons</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.DialogBox.DialogBoxButtons.YesNo">
+            <summary>Yes and No buttons</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.DialogBox.DialogBoxButtons.YesNoCancel">
+            <summary>Yes, No, and Cancel buttons</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.DialogBox.DialogBoxButtons.AbortRetryIgnore">
+            <summary>Abort Retry and Ignore buttons</summary>
+        </member>
+        <member name="T:Igtampe.BasicWindows.DialogBox.DialogBoxResult">
+            <summary>Enum that holds available dialog box results</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.DialogBox.DialogBoxResult.Nothing">
+            <summary>Nothing, returned when no button was pressed but the window was closed</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.DialogBox.DialogBoxResult.OK">
+            <summary>OK</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.DialogBox.DialogBoxResult.Cancel">
+            <summary>Cancel</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.DialogBox.DialogBoxResult.Yes">
+            <summary>Yes</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.DialogBox.DialogBoxResult.No">
+            <summary>No</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.DialogBox.DialogBoxResult.Abort">
+            <summary>Abort</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.DialogBox.DialogBoxResult.Retry">
+            <summary>Retry</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.DialogBox.DialogBoxResult.Ignore">
+            <summary>Ignore</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.DialogBox.#ctor(Igtampe.BasicWindows.WindowElements.Icon.IconType,Igtampe.BasicWindows.DialogBox.DialogBoxButtons,System.String)">
+            <summary>Creates a dialog box</summary>
+            <param name="Type"></param>
+            <param name="Text"></param>
+            <param name="Buttons"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.DialogBox.Execute">
+            <summary>Executes the dialogbox</summary>
+            <returns>Returns a DialogBoxResult based on whichever button was pressed.</returns>
+        </member>
+        <member name="M:Igtampe.BasicWindows.DialogBox.ShowDialogBox(Igtampe.BasicWindows.WindowElements.Icon.IconType,Igtampe.BasicWindows.DialogBox.DialogBoxButtons,System.String)">
+            <summary>Shows a dialog box by first creating it, executing it, then disposing of it.</summary>
+            <param name="Type"></param>
+            <param name="Buttons"></param>
+            <param name="Text"></param>
+            <returns>Returns a DialogBoxResult based on whichever button was pressed.</returns>
+        </member>
+        <member name="M:Igtampe.BasicWindows.DialogBox.ShowExceptionError(System.Exception)">
+            <summary>Shows an error dialog box by using the data in the provided exception.</summary>
+            <param name="E"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicWindows.DialogBox.StrippedStackTrace(System.Exception)">
+            <summary>Strips the stacktrace of an exception of long paths to classes and files.</summary>
+            <param name="E"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Igtampe.BasicWindows.GuruMeditationErrorScreen">
+            <summary>Guru Meditation Error Screen to display an exception</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.GuruMeditationErrorScreen.E">
+            <summary>Exception we'll show</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.GuruMeditationErrorScreen.#ctor(System.Exception,System.Boolean)">
+            <summary>Creates a Guru Meditation Error Screen</summary>
+            <param name="E"></param>
+            <param name="Stripped">Used the "STRIPPED" Exception stack trace</param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.GuruMeditationErrorScreen.Render">
+            <summary>Draws the screen</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.GuruMeditationErrorScreen.Show(System.Exception,System.Boolean)">
+            <summary>Shows a Guru Meditation Error Screen for the specified Exception</summary>
+            <param name="E"></param>
+            <param name="Stripped">Whether or not to use the "Stripped" exception stack trace.</param>
+        </member>
+        <member name="T:Igtampe.BasicWindows.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.Properties.Resources.Stop">
+            <summary>
+              Looks up a localized resource of type System.Byte[].
+            </summary>
+        </member>
+        <member name="T:Igtampe.BasicWindows.TickableWindow">
+            <summary>Creates a window that can "Tick". A tick subroutine is called every 250 ms.</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.TickableWindow.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>Creates an Animated, Shadowed, and centered tickable window with a centered header with the default colors (Gray Main BG, dark blue header, White Header Text)</summary>
+            <param name="Title"></param>
+            <param name="Length"></param>
+            <param name="Height"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.TickableWindow.#ctor(System.ConsoleColor,System.ConsoleColor,System.ConsoleColor,System.String,System.Int32,System.Int32)">
+            <summary>Creates an Animated, Shadowed, and Centered tickable window with a centered header with the specified colors.</summary>
+            <param name="MainBG"></param>
+            <param name="HeaderBG"></param>
+            <param name="HeaderFG"></param>
+            <param name="Title"></param>
+            <param name="Length"></param>
+            <param name="Height"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.TickableWindow.#ctor(System.Boolean,System.Boolean,System.String,System.Int32,System.Int32)">
+            <summary>Creates a centered tickable window with a centered header with the default colors (Gray Main BG, dark blue header, White Header Text)</summary>
+            <param name="Animated"></param>
+            <param name="Shadowed"></param>
+            <param name="Title"></param>
+            <param name="Length"></param>
+            <param name="Height"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.TickableWindow.#ctor(System.Boolean,System.Boolean,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor,System.String,System.Int32,System.Int32)">
+            <summary>Creates a centered tickable window with a centered header</summary>
+            <param name="Animated"></param>
+            <param name="Shadowed"></param>
+            <param name="MainBG"></param>
+            <param name="HeaderBG"></param>
+            <param name="HeaderFG"></param>
+            <param name="Title"></param>
+            <param name="Length"></param>
+            <param name="Height"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.TickableWindow.#ctor(System.Boolean,System.Boolean,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor,Igtampe.BasicWindows.HeaderPosition,System.String,System.Int32,System.Int32)">
+            <summary>Creates a Tickable Window centered on the screen</summary>
+            <param name="Animated"></param>
+            <param name="Shadowed"></param>
+            <param name="MainBG"></param>
+            <param name="HeaderBG"></param>
+            <param name="HeaderFG"></param>
+            <param name="HeadPos"></param>
+            <param name="Title"></param>
+            <param name="Length"></param>
+            <param name="Height"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.TickableWindow.#ctor(System.Boolean,System.Boolean,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor,Igtampe.BasicWindows.HeaderPosition,System.String,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a Tickable Window. You get basically full control of everything with base constructor.
+            </summary>
+            <param name="Animated"></param>
+            <param name="Shadowed"></param>
+            <param name="MainBG"></param>
+            <param name="HeaderBG"></param>
+            <param name="HeaderFG"></param>
+            <param name="HeadPos"></param>
+            <param name="Title"></param>
+            <param name="Length"></param>
+            <param name="Height"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.TickableWindow.Execute">
+            <summary>Executes this tickable window</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.TickableWindow.Tick">
+            <summary>
+            Subroutine that runs every 250ms while the window is waiting for user input.
+            At Base, it ticks every tickable element.
+            </summary>
+            <returns>True if execution should continue</returns>
+        </member>
+        <member name="T:Igtampe.BasicWindows.TickableWindowElement">
+            <summary>Tickable window element that will tick on a tickable window every 250ms</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.TickableWindowElement.#ctor(Igtampe.BasicWindows.Window)">
+            <summary>Creates a tickable window element</summary>
+            <param name="Parent"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.TickableWindowElement.Tick">
+            <summary>Makes the element "tick". Should occur every 250ms</summary>
+            <returns>True if execution should continue</returns>
+        </member>
+        <member name="T:Igtampe.BasicWindows.TickableWindowElements.Spinner">
+            <summary>Spinner that "spins" one frame every 250ms</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.TickableWindowElements.Spinner.#ctor(Igtampe.BasicWindows.Window,System.ConsoleColor,System.ConsoleColor,System.Int32,System.Int32)">
+            <summary>Creates a spinner window element</summary>
+            <param name="Parent"></param>
+            <param name="BG"></param>
+            <param name="FG"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.TickableWindowElements.Spinner.DrawElement">
+            <summary>Draws the spinner, and increments its state by one.</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.TickableWindowElements.Spinner.Tick">
+            <summary>Draws the element again, spinning one frame</summary>
+            <returns>Always returns true. Execution is not determined by the spinner.</returns>
+        </member>
+        <member name="T:Igtampe.BasicWindows.TickableWindowElements.Timer">
+            <summary>Example tickable element that counts down from the time given.</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.TickableWindowElements.Timer.Time">
+            <summary>Original time this timer was counting down from in seconds.</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.TickableWindowElements.Timer.TimeUpWindow">
+            <summary>Window that will execute when time is up</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.TickableWindowElements.Timer.BackToFront">
+            <summary>
+            Indicates whether this timer should go from back to front or front to back. <br></br>
+            Should only be set if this is tied to a progressbar, and should not be set when the progressbar is running.
+            </summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.TickableWindowElements.Timer.TimeLeft">
+            <summary>Time left in Miliseconds</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.TickableWindowElements.Timer.#ctor(Igtampe.BasicWindows.Window,System.Int32,Igtampe.BasicWindows.WindowElements.Progressbar)">
+            <summary>Creates a timer element that will cut execution when it reaches 0, and that will show a progress bar going from 100% to 0% as time progresses</summary>
+            <param name="Parent"></param>
+            <param name="Time"></param>
+            <param name="progressbar"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.TickableWindowElements.Timer.#ctor(Igtampe.BasicWindows.Window,System.Int32)">
+            <summary>Creates a silent timer that will cut execution when it reaches 0.</summary>
+            <param name="Parent"></param>
+            <param name="Time"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.TickableWindowElements.Timer.DrawElement">
+            <summary>Draws the progress bar this element holds</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.TickableWindowElements.Timer.Tick">
+            <summary>Ticks this element, and takes away 250ms from this timer</summary>
+            <returns>True if there's still time, false otherwise</returns>
+        </member>
+        <member name="T:Igtampe.BasicWindows.Utils.BasicFontFormattedText">
+            <summary>Utilities for rendering windows</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.Utils.BasicFontFormattedText.Text">
+            <summary>The text, but formatted</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.Utils.BasicFontFormattedText.ActualWidth">
+            <summary>The actual width of this text</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.Utils.BasicFontFormattedText.ActualHeight">
+            <summary>The actual height of this text</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.Utils.BasicFontFormattedText.#ctor(System.String,Igtampe.BasicFonts.BasicFont,System.Int32,System.Int32)">
+            <summary>Creates an object to hold the text, but formatted to the given maximum width and maximum height (Based on the provided BasicFont)</summary>
+            <param name="Text"></param>
+            <param name="MaxWidth"></param>
+            <param name="MaxHeight"></param>
+            <param name="Font"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.Utils.BasicFontFormattedText.Format(System.String,Igtampe.BasicFonts.BasicFont,System.Int32,System.Int32)">
+            <summary>Returns a string formatted to fit in a box of with maximum dimensions of specified width/height</summary>
+            <param name="Text"></param>
+            <param name="MaxWidth"></param>
+            <param name="MaxHeight"></param>
+            <param name="Font"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Igtampe.BasicWindows.Utils.FormattedText">
+            <summary>Utilities for rendering windows</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.Utils.FormattedText.Text">
+            <summary>The text, but formatted</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.Utils.FormattedText.ActualWidth">
+            <summary>The actual width of this text</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.Utils.FormattedText.ActualHeight">
+            <summary>The actual height of this text</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.Utils.FormattedText.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>Creates an object to hold the text, but formatted to the given maximum width and maximum height</summary>
+            <param name="Text"></param>
+            <param name="MaxWidth"></param>
+            <param name="MaxHeight"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.Utils.FormattedText.Format(System.String,System.Int32,System.Int32)">
+            <summary>Returns a string formatted to fit in a box of with maximum dimensions of specified width/height</summary>
+            <param name="Text"></param>
+            <param name="MaxWidth"></param>
+            <param name="MaxHeight"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Igtampe.BasicWindows.HeaderPosition">
+            <summary>Position of the header on a window</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.HeaderPosition.LEFT">
+            <summary>Align the header to the left of the window</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.HeaderPosition.CENTER">
+            <summary>Align the header on the center of the window</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.HeaderPosition.RIGHT">
+            <summary>Align the header to the right</summary>
+        </member>
+        <member name="T:Igtampe.BasicWindows.Window">
+            <summary>Holds the base for a renderable window.</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.Window.WindowClearColor">
+            <summary>Color the close function will use to clear the window</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.Window.Animated">
+            <summary>Indicates whether this window should "animate" itself when being drawn</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.Window.Shadowed">
+            <summary>Indicates whether this window should have a shadow when being drawn</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.Window.Drawn">
+            <summary>Indicates whether the window is currently drawn.</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.Window.LeftPos">
+            <summary>Left position of this window</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.Window.TopPos">
+            <summary>Top position of this window</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.Window.Length">
+            <summary>Length of this window</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.Window.Height">
+            <summary>Height of this window.</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.Window.Title">
+            <summary>Title of this window</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.Window.MainBG">
+            <summary>Main background of this window</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.Window.HeaderBG">
+            <summary>Background of the header on this window</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.Window.HeaderFG">
+            <summary>Foreground of the header of this window</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.Window.HeadPos">
+            <summary>Position of the header in this window</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.Window.HighlightedElement">
+            <summary>Currently highlighted element on this window</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.Window.AllElements">
+            <summary>All elements of this window</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.Window.#ctor(System.String,System.Int32,System.Int32)">
+            <summary>Creates an Animated, Shadowed, and centered window with a centered header with the default colors (Gray Main BG, dark blue header, White Header Text)</summary>
+            <param name="Title"></param>
+            <param name="Length"></param>
+            <param name="Height"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.Window.#ctor(System.ConsoleColor,System.ConsoleColor,System.ConsoleColor,System.String,System.Int32,System.Int32)">
+            <summary>Creates an Animated, Shadowed, and Centered window with a centered header with the specified colors.</summary>
+            <param name="MainBG"></param>
+            <param name="HeaderBG"></param>
+            <param name="HeaderFG"></param>
+            <param name="Title"></param>
+            <param name="Length"></param>
+            <param name="Height"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.Window.#ctor(System.Boolean,System.Boolean,System.String,System.Int32,System.Int32)">
+            <summary>Creates a centered window with a centered header with the default colors (Gray Main BG, dark blue header, White Header Text)</summary>
+            <param name="Animated"></param>
+            <param name="Shadowed"></param>
+            <param name="Title"></param>
+            <param name="Length"></param>
+            <param name="Height"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.Window.#ctor(System.Boolean,System.Boolean,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor,System.String,System.Int32,System.Int32)">
+            <summary>Creates a centered window with a centered header</summary>
+            <param name="Animated"></param>
+            <param name="Shadowed"></param>
+            <param name="MainBG"></param>
+            <param name="HeaderBG"></param>
+            <param name="HeaderFG"></param>
+            <param name="Title"></param>
+            <param name="Length"></param>
+            <param name="Height"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.Window.#ctor(System.Boolean,System.Boolean,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor,Igtampe.BasicWindows.HeaderPosition,System.String,System.Int32,System.Int32)">
+            <summary>Creates a window centered on the screen</summary>
+            <param name="Animated"></param>
+            <param name="Shadowed"></param>
+            <param name="MainBG"></param>
+            <param name="HeaderBG"></param>
+            <param name="HeaderFG"></param>
+            <param name="HeadPos"></param>
+            <param name="Title"></param>
+            <param name="Length"></param>
+            <param name="Height"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.Window.#ctor(System.Boolean,System.Boolean,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor,Igtampe.BasicWindows.HeaderPosition,System.String,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Creates a window. You get basically full control of everything with this constructor.
+            </summary>
+            <param name="Animated"></param>
+            <param name="Shadowed"></param>
+            <param name="MainBG"></param>
+            <param name="HeaderBG"></param>
+            <param name="HeaderFG"></param>
+            <param name="HeadPos"></param>
+            <param name="Title"></param>
+            <param name="Length"></param>
+            <param name="Height"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.Window.AddElement(Igtampe.BasicWindows.WindowElement)">
+            <summary>Adds an Element to the Window</summary>
+            <param name="NewElement"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.Window.AddElements(System.Collections.Generic.IEnumerable{Igtampe.BasicWindows.WindowElement})">
+            <summary>Adds a range of elements to the window</summary>
+            <param name="NewElements"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.Window.Execute">
+            <summary>Launches this window</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.Window.DrawWindow(System.Boolean)">
+            <summary>Draws the window</summary>
+            <param name="Animated"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.Window.OnKeyPress(System.ConsoleKeyInfo)">
+            <summary>Triggered when a key is pressed, and handles what to do with it.</summary>
+            <param name="PressedKey"></param>
+            <returns>Returns True if the window should remain open, otherwise false.</returns>
+        </member>
+        <member name="M:Igtampe.BasicWindows.Window.Redraw">
+            <summary>Redraws the window without animations</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.Window.Close">
+            <summary>Closes the window</summary>
+        </member>
+        <member name="T:Igtampe.BasicWindows.KeyPressReturn">
+            <summary>Small Enum that tells what the parent window should do once this element is done being interacted with.</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.KeyPressReturn.NOTHING">
+            <summary>No response</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.KeyPressReturn.NEXT_ELEMENT">
+            <summary>Go to the next Element</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.KeyPressReturn.PREV_ELEMENT">
+            <summary>Go back to the previous element</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.KeyPressReturn.CLOSE">
+            <summary>Close the form</summary>
+        </member>
+        <member name="T:Igtampe.BasicWindows.WindowElement">
+            <summary>Generic WindowElement</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.WindowElement.NextElement">
+            <summary>Element to move to when hitting right arrow, or tab</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.WindowElement.PreviousElement">
+            <summary>Element to move to when hitting the left or SHIFT+TAB</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.WindowElement.Parent">
+            <summary>Parent of this window element</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.WindowElement.LeftPos">
+            <summary>Left position of this element with reference to the window's left position</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.WindowElement.TopPos">
+            <summary>Top position of this element with reference to the window's top position</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.WindowElement.Highlighted">
+            <summary>Specifies whether or not this element is highlighted</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElement.#ctor(Igtampe.BasicWindows.Window)">
+            <summary>Most basic constructor for any window element</summary>
+            <param name="Parent"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElement.OnKeyPress(System.ConsoleKeyInfo)">
+            <summary>Triggered when a key is hit, and handles any user interaction with this element</summary>
+            <param name="Key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElement.DrawElement">
+            <summary>Draws the element</summary>
+        </member>
+        <member name="T:Igtampe.BasicWindows.WindowElements.BasicFontLabel">
+            <summary>Label that holds text and is drawn using a specified BasicFont</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.BasicFontLabel.#ctor(Igtampe.BasicWindows.Window,System.String,Igtampe.BasicFonts.BasicFont,System.ConsoleColor,System.Int32,System.Int32)">
+            <summary>Creates a Label Window element</summary>
+            <param name="Parent"></param>
+            <param name="Text"></param>
+            <param name="Font"></param>
+            <param name="FG"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.BasicFontLabel.#ctor(Igtampe.BasicWindows.Window,System.String,Igtampe.BasicFonts.BasicFont,System.Int32,System.Int32,System.ConsoleColor,System.Int32,System.Int32)">
+            <summary>Creates a label window element of the specified maximum width and maximum height</summary>
+            <param name="Parent"></param>
+            <param name="Text"></param>
+            <param name="Font"></param>
+            <param name="MaxWidth"></param>
+            <param name="MaxHeight"></param>
+            <param name="FG"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.BasicFontLabel.#ctor(Igtampe.BasicWindows.Window,Igtampe.BasicWindows.Utils.BasicFontFormattedText,Igtampe.BasicFonts.BasicFont,System.ConsoleColor,System.Int32,System.Int32)">
+            <summary>Creates a label with pre-formated text</summary>
+            <param name="Parent"></param>
+            <param name="Text"></param>
+            <param name="Font"></param>
+            <param name="FG"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.BasicFontLabel.DrawElement">
+            <summary>Draws this label</summary>
+        </member>
+        <member name="T:Igtampe.BasicWindows.WindowElements.Box">
+            <summary>Window Element that draws a nice box</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Box.#ctor(Igtampe.BasicWindows.Window,System.ConsoleColor,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>Creates a box Window Element</summary>
+            <param name="Parent"></param>
+            <param name="Color"></param>
+            <param name="Length"></param>
+            <param name="Height"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Box.DrawElement">
+            <summary>Draws this box</summary>
+        </member>
+        <member name="T:Igtampe.BasicWindows.WindowElements.Button">
+            <summary>Button, though it may as well be a clickable link.</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.WindowElements.Button.HighlightedBG">
+            <summary>Background when this button is highlighted</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.WindowElements.Button.BG">
+            <summary>Background of this Button when it isn't highlighted</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.WindowElements.Button.FG">
+            <summary>Foreground of thie element</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.WindowElements.Button.Text">
+            <summary>Text on this button</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Button.#ctor(Igtampe.BasicWindows.Window,System.String,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor,System.Int32,System.Int32)">
+            <summary>Creates a button</summary>
+            <param name="Parent"></param>
+            <param name="Text"></param>
+            <param name="BG"></param>
+            <param name="FG"></param>
+            <param name="HighlightedBG"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Button.DrawElement">
+            <summary>Draws this button</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Button.OnKeyPress(System.ConsoleKeyInfo)">
+            <summary>Handles what happens when a key is pressed and this button is highlighted</summary>
+            <param name="Key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Button.Action">
+            <summary>Abstract method that an actual button needs to override, so that an action happens when you hit enter.</summary>
+            <returns></returns>
+        </member>
+        <member name="T:Igtampe.BasicWindows.WindowElements.CloseButton">
+            <summary>Button that signals the window to close when pressed.</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.CloseButton.#ctor(Igtampe.BasicWindows.Window,System.String,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor,System.Int32,System.Int32)">
+            <summary>Creates a button that interacted with, will close the window</summary>
+            <param name="Parent"></param>
+            <param name="Text"></param>
+            <param name="BG"></param>
+            <param name="FG"></param>
+            <param name="HighlightedBG"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.CloseButton.Action">
+            <summary>Closes the window</summary>
+            <returns></returns>
+        </member>
+        <member name="T:Igtampe.BasicWindows.WindowElements.FlaggedCloseButton">
+            <summary>Close button that includes a flag variable that's activated when it is triggered.</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.WindowElements.FlaggedCloseButton.Flag">
+            <summary>The flag of this FlaggedButton. Should be true if this element was triggered </summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.FlaggedCloseButton.#ctor(Igtampe.BasicWindows.Window,System.String,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor,System.Int32,System.Int32)">
+            <summary>Creates a Flagged Close Button</summary>
+            <param name="Parent"></param>
+            <param name="Text"></param>
+            <param name="BG"></param>
+            <param name="FG"></param>
+            <param name="HighlightedBG"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.FlaggedCloseButton.Action">
+            <summary>Closes the window, and sets the FLAG on this button to true</summary>
+            <returns>The base's result, which in this case is CLOSE</returns>
+        </member>
+        <member name="T:Igtampe.BasicWindows.WindowElements.Icon">
+            <summary>Icon element for dialogboxes (Exclamation, Error, information, or question)</summary>
+        </member>
+        <member name="T:Igtampe.BasicWindows.WindowElements.Icon.IconType">
+            <summary>Type of icon</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.WindowElements.Icon.IconType.ERROR">
+            <summary>Error icon that's a red box with an X in the center</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.WindowElements.Icon.IconType.EXCLAMATION">
+            <summary>Exclamation icon that's a yellow box with a ! in the center</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.WindowElements.Icon.IconType.INFORMATION">
+            <summary>Information icon that's a blue box with an i in the center</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.WindowElements.Icon.IconType.QUESTION">
+            <summary>Question icon that's a blue box with a ? in the center</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Icon.#ctor(Igtampe.BasicWindows.Window,Igtampe.BasicWindows.WindowElements.Icon.IconType,System.Int32,System.Int32)">
+            <summary>Creates an Icon window element</summary>
+            <param name="Parent"></param>
+            <param name="Type"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Icon.DrawElement">
+            <summary>Draws this icon</summary>
+        </member>
+        <member name="T:Igtampe.BasicWindows.WindowElements.Image">
+            <summary>Image that holds a BasicRenderGraphic</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Image.#ctor(Igtampe.BasicWindows.Window,Igtampe.BasicGraphics.Graphic,System.Int32,System.Int32)">
+            <summary>Creates an image window element</summary>
+            <param name="Parent"></param>
+            <param name="Graphic"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Image.DrawElement">
+            <summary>Draws this image window element</summary>
+        </member>
+        <member name="T:Igtampe.BasicWindows.WindowElements.Label">
+            <summary>Label that holds text</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Label.#ctor(Igtampe.BasicWindows.Window,System.String,System.ConsoleColor,System.ConsoleColor,System.Int32,System.Int32)">
+            <summary>Creates a Label Window element</summary>
+            <param name="Parent"></param>
+            <param name="Text"></param>
+            <param name="BG"></param>
+            <param name="FG"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Label.#ctor(Igtampe.BasicWindows.Window,System.String,System.Int32,System.Int32,System.ConsoleColor,System.ConsoleColor,System.Int32,System.Int32)">
+            <summary>Creates a label window element of the specified maximum width and maximum height</summary>
+            <param name="Parent"></param>
+            <param name="Text"></param>
+            <param name="MaxWidth"></param>
+            <param name="MaxHeight"></param>
+            <param name="BG"></param>
+            <param name="FG"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Label.#ctor(Igtampe.BasicWindows.Window,Igtampe.BasicWindows.Utils.FormattedText,System.ConsoleColor,System.ConsoleColor,System.Int32,System.Int32)">
+            <summary>Creates a label with pre-formated text</summary>
+            <param name="Parent"></param>
+            <param name="Text"></param>
+            <param name="BG"></param>
+            <param name="FG"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Label.DrawElement">
+            <summary>Draws this label</summary>
+        </member>
+        <member name="T:Igtampe.BasicWindows.WindowElements.LeftRightSelect">
+            <summary>WindowElement that allows a user to select from a list of strings by using the left or right arrow keys</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.WindowElements.LeftRightSelect.Items">
+            <summary>List of strings a user can select from this LeftRightSelect</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.WindowElements.LeftRightSelect.SelectedItemIndex">
+            <summary>Selected item index of this LeftRightSelect</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.LeftRightSelect.#ctor(Igtampe.BasicWindows.Window,System.Collections.Generic.List{System.String},System.Int32,System.Int32,System.Int32,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor)">
+            <summary>Creates a LeftRightSelect with the given items</summary>
+            <param name="Parent"></param>
+            <param name="Items"></param>
+            <param name="Length"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+            <param name="BG"></param>
+            <param name="HighlightedBG"></param>
+            <param name="FG"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.LeftRightSelect.OnKeyPress(System.ConsoleKeyInfo)">
+            <summary>Handles a keypress on this LeftRightSelect</summary>
+            <param name="Key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Igtampe.BasicWindows.WindowElements.NumericalTextBox">
+            <summary>Textbox that only accepts numerical values</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.WindowElements.NumericalTextBox.Value">
+            <summary>Value of the text this NumericalTextBox Holds</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.NumericalTextBox.#ctor(Igtampe.BasicWindows.Window,System.Int32,System.Int32,System.Int32,System.Int32,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor)">
+            <summary>Creates a Numerical TextBox</summary>
+            <param name="Parent"></param>
+            <param name="MaximumVal"></param>
+            <param name="Length"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+            <param name="BG"></param>
+            <param name="HighlightedBG"></param>
+            <param name="FG"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.NumericalTextBox.OnKeyPress(System.ConsoleKeyInfo)">
+            <summary>Handles the key press of this numerical textbox.</summary>
+            <param name="Key"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Igtampe.BasicWindows.WindowElements.Progressbar">
+            <summary>ProgressBar window element</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.WindowElements.Progressbar.Percent">
+            <summary>Percent of this progress bar.</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.WindowElements.Progressbar.BG">
+            <summary>Background of this progressbar</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.WindowElements.Progressbar.BarColor">
+            <summary>Color of the bar that will be drawn on top of this progressbar to indicate progress.</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Progressbar.#ctor(Igtampe.BasicWindows.Window,System.Int32,System.Int32,System.Int32)">
+            <summary>Creates a ProgressBar with the default colors (DarkGray BG, DarkBlue Bar Color)</summary>
+            <param name="Parent"></param>
+            <param name="Length"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Progressbar.#ctor(Igtampe.BasicWindows.Window,System.Int32,System.Int32,System.Int32,System.ConsoleColor,System.ConsoleColor)">
+            <summary>Creates a ProgressBar</summary>
+            <param name="Parent"></param>
+            <param name="Length"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+            <param name="BG"></param>
+            <param name="BarColor"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Progressbar.DrawElement">
+            <summary>Draws this progress bar</summary>
+        </member>
+        <member name="T:Igtampe.BasicWindows.WindowElements.Slider">
+            <summary>Slider element that is controlled with left and right arrow keys</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.WindowElements.Slider.SliderPosition">
+            <summary>Position of the slider along the length of the element.</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Slider.#ctor(Igtampe.BasicWindows.Window,System.Int32,System.Int32,System.Int32,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor)">
+            <summary>Creates a slider with as many positions as the length of the element</summary>
+            <param name="Parent"></param>
+            <param name="Length"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+            <param name="BG"></param>
+            <param name="HighlightedBG"></param>
+            <param name="FG"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Slider.OnKeyPress(System.ConsoleKeyInfo)">
+            <summary>Handles a keypress of this element.</summary>
+            <param name="Key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Slider.DrawElement">
+            <summary>Draws this element</summary>
+        </member>
+        <member name="T:Igtampe.BasicWindows.WindowElements.Textbox">
+            <summary>Textbox that accepts text when a user hits a key</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.WindowElements.Textbox.Length">
+            <summary>Length of this textbox</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.WindowElements.Textbox.BG">
+            <summary>Background Color of this textbox</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.WindowElements.Textbox.HighlightedBG">
+            <summary>Highlighted Color of this Textbox</summary>
+        </member>
+        <member name="F:Igtampe.BasicWindows.WindowElements.Textbox.FG">
+            <summary>Foreground (Text) color of this textbox</summary>
+        </member>
+        <member name="P:Igtampe.BasicWindows.WindowElements.Textbox.Text">
+            <summary>Text this TextBox contains</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Textbox.#ctor(Igtampe.BasicWindows.Window,System.Int32,System.Int32,System.Int32,System.ConsoleColor,System.ConsoleColor,System.ConsoleColor)">
+            <summary>Creates a textbox windowelement</summary>
+            <param name="Parent"></param>
+            <param name="Length"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
+            <param name="BG"></param>
+            <param name="HighlightedBG"></param>
+            <param name="FG"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Textbox.OnKeyPress(System.ConsoleKeyInfo)">
+            <summary>Accepts Key Input, and if needed, modifies the text in this textbox</summary>
+            <param name="Key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicWindows.WindowElements.Textbox.DrawElement">
+            <summary>Draws this textbox</summary>
+        </member>
+        <member name="T:Igtampe.BasicWindows.Windows.ErrorWindow">
+            <summary>Window that displays an error, and closes when the user hits enter on the OK Button</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.Windows.ErrorWindow.#ctor(System.String)">
+            <summary>
+            Creates an Error Window that displays the specified text. <br></br><br></br>
+            
+            <b>NOTE!</b><br></br>
+            ErrorWindow will only display the first three lines of text that it can fit.
+            
+            </summary>
+            <param name="Text"></param>
+        </member>
+        <member name="M:Igtampe.BasicWindows.Windows.ErrorWindow.ShowErrorWindow(System.String)">
+            <summary>Shows an error window with an OK button</summary>
+            <param name="Text"></param>
+        </member>
+        <member name="T:Igtampe.BasicWindows.Windows.HelloWorldWindow">
+            <summary>A tiny window that says helloworld</summary>
+        </member>
+        <member name="M:Igtampe.BasicWindows.Windows.HelloWorldWindow.#ctor">
+            <summary>Creates an instance of the HelloWorld Window </summary>
+        </member>
+    </members>
+</doc>

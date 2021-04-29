@@ -1,0 +1,51 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Igtampe</Authors>
+    <Product>Igtampe.BasicWindows</Product>
+    <Description>BasicWindows is an enhancement to Igtampe.BasicRender, which makes it easy to create, render, and manage user interactions via "windows" on the console. For a full documentation, please see the GitHub Repo for BasicRender, or the included comments.</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <Copyright>(C)2021 Igtampe, No Rights Reserved</Copyright>
+    <PackageProjectUrl>https://github.com/igtampe/BasicRender</PackageProjectUrl>
+    <PackageIcon>BasicRender Icon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/igtampe/BasicRender</RepositoryUrl>
+    <RepositoryType></RepositoryType>
+    <PackageTags>Console Graphics UI</PackageTags>
+    <AssemblyVersion>3.0.0.0</AssemblyVersion>
+    <FileVersion>3.0.0.0</FileVersion>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>The Chopo Signature.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyName>BasicWindows</AssemblyName>
+    <PackageId>Igtampe.BasicWindows</PackageId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>false</Optimize>
+    <DocumentationFile>C:\Users\igtam\source\repos\BasicRender\Igtampe.BasicWindows\BasicWindows.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="The Chopo Signature.pfx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Igtampe.BasicFonts\Igtampe.BasicFonts.csproj" />
+    <ProjectReference Include="..\Igtampe.BasicGraphics\Igtampe.BasicGraphics.csproj" />
+    <ProjectReference Include="..\Igtampe.BasicRender\Igtampe.BasicRender.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="A:\Pictures\Program Resources\BasicRender Icon.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>

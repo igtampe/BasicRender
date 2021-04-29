@@ -60,17 +60,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BasicGraphics.C\Igtampe.BasicGraphics.csproj">
-      <Project>{41dbf856-b2e6-4a1c-a06a-a211186d2acd}</Project>
-      <Name>Igtampe.BasicGraphics</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\BasicRender\Igtampe.BasicRender.csproj">
-      <Project>{cd2d4436-5b3e-458c-b17a-a6822c25635f}</Project>
-      <Name>Igtampe.BasicRender</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Igtampe.BasicFonts\Igtampe.BasicFonts.csproj">
       <Project>{4b167887-d61f-4e7e-955d-556fcf6627bd}</Project>
       <Name>Igtampe.BasicFonts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Igtampe.BasicGraphics\Igtampe.BasicGraphics.csproj">
+      <Project>{d7be2c08-593d-41c0-aff2-623d588cfab2}</Project>
+      <Name>Igtampe.BasicGraphics</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Igtampe.BasicRender\Igtampe.BasicRender.csproj">
+      <Project>{179c2653-a7b6-4ef9-ad68-ef0eb6e428b6}</Project>
+      <Name>Igtampe.BasicRender</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
