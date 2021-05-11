@@ -42,8 +42,12 @@
     <ApplicationIcon>BasicRender.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DictionaryOnDisk, Version=2.0.0.0, Culture=neutral, PublicKeyToken=71f2084e3069f9d2, processorArchitecture=MSIL">
+      <HintPath>..\packages\Igtampe.DictionaryOnDisk.1.0.0\lib\netstandard2.0\DictionaryOnDisk.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -63,6 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="Resources\Landscape.df" />
     <None Include="Resources\LP.df" />
     <None Include="Resources\Rainbow.HC" />
@@ -81,6 +86,10 @@
     <ProjectReference Include="..\Igtampe.BasicRender\Igtampe.BasicRender.csproj">
       <Project>{179c2653-a7b6-4ef9-ad68-ef0eb6e428b6}</Project>
       <Name>Igtampe.BasicRender</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Igtampe.BasicShapes\Igtampe.BasicShapes.csproj">
+      <Project>{95e226ee-861c-477d-921d-21eb96eec340}</Project>
+      <Name>Igtampe.BasicShapes</Name>
     </ProjectReference>
     <ProjectReference Include="..\Igtampe.BasicWindows\Igtampe.BasicWindows.csproj">
       <Project>{f8b2b2b0-b451-4608-ae5a-bfaac88ac3d6}</Project>
