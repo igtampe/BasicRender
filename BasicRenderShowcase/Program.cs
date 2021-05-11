@@ -7,29 +7,28 @@ using Igtampe.BasicWindows.TickableWindowElements;
 using Igtampe.BasicWindows.WindowElements;
 using Igtampe.BasicWindows.Windows;
 using Igtampe.BasicFonts;
+using Igtampe.BasicShapes;
 
 namespace Igtampe.BasicRenderShowcase {
     class Program {
         static void Main() {
 
+            ShapesDemo();
+
             RenderUtils.Echo("Stand by...\n\n");
             SpecialChars.TestChars();
 
             RenderUtils.ResizeConsole(100,50);
-            RenderUtils.Sleep(250);
             RenderUtils.ResizeConsole(50,25);
-            RenderUtils.Sleep(250);
             RenderUtils.ResizeConsole(Console.LargestWindowWidth,Console.LargestWindowHeight);
-            RenderUtils.Sleep(250);
             RenderUtils.ResizeConsole(30,15);
-            RenderUtils.Sleep(250);
             RenderUtils.ResizeConsole(80,25);
+
 
             //Draw the splash
             BasicRenderSplash();
             //RenderUtils.Sleep(2000);
             RenderUtils.Pause();
-
 
             Window WelcomeSplash = new Window(false,true,"Welcome",47,10);
             CloseButton SplashWelcomeBTN = new CloseButton(WelcomeSplash,"[   OK   ]",ConsoleColor.DarkGray,ConsoleColor.White,ConsoleColor.DarkBlue,19,8);
@@ -143,6 +142,102 @@ namespace Igtampe.BasicRenderShowcase {
 
 
         }
+
+        /// <summary>Demo the shapes package</summary>
+        static void ShapesDemo() {
+            //Let's draw a box.
+
+            //good lord why did we have to call a WindowElement Icon. Now we have an ambiguity with System.Drawing. 
+
+            ConsoleColor C = ConsoleColor.Red;
+            ConsoleColor W = ConsoleColor.White;
+            ConsoleColor G = ConsoleColor.Green;
+            ConsoleColor Y = ConsoleColor.Yellow;
+            ConsoleColor B = ConsoleColor.Blue;
+
+            System.Drawing.Rectangle R = new System.Drawing.Rectangle(4,1,30,5);
+            System.Drawing.Point[] Ps = {
+                new System.Drawing.Point(30,10),
+                new System.Drawing.Point(30,20),
+                new System.Drawing.Point(10,15)
+            };
+
+            System.Drawing.Point[] Cube1 = {
+                new System.Drawing.Point(45,4),
+                new System.Drawing.Point(65,4),
+                new System.Drawing.Point(65,14),
+                new System.Drawing.Point(45,14),
+            };
+
+            int CA = 7;
+
+            System.Drawing.Point[] Cube2 = {
+                new System.Drawing.Point(45-CA,4+CA),
+                new System.Drawing.Point(65-CA,4+CA),
+                new System.Drawing.Point(65-CA,14+CA),
+                new System.Drawing.Point(45-CA,14+CA),
+            };
+
+            System.Drawing.Point[] Cube3 = {
+                new System.Drawing.Point(65,4),
+                new System.Drawing.Point(65,14),
+                new System.Drawing.Point(65-CA,14+CA),
+                new System.Drawing.Point(65-CA,4+CA),
+            };
+
+            System.Drawing.Point[] Cube4 = {
+                new System.Drawing.Point(45,4),
+                new System.Drawing.Point(65,4),
+                new System.Drawing.Point(65-CA,4+CA),
+                new System.Drawing.Point(45-CA,4+CA),
+            };
+
+            System.Drawing.Point[] Cube5 = {
+                new System.Drawing.Point(45,4),
+                new System.Drawing.Point(45,14),
+                new System.Drawing.Point(45-CA,14+CA),
+                new System.Drawing.Point(45-CA,4+CA),
+            };
+
+            DrawShapes.DrawLine(2,2,8,20,C);
+            DrawShapes.DrawLine(20,2,2,20,W);
+            DrawShapes.DrawLine(2,2,60,20,G);
+            DrawShapes.DrawRectangle(R,Y);
+            DrawShapes.DrawPolygon(Ps,B);
+            
+            //We're gonna draw two squares
+            DrawShapes.DrawPolygon(Cube1,W);
+            DrawShapes.DrawPolygon(Cube2,W);
+            DrawShapes.DrawPolygon(Cube3,W);
+            DrawShapes.DrawPolygon(Cube4,W);
+            DrawShapes.DrawPolygon(Cube5,W);
+
+            DrawShapes.FillPolygon(Cube4,ConsoleColor.Gray);
+            DrawShapes.FillPolygon(Cube3,ConsoleColor.DarkGray);
+            DrawShapes.FillPolygon(Cube2,ConsoleColor.White);
+
+            DrawShapes.FillPolygon(Ps,B);
+
+            Curve C1 = new Curve(new System.Drawing.Point(20,13),10,0,180);
+            Curve C2 = new Curve(new System.Drawing.Point(20,13),10,180,360);
+
+            DrawShapes.DrawCurve(C1,ConsoleColor.Cyan);
+            DrawShapes.DrawCurve(C2,ConsoleColor.Cyan);
+
+            //now turn it into a polygon
+            Line[] CircleCurves = { C1,C2};
+
+            Polygon Circle = new Polygon(CircleCurves);
+
+            DrawShapes.FillPolygon(Circle,ConsoleColor.Cyan);
+
+            RenderUtils.Pause();
+
+
+
+
+        }
+
     }
 
 

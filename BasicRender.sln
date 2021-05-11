@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Igtampe.BasicClockExample",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example_CSharp", "BasicRenderShowcase\Example_CSharp.csproj", "{84B6FFC2-B9E9-45E2-B9A9-56C00157F845}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Igtampe.BasicShapes", "Igtampe.BasicShapes\Igtampe.BasicShapes.csproj", "{95E226EE-861C-477D-921D-21EB96EEC340}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{84B6FFC2-B9E9-45E2-B9A9-56C00157F845}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{84B6FFC2-B9E9-45E2-B9A9-56C00157F845}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{84B6FFC2-B9E9-45E2-B9A9-56C00157F845}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95E226EE-861C-477D-921D-21EB96EEC340}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95E226EE-861C-477D-921D-21EB96EEC340}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95E226EE-861C-477D-921D-21EB96EEC340}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95E226EE-861C-477D-921D-21EB96EEC340}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
