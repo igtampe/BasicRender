@@ -156,6 +156,17 @@ namespace Igtampe.BasicShapes {
             return Points;
         }
 
+        //-[Static Utilities]-------------------------------------------------------------------------------
+
+        /// <summary>Returns a line that's been shifted by DX and by DY</summary>
+        /// <param name="L"></param>
+        /// <param name="DX"></param>
+        /// <param name="DY"></param>
+        /// <returns></returns>
+        public static Line TranslateLine(Line L,int DX,int DY) {
+            return new Line(L.P1.X + DX,L.P1.Y + DY,
+                            L.P2.X + DX,L.P2.Y + DY);
+        }
 
     }
 }
