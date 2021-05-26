@@ -44,5 +44,22 @@ namespace Igtampe.BasicShapes {
 
         }
 
+        //-[Constructors]-------------------------------------------------------------------------------
+
+
+        /// <summary>Translates a Polygon P by DX and DY, by individually moving each line within it.</summary>
+        /// <param name="P"></param>
+        /// <param name="DX"></param>
+        /// <param name="DY"></param>
+        /// <returns></returns>
+        public Polygon TranslatePolygon(Polygon P,int DX,int DY) {
+
+            List<Line> NewLines = new List<Line>();
+            foreach(Line L in Lines) {NewLines.Add(Line.TranslateLine(L,DX,DY));}
+
+            return new Polygon(NewLines.ToArray());
+
+        }
+
     }
 }
