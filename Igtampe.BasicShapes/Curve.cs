@@ -28,6 +28,7 @@ namespace Igtampe.BasicShapes {
             }
         }
 
+        //-[Constructor]-------------------------------------------------------------------------------
 
         /// <summary>Creates a curve</summary>
         /// <param name="Center"></param>
@@ -50,6 +51,8 @@ namespace Igtampe.BasicShapes {
             points = GeneratePoints(this);
 
         }
+
+        //-[Methods]-------------------------------------------------------------------------------
 
         /// <summary>Returns true if obj is a curve and its A1, A2, and Center are equal to this curve's</summary>
         /// <param name="obj"></param>
@@ -77,6 +80,8 @@ namespace Igtampe.BasicShapes {
             return Points;
         
         }
+
+        //-[Static Fields]-------------------------------------------------------------------------------
 
         /// <summary>Converts degrees to radians</summary>
         private static double DegToRadians(double Degree) { return Degree * (Math.PI / 180); }
