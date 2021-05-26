@@ -18,10 +18,10 @@ namespace Igtampe.BasicShapes {
         protected List<Point> points;
 
         /// <summary>List of all points this line has</summary>
-        public List<Point> Points { 
-            protected set {points = value;}
+        public List<Point> Points {
+            protected set { points = value; }
             get {
-                if(points is null) {points = GeneratePoints(this);}
+                if(points is null) { points = GeneratePoints(this); }
                 return points;
             }
         }
@@ -29,11 +29,11 @@ namespace Igtampe.BasicShapes {
         //-[PROPERTIES]-------------------------------------------------------------------------------
 
         /// <summary>Slope of the line</summary>
-        public double M { 
+        public double M {
             get {
-                if(DX==0) { return float.PositiveInfinity; }
-                return (DY + 0.0) / (DX + 0.0); 
-            } 
+                if(DX == 0) { return float.PositiveInfinity; }
+                return (DY + 0.0) / (DX + 0.0);
+            }
         }
 
         /// <summary>Delta X</summary>
@@ -44,7 +44,7 @@ namespace Igtampe.BasicShapes {
 
         /// <summary>Length of the line using the ancient power of Pythagorean Theorem</summary>
         public double Length {
-            get {return Math.Sqrt(Math.Pow(DX,2) + Math.Pow(DY,2));}
+            get { return Math.Sqrt(Math.Pow(DX,2) + Math.Pow(DY,2)); }
         }
 
         //-[Constructor]-------------------------------------------------------------------------------
@@ -73,7 +73,7 @@ namespace Igtampe.BasicShapes {
         /// <summary>Returns true if this point is in the line. </summary>
         /// <param name="P"></param>
         /// <returns></returns>
-        public bool ContainsPoint(Point P) {return Points.Contains(P);}
+        public bool ContainsPoint(Point P) { return Points.Contains(P); }
 
         /// <summary>Verifies if a line intersects with another</summary>
         /// <param name="L"></param>
@@ -91,7 +91,7 @@ namespace Igtampe.BasicShapes {
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj) {
-            if(obj is Line L2) {return P1.Equals(L2.P1) && P2.Equals(L2.P2);}
+            if(obj is Line L2) { return P1.Equals(L2.P1) && P2.Equals(L2.P2); }
             return false;
         }
 
@@ -119,13 +119,13 @@ namespace Igtampe.BasicShapes {
 
             //Vertical Line
             if(double.IsInfinity(L.M)) {
-                for(int i = Math.Min(L.P1.Y,L.P2.Y); i < Math.Max(L.P2.Y,L.P1.Y) + 1; i++) {Points.Add(new Point(L.P1.X,i));}
+                for(int i = Math.Min(L.P1.Y,L.P2.Y); i < Math.Max(L.P2.Y,L.P1.Y) + 1; i++) { Points.Add(new Point(L.P1.X,i)); }
                 return Points;
             }
 
             //Horizontal Line
             if(L.M == 0) {
-                for(int X = L.P1.X; X <= L.P2.X; X++) {Points.Add(new Point(X,L.P1.Y));}
+                for(int X = L.P1.X; X <= L.P2.X; X++) { Points.Add(new Point(X,L.P1.Y)); }
                 return Points;
             }
 
@@ -166,6 +166,61 @@ namespace Igtampe.BasicShapes {
         public static Line TranslateLine(Line L,int DX,int DY) {
             return new Line(L.P1.X + DX,L.P1.Y + DY,
                             L.P2.X + DX,L.P2.Y + DY);
+        }
+
+        /// <summary>Scales a line's length up or down, anchored on P1</summary>
+        /// <param name="L"></param>
+        /// <param name="scale"></param>
+        /// <returns></returns>
+        public static Line P1ScaleLine(Line L, double scale) {
+            //Actually soy un bobo this is easy
+            int NewP2X = Convert.ToInt32(L.P1.X + (L.DX * scale));
+            int NewP2Y = Convert.ToInt32(L.P1.Y + (L.DY * scale));
+            return new Line(L.P1,new Point(NewP2X,NewP2Y));
+        }
+
+        /// <summary>Scales a line's length up or down, anchored on P2</summary>
+        /// <param name="L"></param>
+        /// <param name="scale"></param>
+        /// <returns></returns>
+        public static Line P2ScaleLine(Line L,double scale) {
+            int NewP1X = Convert.ToInt32(L.P2.X - (L.DX * scale));
+            int NewP1Y = Convert.ToInt32(L.P2.Y - (L.DY * scale));
+            return new Line(new Point(NewP1X,NewP1Y),L.P2); 
+        }
+        /// <summary>Scales a line's length up or down, anchored on a center point P3</summary>
+        /// <param name="L"></param>
+        /// <param name="scale"></param>
+        /// <returns></returns>
+        public static Line CenterScaleLine(Line L,double scale) {
+
+            //Let's find the center by doing this:
+            double P3X = L.P1.X + (L.DX * .5);
+            double P3Y = L.P1.X + (L.DY * .5);
+
+            //We'll keep it as doubles just for extra precision for later.
+
+            //Get  half the scale. This will be useful later.
+            double ScaleHalf = scale * .5;
+
+            //We're essentially going to concatenate two lines of half length, one starting from a new P1 to P3, and P3 to a new P2
+            //but we're not creating one line. We're going to use these imaginary lines to find where P1 and P2 are.
+
+            //P1
+            int X1 = Convert.ToInt32(P3X - (L.DX * ScaleHalf));
+            int Y1 = Convert.ToInt32(P3Y - (L.DY * ScaleHalf));
+
+            //P2
+            int X2 = Convert.ToInt32(P3X + (L.DX * ScaleHalf));
+            int Y2 = Convert.ToInt32(P3Y + (L.DY * ScaleHalf));
+
+            //Using scalehalf we avoid having to divide DX and DY by half. They're mathematically equivalent.
+
+            //Now that we have our points we can build the new line
+            return new Line(X1,Y1,X2,Y2);
+
+            //And bada bing bada boom we're done.
+
         }
 
     }
