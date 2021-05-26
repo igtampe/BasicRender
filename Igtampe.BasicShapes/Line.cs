@@ -204,7 +204,7 @@ namespace Igtampe.BasicShapes {
         public static Line CenterScaleLine(Line L,double scale) {
 
             //Let's find the center by doing this:
-            PointF P3 = GetCenterPoint(L);
+            PointF P3 = L.Center;
 
             //We'll keep it as doubles just for extra precision for later.
 
