@@ -52,7 +52,7 @@ namespace Igtampe.BasicShapes {
         /// <param name="DX"></param>
         /// <param name="DY"></param>
         /// <returns></returns>
-        public Polygon TranslatePolygon(Polygon P,int DX,int DY) {
+        public static Polygon TranslatePolygon(Polygon P,int DX,int DY) {
 
             List<Line> NewLines = new List<Line>();
             foreach(Line L in Lines) {NewLines.Add(Line.TranslateLine(L,DX,DY));}
@@ -60,6 +60,7 @@ namespace Igtampe.BasicShapes {
             return new Polygon(NewLines.ToArray());
 
         }
+
 
     }
 }
