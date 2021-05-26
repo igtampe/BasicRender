@@ -43,7 +43,10 @@ namespace Igtampe.BasicShapes {
             } else {
                 this.A1 = A2;
                 this.A2 = A1;
-            }            
+            }
+
+            //Just for safety, since this curve may be used as a Line object, we'll generate the points now so that the Line Object GeneratePoints isn't used.
+            points = GeneratePoints(this);
 
         }
 
