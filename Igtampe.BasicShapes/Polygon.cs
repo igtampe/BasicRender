@@ -4,10 +4,14 @@ using System.Drawing;
 
 namespace Igtampe.BasicShapes {
     public class Polygon {
+        
+        //-[FIELDS]-------------------------------------------------------------------------------
 
         /// <summary>All the lines that make up this polygon</summary>
         public Line[] Lines { protected set; get; }
 
+        //-[Constructors]-------------------------------------------------------------------------------
+        
         /// <summary>Creates a polygon from a set of lines and verifies that it is valid.</summary>
         /// <param name="AllLines"></param>
         public Polygon(Line[] AllLines) {
