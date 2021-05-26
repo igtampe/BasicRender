@@ -86,6 +86,18 @@ namespace Igtampe.BasicShapes {
         /// <param name="Scale"></param>
         /// <returns></returns>
         public static Polygon ScalePolygon(Polygon P,double Scale) {
+            //For each line:
+            foreach(Line L in P.Lines) {
+                //Create a new line from the center of the polygon to the line's center
+                //LineF CL = new Line(P.Center,L.Center);
+
+                //We're going to need to create LineF which will be more basic. Oh boy here we go.
+
+                //Scale it up by Scale, anchored at the center of the polygon (P1)
+
+                //Scale the line itself  anchored at its own center.
+            }
+
             throw new NotImplementedException();
         }
 
@@ -99,7 +111,7 @@ namespace Igtampe.BasicShapes {
 
             //once we find the middle of the bounding rectangle, we'll have the middle of the polygon 
             float X = Convert.ToSingle(R.X + (R.Width * .5));
-            float Y = Convert.ToSingle(R.Y + (R.Height * .5);
+            float Y = Convert.ToSingle(R.Y + (R.Height * .5));
 
             return new PointF(X,Y);
 
