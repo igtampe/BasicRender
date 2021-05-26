@@ -196,6 +196,7 @@ namespace Igtampe.BasicShapes {
         /// <param name="DY"></param>
         /// <returns></returns>
         public static Line TranslateLine(Line L,float DX,float DY) {
+            if(L is Curve C) { return Curve.TranslateCurve(C,DX,DY); }
             return new Line(L.P1F.X + DX,L.P1F.Y + DY,
                             L.P2F.X + DX,L.P2F.Y + DY);
         }
@@ -205,6 +206,8 @@ namespace Igtampe.BasicShapes {
         /// <param name="scale"></param>
         /// <returns></returns>
         public static Line P1ScaleLine(Line L, double scale) {
+            if(L is Curve) { throw new NotSupportedException(); }
+
             //Actually soy un bobo this is easy
             float NewP2X = Convert.ToSingle(L.P1F.X + (L.DX * scale));
             float NewP2Y = Convert.ToSingle(L.P1F.Y + (L.DY * scale));
@@ -216,6 +219,8 @@ namespace Igtampe.BasicShapes {
         /// <param name="scale"></param>
         /// <returns></returns>
         public static Line P2ScaleLine(Line L,double scale) {
+            if(L is Curve) { throw new NotSupportedException(); }
+
             float NewP1X = Convert.ToSingle(L.P2F.X - (L.DX * scale));
             float NewP1Y = Convert.ToSingle(L.P2F.Y - (L.DY * scale));
             return new Line(new PointF(NewP1X,NewP1Y),L.P2F); 
@@ -226,6 +231,8 @@ namespace Igtampe.BasicShapes {
         /// <param name="scale"></param>
         /// <returns></returns>
         public static Line CenterScaleLine(Line L,double scale) {
+
+            if(L is Curve C) { return Curve.ScaleCurve(C,scale); }
 
             //Let's find the center by doing this:
             PointF P3 = L.Center;

@@ -8,7 +8,7 @@ namespace Igtampe.BasicShapes {
         //-[FIELDS]-------------------------------------------------------------------------------
 
         /// <summary>Center of the curve</summary>
-        public Point Center { get; protected set; }
+        public new PointF Center { get; protected set; }
 
         /// <summary>Radius of the curve</summary>
         public double R { get; protected set; }
@@ -30,12 +30,14 @@ namespace Igtampe.BasicShapes {
 
         //-[Constructor]-------------------------------------------------------------------------------
 
+        public Curve(Point Center,double Radius,double A1,double A2) :this(ConvertToPointF(Center),Radius,A1,A2) { }
+
         /// <summary>Creates a curve</summary>
         /// <param name="Center"></param>
         /// <param name="Radius"></param>
         /// <param name="A1">Start Angle in DEGREES</param>
         /// <param name="A2">End Angle in DEGREES</param>
-        public Curve(Point Center, double Radius, double A1, double A2):base(CalculatePoint(A1,Center,Radius),CalculatePoint(A2,Center,Radius)) {
+        public Curve(PointF Center, double Radius, double A1, double A2):base(CalculatePoint(A1,Center,Radius),CalculatePoint(A2,Center,Radius)) {
             this.Center = Center;
             R = Radius;
 
@@ -73,9 +75,7 @@ namespace Igtampe.BasicShapes {
             List<Point> Points = new List<Point>();
 
             //We're going for a little finer detail here.
-            for(double A = C.A1; A <= C.A2; A+=0.5) {
-                Points.Add(CalculatePoint(A,C.Center,C.R));
-            }
+            for(double A = C.A1; A <= C.A2; A+=0.5) {Points.Add(ConvertToPoint(CalculatePoint(A,C.Center,C.R)));}
 
             return Points;
         
@@ -91,10 +91,22 @@ namespace Igtampe.BasicShapes {
         /// <param name="Center"></param>
         /// <param name="Radius"></param>
         /// <returns></returns>
-        public static Point CalculatePoint(double Angle,Point Center,double Radius) {
-            return new Point(Convert.ToInt32(Center.X + (Math.Cos(DegToRadians(Angle))*Radius)),Convert.ToInt32(Center.Y + (Math.Sin(DegToRadians(Angle))*Radius)));
+        public static PointF CalculatePoint(double Angle,PointF Center,double Radius) {
+            return new PointF(Convert.ToSingle(Center.X + (Math.Cos(DegToRadians(Angle))*Radius)),Convert.ToSingle(Center.Y + (Math.Sin(DegToRadians(Angle))*Radius)));
         }
 
+        /// <summary>Returns a line that's been shifted by DX and by DY</summary>
+        /// <param name="L"></param>
+        /// <param name="DX"></param>
+        /// <param name="DY"></param>
+        /// <returns></returns>
+        public static Curve TranslateCurve(Curve L,float DX,float DY) {return new Curve(new PointF(L.Center.X + DX,L.Center.Y + DY),L.R,L.A1,L.A2);}
+    
+        /// <summary>Scales a line's length up or down, anchored on a center point P3</summary>
+        /// <param name="L"></param>
+        /// <param name="scale"></param>
+        /// <returns></returns>
+        public static Curve ScaleCurve(Curve L,double scale) {return new Curve(L.Center,L.R * scale,L.A1,L.A2);}
 
     }
 }
