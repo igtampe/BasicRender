@@ -9,6 +9,8 @@ namespace Igtampe.BasicShapes {
     /// <summary>Holds all BasicShapes functions</summary>
     public static class DrawShapes {
 
+        //-[DrawLine]-------------------------------------------------------------------------------
+
         /// <summary>Draws a line between the two points with the specified color.<br></br>
         /// <br></br>
         /// <b>NOTE:</b><br></br>
@@ -37,10 +39,14 @@ namespace Igtampe.BasicShapes {
         /// <param name="C"></param>
         public static void DrawLine(Line L,ConsoleColor C) {foreach(Point p in L.Points) {DrawBlockAt(p,C);}}
 
+        //-[DrawCurve]-------------------------------------------------------------------------------
+
         /// <summary>Draws a curve with specified color</summary>
         /// <param name="C"></param>
         /// <param name="C"></param>
         public static void DrawCurve(Curve Cu,ConsoleColor C) { foreach(Point p in Cu.Points) { DrawBlockAt(p,C); } }
+
+        //-[DrawBlockAt]-------------------------------------------------------------------------------
 
         /// <summary>Draws a block at the specified position</summary>
         /// <param name="X"></param>
@@ -67,6 +73,8 @@ namespace Igtampe.BasicShapes {
         /// <param name="C"></param>
         public static void DrawBlockAt(Point P,ConsoleColor C) {DrawBlockAt(P.X,P.Y,C);}
 
+        //-[DrawRectangle]-------------------------------------------------------------------------------
+
         /// <summary>Draws a rectangle on-screen, but does not fill it.</summary>
         /// <param name="R"></param>
         /// <param name="C"></param>
@@ -81,10 +89,14 @@ namespace Igtampe.BasicShapes {
             //And done
         }
 
+        //-[FillRectangle]-------------------------------------------------------------------------------
+
         /// <summary>Alias for Draw.Box() in BasicRender</summary>
         /// <param name="R"></param>
         /// <param name="C"></param>
         public static void FillRectangle(Rectangle R,ConsoleColor C) {Draw.Box(C,R.Width,R.Height,R.X,R.Y);}
+
+        //-[DrawPolygon]-------------------------------------------------------------------------------
 
         /// <summary>Draws a polygon with points P</summary>
         /// <param name="Ps"></param>
@@ -100,6 +112,8 @@ namespace Igtampe.BasicShapes {
         /// <param name="P"></param>
         /// <param name="C"></param>
         public static void DrawPolygon(Polygon P,ConsoleColor C) {foreach(Line L in P.Lines) {DrawLine(L,C);}}
+
+        //-[FillPolygon]-------------------------------------------------------------------------------
 
         /// <summary>Fills Polygon with points P</summary>
         public static void FillPolygon(Point[] Ps, ConsoleColor C) { FillPolygon(new Polygon(Ps),C); }
