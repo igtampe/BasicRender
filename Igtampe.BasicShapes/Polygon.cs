@@ -55,7 +55,7 @@ namespace Igtampe.BasicShapes {
         public static Polygon TranslatePolygon(Polygon P,int DX,int DY) {
 
             List<Line> NewLines = new List<Line>();
-            foreach(Line L in Lines) {NewLines.Add(Line.TranslateLine(L,DX,DY));}
+            foreach(Line L in P.Lines) {NewLines.Add(Line.TranslateLine(L,DX,DY));}
 
             return new Polygon(NewLines.ToArray());
 
