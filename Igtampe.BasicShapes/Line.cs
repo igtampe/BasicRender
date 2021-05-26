@@ -47,6 +47,13 @@ namespace Igtampe.BasicShapes {
             get { return Math.Sqrt(Math.Pow(DX,2) + Math.Pow(DY,2)); }
         }
 
+        /// <summary>Returns the center point on this line</summary>
+        public PointF Center { get {
+            float P3X = Convert.ToSingle(P1.X + (DX * 0.5));
+            float P3Y = Convert.ToSingle(P1.Y + (DY * 0.5));
+            return new PointF(P3X,P3Y);
+        }
+
         //-[Constructor]-------------------------------------------------------------------------------
 
         /// <summary>Creates a line</summary>
@@ -221,15 +228,6 @@ namespace Igtampe.BasicShapes {
 
             //And bada bing bada boom we're done.
 
-        }
-
-        /// <summary>Returns the point at the Center of line L</summary>
-        /// <param name="L"></param>
-        /// <returns></returns>
-        public static PointF GetCenterPoint(Line L) {
-            float P3X = Convert.ToSingle(L.P1.X + (L.DX * 0.5));
-            float P3Y = Convert.ToSingle(L.P1.Y + (L.DY * 0.5));
-            return new PointF(P3X,P3Y);
         }
 
     }
