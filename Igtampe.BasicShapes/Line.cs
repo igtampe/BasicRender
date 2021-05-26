@@ -45,12 +45,12 @@ namespace Igtampe.BasicShapes {
         /// <summary>Delta X</summary>
         public int DX { get { return Convert.ToInt32(DXF); } }
 
-        public double DXF { get { return P2F.X - P1F.X; } }
+        public float DXF { get { return P2F.X - P1F.X; } }
 
         /// <summary>Delta Y</summary>
         public int DY { get { return Convert.ToInt32(DYF); } }
 
-        public double DYF { get { return P2F.Y - P1F.Y; } }
+        public float DYF { get { return P2F.Y - P1F.Y; } }
 
         /// <summary>Length of the line using the ancient power of Pythagorean Theorem</summary>
         public double Length {
