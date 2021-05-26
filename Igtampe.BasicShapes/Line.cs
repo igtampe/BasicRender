@@ -49,9 +49,10 @@ namespace Igtampe.BasicShapes {
 
         /// <summary>Returns the center point on this line</summary>
         public PointF Center { get {
-            float P3X = Convert.ToSingle(P1.X + (DX * 0.5));
-            float P3Y = Convert.ToSingle(P1.Y + (DY * 0.5));
-            return new PointF(P3X,P3Y);
+                float P3X = Convert.ToSingle(P1.X + (DX * 0.5));
+                float P3Y = Convert.ToSingle(P1.Y + (DY * 0.5));
+                return new PointF(P3X,P3Y);
+            }
         }
 
         //-[Constructor]-------------------------------------------------------------------------------
