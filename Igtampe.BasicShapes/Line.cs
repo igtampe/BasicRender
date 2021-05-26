@@ -6,6 +6,8 @@ namespace Igtampe.BasicShapes {
     /// <summary>Holds a Line (two points) and can do some basic stuff with it.</summary>
     public class Line {
 
+        //-[FIELDS]-------------------------------------------------------------------------------
+
         /// <summary>Leftmost point of the line</summary>
         public Point P1 { protected set; get; }
 
@@ -23,6 +25,8 @@ namespace Igtampe.BasicShapes {
                 return points;
             }
         }
+
+        //-[PROPERTIES]-------------------------------------------------------------------------------
 
         /// <summary>Slope of the line</summary>
         public double M { 
@@ -43,10 +47,13 @@ namespace Igtampe.BasicShapes {
             get {return Math.Sqrt(Math.Pow(DX,2) + Math.Pow(DY,2));}
         }
 
+        //-[Constructor]-------------------------------------------------------------------------------
+
         /// <summary>Creates a line</summary>
         public Line(int X1,int Y1,int X2,int Y2) : this(new Point(X1,Y1),new Point(X2,Y2)) { }
 
-        public Line() {}
+        //This isn't necessary?
+        //public Line() {}
 
         /// <summary>Creates a line</summary>
         /// <param name="P1"></param>
@@ -60,6 +67,8 @@ namespace Igtampe.BasicShapes {
                 this.P2 = P1;
             }
         }
+
+        //-[Methods]-------------------------------------------------------------------------------
 
         /// <summary>Returns true if this point is in the line. </summary>
         /// <param name="P"></param>
@@ -91,6 +100,8 @@ namespace Igtampe.BasicShapes {
         public override string ToString() {
             return string.Format("({0},{1}) -> ({2},{3})",P1.X,P1.Y,P2.X,P2.Y);
         }
+
+        //-[Overridable Generate Points]-------------------------------------------------------------------------------
 
         /// <summary>Generates a list of points in this line for drawing or for checking.</summary>
         /// <returns></returns>
