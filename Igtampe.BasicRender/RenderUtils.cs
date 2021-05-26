@@ -28,7 +28,13 @@ namespace Igtampe.BasicRender {
         /// <summary>Sets the cursor position to the specified one</summary>
         /// <param name="LeftPos"></param>
         /// <param name="TopPos"></param>
-        public static void SetPos(int LeftPos,int TopPos) { Console.SetCursorPosition(LeftPos,TopPos); }
+        /// <returns>Returns true if it was possible to set the position, false otherwise</returns>
+        public static bool SetPos(int LeftPos,int TopPos) {
+            try {
+                Console.SetCursorPosition(LeftPos,TopPos);
+                return true;
+            } catch(ArgumentOutOfRangeException) {return false;}
+        }
 
         /// <summary>Sets the foreground color of the console</summary>
         /// <param name="FG"></param>
