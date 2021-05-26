@@ -10,6 +10,26 @@ namespace Igtampe.BasicShapes {
         /// <summary>All the lines that make up this polygon</summary>
         public Line[] Lines { protected set; get; }
 
+        /// <summary>Cache for the center</summary>
+        private PointF center = PointF.Empty;
+
+        /// <summary>Holds a point for the center of the rectangle</summary>
+        public PointF Center {
+            get {
+                if(center == PointF.Empty) { center = GetPolygonCenter(this); }
+                return center;
+            }
+        }
+
+        private Rectangle boundingRectangle = Rectangle.Empty;
+
+        /// <summary>Holds a rectangle that bounds this polygon</summary>
+        public Rectangle BoundingRectangle { get {
+                if(boundingRectangle == Rectangle.Empty) {boundingRectangle = GetBoundingRectangle(this);  }
+                return boundingRectangle;
+            } 
+        }
+
         //-[Constructors]-------------------------------------------------------------------------------
         
         /// <summary>Creates a polygon from a set of lines and verifies that it is valid.</summary>
@@ -58,6 +78,55 @@ namespace Igtampe.BasicShapes {
             foreach(Line L in P.Lines) {NewLines.Add(Line.TranslateLine(L,DX,DY));}
 
             return new Polygon(NewLines.ToArray());
+
+        }
+
+        /// <summary>Scales a polygon anchored at its center</summary>
+        /// <param name="P"></param>
+        /// <param name="Scale"></param>
+        /// <returns></returns>
+        public static Polygon ScalePolygon(Polygon P,double Scale) {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>gets a Polygon's center point.</summary>
+        /// <param name="P"></param>
+        /// <returns></returns>
+        private static PointF GetPolygonCenter(Polygon P) {
+
+
+            Rectangle R = P.BoundingRectangle;
+
+            //once we find the middle of the bounding rectangle, we'll have the middle of the polygon 
+            float X = Convert.ToSingle(R.X + (R.Width * .5));
+            float Y = Convert.ToSingle(R.Y + (R.Height * .5);
+
+            return new PointF(X,Y);
+
+        }
+
+        /// <summary>Calculates the bounding rectangle of the given polygon.</summary>
+        /// <param name="P"></param>
+        /// <returns></returns>
+        private static Rectangle GetBoundingRectangle(Polygon P) {
+            //Itterate through all the points on this thing and find the largest Minimum X, Maximum X, Minimum Y, and Maximum Y
+            int MaxY = 0;
+            int MinY = 99999999;
+            int MaxX = 0;
+            int MinX = 99999999;
+
+            foreach(Line L in P.Lines) {
+                foreach(Point p in L.Points) {
+                    MaxY = Math.Max(p.Y,MaxY);
+                    MinY = Math.Min(p.Y,MinY);
+
+                    MaxX = Math.Max(p.X,MaxX);
+                    MinX = Math.Min(p.Y,MinX);
+                }
+            }
+
+            //Now that we have that we can build a rectangle:
+            return new Rectangle(MinX,MinY,MaxX - MinX,MaxY - MinY);
 
         }
 
