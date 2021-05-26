@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Drawing;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Igtampe.BasicShapes {
     public class Curve :Line{
+
+        //-[FIELDS]-------------------------------------------------------------------------------
 
         /// <summary>Center of the curve</summary>
         public Point Center { get; protected set; }
