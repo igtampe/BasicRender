@@ -11,13 +11,19 @@ namespace Igtampe.BasicShapes {
         /// <summary>Leftmost point of the line</summary>
         public Point P1 { protected set; get; }
 
+        /// <summary>Leftmost point of the line (Floating Point)</summary>
+        public PointF P1F { protected set; get; }
+
         /// <summary>Rightmost point of the line.</summary>
         public Point P2 { protected set; get; }
+
+        /// <summary>Rightmost point of the line (Floating Point)</summary>
+        public PointF P2F { protected set; get; }
 
         /// <summary>Private points holder</summary>
         protected List<Point> points;
 
-        /// <summary>List of all points this line has</summary>
+        /// <summary>List of all points this line has (NOT FLOATING POINT)</summary>
         public List<Point> Points {
             protected set { points = value; }
             get {
@@ -37,14 +43,18 @@ namespace Igtampe.BasicShapes {
         }
 
         /// <summary>Delta X</summary>
-        public int DX { get { return P2.X - P1.X; } }
+        public int DX { get { return Convert.ToInt32(DXF); } }
+
+        public double DXF { get { return P2F.X - P1F.X; } }
 
         /// <summary>Delta Y</summary>
-        public int DY { get { return P2.Y - P1.Y; } }
+        public int DY { get { return Convert.ToInt32(DYF); } }
+
+        public double DYF { get { return P2F.Y - P1F.Y; } }
 
         /// <summary>Length of the line using the ancient power of Pythagorean Theorem</summary>
         public double Length {
-            get { return Math.Sqrt(Math.Pow(DX,2) + Math.Pow(DY,2)); }
+            get { return Math.Sqrt(Math.Pow(DXF,2) + Math.Pow(DYF,2)); }
         }
 
         /// <summary>Returns the center point on this line</summary>
@@ -58,21 +68,35 @@ namespace Igtampe.BasicShapes {
         //-[Constructor]-------------------------------------------------------------------------------
 
         /// <summary>Creates a line</summary>
-        public Line(int X1,int Y1,int X2,int Y2) : this(new Point(X1,Y1),new Point(X2,Y2)) { }
+        public Line(int X1,int Y1,int X2,int Y2) : this(new PointF(X1,Y1),new PointF(X2,Y2)) { }
 
-        //This isn't necessary?
-        //public Line() {}
+        public Line(float X1,float Y1,float X2,float Y2) : this(new PointF(X1,X2),new PointF(X2,Y2)) { }
 
         /// <summary>Creates a line</summary>
         /// <param name="P1"></param>
         /// <param name="P2"></param>
-        public Line(Point P1,Point P2) {
-            if(P1.X < P2.X) {
-                this.P1 = P1;
-                this.P2 = P2;
+        public Line(Point P1,Point P2):this(ConvertToPointF(P1),ConvertToPointF(P2)) {}
+
+        /// <summary>Creates a line with Floating Point precision</summary>
+        /// <param name="P1"></param>
+        /// <param name="P2F"></param>
+        public Line(PointF P1,PointF P2):this(P1,P2,false) {}
+
+        /// <summary>Creates a line with floating point precision. Skips sorting P1 and P2 by X if SkipSort is true</summary>
+        /// <param name="P1"></param>
+        /// <param name="P2"></param>
+        /// <param name="SkipSort"></param>
+        public Line(PointF P1,PointF P2,bool SkipSort) {
+            if(P1.X < P2.X || SkipSort) {
+                this.P1F = P1;
+                this.P1 = ConvertToPoint(P1);
+                this.P2F = P2;
+                this.P2 = ConvertToPoint(P2);
             } else {
-                this.P1 = P2;
-                this.P2 = P1;
+                this.P1F = P2;
+                this.P1 = ConvertToPoint(P2);
+                this.P2F = P1;
+                this.P2 = ConvertToPoint(P1);
             }
         }
 
@@ -99,14 +123,14 @@ namespace Igtampe.BasicShapes {
         /// <param name="obj"></param>
         /// <returns></returns>
         public override bool Equals(object obj) {
-            if(obj is Line L2) { return P1.Equals(L2.P1) && P2.Equals(L2.P2); }
+            if(obj is Line L2) { return P1F.Equals(L2.P1F) && P2F.Equals(L2.P2F); }
             return false;
         }
 
         /// <summary>returns a string representation of this line</summary>
         /// <returns></returns>
         public override string ToString() {
-            return string.Format("({0},{1}) -> ({2},{3})",P1.X,P1.Y,P2.X,P2.Y);
+            return string.Format("({0},{1}) -> ({2},{3})",P1F.X,P1F.Y,P2F.X,P2F.Y);
         }
 
         //-[Overridable Generate Points]-------------------------------------------------------------------------------
@@ -171,9 +195,9 @@ namespace Igtampe.BasicShapes {
         /// <param name="DX"></param>
         /// <param name="DY"></param>
         /// <returns></returns>
-        public static Line TranslateLine(Line L,int DX,int DY) {
-            return new Line(L.P1.X + DX,L.P1.Y + DY,
-                            L.P2.X + DX,L.P2.Y + DY);
+        public static Line TranslateLine(Line L,float DX,float DY) {
+            return new Line(L.P1F.X + DX,L.P1F.Y + DY,
+                            L.P2F.X + DX,L.P2F.Y + DY);
         }
 
         /// <summary>Scales a line's length up or down, anchored on P1</summary>
@@ -182,9 +206,9 @@ namespace Igtampe.BasicShapes {
         /// <returns></returns>
         public static Line P1ScaleLine(Line L, double scale) {
             //Actually soy un bobo this is easy
-            int NewP2X = Convert.ToInt32(L.P1.X + (L.DX * scale));
-            int NewP2Y = Convert.ToInt32(L.P1.Y + (L.DY * scale));
-            return new Line(L.P1,new Point(NewP2X,NewP2Y));
+            float NewP2X = Convert.ToSingle(L.P1F.X + (L.DX * scale));
+            float NewP2Y = Convert.ToSingle(L.P1F.Y + (L.DY * scale));
+            return new Line(L.P1F,new PointF(NewP2X,NewP2Y));
         }
 
         /// <summary>Scales a line's length up or down, anchored on P2</summary>
@@ -192,9 +216,9 @@ namespace Igtampe.BasicShapes {
         /// <param name="scale"></param>
         /// <returns></returns>
         public static Line P2ScaleLine(Line L,double scale) {
-            int NewP1X = Convert.ToInt32(L.P2.X - (L.DX * scale));
-            int NewP1Y = Convert.ToInt32(L.P2.Y - (L.DY * scale));
-            return new Line(new Point(NewP1X,NewP1Y),L.P2); 
+            float NewP1X = Convert.ToSingle(L.P2F.X - (L.DX * scale));
+            float NewP1Y = Convert.ToSingle(L.P2F.Y - (L.DY * scale));
+            return new Line(new PointF(NewP1X,NewP1Y),L.P2F); 
         }
 
         /// <summary>Scales a line's length up or down, anchored on a center point P3</summary>
@@ -215,12 +239,12 @@ namespace Igtampe.BasicShapes {
             //but we're not creating one line. We're going to use these imaginary lines to find where P1 and P2 are.
 
             //P1
-            int X1 = Convert.ToInt32(P3.X - (L.DX * ScaleHalf));
-            int Y1 = Convert.ToInt32(P3.Y - (L.DY * ScaleHalf));
+            float X1 = Convert.ToSingle(P3.X - (L.DX * ScaleHalf));
+            float Y1 = Convert.ToSingle(P3.Y - (L.DY * ScaleHalf));
 
             //P2
-            int X2 = Convert.ToInt32(P3.X + (L.DX * ScaleHalf));
-            int Y2 = Convert.ToInt32(P3.Y + (L.DY * ScaleHalf));
+            float X2 = Convert.ToSingle(P3.X + (L.DX * ScaleHalf));
+            float Y2 = Convert.ToSingle(P3.Y + (L.DY * ScaleHalf));
 
             //Using scalehalf we avoid having to divide DX and DY by half. They're mathematically equivalent.
 
@@ -230,6 +254,14 @@ namespace Igtampe.BasicShapes {
             //And bada bing bada boom we're done.
 
         }
+
+        /// <summary>Converts a PointF to Point</summary>
+        /// <returns></returns>
+        internal static Point ConvertToPoint(PointF PF) {return new Point(Convert.ToInt32(PF.X),Convert.ToInt32(PF.Y));}
+
+        /// <summary>Converts a  Point to PointF</summary>
+        /// <returns></returns>
+        internal static PointF ConvertToPointF(Point P) { return new PointF(P.X,P.Y); }
 
     }
 }
