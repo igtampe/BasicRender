@@ -22,7 +22,7 @@ namespace Igtampe.BasicRender {
         public static void Sprite(string sprite,ConsoleColor BackgroundColor,ConsoleColor ForegroundColor,int LeftPos,int TopPos) {
 
             //If we get a position, move the cursor to that position
-            if(LeftPos != -1 && TopPos != -1) { RenderUtils.SetPos(LeftPos,TopPos); }
+            if(LeftPos != -1 && TopPos != -1) {if(!RenderUtils.SetPos(LeftPos,TopPos)) { return; }}
 
             //Save the current colors of the console
             ConsoleColor OldBG = Console.BackgroundColor;
@@ -76,7 +76,7 @@ namespace Igtampe.BasicRender {
         public static void Row(ConsoleColor RowColor,int Length,int LeftPos,int TopPos) {
 
             //If we get a position, move to that position.
-            if(LeftPos != -1 && TopPos != -1) { RenderUtils.SetPos(LeftPos,TopPos); }
+            if(LeftPos != -1 && TopPos != -1) {if(!RenderUtils.SetPos(LeftPos,TopPos)) { return; }}
 
             //Save the current colors of the console
             ConsoleColor OldBG = Console.BackgroundColor;
@@ -117,7 +117,16 @@ namespace Igtampe.BasicRender {
         public static void CenterText(string Text,int TopPos,ConsoleColor BG,ConsoleColor FG) {
 
             //Find the position of this text where its centered. -1 so that it preffers left center rather than right center.
-            int leftpos = (Console.WindowWidth - Text.Length - 1) / 2;
+            int leftpos = (Console.WindowWidth - Text.Length - 1) / 2; ;
+            while(leftpos < 0) {
+                Text.Substring(0,Text.Length - 1);
+                leftpos = (Console.WindowWidth - Text.Length - 1) / 2; ;
+                
+                if(leftpos < 0) { break; }
+                
+                Text.Substring(1,Text.Length - 1);
+                leftpos = (Console.WindowWidth - Text.Length - 1) / 2; ;
+            } //Peacock Shake the text until it fits
 
             //Save the current console colors
             ConsoleColor OldBG = Console.BackgroundColor;
@@ -127,7 +136,7 @@ namespace Igtampe.BasicRender {
             RenderUtils.Color(BG,FG);
 
             //Put the cursor in the right position and draw the centered text.
-            RenderUtils.SetPos(leftpos,TopPos);
+            if(!RenderUtils.SetPos(leftpos,TopPos)) { return; }
             Console.Write(Text);
 
             //Set the colors back to the old colors
