@@ -106,7 +106,11 @@ namespace Igtampe.BasicShapes {
 
             //Now that we have all the lines, we should ensure they all intersect.
 
-            //But I'll add this check later. Si algo we'll go through all the lines, and make sure theyr begining and end is at the midpoint betwen the two if they're not equal already.
+            //Line[] RealNewLines = NewLines.ToArray() ;
+
+            //But I'll add this check later. 
+            //Si algo we'll go through all the lines, and make sure theyr begining and end is at the midpoint betwen the two if they're not equal already.
+            //Because of sort this will be dificil which really sucks we should really just remove sort entirely but oh well.
 
             return new Polygon(NewLines.ToArray());
         }
