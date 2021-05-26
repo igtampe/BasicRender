@@ -86,19 +86,29 @@ namespace Igtampe.BasicShapes {
         /// <param name="Scale"></param>
         /// <returns></returns>
         public static Polygon ScalePolygon(Polygon P,double Scale) {
+
+            List<Line> NewLines = new List<Line>();
+
             //For each line:
             foreach(Line L in P.Lines) {
                 //Create a new line from the center of the polygon to the line's center
-                //LineF CL = new Line(P.Center,L.Center);
-
-                //We're going to need to create LineF which will be more basic. Oh boy here we go.
+                Line CL = new Line(P.Center,L.Center,true);
 
                 //Scale it up by Scale, anchored at the center of the polygon (P1)
+                Line ScaledCL = Line.P1ScaleLine(CL,Scale);
+
+                //Translate the Line itself by the difference between CL and ScaledCL
+                Line NewLine = Line.TranslateLine(L,ScaledCL.DXF - CL.DXF,ScaledCL.DYF - CL.DYF);
 
                 //Scale the line itself  anchored at its own center.
+                NewLines.Add(Line.CenterScaleLine(NewLine,Scale));
             }
 
-            throw new NotImplementedException();
+            //Now that we have all the lines, we should ensure they all intersect.
+
+            //But I'll add this check later. Si algo we'll go through all the lines, and make sure theyr begining and end is at the midpoint betwen the two if they're not equal already.
+
+            return new Polygon(NewLines.ToArray());
         }
 
         /// <summary>gets a Polygon's center point.</summary>
