@@ -188,6 +188,7 @@ namespace Igtampe.BasicShapes {
             int NewP1Y = Convert.ToInt32(L.P2.Y - (L.DY * scale));
             return new Line(new Point(NewP1X,NewP1Y),L.P2); 
         }
+
         /// <summary>Scales a line's length up or down, anchored on a center point P3</summary>
         /// <param name="L"></param>
         /// <param name="scale"></param>
@@ -195,8 +196,7 @@ namespace Igtampe.BasicShapes {
         public static Line CenterScaleLine(Line L,double scale) {
 
             //Let's find the center by doing this:
-            double P3X = L.P1.X + (L.DX * .5);
-            double P3Y = L.P1.X + (L.DY * .5);
+            PointF P3 = GetCenterPoint(L);
 
             //We'll keep it as doubles just for extra precision for later.
 
@@ -207,12 +207,12 @@ namespace Igtampe.BasicShapes {
             //but we're not creating one line. We're going to use these imaginary lines to find where P1 and P2 are.
 
             //P1
-            int X1 = Convert.ToInt32(P3X - (L.DX * ScaleHalf));
-            int Y1 = Convert.ToInt32(P3Y - (L.DY * ScaleHalf));
+            int X1 = Convert.ToInt32(P3.X - (L.DX * ScaleHalf));
+            int Y1 = Convert.ToInt32(P3.Y - (L.DY * ScaleHalf));
 
             //P2
-            int X2 = Convert.ToInt32(P3X + (L.DX * ScaleHalf));
-            int Y2 = Convert.ToInt32(P3Y + (L.DY * ScaleHalf));
+            int X2 = Convert.ToInt32(P3.X + (L.DX * ScaleHalf));
+            int Y2 = Convert.ToInt32(P3.Y + (L.DY * ScaleHalf));
 
             //Using scalehalf we avoid having to divide DX and DY by half. They're mathematically equivalent.
 
@@ -221,6 +221,15 @@ namespace Igtampe.BasicShapes {
 
             //And bada bing bada boom we're done.
 
+        }
+
+        /// <summary>Returns the point at the Center of line L</summary>
+        /// <param name="L"></param>
+        /// <returns></returns>
+        public static PointF GetCenterPoint(Line L) {
+            float P3X = Convert.ToSingle(L.P1.X + (L.DX * 0.5));
+            float P3Y = Convert.ToSingle(L.P1.Y + (L.DY * 0.5));
+            return new PointF(P3X,P3Y);
         }
 
     }
