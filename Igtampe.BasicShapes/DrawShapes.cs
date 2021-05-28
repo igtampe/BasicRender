@@ -48,30 +48,12 @@ namespace Igtampe.BasicShapes {
 
         //-[DrawBlockAt]-------------------------------------------------------------------------------
 
-        /// <summary>Draws a block at the specified position</summary>
-        /// <param name="X"></param>
-        /// <param name="Y"></param>
-        /// <param name="C"></param>
-        public static void DrawBlockAt(int X,int Y,ConsoleColor C) {
-
-            //Save the current position
-            Point P = new Point(Console.CursorLeft,Console.CursorTop);
-
-            //Set the position
-            RenderUtils.SetPos(X,Y);
-
-            //Draw the block
-            Draw.Block(C);
-
-            //Go back to the old position
-            RenderUtils.SetPos(P.X,P.Y);
-
-        }
-
+        //I'm an ***actual idiot*** I had coded this as an OVERRIDE ALREADY IN BASICRENDER WHAT THE HECK WAS I THINKING.
+        
         /// <summary>Draws a block of color C at point P</summary>
         /// <param name="P"></param>
         /// <param name="C"></param>
-        public static void DrawBlockAt(Point P,ConsoleColor C) {DrawBlockAt(P.X,P.Y,C);}
+        public static void DrawBlockAt(Point P,ConsoleColor C) {Draw.Block(C,P.X,P.Y);}
 
         //-[DrawRectangle]-------------------------------------------------------------------------------
 
@@ -164,7 +146,7 @@ namespace Igtampe.BasicShapes {
                 }
 
                 //Now that we have our bounds we can *finally* begin to fill after like 20 Foreach loops.
-                for(int X = MinX; X <= MaxX; X++) {DrawBlockAt(X,Y,C);}
+                for(int X = MinX; X <= MaxX; X++) {Draw.Block(C,X,Y);}
 
             }
             
