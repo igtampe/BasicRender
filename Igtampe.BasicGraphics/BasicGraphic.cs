@@ -15,22 +15,39 @@ namespace Igtampe.BasicGraphics {
         /// <param name="LeftPos"></param>
         /// <param name="TopPos"></param>
         public override void Draw(int LeftPos,int TopPos) {
-            foreach(String Line in Contents) {
-                RenderUtils.SetPos(LeftPos,TopPos++);
-                if(!string.IsNullOrEmpty(Line)) { DrawColorString(Line); }
+            foreach(string Line in Contents) {
+
+                //Ok for this we're going to need to rework this just a tad.
+                //We're going to use Draw.Block's ability to take in a leftpos and toppos parameter to overscan the heck out of this.
+
+                if(!string.IsNullOrEmpty(Line)) { 
+                    DrawColorString(Line,LeftPos,TopPos);
+                    TopPos++; 
+                }
             }
         }
 
-        /// <summary>Draws a ColorString comprised of ColorChars.<br></br><br></br>
-        /// For example, the colorstring '0123456789ABCDEF' will render a rainbow.
+        /// <summary>Draws a ColorString comprised of ColorChars at the current cursor position<br></br><br></br>
+        /// For example, the colorstring '0123456789ABCDEF' will render all available colors.
         /// </summary>
         /// <param name="ColorString"></param>
-        public static void DrawColorString(string ColorString) { 
-            foreach(char ColorChar in ColorString) {
-                try {BasicRender.Draw.Block(GraphicUtils.ColorCharToConsoleColor(ColorChar));} catch(ArgumentException) {} //only catch argument exception.
-                
+        public static void DrawColorString(string ColorString) {DrawColorString(ColorString, Console.CursorLeft, Console.CursorTop);}
+
+        /// <summary>Draws the colorstring comprised of ColorChars provided at the specified Left and Top pos</summary>
+        /// <param name="ColorString"></param>
+        /// <param name="LeftPos"></param>
+        /// <param name="TopPos"></param>
+        public static void DrawColorString(string ColorString, int LeftPos, int TopPos) {
+            foreach (char ColorChar in ColorString) {
+                try { 
+                    BasicRender.Draw.Block(GraphicUtils.ColorCharToConsoleColor(ColorChar),LeftPos,TopPos);
+                    LeftPos++;
+                } catch (ArgumentException) { } //only catch argument exception.
+
             }
         }
+
+
 
         /// <summary>Loads a BasicGraphic from a file. Supersedes BasicGraphicFromFile</summary>
         /// <param name="Filename"></param>
