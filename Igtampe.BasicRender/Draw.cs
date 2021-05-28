@@ -22,7 +22,44 @@ namespace Igtampe.BasicRender {
         public static void Sprite(string sprite,ConsoleColor BackgroundColor,ConsoleColor ForegroundColor,int LeftPos,int TopPos) {
 
             //If we get a position, move the cursor to that position
-            if(LeftPos != -1 && TopPos != -1) {if(!RenderUtils.SetPos(LeftPos,TopPos)) { return; }}
+            if(LeftPos == -1 && TopPos == -1) {
+                //Set the leftpos and toppos to the current cursor position
+                LeftPos = Console.CursorLeft;
+                TopPos = Console.CursorTop;
+            }
+
+            //OK now that we have our leftpos and toppos let's split these by line and just go from there
+            if (sprite.Split('\n').Length > 1) {
+                int LineOffset = 0;
+                foreach (string S in sprite.Split('\n')) {
+                    Sprite(S, BackgroundColor, ForegroundColor, LeftPos, TopPos + LineOffset);
+                }
+            }
+
+            //Now, a few checks to make sure we can space this singular line of text:
+            if (TopPos < 0 || TopPos >= Console.WindowHeight || LeftPos>=Console.WindowWidth) {return;} //If the topppos or leftpos (Only to the right) is out of range, just don't draw the line at all.
+
+            //Check the left 
+            if (LeftPos < 0) {
+                //verify that there's any string we can actually draw
+                if (sprite.Length <= LeftPos * -1) {return; } //If the sprite's length is less than or equal to the amount of string we're going to have to trim, then don't draw it at all
+                sprite = sprite.Substring(LeftPos * -1); //Trim the text to start at the leftpos times negative 1. IE: If the leftpos is -8, then we trim 8 characters from the start
+                LeftPos = 0; //Set the leftpos to 0 so that we can draw the trimmed text
+            }
+
+            //Now check the right:
+            if (LeftPos + sprite.Length >= Console.WindowWidth) {
+                //If the sprite goes over the left side, we need to trim the end.
+                //We've already made sure the string has *something* to draw, since otherwise, LeftPos would be out of range to the right
+
+                //We need to get a substring from 0 to the maximum it can take up.
+                sprite = sprite.Substring(0, Console.WindowWidth - LeftPos - 1);
+            }
+
+            //If somehow we still have an out of range render position, just return.
+            if (!RenderUtils.SetPos(LeftPos, TopPos)){return;}
+
+            //Now we can *finally* do the actual drawing of the sprite.
 
             //Save the current colors of the console
             ConsoleColor OldBG = Console.BackgroundColor;
@@ -36,6 +73,7 @@ namespace Igtampe.BasicRender {
 
             //Change back to the old colors.
             RenderUtils.Color(OldBG,OldFG);
+            
 
         }
 
@@ -75,8 +113,16 @@ namespace Igtampe.BasicRender {
         /// <param name="TopPos"></param>
         public static void Row(ConsoleColor RowColor,int Length,int LeftPos,int TopPos) {
 
+            //If we get a position, move the cursor to that position
+            if (LeftPos == -1 && TopPos == -1) {
+                //Set the leftpos and toppos to the current cursor position
+                LeftPos = Console.CursorLeft;
+                TopPos = Console.CursorTop;
+            }
+
+
             //If we get a position, move to that position.
-            if(LeftPos != -1 && TopPos != -1) {if(!RenderUtils.SetPos(LeftPos,TopPos)) { return; }}
+            if (LeftPos != -1 && TopPos != -1) {if(!RenderUtils.SetPos(LeftPos,TopPos)) { return; }}
 
             //Save the current colors of the console
             ConsoleColor OldBG = Console.BackgroundColor;
