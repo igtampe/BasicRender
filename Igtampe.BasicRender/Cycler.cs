@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Igtampe.BasicRender {
+﻿namespace Igtampe.BasicRender {
 
     /// <summary>Holds a cycler object, which holds an array of strings to cycle through</summary>
     public class Cycler {
