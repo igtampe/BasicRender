@@ -113,29 +113,36 @@ namespace Igtampe.BasicRender {
         /// <param name="TopPos"></param>
         public static void Row(ConsoleColor RowColor,int Length,int LeftPos,int TopPos) {
 
-            //If we get a position, move the cursor to that position
-            if (LeftPos == -1 && TopPos == -1) {
-                //Set the leftpos and toppos to the current cursor position
-                LeftPos = Console.CursorLeft;
-                TopPos = Console.CursorTop;
-            }
+            //You know what, in order to save us the trouble of building another overscan implementation,
+            //let's do what we should've done when we first coded this thing and just prepare a row string and pass that to Sprite just like Block does.
+
+            string Row = "";
+            while (Row.Length!=Length) {Row += " ";}
+            Sprite(Row, RowColor, RowColor, LeftPos, TopPos);
+
+            ////If we get a position, move the cursor to that position
+            //if (LeftPos == -1 && TopPos == -1) {
+            //    //Set the leftpos and toppos to the current cursor position
+            //    LeftPos = Console.CursorLeft;
+            //    TopPos = Console.CursorTop;
+            //}
 
 
-            //If we get a position, move to that position.
-            if (LeftPos != -1 && TopPos != -1) {if(!RenderUtils.SetPos(LeftPos,TopPos)) { return; }}
+            ////If we get a position, move to that position.
+            //if (LeftPos != -1 && TopPos != -1) {if(!RenderUtils.SetPos(LeftPos,TopPos)) { return; }}
 
-            //Save the current colors of the console
-            ConsoleColor OldBG = Console.BackgroundColor;
-            ConsoleColor OldFG = Console.ForegroundColor;
+            ////Save the current colors of the console
+            //ConsoleColor OldBG = Console.BackgroundColor;
+            //ConsoleColor OldFG = Console.ForegroundColor;
 
-            //Set the color to the color this row will be
-            RenderUtils.Color(RowColor,RowColor);
+            ////Set the color to the color this row will be
+            //RenderUtils.Color(RowColor,RowColor);
 
-            //Draw the row
-            for(int i = 0; i < Length; i++) { Console.Write(SpecialChars.BLOCK); }
+            ////Draw the row
+            //for(int i = 0; i < Length; i++) { Console.Write(SpecialChars.BLOCK); }
 
-            //Set the color back to whatever it was.
-            RenderUtils.Color(OldBG,OldFG);
+            ////Set the color back to whatever it was.
+            //RenderUtils.Color(OldBG,OldFG);
         }
 
         //--------------------------------[Clearline]--------------------------------
