@@ -16,9 +16,10 @@ namespace Igtampe.BasicGraphics {
         /// <param name="LeftPos"></param>
         /// <param name="TopPos"></param>
         public override void Draw(int LeftPos,int TopPos) {
-            foreach(String Line in Contents) {
-                RenderUtils.SetPos(LeftPos,TopPos++);
+            foreach(string Line in Contents) {
+
                 if(!string.IsNullOrEmpty(Line)) { HiColorDraw(Line); }
+                TopPos++;
                 
             }
         }
@@ -36,31 +37,45 @@ namespace Igtampe.BasicGraphics {
         /// Draws a HiColorString, an example of which is '0F0-0F1-0F2', where the first character is ColorChar 1, second character is ColorChar 2, and the third character determines the gradient between the two colors
         /// </summary>
         /// <param name="HiColorString"></param>
-        public static void HiColorDraw(string HiColorString) {
+        public static void HiColorDraw(string HiColorString) { }
+
+        /// <summary>
+        /// Draws a HiColorString at position LeftPos, TopPos, an example of which is '0F0-0F1-0F2', where the first character is ColorChar 1, second character is ColorChar 2, and the third character determines the gradient between the two colors
+        /// </summary>
+        /// <param name="HiColorString"></param>
+        /// <param name="leftpos">LeftPosition of this HiColorString</param>
+        /// <param name="toppos">TopPosition of this HiColorString</param>
+        public static void HiColorDraw(string HiColorString, int leftpos, int toppos) {
 
             //An example would be 0F1-0F2-1F3
-            String[] HiColorRow = HiColorString.Split('-');
+            string[] HiColorRow = HiColorString.Split('-');
 
-            foreach(String HiColorBlock in HiColorRow) {
-                if(String.IsNullOrWhiteSpace(HiColorBlock) || HiColorBlock.Length < 3) { BasicRender.Draw.Block(Console.BackgroundColor); } else {
-                    ConsoleColor BG = GraphicUtils.ColorCharToConsoleColor(HiColorBlock[0]);
-                    ConsoleColor FG = GraphicUtils.ColorCharToConsoleColor(HiColorBlock[1]);
+            foreach(string HiColorBlock in HiColorRow) {
+                if(string.IsNullOrWhiteSpace(HiColorBlock) || HiColorBlock.Length < 3) { BasicRender.Draw.Block(Console.BackgroundColor); } else {
+                    ConsoleColor BG=ConsoleColor.Black;
+                    ConsoleColor FG=ConsoleColor.White;
+
+                    try {
+                        BG = GraphicUtils.ColorCharToConsoleColor(HiColorBlock[0]);
+                        FG = GraphicUtils.ColorCharToConsoleColor(HiColorBlock[1]);
+                    } catch (ArgumentException) {}
 
                     switch(HiColorBlock[2]) {
                         case '0':
-                            BasicRender.Draw.Sprite("░",BG,FG);
+                            BasicRender.Draw.Sprite("░",BG,FG,leftpos,toppos);
                             break;
                         case '1':
-                            BasicRender.Draw.Sprite("▒",BG,FG);
+                            BasicRender.Draw.Sprite("▒",BG,FG,leftpos,toppos);
                             break;
                         case '2':
-                            BasicRender.Draw.Sprite("▓",BG,FG);
+                            BasicRender.Draw.Sprite("▓",BG,FG,leftpos,toppos);
                             break;
                         default:
-                            BasicRender.Draw.Block(Console.BackgroundColor);
+                            BasicRender.Draw.Block(Console.BackgroundColor,leftpos,toppos);
                             break;
                     }
                 }
+                leftpos++;
 
             }
 
