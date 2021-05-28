@@ -41,9 +41,8 @@ namespace Igtampe.BasicGraphics {
             foreach (char ColorChar in ColorString) {
                 try { 
                     BasicRender.Draw.Block(GraphicUtils.ColorCharToConsoleColor(ColorChar),LeftPos,TopPos);
-                    LeftPos++;
                 } catch (ArgumentException) { } //only catch argument exception.
-
+                LeftPos++;
             }
         }
 
