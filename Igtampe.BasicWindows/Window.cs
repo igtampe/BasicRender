@@ -186,42 +186,48 @@ namespace Igtampe.BasicWindows
             //draw the header
             Draw.Row(HeaderBG,Length,LeftPos,TopPos);
 
-            RenderUtils.SetPos(LeftPos,TopPos);
+            //OK we've got to REMOVE el coso de esto to allow Overscanned windows
+            //RenderUtils.SetPos(LeftPos,TopPos);
 
-            RenderUtils.Color(HeaderBG,HeaderFG);
+            //RenderUtils.Color(HeaderBG,HeaderFG);
 
-            //Draw the header text.
+            string HeaderSprite="";
+
+            //PREPARE the header text.
             switch(HeadPos) {
                 case HeaderPosition.LEFT:
-                    RenderUtils.Echo("═ " + Title + " ");
-                    for(int i = 3 + Title.Length; i < Length; i++) { RenderUtils.Echo(SpecialChars.DOUBLE_HORIZONTAL+""); }
+                    HeaderSprite = SpecialChars.DOUBLE_HORIZONTAL+" " + Title + " ";
+                    for(int i = 3 + Title.Length; i < Length; i++) { HeaderSprite+=SpecialChars.DOUBLE_HORIZONTAL+""; }
                     break;
                 case HeaderPosition.CENTER:
                     //calculate lengths of the two side bars.
                     int SidesLength = (Length - (Title.Length + 2)) / 2;
 
                     //Do the first side
-                    for(int i = 0; i < SidesLength; i++) { RenderUtils.Echo(SpecialChars.DOUBLE_HORIZONTAL + ""); }
+                    for(int i = 0; i < SidesLength; i++) { HeaderSprite+=SpecialChars.DOUBLE_HORIZONTAL + ""; }
 
                     //Echo the title
-                    RenderUtils.Echo(" " + Title + " ");
+                    HeaderSprite+=" " + Title + " ";
 
                     //Do the other side
-                    for(int i = 0; i < SidesLength; i++) { RenderUtils.Echo(SpecialChars.DOUBLE_HORIZONTAL + ""); }
+                    for(int i = 0; i < SidesLength; i++) { HeaderSprite+=SpecialChars.DOUBLE_HORIZONTAL + ""; }
 
                     break;
                 case HeaderPosition.RIGHT:
-                    for(int i = 0; i < Length - 3 + Title.Length; i++) { RenderUtils.Echo(SpecialChars.DOUBLE_HORIZONTAL + ""); }
-                    RenderUtils.Echo(" " + Title + " "+ SpecialChars.DOUBLE_HORIZONTAL);
+                    for(int i = 0; i < Length - 3 + Title.Length; i++) { HeaderSprite+=SpecialChars.DOUBLE_HORIZONTAL + ""; }
+                    HeaderSprite += " " + Title + " " + SpecialChars.DOUBLE_HORIZONTAL;
                     break;
                 default:
                     break;
             }
 
+            Draw.Sprite(HeaderSprite, HeaderBG, HeaderFG, LeftPos, TopPos);
+
             //Draw the footer
-            RenderUtils.Color(MainBG,HeaderFG);
-            RenderUtils.SetPos(LeftPos,TopPos + Height - 1);
-            for(int i = 0; i < Length; i++) { RenderUtils.Echo("═"); }
+            Draw.Sprite(RenderUtils.Repeater(SpecialChars.DOUBLE_HORIZONTAL, Length), MainBG, HeaderFG,LeftPos,TopPos+Height-1);
+            //RenderUtils.Color(MainBG,HeaderFG);
+            //RenderUtils.SetPos(LeftPos,TopPos + Height - 1);
+            //for(int i = 0; i < Length; i++) { RenderUtils.Echo("═"); }
 
             //Draw each subelement.
             foreach(WindowElement element in AllElements) { element.DrawElement(); }
