@@ -105,6 +105,7 @@
             <summary>Sets the cursor position to the specified one</summary>
             <param name="LeftPos"></param>
             <param name="TopPos"></param>
+            <returns>Returns true if it was possible to set the position, false otherwise</returns>
         </member>
         <member name="M:Igtampe.BasicRender.RenderUtils.Color(System.ConsoleColor)">
             <summary>Sets the foreground color of the console</summary>

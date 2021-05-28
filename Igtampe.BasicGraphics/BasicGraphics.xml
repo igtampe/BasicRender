@@ -18,10 +18,16 @@
             <param name="TopPos"></param>
         </member>
         <member name="M:Igtampe.BasicGraphics.BasicGraphic.DrawColorString(System.String)">
-            <summary>Draws a ColorString comprised of ColorChars.<br></br><br></br>
-            For example, the colorstring '0123456789ABCDEF' will render a rainbow.
+            <summary>Draws a ColorString comprised of ColorChars at the current cursor position<br></br><br></br>
+            For example, the colorstring '0123456789ABCDEF' will render all available colors.
             </summary>
             <param name="ColorString"></param>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.BasicGraphic.DrawColorString(System.String,System.Int32,System.Int32)">
+            <summary>Draws the colorstring comprised of ColorChars provided at the specified Left and Top pos</summary>
+            <param name="ColorString"></param>
+            <param name="LeftPos"></param>
+            <param name="TopPos"></param>
         </member>
         <member name="M:Igtampe.BasicGraphics.BasicGraphic.LoadFromFile(System.String)">
             <summary>Loads a BasicGraphic from a file. Supersedes BasicGraphicFromFile</summary>
@@ -135,6 +141,14 @@
             Draws a HiColorString, an example of which is '0F0-0F1-0F2', where the first character is ColorChar 1, second character is ColorChar 2, and the third character determines the gradient between the two colors
             </summary>
             <param name="HiColorString"></param>
+        </member>
+        <member name="M:Igtampe.BasicGraphics.HiColorGraphic.HiColorDraw(System.String,System.Int32,System.Int32)">
+            <summary>
+            Draws a HiColorString at position LeftPos, TopPos, an example of which is '0F0-0F1-0F2', where the first character is ColorChar 1, second character is ColorChar 2, and the third character determines the gradient between the two colors
+            </summary>
+            <param name="HiColorString"></param>
+            <param name="leftpos">LeftPosition of this HiColorString</param>
+            <param name="toppos">TopPosition of this HiColorString</param>
         </member>
         <member name="M:Igtampe.BasicGraphics.HiColorGraphic.LoadFromFile(System.String)">
             <summary>Generates a HiColorGraphic item from a file. Supersedes HiColorGraphicFromFile.</summary>
