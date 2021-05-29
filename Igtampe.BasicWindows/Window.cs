@@ -44,19 +44,19 @@ namespace Igtampe.BasicWindows
         public int Height { get; protected set; }
 
         /// <summary>Title of this window</summary>
-        protected String Title;
+        public String Title;
 
         /// <summary>Main background of this window</summary>
-        protected ConsoleColor MainBG;
+        public ConsoleColor MainBG { get; protected set; }
 
         /// <summary>Background of the header on this window</summary>
-        protected ConsoleColor HeaderBG;
+        public ConsoleColor HeaderBG { get; protected set; }
 
         /// <summary>Foreground of the header of this window</summary>
-        protected ConsoleColor HeaderFG;
-        
+        public ConsoleColor HeaderFG { get; protected set; }
+
         /// <summary>Position of the header in this window</summary>
-        protected HeaderPosition HeadPos;
+        public HeaderPosition HeadPos { get; protected set; }
 
         /// <summary>Currently highlighted element on this window</summary>
         public WindowElement HighlightedElement { get; set; }
