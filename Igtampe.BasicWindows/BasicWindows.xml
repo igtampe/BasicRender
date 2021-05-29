@@ -359,16 +359,16 @@
         <member name="F:Igtampe.BasicWindows.Window.Title">
             <summary>Title of this window</summary>
         </member>
-        <member name="F:Igtampe.BasicWindows.Window.MainBG">
+        <member name="P:Igtampe.BasicWindows.Window.MainBG">
             <summary>Main background of this window</summary>
         </member>
-        <member name="F:Igtampe.BasicWindows.Window.HeaderBG">
+        <member name="P:Igtampe.BasicWindows.Window.HeaderBG">
             <summary>Background of the header on this window</summary>
         </member>
-        <member name="F:Igtampe.BasicWindows.Window.HeaderFG">
+        <member name="P:Igtampe.BasicWindows.Window.HeaderFG">
             <summary>Foreground of the header of this window</summary>
         </member>
-        <member name="F:Igtampe.BasicWindows.Window.HeadPos">
+        <member name="P:Igtampe.BasicWindows.Window.HeadPos">
             <summary>Position of the header in this window</summary>
         </member>
         <member name="P:Igtampe.BasicWindows.Window.HighlightedElement">
