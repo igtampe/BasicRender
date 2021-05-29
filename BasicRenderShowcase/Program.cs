@@ -13,6 +13,7 @@ namespace Igtampe.BasicRenderShowcase {
     class Program {
         static void Main() {
 
+            OverscanTest();
             ShapesDemo();
 
             RenderUtils.Echo("Stand by...\n\n");
@@ -240,10 +241,22 @@ namespace Igtampe.BasicRenderShowcase {
 
             DrawShapes.FillPolygon(Circle,ConsoleColor.Cyan);
 
-            RenderUtils.Pause();
+           //RenderUtils.Pause();
 
 
 
+
+        }
+
+        static void OverscanTest() {
+
+            Draw.Block(ConsoleColor.Red, -1, -1);
+            Draw.Row(ConsoleColor.Red, 200, -20, 5);
+            Draw.Box(ConsoleColor.Red, 200, 200, -50, 10);
+            new BasicGraphics.ExampleGraphics.Cloud().Draw(-5, -10);
+            new BasicGraphics.ExampleGraphics.Cloud().Draw(75, 20);
+            new BasicGraphics.ExampleGraphics.Cloud().Draw(100, -5);
+            //RenderUtils.Pause();
 
         }
 
