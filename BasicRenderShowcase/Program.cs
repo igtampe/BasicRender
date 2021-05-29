@@ -74,6 +74,15 @@ namespace Igtampe.BasicRenderShowcase {
             //Test HelloWorld
             //new HelloWorldWindow().Execute(); //We no longer really need to test HelloWorld. Windows are just windows now
 
+            Window FakeWelcomeWindow = new WelcomeWindow(-20,-3);
+
+            FakeWelcomeWindow.Redraw();
+
+            RenderUtils.Sleep(2000);
+            DialogBox.ShowDialogBox(Icon.IconType.INFORMATION, DialogBox.DialogBoxButtons.OK, "Wait a minute, that's not right. Let's redraw that in the center.");
+
+            FakeWelcomeWindow.Close();
+
             //Show the welcome window
             new WelcomeWindow().Execute();
 
