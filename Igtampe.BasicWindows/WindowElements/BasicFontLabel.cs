@@ -52,10 +52,17 @@ namespace Igtampe.BasicWindows.WindowElements {
         /// <summary>Draws this label</summary>
         public override void DrawElement() {
             int LineOffset = 0;
-            foreach(String Line in Text.Split('\n')) {
+            //In order to properly draw the label, we have to set the bg to the Window's bg
+            ConsoleColor OldBG = Console.BackgroundColor;
+            ConsoleColor OldFG = Console.ForegroundColor;
+            RenderUtils.Color(Parent.MainBG, FG);
+
+            foreach (String Line in Text.Split('\n')) {
                 Font.DrawText(Line,Parent.LeftPos + LeftPos,Parent.TopPos + TopPos + (LineOffset * Font.Height + 1),FG);
                 LineOffset++;
             }
+
+            RenderUtils.Color(OldBG, OldFG);
             
         
         }
