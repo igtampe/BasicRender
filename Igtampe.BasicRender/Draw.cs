@@ -118,6 +118,9 @@ namespace Igtampe.BasicRender {
             //You know what, in order to save us the trouble of building another overscan implementation,
             //let's do what we should've done when we first coded this thing and just prepare a row string and pass that to Sprite just like Block does.
 
+            if (Length == 0) { return; }
+            if (Length < 0) { Length *= -1; }
+
             string Row = "";
             while (Row.Length!=Length) {Row += " ";}
             Sprite(Row, RowColor, RowColor, LeftPos, TopPos);
