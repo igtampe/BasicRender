@@ -33,6 +33,7 @@ namespace Igtampe.BasicRender {
                 int LineOffset = 0;
                 foreach (string S in sprite.Split('\n')) {
                     Sprite(S, BackgroundColor, ForegroundColor, LeftPos, TopPos + LineOffset);
+                    TopPos++;
                 }
             }
 
@@ -48,12 +49,12 @@ namespace Igtampe.BasicRender {
             }
 
             //Now check the right:
-            if (LeftPos + sprite.Length >= Console.WindowWidth) {
+            if (LeftPos + sprite.Length > Console.WindowWidth) {
                 //If the sprite goes over the left side, we need to trim the end.
                 //We've already made sure the string has *something* to draw, since otherwise, LeftPos would be out of range to the right
 
                 //We need to get a substring from 0 to the maximum it can take up.
-                sprite = sprite.Substring(0, Console.WindowWidth - LeftPos - 1);
+                sprite = sprite.Substring(0, Console.WindowWidth - LeftPos);
             }
 
             //If somehow we still have an out of range render position, just return.
