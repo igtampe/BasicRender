@@ -18,7 +18,7 @@ namespace Igtampe.BasicGraphics {
         public override void Draw(int LeftPos,int TopPos) {
             foreach(string Line in Contents) {
 
-                if(!string.IsNullOrEmpty(Line)) { HiColorDraw(Line); }
+                if(!string.IsNullOrEmpty(Line)) { HiColorDraw(Line,LeftPos,TopPos); }
                 TopPos++;
                 
             }
@@ -37,7 +37,7 @@ namespace Igtampe.BasicGraphics {
         /// Draws a HiColorString, an example of which is '0F0-0F1-0F2', where the first character is ColorChar 1, second character is ColorChar 2, and the third character determines the gradient between the two colors
         /// </summary>
         /// <param name="HiColorString"></param>
-        public static void HiColorDraw(string HiColorString) { }
+        public static void HiColorDraw(string HiColorString) { HiColorDraw(HiColorString, Console.CursorLeft, Console.CursorTop); }
 
         /// <summary>
         /// Draws a HiColorString at position LeftPos, TopPos, an example of which is '0F0-0F1-0F2', where the first character is ColorChar 1, second character is ColorChar 2, and the third character determines the gradient between the two colors
