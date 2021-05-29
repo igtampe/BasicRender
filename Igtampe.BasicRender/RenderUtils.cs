@@ -49,6 +49,21 @@ namespace Igtampe.BasicRender {
         /// <param name="Width">Width in Columns</param>
         /// <param name="Height">Height in Rows</param>
         public static void ResizeConsole(int Width,int Height) {
+
+            //We may be calling this method far too much and more than necessary, but it's two Ifs Michael,
+            //How much computational power can they cost? 2ms?
+
+            //AdjustCursor(Width,Height);
+
+            //OK instead of adjsuting the cursor during the resize here's what we're going to do:
+            int OldLeft = Console.CursorLeft;
+            int OldTop = Console.CursorTop;
+
+            //Now 
+            SetPos(0, 0);
+
+            //Then: 
+
             //Determine if the width needs to be bigger or smaller
             if(Width > Console.WindowWidth) {
                 //If you need to grow the window, set the buffer first, then the window
@@ -61,7 +76,7 @@ namespace Igtampe.BasicRender {
             }
 
             //Determine if the height needs to be bigger or smaller
-            if(Height > Console.WindowHeight) {
+            if (Height > Console.WindowHeight) {
                 //If you need to grow the window, set the buffer first, then the window
                 Console.SetBufferSize(Width,Height);
                 Console.SetWindowSize(Width,Height);
@@ -70,6 +85,16 @@ namespace Igtampe.BasicRender {
                 Console.SetWindowSize(Width,Height);
                 Console.SetBufferSize(Width,Height);
             }
+
+            //Finally:
+            if (OldLeft >= Width) { Console.CursorLeft = Width - 1; } else { Console.CursorLeft = OldLeft; }
+            if (OldTop >= Height) { Console.CursorTop = Height - 1; } else { Console.CursorTop = OldTop; }
+
+            //again this may be a bit much for just resizing the console under most conditions pero sabes que:
+            //We have to be as compatible as possible for a graphics library like this, even if it means sacrificing some computational power per operation.
+
+            //But even then, It's two variables, 2 setpos-es, and 2 ifs. It's not that much.
+
         }
 
         /// <summary>Tries to resize the console window and buffer</summary>
