@@ -59,7 +59,9 @@ namespace Igtampe.BasicWindows {
                 //Render the Exception Stack Trace
                 string StackTrace = E.StackTrace;
                 if(Stripped) { StackTrace = DialogBox.StrippedStackTrace(E); }
-                Draw.Sprite(FormattedText.Format(StackTrace,Console.WindowWidth - 1,Console.WindowHeight - 4 - StopSign.GetHeight() - 6).Replace("\n","\n "),ConsoleColor.Black,ConsoleColor.White,0,StopSign.GetHeight() + 5);
+                Draw.Sprite(
+                    FormattedText.Format(StackTrace,Console.WindowWidth - 1,Console.WindowHeight - 4 - StopSign.GetHeight() - 6).Replace("\n","\n "),
+                    ConsoleColor.Black,ConsoleColor.White,0,StopSign.GetHeight() + 5);
 
                 //Draw writing.
                 Draw.CenterText("Writing to disk",Console.WindowHeight - 4,ConsoleColor.Black,ConsoleColor.Red);
