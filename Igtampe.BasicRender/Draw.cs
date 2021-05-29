@@ -35,6 +35,7 @@ namespace Igtampe.BasicRender {
                     Sprite(S, BackgroundColor, ForegroundColor, LeftPos, TopPos + LineOffset);
                     TopPos++;
                 }
+                return; //The sprite is now done, Get out.
             }
 
             //Now, a few checks to make sure we can space this singular line of text:
