@@ -256,7 +256,10 @@ namespace Igtampe.BasicRenderShowcase {
             new BasicGraphics.ExampleGraphics.Cloud().Draw(-5, -10);
             new BasicGraphics.ExampleGraphics.Cloud().Draw(75, 20);
             new BasicGraphics.ExampleGraphics.Cloud().Draw(100, -5);
-            //RenderUtils.Pause();
+
+            new Window("Help I'm overscanned", 20, 20);
+            
+            RenderUtils.Pause();
 
         }
 

@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using Igtampe.BasicRender;
 
-namespace Igtampe.BasicWindows
-{
+namespace Igtampe.BasicWindows{
 
     /// <summary>Position of the header on a window</summary>
     public enum HeaderPosition { 
@@ -18,6 +17,12 @@ namespace Igtampe.BasicWindows
 
     /// <summary>Holds the base for a renderable window.</summary>
     public class Window {
+
+        //OK so here's what we're going to do:
+        //We need to refactor this code to make these ridiculously long constructors not exist, and instead leverage the power of Properties.
+        //Then we're going to need to test the overscan of a window because for some reason algo is breaking with the calculation of where to place things.
+
+        //Finally we have to publis h this oh god
 
         /// <summary>Color the close function will use to clear the window</summary>
         public static ConsoleColor WindowClearColor = ConsoleColor.DarkCyan;
