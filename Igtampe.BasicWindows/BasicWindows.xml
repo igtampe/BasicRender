@@ -335,10 +335,10 @@
         <member name="F:Igtampe.BasicWindows.Window.WindowClearColor">
             <summary>Color the close function will use to clear the window</summary>
         </member>
-        <member name="F:Igtampe.BasicWindows.Window.Animated">
+        <member name="P:Igtampe.BasicWindows.Window.Animated">
             <summary>Indicates whether this window should "animate" itself when being drawn</summary>
         </member>
-        <member name="F:Igtampe.BasicWindows.Window.Shadowed">
+        <member name="P:Igtampe.BasicWindows.Window.Shadowed">
             <summary>Indicates whether this window should have a shadow when being drawn</summary>
         </member>
         <member name="P:Igtampe.BasicWindows.Window.Drawn">
@@ -356,7 +356,7 @@
         <member name="P:Igtampe.BasicWindows.Window.Height">
             <summary>Height of this window.</summary>
         </member>
-        <member name="F:Igtampe.BasicWindows.Window.Title">
+        <member name="P:Igtampe.BasicWindows.Window.Title">
             <summary>Title of this window</summary>
         </member>
         <member name="P:Igtampe.BasicWindows.Window.MainBG">

@@ -28,40 +28,40 @@ namespace Igtampe.BasicWindows{
         public static ConsoleColor WindowClearColor = ConsoleColor.DarkCyan;
 
         /// <summary>Indicates whether this window should "animate" itself when being drawn</summary>
-        protected readonly bool Animated;
+        public bool Animated { get; set; }
 
         /// <summary>Indicates whether this window should have a shadow when being drawn</summary>
-        protected readonly bool Shadowed;
+        public bool Shadowed { get; set; }
         
         /// <summary>Indicates whether the window is currently drawn.</summary>
         public bool Drawn { get; protected set; }
 
         /// <summary>Left position of this window</summary>
-        public int LeftPos {get;}
+        public int LeftPos { get; set; }
 
         /// <summary>Top position of this window</summary>
-        public int TopPos { get; }
+        public int TopPos { get; set; }
 
         /// <summary>Length of this window</summary>
-        public int Length { get; protected set; }
+        public int Length { get; set; }
 
         /// <summary>Height of this window.</summary>
-        public int Height { get; protected set; }
+        public int Height { get; set; }
 
         /// <summary>Title of this window</summary>
-        public String Title;
+        public String Title { get; set; }
 
         /// <summary>Main background of this window</summary>
-        public ConsoleColor MainBG { get; protected set; }
+        public ConsoleColor MainBG { get; set; }
 
         /// <summary>Background of the header on this window</summary>
-        public ConsoleColor HeaderBG { get; protected set; }
+        public ConsoleColor HeaderBG { get; set; }
 
         /// <summary>Foreground of the header of this window</summary>
-        public ConsoleColor HeaderFG { get; protected set; }
+        public ConsoleColor HeaderFG { get; set; }
 
         /// <summary>Position of the header in this window</summary>
-        public HeaderPosition HeadPos { get; protected set; }
+        public HeaderPosition HeadPos { get; set; }
 
         /// <summary>Currently highlighted element on this window</summary>
         public WindowElement HighlightedElement { get; set; }
