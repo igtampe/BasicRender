@@ -113,6 +113,11 @@ namespace Igtampe.BasicShapes {
         public bool Intersects(Line L) {
             if(Equals(L)) { return true; }
 
+            //Before we check every point:
+            if (P1F == L.P1F || P1F == L.P2F || P2F == L.P1F || P2F == L.P2F) {
+                return true;
+            }
+
             //Sabes this may be inefficient pero it is super neat and when we're dealing (at least with the console which is where this is meant to be used) a line can't be super big so it won't take too long.
             foreach(Point p in L.Points) { if(ContainsPoint(p)) { return true; } }
 
