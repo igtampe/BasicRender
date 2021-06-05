@@ -257,9 +257,20 @@ namespace Igtampe.BasicRenderShowcase {
             new BasicGraphics.ExampleGraphics.Cloud().Draw(75, 20);
             new BasicGraphics.ExampleGraphics.Cloud().Draw(100, -5);
 
-            new Window("Help I'm overscanned", 20, 20);
-            
-            RenderUtils.Pause();
+            //int X = -10;
+            //int Y = -5;
+            //Window W = new Window("Help I'm overscanned", 30, 15) { LeftPos = -10, TopPos = 0, Animated = true, Shadowed = true };
+
+            //while (X < Console.WindowWidth && Y < Console.WindowHeight){
+            //    W.LeftPos = X++;
+            //    W.TopPos = Y++;
+            //    W.Execute();
+            //}
+
+            Window FakeWelcomeWindow = new WelcomeWindow(-20, -3);
+            FakeWelcomeWindow.Redraw();
+
+            //RenderUtils.Pause();
 
         }
 
