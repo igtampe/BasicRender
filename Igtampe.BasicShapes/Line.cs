@@ -70,7 +70,7 @@ namespace Igtampe.BasicShapes {
         /// <summary>Creates a line</summary>
         public Line(int X1,int Y1,int X2,int Y2) : this(new PointF(X1,Y1),new PointF(X2,Y2)) { }
 
-        public Line(float X1,float Y1,float X2,float Y2) : this(new PointF(X1,X2),new PointF(X2,Y2)) { }
+        public Line(float X1,float Y1,float X2,float Y2) : this(new PointF(X1,Y1),new PointF(X2,Y2)) { }
 
         /// <summary>Creates a line</summary>
         /// <param name="P1"></param>
