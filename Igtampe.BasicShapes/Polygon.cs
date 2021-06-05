@@ -57,11 +57,22 @@ namespace Igtampe.BasicShapes {
             for(int i = 0; i < Points.Length - 1; i++) { L.Add(new Line(Points[i],Points[i + 1])); }
 
             L.Add(new Line(Points[0],Points[Points.Length - 1]));
-
             Lines = L.ToArray();
 
             //I would check but this procedure works so shh
+        }
 
+        /// <summary>Creates a Polygon from a list of points, creating lines to and from them sequentially.</summary>
+        /// <param name="Points"></param>
+        public Polygon(PointF[] Points) {
+            //Make the lines then pass it off to the next one.
+            List<Line> L = new List<Line>();
+            for (int i = 0; i < Points.Length - 1; i++) { L.Add(new Line(Points[i], Points[i + 1])); }
+
+            L.Add(new Line(Points[0], Points[Points.Length - 1]));
+            Lines = L.ToArray();
+
+            //I would check but this procedure works so shh
         }
 
         //-[Constructors]-------------------------------------------------------------------------------
@@ -89,38 +100,56 @@ namespace Igtampe.BasicShapes {
 
             //OK INSTEAD OF DOING THIS LINE BY LINE MAYHAPS WE SHOULD DO THIS BY POINTS INSTEAD.
 
-            throw new NotImplementedException("OK We;ve got to redo this");
+            //The only problem with this will be if someone makes a polygon with a curve in it.
+            //Maybe we should do a check for that.
+            List<PointF> NewCornerPoints = new List<PointF>();
 
-            List<Line> NewLines = new List<Line>();
+            foreach (Line l in P.Lines) {
+                if (l is Curve) { throw new NotSupportedException("Polygons with Curves are curently not supported by ScalePolygon"); }
 
-            //For each line:
-            foreach(Line L in P.Lines) {
-                //Create a new line from the center of the polygon to the line's center
-                Line CL = new Line(P.Center,L.Center,true);
+                //OK make a line from the center of the polygon to the P1 of this line
+                Line CL = new Line(P.Center,l.P1F,true);
 
                 //Scale it up by Scale, anchored at the center of the polygon (P1)
                 Line ScaledCL = Line.P1ScaleLine(CL,Scale);
 
-                //Translate the Line itself by the difference between CL and ScaledCL
-                Line NewLine = Line.TranslateLine(L,ScaledCL.DXF - CL.DXF,ScaledCL.DYF - CL.DYF);
-
-                //Scale the line itself  anchored at its own center.
-                NewLines.Add(Line.CenterScaleLine(NewLine,Scale));
+                //Now add P2 (the new corner point to New Corner Points
+                NewCornerPoints.Add(ScaledCL.P2F);
             }
 
-            //Now that we have all the lines, we should ensure they all intersect.
+            //Now make a new polygon using the points:
+            return new Polygon(NewCornerPoints.ToArray());
 
-            //Line[] RealNewLines = new Line[NewLines.Count] ;
-            List<Line> RealNewLines = new List<Line>();
+            //List<Line> NewLines = new List<Line>();
 
-            for (int i = 0; i < NewLines.Count-1; i++) {
-                RealNewLines.Add(new Line(NewLines[i].P1F, NewLines[i + 1].P1F));
-            }
+            ////For each line:
+            //foreach(Line L in P.Lines) {
+            //    //Create a new line from the center of the polygon to the line's center
+            //    Line CL = new Line(P.Center,L.Center,true);
 
-            //Lastly add one line from the last line's P1 to the first line's P1
-            RealNewLines.Add(new Line(NewLines[NewLines.Count - 1].P1F, NewLines[0].P1F));
-            
-            return new Polygon(RealNewLines.ToArray());
+            //    //Scale it up by Scale, anchored at the center of the polygon (P1)
+            //    Line ScaledCL = Line.P1ScaleLine(CL,Scale);
+
+            //    //Translate the Line itself by the difference between CL and ScaledCL
+            //    Line NewLine = Line.TranslateLine(L,ScaledCL.DXF - CL.DXF,ScaledCL.DYF - CL.DYF);
+
+            //    //Scale the line itself  anchored at its own center.
+            //    NewLines.Add(Line.CenterScaleLine(NewLine,Scale));
+            //}
+
+            ////Now that we have all the lines, we should ensure they all intersect.
+
+            ////Line[] RealNewLines = new Line[NewLines.Count] ;
+            //List<Line> RealNewLines = new List<Line>();
+
+            //for (int i = 0; i < NewLines.Count-1; i++) {
+            //    RealNewLines.Add(new Line(NewLines[i].P1F, NewLines[i + 1].P1F));
+            //}
+
+            ////Lastly add one line from the last line's P1 to the first line's P1
+            //RealNewLines.Add(new Line(NewLines[NewLines.Count - 1].P1F, NewLines[0].P1F));
+
+            //return new Polygon(RealNewLines.ToArray());
         }
 
         /// <summary>gets a Polygon's center point.</summary>
