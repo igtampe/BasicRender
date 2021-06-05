@@ -87,6 +87,10 @@ namespace Igtampe.BasicShapes {
         /// <returns></returns>
         public static Polygon ScalePolygon(Polygon P,double Scale) {
 
+            //OK INSTEAD OF DOING THIS LINE BY LINE MAYHAPS WE SHOULD DO THIS BY POINTS INSTEAD.
+
+            throw new NotImplementedException("OK We;ve got to redo this");
+
             List<Line> NewLines = new List<Line>();
 
             //For each line:
@@ -106,13 +110,17 @@ namespace Igtampe.BasicShapes {
 
             //Now that we have all the lines, we should ensure they all intersect.
 
-            //Line[] RealNewLines = NewLines.ToArray() ;
+            //Line[] RealNewLines = new Line[NewLines.Count] ;
+            List<Line> RealNewLines = new List<Line>();
 
-            //But I'll add this check later. 
-            //Si algo we'll go through all the lines, and make sure theyr begining and end is at the midpoint betwen the two if they're not equal already.
-            //Because of sort this will be dificil which really sucks we should really just remove sort entirely but oh well.
+            for (int i = 0; i < NewLines.Count-1; i++) {
+                RealNewLines.Add(new Line(NewLines[i].P1F, NewLines[i + 1].P1F));
+            }
 
-            return new Polygon(NewLines.ToArray());
+            //Lastly add one line from the last line's P1 to the first line's P1
+            RealNewLines.Add(new Line(NewLines[NewLines.Count - 1].P1F, NewLines[0].P1F));
+            
+            return new Polygon(RealNewLines.ToArray());
         }
 
         /// <summary>gets a Polygon's center point.</summary>
