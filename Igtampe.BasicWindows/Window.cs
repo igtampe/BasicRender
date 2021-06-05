@@ -143,6 +143,8 @@ namespace Igtampe.BasicWindows{
             this.Length = Length;
             this.Height = Height;
 
+            if (Length < 0 || Height < 0) { throw new ArgumentException("Length or height cannot be less than 0"); }
+            
             if(LeftPos == -1) { this.LeftPos = ((Console.WindowWidth) - Length) / 2; } else { this.LeftPos = LeftPos; }
             if(TopPos == -1) { this.TopPos = ((Console.WindowHeight) - Height) / 2; } else { this.TopPos = TopPos; }
 
