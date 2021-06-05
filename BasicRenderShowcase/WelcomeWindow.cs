@@ -9,9 +9,9 @@ using Igtampe.BasicRenderShowcase.Properties;
 namespace Igtampe.BasicRenderShowcase {
     public class WelcomeWindow:Window {
 
-        public WelcomeWindow() : this(44, 10) { }
+        public WelcomeWindow() : this(-1, -1) { }
 
-        public WelcomeWindow(int LeftPos, int TopPos) : base(ConsoleColor.Gray,ConsoleColor.DarkMagenta,ConsoleColor.White,"Welcome to BasicRender!",LeftPos,TopPos) {
+        public WelcomeWindow(int LeftPos, int TopPos) : base(true,true,ConsoleColor.Gray,ConsoleColor.DarkMagenta,ConsoleColor.White,HeaderPosition.CENTER,"Welcome to BasicRender!",44,10,LeftPos,TopPos) {
 
             AllElements.Add(new Label(this,"Welcome to the BasicRender showcase\n" +
                                            "program! We hope you enjoy the super\n" + 
