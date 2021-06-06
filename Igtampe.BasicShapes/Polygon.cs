@@ -21,7 +21,7 @@ namespace Igtampe.BasicShapes {
             }
         }
 
-        private Rectangle boundingRectangle = Rectangle.Empty;
+        private RectangleF boundingRectangle = Rectangle.Empty;
 
         /// <summary>Holds a rectangle that bounds this polygon</summary>
         public RectangleF BoundingRectangle { get {
@@ -164,7 +164,7 @@ namespace Igtampe.BasicShapes {
             Line ScaledCL = Line.P1ScaleLine(CL, Scale);
 
             //Now add P2 (the new corner point to New Corner Points
-            return(ScaledCL.P2F);
+            if (ScaledCL.P2F != P.Center) { return ScaledCL.P2F; } else { return ScaledCL.P1F; }
 
         }
 
@@ -200,7 +200,7 @@ namespace Igtampe.BasicShapes {
                     MinY = Math.Min(p.Y,MinY);
 
                     MaxX = Math.Max(p.X,MaxX);
-                    MinX = Math.Min(p.Y,MinX);
+                    MinX = Math.Min(p.X,MinX);
                 }
             }
 
