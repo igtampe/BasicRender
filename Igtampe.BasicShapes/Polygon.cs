@@ -24,8 +24,8 @@ namespace Igtampe.BasicShapes {
         private Rectangle boundingRectangle = Rectangle.Empty;
 
         /// <summary>Holds a rectangle that bounds this polygon</summary>
-        public Rectangle BoundingRectangle { get {
-                if(boundingRectangle == Rectangle.Empty) {boundingRectangle = GetBoundingRectangle(this);  }
+        public RectangleF BoundingRectangle { get {
+                if(boundingRectangle == RectangleF.Empty) {boundingRectangle = GetBoundingRectangle(this);  }
                 return boundingRectangle;
             } 
         }
@@ -103,23 +103,26 @@ namespace Igtampe.BasicShapes {
             //The only problem with this will be if someone makes a polygon with a curve in it.
             //Maybe we should do a check for that.
             List<PointF> NewCornerPoints = new List<PointF>();
+            List<PointF> VisitedPoints = new List<PointF>();
 
             foreach (Line l in P.Lines) {
                 if (l is Curve) { throw new NotSupportedException("Polygons with Curves are curently not supported by ScalePolygon"); }
 
-                //OK make a line from the center of the polygon to the P1 of this line
-                Line CL = new Line(P.Center,l.P1F,true);
-
-                //Scale it up by Scale, anchored at the center of the polygon (P1)
-                Line ScaledCL = Line.P1ScaleLine(CL,Scale);
-
-                //Now add P2 (the new corner point to New Corner Points
-                NewCornerPoints.Add(ScaledCL.P2F);
+                if (!VisitedPoints.Contains(l.P1F)) {
+                    VisitedPoints.Add(l.P1F);
+                    NewCornerPoints.Add(ScalePointOut(P, l.P1F, Scale));
+                } 
+                
+                if (!VisitedPoints.Contains(l.P2F)) {
+                    VisitedPoints.Add(l.P2F);
+                    NewCornerPoints.Add(ScalePointOut(P, l.P2F, Scale));
+                }
             }
 
             //Now make a new polygon using the points:
             return new Polygon(NewCornerPoints.ToArray());
 
+            /**
             //List<Line> NewLines = new List<Line>();
 
             ////For each line:
@@ -150,6 +153,19 @@ namespace Igtampe.BasicShapes {
             //RealNewLines.Add(new Line(NewLines[NewLines.Count - 1].P1F, NewLines[0].P1F));
 
             //return new Polygon(RealNewLines.ToArray());
+            **/
+        }
+
+        protected static PointF ScalePointOut(Polygon P, PointF PointToScale, double Scale) {
+            //OK make a line from the center of the polygon to the P1 of this line
+            Line CL = new Line(P.Center, PointToScale, true);
+
+            //Scale it up by Scale, anchored at the center of the polygon (P1)
+            Line ScaledCL = Line.P1ScaleLine(CL, Scale);
+
+            //Now add P2 (the new corner point to New Corner Points
+            return(ScaledCL.P2F);
+
         }
 
         /// <summary>gets a Polygon's center point.</summary>
@@ -158,7 +174,7 @@ namespace Igtampe.BasicShapes {
         private static PointF GetPolygonCenter(Polygon P) {
 
 
-            Rectangle R = P.BoundingRectangle;
+            RectangleF R = P.BoundingRectangle;
 
             //once we find the middle of the bounding rectangle, we'll have the middle of the polygon 
             float X = Convert.ToSingle(R.X + (R.Width * .5));
@@ -171,12 +187,12 @@ namespace Igtampe.BasicShapes {
         /// <summary>Calculates the bounding rectangle of the given polygon.</summary>
         /// <param name="P"></param>
         /// <returns></returns>
-        private static Rectangle GetBoundingRectangle(Polygon P) {
+        private static RectangleF GetBoundingRectangle(Polygon P) {
             //Itterate through all the points on this thing and find the largest Minimum X, Maximum X, Minimum Y, and Maximum Y
-            int MaxY = 0;
-            int MinY = 99999999;
-            int MaxX = 0;
-            int MinX = 99999999;
+            float MaxY = 0;
+            float MinY = 99999999;
+            float MaxX = 0;
+            float MinX = 99999999;
 
             foreach(Line L in P.Lines) {
                 foreach(Point p in L.Points) {
@@ -189,7 +205,7 @@ namespace Igtampe.BasicShapes {
             }
 
             //Now that we have that we can build a rectangle:
-            return new Rectangle(MinX,MinY,MaxX - MinX,MaxY - MinY);
+            return new RectangleF(MinX,MinY,MaxX - MinX,MaxY - MinY);
 
         }
 
