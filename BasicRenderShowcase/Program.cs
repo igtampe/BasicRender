@@ -13,8 +13,8 @@ namespace Igtampe.BasicRenderShowcase {
     class Program {
         static void Main() {
 
-            OverscanTest();
             ShapesDemo();
+            OverscanTest();
 
             RenderUtils.Echo("Stand by...\n\n");
             SpecialChars.TestChars();
@@ -241,7 +241,38 @@ namespace Igtampe.BasicRenderShowcase {
 
             DrawShapes.FillPolygon(Circle,ConsoleColor.Cyan);
 
-           //RenderUtils.Pause();
+            Console.Clear();
+
+            //Let's make a line:
+
+            Line ScaleLine = new Line(5, 5, 25, 10);
+            DrawShapes.DrawLine(ScaleLine, ConsoleColor.Red);
+
+            //Let's scale it Down by 50%
+            DrawShapes.DrawLine(Line.TranslateLine(Line.CenterScaleLine(ScaleLine, 0.5), 0,3), ConsoleColor.Blue);
+
+            //Let's scale it up by 25%
+            DrawShapes.DrawLine(Line.TranslateLine(Line.CenterScaleLine(ScaleLine, 1.25), 0, -2), ConsoleColor.Green);
+
+            //Let's make Cube 1 an actual polygon so we can do some funky stuff with it.
+            Polygon S = new Polygon(Cube1);
+
+            //Let's redraw Cube 1
+            DrawShapes.DrawPolygon(S, ConsoleColor.Red);
+
+            //I don't like where it is so let's draw it to the right and slightly down.
+            DrawShapes.DrawPolygon(Polygon.TranslatePolygon(S,40,5), ConsoleColor.Red);
+
+            //And now, let's scale this thing up
+
+            for (double scale = 0.5; scale < 2; scale+=.1) {
+                Random ColorRandomizer = new Random();
+                DrawShapes.DrawPolygon(Polygon.TranslatePolygon(Polygon.ScalePolygon(S, scale), 40, 5), GraphicUtils.ColorCharToConsoleColor(char.Parse(ColorRandomizer.Next(10)+"")));
+            }
+
+
+            RenderUtils.Pause();
+
 
 
 
