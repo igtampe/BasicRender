@@ -28,7 +28,7 @@ namespace Igtampe.BasicRenderShowcase {
 
             //Draw the splash
             BasicRenderSplash();
-            //RenderUtils.Sleep(2000);
+            RenderUtils.Sleep(2000);
             RenderUtils.Pause();
 
             Window WelcomeSplash = new Window(false,true,"Welcome",47,10);
@@ -269,18 +269,9 @@ namespace Igtampe.BasicRenderShowcase {
                 Random ColorRandomizer = new Random();
                 DrawShapes.DrawPolygon(Polygon.TranslatePolygon(Polygon.ScalePolygon(S, scale), 40, 5), GraphicUtils.ColorCharToConsoleColor(char.Parse(ColorRandomizer.Next(10)+"")));
             }
-
-
-            RenderUtils.Pause();
-
-
-
-
-
         }
 
         static void OverscanTest() {
-
             Draw.Block(ConsoleColor.Red, -1, -1);
             Draw.Row(ConsoleColor.Red, 200, -20, 5);
             Draw.Box(ConsoleColor.Red, 200, 200, -50, 10);
@@ -288,21 +279,8 @@ namespace Igtampe.BasicRenderShowcase {
             new BasicGraphics.ExampleGraphics.Cloud().Draw(75, 20);
             new BasicGraphics.ExampleGraphics.Cloud().Draw(100, -5);
 
-            //int X = -10;
-            //int Y = -5;
-            //Window W = new Window("Help I'm overscanned", 30, 15) { LeftPos = -10, TopPos = 0, Animated = true, Shadowed = true };
-
-            //while (X < Console.WindowWidth && Y < Console.WindowHeight){
-            //    W.LeftPos = X++;
-            //    W.TopPos = Y++;
-            //    W.Execute();
-            //}
-
             Window FakeWelcomeWindow = new WelcomeWindow(-20, -3);
             FakeWelcomeWindow.Redraw();
-
-            //RenderUtils.Pause();
-
         }
 
     }
