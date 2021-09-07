@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Collections.Generic;
 
 namespace Igtampe.BasicShapes {
+    /// <summary>Class that holds a curve</summary>
     public class Curve :Line{
 
         //-[FIELDS]-------------------------------------------------------------------------------
@@ -30,6 +31,11 @@ namespace Igtampe.BasicShapes {
 
         //-[Constructor]-------------------------------------------------------------------------------
 
+        /// <summary>Creates a curve from points rather than pointFs</summary>
+        /// <param name="Center"></param>
+        /// <param name="Radius"></param>
+        /// <param name="A1"></param>
+        /// <param name="A2"></param>
         public Curve(Point Center,double Radius,double A1,double A2) :this(ConvertToPointF(Center),Radius,A1,A2) { }
 
         /// <summary>Creates a curve</summary>
@@ -66,18 +72,26 @@ namespace Igtampe.BasicShapes {
             return base.Equals(obj);
         }
 
+        /// <summary>Gets a hashcode for this curve</summary>
+        /// <returns>The hashcode of the center point</returns>
+        public override int GetHashCode() {
+            return Center.GetHashCode() ;
+        }
+
+        /// <summary>Returns a string representation of this curve</summary>
+        /// <returns></returns>
         public override string ToString() {return "Curve from " + A1 + " to " + A2 + " with center " + Center + " and radius " + R;}
 
         /// <summary>Generates the points for a curve C</summary>
         /// <param name="C"></param>
         public static List<Point> GeneratePoints(Curve C) {
 
-            List<Point> Points = new List<Point>();
+            List<Point> NPoints = new List<Point>();
 
             //We're going for a little finer detail here.
-            for(double A = C.A1; A <= C.A2; A+=0.5) {Points.Add(ConvertToPoint(CalculatePoint(A,C.Center,C.R)));}
+            for(double A = C.A1; A <= C.A2; A+=0.5) {NPoints.Add(ConvertToPoint(CalculatePoint(A,C.Center,C.R)));}
 
-            return Points;
+            return NPoints;
         
         }
 

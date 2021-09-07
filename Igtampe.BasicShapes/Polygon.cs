@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Drawing;
 
 namespace Igtampe.BasicShapes {
+
+    /// <summary>Class that represents a Polygon</summary>
     public class Polygon {
         
         //-[FIELDS]-------------------------------------------------------------------------------
@@ -122,7 +124,7 @@ namespace Igtampe.BasicShapes {
             //Now make a new polygon using the points:
             return new Polygon(NewCornerPoints.ToArray());
 
-            /**
+            /***
             //List<Line> NewLines = new List<Line>();
 
             ////For each line:
@@ -156,6 +158,11 @@ namespace Igtampe.BasicShapes {
             **/
         }
 
+        /// <summary>Scales a point from a polygon out from its center</summary>
+        /// <param name="P"></param>
+        /// <param name="PointToScale"></param>
+        /// <param name="Scale"></param>
+        /// <returns></returns>
         protected static PointF ScalePointOut(Polygon P, PointF PointToScale, double Scale) {
             //OK make a line from the center of the polygon to the P1 of this line
             Line CL = new Line(P.Center, PointToScale, true);

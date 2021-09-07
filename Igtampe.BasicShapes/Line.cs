@@ -45,11 +45,13 @@ namespace Igtampe.BasicShapes {
         /// <summary>Delta X</summary>
         public int DX { get { return Convert.ToInt32(DXF); } }
 
+        /// <summary>Delta X with floating point precision</summary>
         public float DXF { get { return P2F.X - P1F.X; } }
 
         /// <summary>Delta Y</summary>
         public int DY { get { return Convert.ToInt32(DYF); } }
 
+        /// <summary>Delta Y with floating point precision</summary>
         public float DYF { get { return P2F.Y - P1F.Y; } }
 
         /// <summary>Length of the line using the ancient power of Pythagorean Theorem</summary>
@@ -70,6 +72,11 @@ namespace Igtampe.BasicShapes {
         /// <summary>Creates a line</summary>
         public Line(int X1,int Y1,int X2,int Y2) : this(new PointF(X1,Y1),new PointF(X2,Y2)) { }
 
+        /// <summary>Creates a line wit hfloating point precision</summary>
+        /// <param name="X1"></param>
+        /// <param name="Y1"></param>
+        /// <param name="X2"></param>
+        /// <param name="Y2"></param>
         public Line(float X1,float Y1,float X2,float Y2) : this(new PointF(X1,Y1),new PointF(X2,Y2)) { }
 
         /// <summary>Creates a line</summary>
@@ -79,7 +86,7 @@ namespace Igtampe.BasicShapes {
 
         /// <summary>Creates a line with Floating Point precision</summary>
         /// <param name="P1"></param>
-        /// <param name="P2F"></param>
+        /// <param name="P2"></param>
         public Line(PointF P1,PointF P2):this(P1,P2,false) {}
 
         /// <summary>Creates a line with floating point precision. Skips sorting P1 and P2 by X if SkipSort is true</summary>
@@ -132,6 +139,12 @@ namespace Igtampe.BasicShapes {
             return false;
         }
 
+        /// <summary>Gets a hashcode for this line</summary>
+        /// <returns>The sum of P1F and P2F's hashcodes</returns>
+        public override int GetHashCode() {
+            return P1F.GetHashCode() + P2F.GetHashCode();
+        }
+
         /// <summary>returns a string representation of this line</summary>
         /// <returns></returns>
         public override string ToString() {
@@ -144,53 +157,53 @@ namespace Igtampe.BasicShapes {
         /// <returns></returns>
         public virtual List<Point> GeneratePoints(Line L) {
 
-            List<Point> Points = new List<Point>();
+            List<Point> NPoints = new List<Point>();
 
             //OK so uh.... Three special cases:
 
             //Just a point
             if(L.P1.Equals(L.P2)) {
-                Points.Add(L.P1);
-                return Points;
+                NPoints.Add(L.P1);
+                return NPoints;
             }
 
             //Vertical Line
             if(double.IsInfinity(L.M)) {
-                for(int i = Math.Min(L.P1.Y,L.P2.Y); i < Math.Max(L.P2.Y,L.P1.Y) + 1; i++) { Points.Add(new Point(L.P1.X,i)); }
-                return Points;
+                for(int i = Math.Min(L.P1.Y,L.P2.Y); i < Math.Max(L.P2.Y,L.P1.Y) + 1; i++) { NPoints.Add(new Point(L.P1.X,i)); }
+                return NPoints;
             }
 
             //Horizontal Line
             if(L.M == 0) {
-                for(int X = L.P1.X; X <= L.P2.X; X++) { Points.Add(new Point(X,L.P1.Y)); }
-                return Points;
+                for(int X = L.P1.X; X <= L.P2.X; X++) { NPoints.Add(new Point(X,L.P1.Y)); }
+                return NPoints;
             }
 
             //OK, no shortcuts. Let's figure this out.
 
             //Place a point on each side
-            Points.Add(L.P1);
-            Points.Add(L.P2);
+            NPoints.Add(L.P1);
+            NPoints.Add(L.P2);
 
             int PrevY = L.P1.Y;
 
-            for(int DX = 0; DX < L.DX + 1; DX++) {
+            for(int NDX = 0; NDX < L.DX + 1; NDX++) {
 
-                int NewY = L.P1.Y + Convert.ToInt32(L.M * DX);
+                int NewY = L.P1.Y + Convert.ToInt32(L.M * NDX);
 
                 //Use DrawLine. If there's only one block then this will make one block. If not, it'll make a line to connect it.
                 //However an adjustment needs to be made. This will make *thick* lines which we don't want.
                 if(NewY < PrevY) { //If new Y is lower than PrevY, use -1
-                    Points.AddRange(GeneratePoints(new Line(L.P1.X + DX,PrevY - 1,L.P1.X + DX,NewY)));
+                    NPoints.AddRange(GeneratePoints(new Line(L.P1.X + NDX,PrevY - 1,L.P1.X + NDX,NewY)));
                 } else if(NewY > PrevY) {//If NewY is higher than PrevY, use +1
-                    Points.AddRange(GeneratePoints(new Line(L.P1.X + DX,PrevY + 1,L.P1.X + DX,NewY)));
+                    NPoints.AddRange(GeneratePoints(new Line(L.P1.X + NDX,PrevY + 1,L.P1.X + NDX,NewY)));
                 } else { //Else, they're the same. Just use DrawBlockAt.
-                    Points.Add(new Point(L.P1.X + DX,NewY));
+                    NPoints.Add(new Point(L.P1.X + NDX,NewY));
                 }
                 PrevY = NewY;
             }
 
-            return Points;
+            return NPoints;
         }
 
         //-[Static Utilities]-------------------------------------------------------------------------------
