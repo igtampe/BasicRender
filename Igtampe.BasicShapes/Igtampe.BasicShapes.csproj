@@ -6,6 +6,10 @@
     <AssemblyOriginatorKeyFile>The Chopo Signature.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Users\Igtam\source\repos\BasicRender\Igtampe.BasicShapes\Igtampe.BasicShapes.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Igtampe.BasicRender\Igtampe.BasicRender.csproj" />
   </ItemGroup>
