@@ -164,7 +164,7 @@ namespace Igtampe.BasicWindows{
             DrawWindow(Animated);
 
             //OnKeyPress returns true if we should continue execution.
-            while(OnKeyPress(Console.ReadKey(true))) { }
+            while(OnKeyPress(Console.ReadKey(true))) {/*Do nothing since all of it happens in onkeypress*/ }
         }
 
         /// <summary>Draws the window</summary>
@@ -194,9 +194,10 @@ namespace Igtampe.BasicWindows{
             Draw.Row(HeaderBG,Length,LeftPos,TopPos);
 
             //OK we've got to REMOVE el coso de esto to allow Overscanned windows
+            /***
             //RenderUtils.SetPos(LeftPos,TopPos);
 
-            //RenderUtils.Color(HeaderBG,HeaderFG);
+            //RenderUtils.Color(HeaderBG,HeaderFG);**/
 
             string HeaderSprite="";
 
@@ -232,9 +233,10 @@ namespace Igtampe.BasicWindows{
 
             //Draw the footer
             Draw.Sprite(RenderUtils.Repeater(SpecialChars.DOUBLE_HORIZONTAL, Length), MainBG, HeaderFG,LeftPos,TopPos+Height-1);
+            /***
             //RenderUtils.Color(MainBG,HeaderFG);
             //RenderUtils.SetPos(LeftPos,TopPos + Height - 1);
-            //for(int i = 0; i < Length; i++) { RenderUtils.Echo("═"); }
+            //for(int i = 0; i < Length; i++) { RenderUtils.Echo("═"); }***/
 
             //Draw each subelement.
             foreach(WindowElement element in AllElements) { element.DrawElement(); }

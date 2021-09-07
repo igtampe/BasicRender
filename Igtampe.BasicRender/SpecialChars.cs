@@ -269,8 +269,6 @@
                 ARROW_UP_DOWN + ARROW_LEFT_RIGHT +
                 ARROW_DOUBLE_LEFT + ARROW_DOUBLE_RIGHT +
                 ""); 
-
-            //for(int i = 0; i < 255; i++) {System.Console.Write((char)i);}
         }
     }
 }

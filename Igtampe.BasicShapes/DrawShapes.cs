@@ -24,7 +24,8 @@ namespace Igtampe.BasicShapes {
         /// <summary>Draws a line between the two points with the specified color.<br></br>
         /// <br></br>
         /// <b>NOTE:</b><br></br>
-        /// Coordinates are given as CONSOLE coordinates. 0,0 is the TOP-LEFT-MOST coordinate on the console.<br></br>        /// <param name="X1"></param>
+        /// Coordinates are given as CONSOLE coordinates. 0,0 is the TOP-LEFT-MOST coordinate on the console.<br></br></summary>
+        /// <param name="X1"></param>
         /// <param name="Y1"></param>
         /// <param name="X2"></param>
         /// <param name="Y2"></param>
@@ -43,7 +44,7 @@ namespace Igtampe.BasicShapes {
 
         /// <summary>Draws a curve with specified color</summary>
         /// <param name="C"></param>
-        /// <param name="C"></param>
+        /// <param name="Cu"></param>
         public static void DrawCurve(Curve Cu,ConsoleColor C) { foreach(Point p in Cu.Points) { DrawBlockAt(p,C); } }
 
         //-[DrawBlockAt]-------------------------------------------------------------------------------

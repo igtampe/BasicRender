@@ -76,13 +76,11 @@ namespace Igtampe.BasicWindows {
             while(true) {
 
                 //If there's a key to read, read it, otherwise, do not.
-                if(Console.KeyAvailable) {
-                    if(!OnKeyPress(Console.ReadKey(true))) {
-                        Close();
-                        return; 
-                    }
+                if (Console.KeyAvailable && !OnKeyPress(Console.ReadKey(true))) {
+                    Close();
+                    return;
                 }
-                if(!Tick()) {
+                if (!Tick()) {
                     Close();
                     return;
                 }

@@ -49,7 +49,7 @@ namespace Igtampe.BasicWindows {
 
         /// <summary>Most basic constructor for any window element</summary>
         /// <param name="Parent"></param>
-        public WindowElement(Window Parent) { this.Parent = Parent; }
+        protected WindowElement(Window Parent) { this.Parent = Parent; }
         
         /// <summary>Triggered when a key is hit, and handles any user interaction with this element</summary>
         /// <param name="Key"></param>

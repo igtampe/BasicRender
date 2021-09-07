@@ -39,9 +39,9 @@ namespace Igtampe.BasicGraphics {
         /// <param name="TopPos"></param>
         public static void DrawColorString(string ColorString, int LeftPos, int TopPos) {
             foreach (char ColorChar in ColorString) {
-                try { 
-                    BasicRender.Draw.Block(GraphicUtils.ColorCharToConsoleColor(ColorChar),LeftPos,TopPos);
-                } catch (ArgumentException) { } //only catch argument exception.
+                try {
+                    BasicRender.Draw.Block(GraphicUtils.ColorCharToConsoleColor(ColorChar), LeftPos, TopPos);
+                } catch (ArgumentException) {/*Only catch arg exception*/ }
                 LeftPos++;
             }
         }

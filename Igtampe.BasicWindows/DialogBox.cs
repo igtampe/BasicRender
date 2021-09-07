@@ -82,7 +82,7 @@ namespace Igtampe.BasicWindows {
             FormattedText TextButFormatted = new FormattedText(Text,MaxWidth - 6,MaxHeight - 5);
 
             //find the minimum width of the window given the buttons:
-            //5 is the base because that's the width of the icon;
+            //5 is the base because that's the width of the icon
             int MinWidth = 5;
             switch(Buttons) {
                 case DialogBoxButtons.OK:

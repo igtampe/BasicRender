@@ -125,7 +125,7 @@ namespace Igtampe.BasicRender {
             while (Row.Length!=Length) {Row += " ";}
             Sprite(Row, RowColor, RowColor, LeftPos, TopPos);
 
-            ////If we get a position, move the cursor to that position
+            /***If we get a position, move the cursor to that position
             //if (LeftPos == -1 && TopPos == -1) {
             //    //Set the leftpos and toppos to the current cursor position
             //    LeftPos = Console.CursorLeft;
@@ -147,7 +147,7 @@ namespace Igtampe.BasicRender {
             //for(int i = 0; i < Length; i++) { Console.Write(SpecialChars.BLOCK); }
 
             ////Set the color back to whatever it was.
-            //RenderUtils.Color(OldBG,OldFG);
+            //RenderUtils.Color(OldBG,OldFG);***/
         }
 
         //--------------------------------[Clearline]--------------------------------
@@ -175,15 +175,15 @@ namespace Igtampe.BasicRender {
         public static void CenterText(string Text,int TopPos,ConsoleColor BG,ConsoleColor FG) {
 
             //Find the position of this text where its centered. -1 so that it preffers left center rather than right center.
-            int leftpos = (Console.WindowWidth - Text.Length - 1) / 2; ;
+            int leftpos = (Console.WindowWidth - Text.Length - 1) / 2; 
             while(leftpos < 0) {
-                Text.Substring(0,Text.Length - 1);
-                leftpos = (Console.WindowWidth - Text.Length - 1) / 2; ;
+                Text=Text.Substring(0,Text.Length - 1);
+                leftpos = (Console.WindowWidth - Text.Length - 1) / 2; 
                 
                 if(leftpos < 0) { break; }
                 
-                Text.Substring(1,Text.Length - 1);
-                leftpos = (Console.WindowWidth - Text.Length - 1) / 2; ;
+                Text=Text.Substring(1,Text.Length - 1);
+                leftpos = (Console.WindowWidth - Text.Length - 1) / 2; 
             } //Peacock Shake the text until it fits
 
             //Save the current console colors

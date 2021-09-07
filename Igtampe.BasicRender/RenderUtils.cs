@@ -53,7 +53,7 @@ namespace Igtampe.BasicRender {
             //We may be calling this method far too much and more than necessary, but it's two Ifs Michael,
             //How much computational power can they cost? 2ms?
 
-            //AdjustCursor(Width,Height);
+            /***AdjustCursor(Width,Height);*/
 
             //OK instead of adjsuting the cursor during the resize here's what we're going to do:
             int OldLeft = Console.CursorLeft;

@@ -10,7 +10,7 @@ using Igtampe.BasicFonts;
 using Igtampe.BasicShapes;
 
 namespace Igtampe.BasicRenderShowcase {
-    class Program {
+    public static class Program {
         static void Main() {
 
             ShapesDemo();
@@ -121,8 +121,7 @@ namespace Igtampe.BasicRenderShowcase {
         static void Quiz() {
             if(DialogBox.ShowDialogBox(Icon.IconType.QUESTION,DialogBox.DialogBoxButtons.YesNo,"Is this America?") == DialogBox.DialogBoxResult.Yes) {
                 if(DialogBox.ShowDialogBox(Icon.IconType.EXCLAMATION,DialogBox.DialogBoxButtons.OKCancel,"This is America")==DialogBox.DialogBoxResult.Cancel) {
-                    Quiz();
-                    return;
+                    Quiz(); 
                 }
             } else {
 
@@ -131,7 +130,7 @@ namespace Igtampe.BasicRenderShowcase {
                         if(DialogBox.ShowDialogBox(Icon.IconType.ERROR,DialogBox.DialogBoxButtons.AbortRetryIgnore,"Incorrect. According to the Childish Gambino song:\n\nThis is America (woo, ayy) Don't catch you slippin' now(woo,woo,don't catch you slippin',now) Don't catch you slippin' now(ayy,woah) Look what I'm whippin' now(Slime!) This is America(yeah, yeah) Don't catch you slippin' now(woah,ayy) Don't catch you slippin' now(ayy,woo) Look what I'm whippin' now(ayy) Look how I'm geekin' out (hey)I'm so fitted (I'm so fitted,woo)I'm on Gucci (I'm on Gucci)I'm so pretty (yeah, yeah)I'm gon' get it(ayy,I'm gon' get it)Watch me move(blaow)This a celly(ha)That's a tool (yeah)On my Kodak(woo,Black)Ooh, know that(yeah,know that,hold on)Get it(get it,get it)Ooh, work it(21)Hunnid bands, hunnid bands, hunnid bands(hunnid bands)Contraband, contraband, contraband(contraband)I got the plug on Oaxaca(woah)They gonna find you like blocka(blaow)'")==DialogBox.DialogBoxResult.Retry) {
                             Quiz();
                             return;
-                        };
+                        }
                         break;
                     case DialogBox.DialogBoxResult.No:
                         if(DialogBox.ShowDialogBox(Icon.IconType.EXCLAMATION,DialogBox.DialogBoxButtons.OKCancel,"This is America") == DialogBox.DialogBoxResult.Cancel) {

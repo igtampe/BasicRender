@@ -7,6 +7,7 @@ using Igtampe.BasicRender;
 using Igtampe.BasicFonts.Properties;
 
 namespace Igtampe.BasicFonts{
+    /// <summary>Class that holds 1 basic font</summary>
     public class BasicFont {
 
         //-[Variable and Properties]---------------------------------------------------------------------
@@ -32,9 +33,9 @@ namespace Igtampe.BasicFonts{
             this.FontDictionary = FontDictionary;
 
             //Check that the font has all the required keys
-            if(!FontDictionary.ContainsKey("Name") |
-                !FontDictionary.ContainsKey("Author") |
-                !FontDictionary.ContainsKey("CharWidth") |
+            if(!FontDictionary.ContainsKey("Name") ||
+                !FontDictionary.ContainsKey("Author") ||
+                !FontDictionary.ContainsKey("CharWidth") ||
                 !FontDictionary.ContainsKey("CharHeight")) { throw new ArgumentException("Dictionary is not a Font Dictionary."); }
 
         }

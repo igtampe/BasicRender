@@ -25,7 +25,7 @@ namespace Igtampe.BasicWindows.WindowElements {
         /// <param name="HighlightedBG"></param>
         /// <param name="LeftPos"></param>
         /// <param name="TopPos"></param>
-        public Button(Window Parent,String Text,ConsoleColor BG,ConsoleColor FG,ConsoleColor HighlightedBG,int LeftPos,int TopPos) : base(Parent) {
+        protected Button(Window Parent,String Text,ConsoleColor BG,ConsoleColor FG,ConsoleColor HighlightedBG,int LeftPos,int TopPos) : base(Parent) {
             this.Text = Text;
             this.BG = BG;
             this.FG = FG;

@@ -1,0 +1,345 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Igtampe.BasicShapes</name>
+    </assembly>
+    <members>
+        <member name="T:Igtampe.BasicShapes.Curve">
+            <summary>Class that holds a curve</summary>
+        </member>
+        <member name="P:Igtampe.BasicShapes.Curve.Center">
+            <summary>Center of the curve</summary>
+        </member>
+        <member name="P:Igtampe.BasicShapes.Curve.R">
+            <summary>Radius of the curve</summary>
+        </member>
+        <member name="P:Igtampe.BasicShapes.Curve.A1">
+            <summary>Angle the curve starts at</summary>
+        </member>
+        <member name="P:Igtampe.BasicShapes.Curve.A2">
+            <summary>Angle the curve stops at</summary>
+        </member>
+        <member name="P:Igtampe.BasicShapes.Curve.Points">
+            <summary>List of all points this line has</summary>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Curve.#ctor(System.Drawing.Point,System.Double,System.Double,System.Double)">
+            <summary>Creates a curve from points rather than pointFs</summary>
+            <param name="Center"></param>
+            <param name="Radius"></param>
+            <param name="A1"></param>
+            <param name="A2"></param>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Curve.#ctor(System.Drawing.PointF,System.Double,System.Double,System.Double)">
+            <summary>Creates a curve</summary>
+            <param name="Center"></param>
+            <param name="Radius"></param>
+            <param name="A1">Start Angle in DEGREES</param>
+            <param name="A2">End Angle in DEGREES</param>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Curve.Equals(System.Object)">
+            <summary>Returns true if obj is a curve and its A1, A2, and Center are equal to this curve's</summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Curve.GetHashCode">
+            <summary>Gets a hashcode for this curve</summary>
+            <returns>The hashcode of the center point</returns>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Curve.ToString">
+            <summary>Returns a string representation of this curve</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Curve.GeneratePoints(Igtampe.BasicShapes.Curve)">
+            <summary>Generates the points for a curve C</summary>
+            <param name="C"></param>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Curve.DegToRadians(System.Double)">
+            <summary>Converts degrees to radians</summary>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Curve.CalculatePoint(System.Double,System.Drawing.PointF,System.Double)">
+            <summary>Calculates a point based on its angle (in degrees), a center point, and the radius</summary>
+            <param name="Angle"></param>
+            <param name="Center"></param>
+            <param name="Radius"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Curve.TranslateCurve(Igtampe.BasicShapes.Curve,System.Single,System.Single)">
+            <summary>Returns a line that's been shifted by DX and by DY</summary>
+            <param name="L"></param>
+            <param name="DX"></param>
+            <param name="DY"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Curve.ScaleCurve(Igtampe.BasicShapes.Curve,System.Double)">
+            <summary>Scales a line's length up or down, anchored on a center point P3</summary>
+            <param name="L"></param>
+            <param name="scale"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Igtampe.BasicShapes.DrawShapes">
+            <summary>Holds all BasicShapes functions</summary>
+        </member>
+        <member name="M:Igtampe.BasicShapes.DrawShapes.DrawLine(System.Drawing.Point,System.Drawing.Point,System.ConsoleColor)">
+            <summary>Draws a line between the two points with the specified color.<br></br>
+            <br></br>
+            <b>NOTE:</b><br></br>
+            Coordinates are given as CONSOLE coordinates. 0,0 is the TOP-LEFT-MOST coordinate on the console.<br></br>
+            </summary>
+            <param name="P1"></param>
+            <param name="P2"></param>
+            <param name="C"></param>
+        </member>
+        <member name="M:Igtampe.BasicShapes.DrawShapes.DrawLine(System.Int32,System.Int32,System.Int32,System.Int32,System.ConsoleColor)">
+            <summary>Draws a line between the two points with the specified color.<br></br>
+            <br></br>
+            <b>NOTE:</b><br></br>
+            Coordinates are given as CONSOLE coordinates. 0,0 is the TOP-LEFT-MOST coordinate on the console.<br></br></summary>
+            <param name="X1"></param>
+            <param name="Y1"></param>
+            <param name="X2"></param>
+            <param name="Y2"></param>
+            <param name="C"></param>
+        </member>
+        <member name="M:Igtampe.BasicShapes.DrawShapes.DrawLine(Igtampe.BasicShapes.Line,System.ConsoleColor)">
+            <summary>Draws Line L with the specified color<br></br>
+            <br></br>
+            <b>NOTE:</b><br></br>
+            Coordinates are given as CONSOLE coordinates. 0,0 is the TOP-LEFT-MOST coordinate on the console.</summary>
+            <param name="L"></param>
+            <param name="C"></param>
+        </member>
+        <member name="M:Igtampe.BasicShapes.DrawShapes.DrawCurve(Igtampe.BasicShapes.Curve,System.ConsoleColor)">
+            <summary>Draws a curve with specified color</summary>
+            <param name="C"></param>
+            <param name="Cu"></param>
+        </member>
+        <member name="M:Igtampe.BasicShapes.DrawShapes.DrawBlockAt(System.Drawing.Point,System.ConsoleColor)">
+            <summary>Draws a block of color C at point P</summary>
+            <param name="P"></param>
+            <param name="C"></param>
+        </member>
+        <member name="M:Igtampe.BasicShapes.DrawShapes.DrawRectangle(System.Drawing.Rectangle,System.ConsoleColor)">
+            <summary>Draws a rectangle on-screen, but does not fill it.</summary>
+            <param name="R"></param>
+            <param name="C"></param>
+        </member>
+        <member name="M:Igtampe.BasicShapes.DrawShapes.FillRectangle(System.Drawing.Rectangle,System.ConsoleColor)">
+            <summary>Alias for Draw.Box() in BasicRender</summary>
+            <param name="R"></param>
+            <param name="C"></param>
+        </member>
+        <member name="M:Igtampe.BasicShapes.DrawShapes.DrawPolygon(System.Drawing.Point[],System.ConsoleColor)">
+            <summary>Draws a polygon with points P</summary>
+            <param name="Ps"></param>
+            <param name="C"></param>
+        </member>
+        <member name="M:Igtampe.BasicShapes.DrawShapes.DrawPolygon(Igtampe.BasicShapes.Line[],System.ConsoleColor)">
+            <summary>Draws a polygon with lines Ls</summary>
+            <param name="Ls"></param>
+            <param name="C"></param>
+        </member>
+        <member name="M:Igtampe.BasicShapes.DrawShapes.DrawPolygon(Igtampe.BasicShapes.Polygon,System.ConsoleColor)">
+            <summary>Draws polygon P with color C (Does not fill it)</summary>
+            <param name="P"></param>
+            <param name="C"></param>
+        </member>
+        <member name="M:Igtampe.BasicShapes.DrawShapes.FillPolygon(System.Drawing.Point[],System.ConsoleColor)">
+            <summary>Fills Polygon with points P</summary>
+        </member>
+        <member name="M:Igtampe.BasicShapes.DrawShapes.FillPolygon(Igtampe.BasicShapes.Line[],System.ConsoleColor)">
+            <summary>Fills Polygon with points P</summary>
+            <param name="Ls"></param>
+            <param name="C"></param>
+        </member>
+        <member name="M:Igtampe.BasicShapes.DrawShapes.FillPolygon(Igtampe.BasicShapes.Polygon,System.ConsoleColor)">
+            <summary>Fills Polygon with Points P</summary>
+            <param name="P"></param>
+            <param name="C"></param>
+        </member>
+        <member name="T:Igtampe.BasicShapes.Line">
+            <summary>Holds a Line (two points) and can do some basic stuff with it.</summary>
+        </member>
+        <member name="P:Igtampe.BasicShapes.Line.P1">
+            <summary>Leftmost point of the line</summary>
+        </member>
+        <member name="P:Igtampe.BasicShapes.Line.P1F">
+            <summary>Leftmost point of the line (Floating Point)</summary>
+        </member>
+        <member name="P:Igtampe.BasicShapes.Line.P2">
+            <summary>Rightmost point of the line.</summary>
+        </member>
+        <member name="P:Igtampe.BasicShapes.Line.P2F">
+            <summary>Rightmost point of the line (Floating Point)</summary>
+        </member>
+        <member name="F:Igtampe.BasicShapes.Line.points">
+            <summary>Private points holder</summary>
+        </member>
+        <member name="P:Igtampe.BasicShapes.Line.Points">
+            <summary>List of all points this line has (NOT FLOATING POINT)</summary>
+        </member>
+        <member name="P:Igtampe.BasicShapes.Line.M">
+            <summary>Slope of the line</summary>
+        </member>
+        <member name="P:Igtampe.BasicShapes.Line.DX">
+            <summary>Delta X</summary>
+        </member>
+        <member name="P:Igtampe.BasicShapes.Line.DXF">
+            <summary>Delta X with floating point precision</summary>
+        </member>
+        <member name="P:Igtampe.BasicShapes.Line.DY">
+            <summary>Delta Y</summary>
+        </member>
+        <member name="P:Igtampe.BasicShapes.Line.DYF">
+            <summary>Delta Y with floating point precision</summary>
+        </member>
+        <member name="P:Igtampe.BasicShapes.Line.Length">
+            <summary>Length of the line using the ancient power of Pythagorean Theorem</summary>
+        </member>
+        <member name="P:Igtampe.BasicShapes.Line.Center">
+            <summary>Returns the center point on this line</summary>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Line.#ctor(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>Creates a line</summary>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Line.#ctor(System.Single,System.Single,System.Single,System.Single)">
+            <summary>Creates a line wit hfloating point precision</summary>
+            <param name="X1"></param>
+            <param name="Y1"></param>
+            <param name="X2"></param>
+            <param name="Y2"></param>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Line.#ctor(System.Drawing.Point,System.Drawing.Point)">
+            <summary>Creates a line</summary>
+            <param name="P1"></param>
+            <param name="P2"></param>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Line.#ctor(System.Drawing.PointF,System.Drawing.PointF)">
+            <summary>Creates a line with Floating Point precision</summary>
+            <param name="P1"></param>
+            <param name="P2"></param>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Line.#ctor(System.Drawing.PointF,System.Drawing.PointF,System.Boolean)">
+            <summary>Creates a line with floating point precision. Skips sorting P1 and P2 by X if SkipSort is true</summary>
+            <param name="P1"></param>
+            <param name="P2"></param>
+            <param name="SkipSort"></param>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Line.ContainsPoint(System.Drawing.Point)">
+            <summary>Returns true if this point is in the line. </summary>
+            <param name="P"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Line.Intersects(Igtampe.BasicShapes.Line)">
+            <summary>Verifies if a line intersects with another</summary>
+            <param name="L"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Line.Equals(System.Object)">
+            <summary>Returns true if obj is a Line and their points are the same</summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Line.GetHashCode">
+            <summary>Gets a hashcode for this line</summary>
+            <returns>The sum of P1F and P2F's hashcodes</returns>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Line.ToString">
+            <summary>returns a string representation of this line</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Line.GeneratePoints(Igtampe.BasicShapes.Line)">
+            <summary>Generates a list of points in this line for drawing or for checking.</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Line.TranslateLine(Igtampe.BasicShapes.Line,System.Single,System.Single)">
+            <summary>Returns a line that's been shifted by DX and by DY</summary>
+            <param name="L"></param>
+            <param name="DX"></param>
+            <param name="DY"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Line.P1ScaleLine(Igtampe.BasicShapes.Line,System.Double)">
+            <summary>Scales a line's length up or down, anchored on P1</summary>
+            <param name="L"></param>
+            <param name="scale"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Line.P2ScaleLine(Igtampe.BasicShapes.Line,System.Double)">
+            <summary>Scales a line's length up or down, anchored on P2</summary>
+            <param name="L"></param>
+            <param name="scale"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Line.CenterScaleLine(Igtampe.BasicShapes.Line,System.Double)">
+            <summary>Scales a line's length up or down, anchored on a center point P3</summary>
+            <param name="L"></param>
+            <param name="scale"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Line.ConvertToPoint(System.Drawing.PointF)">
+            <summary>Converts a PointF to Point</summary>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Line.ConvertToPointF(System.Drawing.Point)">
+            <summary>Converts a  Point to PointF</summary>
+            <returns></returns>
+        </member>
+        <member name="T:Igtampe.BasicShapes.Polygon">
+            <summary>Class that represents a Polygon</summary>
+        </member>
+        <member name="P:Igtampe.BasicShapes.Polygon.Lines">
+            <summary>All the lines that make up this polygon</summary>
+        </member>
+        <member name="F:Igtampe.BasicShapes.Polygon.center">
+            <summary>Cache for the center</summary>
+        </member>
+        <member name="P:Igtampe.BasicShapes.Polygon.Center">
+            <summary>Holds a point for the center of the rectangle</summary>
+        </member>
+        <member name="P:Igtampe.BasicShapes.Polygon.BoundingRectangle">
+            <summary>Holds a rectangle that bounds this polygon</summary>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Polygon.#ctor(Igtampe.BasicShapes.Line[])">
+            <summary>Creates a polygon from a set of lines and verifies that it is valid.</summary>
+            <param name="AllLines"></param>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Polygon.#ctor(System.Drawing.Point[])">
+            <summary>Creates a Polygon from a list of points, creating lines to and from them sequentially.</summary>
+            <param name="Points"></param>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Polygon.#ctor(System.Drawing.PointF[])">
+            <summary>Creates a Polygon from a list of points, creating lines to and from them sequentially.</summary>
+            <param name="Points"></param>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Polygon.TranslatePolygon(Igtampe.BasicShapes.Polygon,System.Int32,System.Int32)">
+            <summary>Translates a Polygon P by DX and DY, by individually moving each line within it.</summary>
+            <param name="P"></param>
+            <param name="DX"></param>
+            <param name="DY"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Polygon.ScalePolygon(Igtampe.BasicShapes.Polygon,System.Double)">
+            <summary>Scales a polygon anchored at its center</summary>
+            <param name="P"></param>
+            <param name="Scale"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Polygon.ScalePointOut(Igtampe.BasicShapes.Polygon,System.Drawing.PointF,System.Double)">
+            <summary>Scales a point from a polygon out from its center</summary>
+            <param name="P"></param>
+            <param name="PointToScale"></param>
+            <param name="Scale"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Polygon.GetPolygonCenter(Igtampe.BasicShapes.Polygon)">
+            <summary>gets a Polygon's center point.</summary>
+            <param name="P"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Igtampe.BasicShapes.Polygon.GetBoundingRectangle(Igtampe.BasicShapes.Polygon)">
+            <summary>Calculates the bounding rectangle of the given polygon.</summary>
+            <param name="P"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

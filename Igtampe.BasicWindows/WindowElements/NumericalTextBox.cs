@@ -40,11 +40,8 @@ namespace Igtampe.BasicWindows.WindowElements {
                 String OldText = Text;
                 Return = base.OnKeyPress(Key);
 
-                if(OldText != Text) {
-                    //if the text was modified update value
-                    if(Int32.TryParse(Text,out int tempval)) { Value = tempval; }
-
-                } 
+                //if the text was modified update value
+                if (OldText != Text && int.TryParse(Text, out int tempval)) { Value = tempval; }
                 DrawElement();
                 return Return;
 

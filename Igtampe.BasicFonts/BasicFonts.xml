@@ -4,6 +4,9 @@
         <name>BasicFonts</name>
     </assembly>
     <members>
+        <member name="T:Igtampe.BasicFonts.BasicFont">
+            <summary>Class that holds 1 basic font</summary>
+        </member>
         <member name="F:Igtampe.BasicFonts.BasicFont.FontDictionary">
             <summary>Dictionary that holds all the relevant data for the font.</summary>
         </member>
