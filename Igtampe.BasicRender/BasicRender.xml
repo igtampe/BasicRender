@@ -82,6 +82,50 @@
             <param name="BG"></param>
             <param name="FG"></param>
         </member>
+        <member name="T:Igtampe.BasicRender.DrawThread">
+            <summary>Class that can handle all tasks handed to it sequentially.</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.DrawThread.Tasks">
+            <summary>Collection of tasks that need to be executed</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.DrawThread.Handle">
+            <summary>Handle that's set when the drawthread should actually *do* something</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.DrawThread.StopPending">
+            <summary>Whether or not a cancellation is pending</summary>
+        </member>
+        <member name="F:Igtampe.BasicRender.DrawThread.T">
+            <summary>Inner task handling the execution of the given tasks</summary>
+        </member>
+        <member name="P:Igtampe.BasicRender.DrawThread.Status">
+            <summary>Status of the inner task of drawing</summary>
+        </member>
+        <member name="P:Igtampe.BasicRender.DrawThread.TaskCount">
+            <summary>Count of remaining tasks</summary>
+        </member>
+        <member name="M:Igtampe.BasicRender.DrawThread.#ctor">
+            <summary>Creates a Draw Thread</summary>
+        </member>
+        <member name="M:Igtampe.BasicRender.DrawThread.AddDrawTask(System.Threading.Tasks.Task)">
+            <summary>Enqueues a task to the drawthread</summary>
+            <param name="T"></param>
+        </member>
+        <member name="M:Igtampe.BasicRender.DrawThread.AddDrawTask(System.Action)">
+            <summary>Enqueues an action as a task to the drawthread</summary>
+            <param name="A"></param>
+        </member>
+        <member name="M:Igtampe.BasicRender.DrawThread.Start">
+            <summary>Starts the drawthread</summary>
+        </member>
+        <member name="M:Igtampe.BasicRender.DrawThread.StopAsync">
+            <summary>Stops the drawthread asynchronously (essentially only sends call to make cancellation)</summary>
+        </member>
+        <member name="M:Igtampe.BasicRender.DrawThread.Stop">
+            <summary>Stops and resets the drawthread</summary>
+        </member>
+        <member name="M:Igtampe.BasicRender.DrawThread.Loop">
+            <summary>Main loop for the drawthread</summary>
+        </member>
         <member name="T:Igtampe.BasicRender.RenderUtils">
             <summary>Utilities that BasicRender provides and uses</summary>
         </member>
