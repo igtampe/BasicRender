@@ -77,7 +77,7 @@ namespace Igtampe.BasicShapes {
             //I would check but this procedure works so shh
         }
 
-        //-[Constructors]-------------------------------------------------------------------------------
+        //-[Static Methods]-------------------------------------------------------------------------------
 
 
         /// <summary>Translates a Polygon P by DX and DY, by individually moving each line within it.</summary>
