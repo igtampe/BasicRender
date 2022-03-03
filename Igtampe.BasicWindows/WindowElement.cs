@@ -3,19 +3,20 @@
 namespace Igtampe.BasicWindows {
 
     /// <summary>Small Enum that tells what the parent window should do once this element is done being interacted with.</summary>
-    public enum KeyPressReturn { 
-        
+    public enum KeyPressReturn {
+
         /// <summary>No response</summary>
-        NOTHING, 
+        NOTHING,
 
         /// <summary>Go to the next Element</summary>
-        NEXT_ELEMENT, 
+        NEXT_ELEMENT,
 
         /// <summary>Go back to the previous element</summary>
-        PREV_ELEMENT, 
+        PREV_ELEMENT,
 
         /// <summary>Close the form</summary>
-        CLOSE}
+        CLOSE
+    }
 
     /// <summary>Generic WindowElement</summary>
     public abstract class WindowElement {
@@ -35,27 +36,26 @@ namespace Igtampe.BasicWindows {
         /// <summary>Top position of this element with reference to the window's top position</summary>
         protected int TopPos;
 
-        private Boolean highlighted;
+        private bool highlighted;
 
         /// <summary>Specifies whether or not this element is highlighted</summary>
-        public Boolean Highlighted {
-            get { return highlighted; }
-            set { 
+        public bool Highlighted {
+            get => highlighted;
+            set {
                 highlighted = value;
-                if(Parent.Drawn) { DrawElement(); }
+                if (Parent.Drawn) { DrawElement(); }
             }
         }
 
-
         /// <summary>Most basic constructor for any window element</summary>
         /// <param name="Parent"></param>
-        protected WindowElement(Window Parent) { this.Parent = Parent; }
-        
+        protected WindowElement(Window Parent) => this.Parent = Parent;
+
         /// <summary>Triggered when a key is hit, and handles any user interaction with this element</summary>
         /// <param name="Key"></param>
         /// <returns></returns>
-        public virtual KeyPressReturn OnKeyPress(ConsoleKeyInfo Key) { return KeyPressReturn.NOTHING; }
-        
+        public virtual KeyPressReturn OnKeyPress(ConsoleKeyInfo Key) => KeyPressReturn.NOTHING;
+
         /// <summary>Draws the element</summary>
         public abstract void DrawElement();
 

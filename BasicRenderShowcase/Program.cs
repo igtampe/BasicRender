@@ -19,20 +19,19 @@ namespace Igtampe.BasicRenderShowcase {
             RenderUtils.Echo("Stand by...\n\n");
             SpecialChars.TestChars();
 
-            RenderUtils.ResizeConsole(100,50);
-            RenderUtils.ResizeConsole(50,25);
-            RenderUtils.ResizeConsole(Console.LargestWindowWidth,Console.LargestWindowHeight);
-            RenderUtils.ResizeConsole(30,15);
-            RenderUtils.ResizeConsole(80,25);
-
+            RenderUtils.ResizeConsole(100, 50);
+            RenderUtils.ResizeConsole(50, 25);
+            RenderUtils.ResizeConsole(Console.LargestWindowWidth, Console.LargestWindowHeight);
+            RenderUtils.ResizeConsole(30, 15);
+            RenderUtils.ResizeConsole(80, 25);
 
             //Draw the splash
             BasicRenderSplash();
             RenderUtils.Sleep(2000);
             RenderUtils.Pause();
 
-            Window WelcomeSplash = new Window(false,true,"Welcome",47,10);
-            CloseButton SplashWelcomeBTN = new CloseButton(WelcomeSplash,"[   OK   ]",ConsoleColor.DarkGray,ConsoleColor.White,ConsoleColor.DarkBlue,19,8);
+            Window WelcomeSplash = new Window(false, true, "Welcome", 47, 10);
+            CloseButton SplashWelcomeBTN = new CloseButton(WelcomeSplash, "[   OK   ]", ConsoleColor.DarkGray, ConsoleColor.White, ConsoleColor.DarkBlue, 19, 8);
 
             WindowElement[] SplashElements = {
                 new BasicFontLabel(WelcomeSplash,"WELCOME",BasicFont.DefaultFont,ConsoleColor.Black,3,1),
@@ -48,11 +47,11 @@ namespace Igtampe.BasicRenderShowcase {
             //5x6
 
             //Clear the screen, set up for the "window Environment"
-            RenderUtils.Color(ConsoleColor.DarkCyan,ConsoleColor.White);
+            RenderUtils.Color(ConsoleColor.DarkCyan, ConsoleColor.White);
             Console.Clear();
 
             //Time to test the tickable timer window and a new label.
-            TickableWindow LoadWindow = new TickableWindow(true,true,"Please Wait",42,7);
+            TickableWindow LoadWindow = new TickableWindow(true, true, "Please Wait", 42, 7);
 
             WindowElement[] Elements = {
                 new Icon(LoadWindow,Icon.IconType.INFORMATION,1,2),
@@ -67,7 +66,7 @@ namespace Igtampe.BasicRenderShowcase {
             LoadWindow.Execute();
 
             //Test DialogBox
-            DialogBox.ShowDialogBox(Icon.IconType.INFORMATION,DialogBox.DialogBoxButtons.OK,"Test I hope this works.");
+            DialogBox.ShowDialogBox(Icon.IconType.INFORMATION, DialogBox.DialogBoxButtons.OK, "Test I hope this works.");
 
             //More Extensively test Dialogbox
             Quiz();
@@ -75,7 +74,7 @@ namespace Igtampe.BasicRenderShowcase {
             //Test HelloWorld
             //new HelloWorldWindow().Execute(); //We no longer really need to test HelloWorld. Windows are just windows now
 
-            Window FakeWelcomeWindow = new WelcomeWindow(-20,-3);
+            Window FakeWelcomeWindow = new WelcomeWindow(-20, -3);
 
             FakeWelcomeWindow.Redraw();
 
@@ -88,52 +87,51 @@ namespace Igtampe.BasicRenderShowcase {
             new WelcomeWindow().Execute();
 
             //
-            DialogBox.ShowDialogBox(Icon.IconType.INFORMATION,DialogBox.DialogBoxButtons.OK,"The system will now attempt to divide by 0 to showcase error screens.");
-            try { GenerateStackedError(7); } catch(Exception E) {
+            DialogBox.ShowDialogBox(Icon.IconType.INFORMATION, DialogBox.DialogBoxButtons.OK, "The system will now attempt to divide by 0 to showcase error screens.");
+            try { GenerateStackedError(7); } catch (Exception E) {
                 ErrorWindow.ShowErrorWindow(E.Message);
                 DialogBox.ShowExceptionError(E);
-                GuruMeditationErrorScreen.Show(E,true);
+                GuruMeditationErrorScreen.Show(E, true);
             }
-
         }
 
         /// <summary>Generates a stacked error by dividing by zero after calling itself LENGTH times</summary>
         /// <param name="Length"></param>
-        static void GenerateStackedError(int Length) {if(Length > 0) { GenerateStackedError(Length - 1); } else { decimal _ = 1 / Length; }}
+        static void GenerateStackedError(int Length) { if (Length > 0) { GenerateStackedError(Length - 1); } else { decimal _ = 1 / Length; } }
 
         /// <summary>Shows the BasicRender SplashScreen (which also shows the logo)</summary>
         static void BasicRenderSplash() {
-            RenderUtils.Color(ConsoleColor.DarkGray,ConsoleColor.White);
+            RenderUtils.Color(ConsoleColor.DarkGray, ConsoleColor.White);
             Console.Clear();
 
             Graphic Rainbow = HiColorGraphic.LoadFromResource(Resources.Rainbow);
 
-            Draw.Box(ConsoleColor.Black,Rainbow.GetWidth(),Rainbow.GetHeight() - 1,19,11);
+            Draw.Box(ConsoleColor.Black, Rainbow.GetWidth(), Rainbow.GetHeight() - 1, 19, 11);
 
-            Rainbow.Draw(17,10);
-            Draw.CenterText("BasicRender",12,ConsoleColor.White,ConsoleColor.Black);
+            Rainbow.Draw(17, 10);
+            Draw.CenterText("BasicRender", 12, ConsoleColor.White, ConsoleColor.Black);
 
-            Draw.CenterText("P r e s s     a     k e y",20,ConsoleColor.DarkGray,ConsoleColor.White);
+            Draw.CenterText("P r e s s     a     k e y", 20, ConsoleColor.DarkGray, ConsoleColor.White);
 
         }
 
         /// <summary>Tests DialogBoxes by running a quiz. Is this America?</summary>
         static void Quiz() {
-            if(DialogBox.ShowDialogBox(Icon.IconType.QUESTION,DialogBox.DialogBoxButtons.YesNo,"Is this America?") == DialogBox.DialogBoxResult.Yes) {
-                if(DialogBox.ShowDialogBox(Icon.IconType.EXCLAMATION,DialogBox.DialogBoxButtons.OKCancel,"This is America")==DialogBox.DialogBoxResult.Cancel) {
-                    Quiz(); 
+            if (DialogBox.ShowDialogBox(Icon.IconType.QUESTION, DialogBox.DialogBoxButtons.YesNo, "Is this America?") == DialogBox.DialogBoxResult.Yes) {
+                if (DialogBox.ShowDialogBox(Icon.IconType.EXCLAMATION, DialogBox.DialogBoxButtons.OKCancel, "This is America") == DialogBox.DialogBoxResult.Cancel) {
+                    Quiz();
                 }
             } else {
 
-                switch(DialogBox.ShowDialogBox(Icon.IconType.QUESTION,DialogBox.DialogBoxButtons.YesNoCancel,"Are you absolutely sure?")) {
+                switch (DialogBox.ShowDialogBox(Icon.IconType.QUESTION, DialogBox.DialogBoxButtons.YesNoCancel, "Are you absolutely sure?")) {
                     case DialogBox.DialogBoxResult.Yes:
-                        if(DialogBox.ShowDialogBox(Icon.IconType.ERROR,DialogBox.DialogBoxButtons.AbortRetryIgnore,"Incorrect. According to the Childish Gambino song:\n\nThis is America (woo, ayy) Don't catch you slippin' now(woo,woo,don't catch you slippin',now) Don't catch you slippin' now(ayy,woah) Look what I'm whippin' now(Slime!) This is America(yeah, yeah) Don't catch you slippin' now(woah,ayy) Don't catch you slippin' now(ayy,woo) Look what I'm whippin' now(ayy) Look how I'm geekin' out (hey)I'm so fitted (I'm so fitted,woo)I'm on Gucci (I'm on Gucci)I'm so pretty (yeah, yeah)I'm gon' get it(ayy,I'm gon' get it)Watch me move(blaow)This a celly(ha)That's a tool (yeah)On my Kodak(woo,Black)Ooh, know that(yeah,know that,hold on)Get it(get it,get it)Ooh, work it(21)Hunnid bands, hunnid bands, hunnid bands(hunnid bands)Contraband, contraband, contraband(contraband)I got the plug on Oaxaca(woah)They gonna find you like blocka(blaow)'")==DialogBox.DialogBoxResult.Retry) {
+                        if (DialogBox.ShowDialogBox(Icon.IconType.ERROR, DialogBox.DialogBoxButtons.AbortRetryIgnore, "Incorrect. According to the Childish Gambino song:\n\nThis is America (woo, ayy) Don't catch you slippin' now(woo,woo,don't catch you slippin',now) Don't catch you slippin' now(ayy,woah) Look what I'm whippin' now(Slime!) This is America(yeah, yeah) Don't catch you slippin' now(woah,ayy) Don't catch you slippin' now(ayy,woo) Look what I'm whippin' now(ayy) Look how I'm geekin' out (hey)I'm so fitted (I'm so fitted,woo)I'm on Gucci (I'm on Gucci)I'm so pretty (yeah, yeah)I'm gon' get it(ayy,I'm gon' get it)Watch me move(blaow)This a celly(ha)That's a tool (yeah)On my Kodak(woo,Black)Ooh, know that(yeah,know that,hold on)Get it(get it,get it)Ooh, work it(21)Hunnid bands, hunnid bands, hunnid bands(hunnid bands)Contraband, contraband, contraband(contraband)I got the plug on Oaxaca(woah)They gonna find you like blocka(blaow)'") == DialogBox.DialogBoxResult.Retry) {
                             Quiz();
                             return;
                         }
                         break;
                     case DialogBox.DialogBoxResult.No:
-                        if(DialogBox.ShowDialogBox(Icon.IconType.EXCLAMATION,DialogBox.DialogBoxButtons.OKCancel,"This is America") == DialogBox.DialogBoxResult.Cancel) {
+                        if (DialogBox.ShowDialogBox(Icon.IconType.EXCLAMATION, DialogBox.DialogBoxButtons.OKCancel, "This is America") == DialogBox.DialogBoxResult.Cancel) {
                             Quiz();
                             return;
                         }
@@ -148,8 +146,6 @@ namespace Igtampe.BasicRenderShowcase {
                         break;
                 }
             }
-
-
         }
 
         /// <summary>Demo the shapes package</summary>
@@ -164,7 +160,7 @@ namespace Igtampe.BasicRenderShowcase {
             ConsoleColor Y = ConsoleColor.Yellow;
             ConsoleColor B = ConsoleColor.Blue;
 
-            System.Drawing.Rectangle R = new System.Drawing.Rectangle(4,1,30,5);
+            System.Drawing.Rectangle R = new System.Drawing.Rectangle(4, 1, 30, 5);
             System.Drawing.Point[] Ps = {
                 new System.Drawing.Point(30,10),
                 new System.Drawing.Point(30,20),
@@ -208,36 +204,36 @@ namespace Igtampe.BasicRenderShowcase {
                 new System.Drawing.Point(45-CA,4+CA),
             };
 
-            DrawShapes.DrawLine(2,2,8,20,C);
-            DrawShapes.DrawLine(20,2,2,20,W);
-            DrawShapes.DrawLine(2,2,60,20,G);
-            DrawShapes.DrawRectangle(R,Y);
-            DrawShapes.DrawPolygon(Ps,B);
-            
+            DrawShapes.DrawLine(2, 2, 8, 20, C);
+            DrawShapes.DrawLine(20, 2, 2, 20, W);
+            DrawShapes.DrawLine(2, 2, 60, 20, G);
+            DrawShapes.DrawRectangle(R, Y);
+            DrawShapes.DrawPolygon(Ps, B);
+
             //We're gonna draw two squares
-            DrawShapes.DrawPolygon(Cube1,W);
-            DrawShapes.DrawPolygon(Cube2,W);
-            DrawShapes.DrawPolygon(Cube3,W);
-            DrawShapes.DrawPolygon(Cube4,W);
-            DrawShapes.DrawPolygon(Cube5,W);
+            DrawShapes.DrawPolygon(Cube1, W);
+            DrawShapes.DrawPolygon(Cube2, W);
+            DrawShapes.DrawPolygon(Cube3, W);
+            DrawShapes.DrawPolygon(Cube4, W);
+            DrawShapes.DrawPolygon(Cube5, W);
 
-            DrawShapes.FillPolygon(Cube4,ConsoleColor.Gray);
-            DrawShapes.FillPolygon(Cube3,ConsoleColor.DarkGray);
-            DrawShapes.FillPolygon(Cube2,ConsoleColor.White);
+            DrawShapes.FillPolygon(Cube4, ConsoleColor.Gray);
+            DrawShapes.FillPolygon(Cube3, ConsoleColor.DarkGray);
+            DrawShapes.FillPolygon(Cube2, ConsoleColor.White);
 
-            DrawShapes.FillPolygon(Ps,B);
+            DrawShapes.FillPolygon(Ps, B);
 
-            Curve C1 = Curve.TranslateCurve(new Curve(new System.Drawing.Point(20,13),10,0,360),60,0); //IDK why I did two 180 degree curves when a 0-360 degree curve actually works like que???
+            Curve C1 = Curve.TranslateCurve(new Curve(new System.Drawing.Point(20, 13), 10, 0, 360), 60, 0); //IDK why I did two 180 degree curves when a 0-360 degree curve actually works like que???
 
-            DrawShapes.DrawLine(C1,ConsoleColor.Cyan);
+            DrawShapes.DrawLine(C1, ConsoleColor.Cyan);
 
             //now turn it into a polygon
             Line[] CircleCurves = { C1 };
 
             Polygon Circle = new Polygon(CircleCurves);
 
-            DrawShapes.FillPolygon(Circle,ConsoleColor.Cyan);
-       
+            DrawShapes.FillPolygon(Circle, ConsoleColor.Cyan);
+
             Console.Clear();
 
             //Let's make a line:
@@ -246,7 +242,7 @@ namespace Igtampe.BasicRenderShowcase {
             DrawShapes.DrawLine(ScaleLine, ConsoleColor.Red);
 
             //Let's scale it Down by 50%
-            DrawShapes.DrawLine(Line.TranslateLine(Line.CenterScaleLine(ScaleLine, 0.5), 0,3), ConsoleColor.Blue);
+            DrawShapes.DrawLine(Line.TranslateLine(Line.CenterScaleLine(ScaleLine, 0.5), 0, 3), ConsoleColor.Blue);
 
             //Let's scale it up by 25%
             DrawShapes.DrawLine(Line.TranslateLine(Line.CenterScaleLine(ScaleLine, 1.25), 0, -2), ConsoleColor.Green);
@@ -258,13 +254,13 @@ namespace Igtampe.BasicRenderShowcase {
             DrawShapes.DrawPolygon(S, ConsoleColor.Red);
 
             //I don't like where it is so let's draw it to the right and slightly down.
-            DrawShapes.DrawPolygon(Polygon.TranslatePolygon(S,40,5), ConsoleColor.Red);
+            DrawShapes.DrawPolygon(Polygon.TranslatePolygon(S, 40, 5), ConsoleColor.Red);
 
             //And now, let's scale this thing up
 
-            for (double scale = 0.5; scale < 2; scale+=.1) {
+            for (double scale = 0.5; scale < 2; scale += .1) {
                 Random ColorRandomizer = new Random();
-                DrawShapes.DrawPolygon(Polygon.TranslatePolygon(Polygon.ScalePolygon(S, scale), 40, 5), GraphicUtils.ColorCharToConsoleColor(char.Parse(ColorRandomizer.Next(10)+"")));
+                DrawShapes.DrawPolygon(Polygon.TranslatePolygon(Polygon.ScalePolygon(S, scale), 40, 5), GraphicUtils.ColorCharToConsoleColor(char.Parse(ColorRandomizer.Next(10) + "")));
             }
         }
 
@@ -279,8 +275,5 @@ namespace Igtampe.BasicRenderShowcase {
             Window FakeWelcomeWindow = new WelcomeWindow(-20, -3);
             FakeWelcomeWindow.Redraw();
         }
-
     }
-
-
 }

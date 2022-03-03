@@ -45,18 +45,14 @@ namespace Igtampe.BasicFonts {
         //01:01:01 PM (At a maximum 11 characters long
 
         /// <summary>Width of this clock</summary>
-        public int Width {
-            get {
-                return (RenderedTime.Length*ClockFont.Width)+(RenderedTime.Length-1); //width of each individual character and its spacing (minus the last one)
-            }
-        }
+        public int Width => (RenderedTime.Length * ClockFont.Width) + (RenderedTime.Length - 1); //width of each individual character and its spacing (minus the last one)
 
         /// <summary>Height of this clock</summary>
         public int Height {
             get {
                 //The absolute baseheight is font height
                 int BaseHeight = ClockFont.Height; //one character height
-                if(!string.IsNullOrWhiteSpace(RenderedDate)) { BaseHeight += 2; } //Add 2 rows. for padding and the date
+                if (!string.IsNullOrWhiteSpace(RenderedDate)) { BaseHeight += 2; } //Add 2 rows. for padding and the date
                 return BaseHeight;
             }
         }
@@ -75,8 +71,8 @@ namespace Igtampe.BasicFonts {
         /// <summary>Constructs a clock using the default DigitalClock.bfnt</summary>
         /// <param name="LeftPos"></param>
         /// <param name="TopPos"></param>
-        public Clock(int LeftPos, int TopPos):this(BasicFont.LoadFromResource(Properties.Resources.DigitalClock),LeftPos,TopPos) { }
-        
+        public Clock(int LeftPos, int TopPos) : this(BasicFont.LoadFromResource(Properties.Resources.DigitalClock), LeftPos, TopPos) { }
+
         /// <summary>Constructs a clock</summary>
         /// <param name="ClockFont">A font that must contain numbers from 0-9, a colon (':'), and the letters 'A', 'P', and 'M'</param>
         /// <param name="LeftPos"></param>
@@ -91,23 +87,16 @@ namespace Igtampe.BasicFonts {
 
         /// <summary>Returns the current date in DDDD MM/DD/YYYY</summary>
         /// <returns></returns>
-        public string PrepareRenderedDate() {
-            if(ShowDate) { return DateTime.Now.AddHours(HourAdjust).ToString("dddd MM/dd/yyyy"); }
-            return "";
-        }
-        public string PrepareRenderedTime() {
-            DateTime CurrentTime = DateTime.Now.AddHours(HourAdjust);
-            string DisplayTime;
-            if(MilitaryTime) {
-                if(ShowSeconds) { DisplayTime = CurrentTime.ToString("HH:mm:ss"); } else { DisplayTime = CurrentTime.ToString("HH:mm"); }
-            } else {
-                if(ShowSeconds) { DisplayTime = CurrentTime.ToString("hh:mm:ss tt").ToLower(); } else { DisplayTime = CurrentTime.ToString("hh:mm tt").ToLower(); }
-            }
+        public string PrepareRenderedDate() => ShowDate ? DateTime.Now.AddHours(HourAdjust).ToString("dddd MM/dd/yyyy") : "";
 
-            if(DisplayTime.StartsWith("0")) { DisplayTime = " " + DisplayTime.Substring(1); } //replace the first leading 0 of an hour with a space.
+        internal string PrepareRenderedTime() {
+            DateTime CurrentTime = DateTime.Now.AddHours(HourAdjust);
+            string DisplayTime = MilitaryTime
+                ? ShowSeconds ? CurrentTime.ToString("HH:mm:ss") : CurrentTime.ToString("HH:mm")
+                : ShowSeconds ? CurrentTime.ToString("hh:mm:ss tt").ToLower() : CurrentTime.ToString("hh:mm tt").ToLower();
+            if (DisplayTime.StartsWith("0")) { DisplayTime = " " + DisplayTime.Substring(1); } //replace the first leading 0 of an hour with a space.
             return DisplayTime;
         }
-
 
         //-[Public Functions]------------------------------------------------------------------------------------------
 
@@ -122,7 +111,7 @@ namespace Igtampe.BasicFonts {
             Init();
             SetColor();
             ClearClock();
-            ClockFont.DrawText(RenderedTime,LeftPos,TopPos);
+            ClockFont.DrawText(RenderedTime, LeftPos, TopPos);
             RenderDate();
             ResetColor();
         }
@@ -132,31 +121,31 @@ namespace Igtampe.BasicFonts {
             //First lets verify if the new DisplayTime is equal to the already rendered time
             string DisplayTime = PrepareRenderedTime();
             string DisplayDate = PrepareRenderedDate();
-            if(RenderedTime.Length != DisplayTime.Length || RenderedDate.Length!=DisplayDate.Length){ 
-                SetColor(); 
+            if (RenderedTime.Length != DisplayTime.Length || RenderedDate.Length != DisplayDate.Length) {
+                SetColor();
                 ClearClock();
                 ResetColor();
-                Render(); 
-                return; 
-            } 
-            
+                Render();
+                return;
+            }
+
             //If they're different length, a setting has changed. Redraw the whole thing.
-            if(RenderedTime == DisplayTime && RenderedDate == DisplayDate) { return; } //no changes need to be made
+            if (RenderedTime == DisplayTime && RenderedDate == DisplayDate) { return; } //no changes need to be made
 
             SetColor();
-            if(RenderedTime != DisplayTime) {
+            if (RenderedTime != DisplayTime) {
                 //Time to hunt for the differences
-                for(int i = RenderedTime.Length-1; i > -1; i--) {
-                    if(RenderedTime[i] != ' ' && DisplayTime[i] == ' ') { 
-                        Draw.Box(Console.BackgroundColor,ClockFont.Width,ClockFont.Height,LeftPos + CalculateLeftposAdjustment(i),TopPos); 
+                for (int i = RenderedTime.Length - 1; i > -1; i--) {
+                    if (RenderedTime[i] != ' ' && DisplayTime[i] == ' ') {
+                        Draw.Box(Console.BackgroundColor, ClockFont.Width, ClockFont.Height, LeftPos + CalculateLeftposAdjustment(i), TopPos);
                     } //If what is rendered isn't a space, but what is to be rendered *is* a space, draw a box.
-                    if(RenderedTime[i] != DisplayTime[i]) {ClockFont.DrawText("" + DisplayTime[i],LeftPos+CalculateLeftposAdjustment(i),TopPos);} //render only the changed text
+                    if (RenderedTime[i] != DisplayTime[i]) { ClockFont.DrawText("" + DisplayTime[i], LeftPos + CalculateLeftposAdjustment(i), TopPos); } //render only the changed text
                 }
                 RenderedTime = DisplayTime; //Save the new rendered time.
 
             }
 
-            if(RenderedDate != DisplayDate) {
+            if (RenderedDate != DisplayDate) {
                 ClearDate();
                 RenderedDate = DisplayTime;
                 RenderDate();
@@ -169,7 +158,7 @@ namespace Igtampe.BasicFonts {
         //-[Private Functions]------------------------------------------------------------------------------------------
 
         /// <summary>Renders only the date</summary>
-        private void RenderDate() {if(!string.IsNullOrWhiteSpace(RenderedDate)) { Draw.Sprite(RenderedDate,Console.BackgroundColor,Console.ForegroundColor,LeftPos+ClockFont.Width+1,TopPos + ClockFont.Height); }}
+        private void RenderDate() { if (!string.IsNullOrWhiteSpace(RenderedDate)) { Draw.Sprite(RenderedDate, Console.BackgroundColor, Console.ForegroundColor, LeftPos + ClockFont.Width + 1, TopPos + ClockFont.Height); } }
 
         /// <summary>Sets colors for the clock to render, saving old color, and old cursor position.</summary>
         private void SetColor() {
@@ -177,27 +166,26 @@ namespace Igtampe.BasicFonts {
             OldTop = Console.CursorTop;
             OldBG = Console.BackgroundColor;
             OldFG = Console.ForegroundColor;
-            RenderUtils.Color(BG,FG);
+            RenderUtils.Color(BG, FG);
         }
 
         /// <summary>Resets colors and cursor position to what they were before</summary>
         private void ResetColor() {
-            RenderUtils.Color(OldBG,OldFG);
-            RenderUtils.SetPos(OldLeft,OldTop);
+            RenderUtils.Color(OldBG, OldFG);
+            RenderUtils.SetPos(OldLeft, OldTop);
         }
 
         /// <summary>Clears this clock based on the last rendered time.</summary>
-        private void ClearClock() {Draw.Box(BG,Width,Height,LeftPos,TopPos);}
+        private void ClearClock() => Draw.Box(BG, Width, Height, LeftPos, TopPos);
 
         /// <summary>Clears this clock's date based on the last rendered date.</summary>
-        private void ClearDate() { Draw.Row(BG,RenderedDate.Length,LeftPos,TopPos + ClockFont.Height + 2); }
+        private void ClearDate() => Draw.Row(BG, RenderedDate.Length, LeftPos, TopPos + ClockFont.Height + 2);
 
         /// <summary>Calculates the necessary leftpos offset to render a character at the specified characterindex with the set clockfont</summary>
         /// <param name="CharacterIndex"></param>
-        private int CalculateLeftposAdjustment(int CharacterIndex) {
-            if(CharacterIndex == 0) { return 0; }
-            return ((CharacterIndex) * ClockFont.Width)+CharacterIndex;
-        }
+        private int CalculateLeftposAdjustment(int CharacterIndex) => CharacterIndex == 0
+            ? 0
+            : (CharacterIndex * ClockFont.Width) + CharacterIndex;
 
         //-[Execution]------------------------------------------------------------------------------------------
 
@@ -209,7 +197,7 @@ namespace Igtampe.BasicFonts {
         }
 
         /// <summary>Pauses updating the clock</summary>
-        public void Pause() { try { AsyncThread?.Suspend(); } catch { }} //I know these are obsolete but mira, the whole reason they are is because of resource protection.
+        public void Pause() { try { AsyncThread?.Suspend(); } catch { } } //I know these are obsolete but mira, the whole reason they are is because of resource protection.
 
         /// <summary>Resumes updating the clock</summary>
         public void Resume() { try { AsyncThread?.Resume(); } catch { } } //for us we *literally have to pause the clock so this is necessary.
@@ -218,7 +206,7 @@ namespace Igtampe.BasicFonts {
         /// <summary>Runs the clock SYNCHRONOUSLY</summary>
         private void Run() {
             Render();
-            while(true) {
+            while (true) {
                 Thread.Sleep(100);
                 Rerender();
             }
@@ -229,6 +217,5 @@ namespace Igtampe.BasicFonts {
             AsyncThread = new Thread(Run);
             AsyncThread.Start();
         }
-
     }
 }

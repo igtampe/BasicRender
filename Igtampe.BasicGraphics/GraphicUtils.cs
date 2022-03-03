@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace Igtampe.BasicGraphics{
+namespace Igtampe.BasicGraphics {
 
     /// <summary>Static class for utilities for drawing graphics</summary>
     public static class GraphicUtils {
@@ -31,7 +31,7 @@ namespace Igtampe.BasicGraphics{
         /// <returns>The corresponding consolecolor</returns>
         public static ConsoleColor ColorCharToConsoleColor(char ColorChar) {
 
-            switch(ColorChar) {
+            switch (ColorChar) {
                 case '0':
                     return ConsoleColor.Black;
                 case '1':
@@ -69,11 +69,9 @@ namespace Igtampe.BasicGraphics{
                 default:
                     throw new ArgumentException();
             }
-
         }
 
         /// <summary>Turns a resource into a string array split by lines</summary>
-        public static String[] ResourceToStringArray(byte[] Resource) {return Encoding.ASCII.GetString(Resource).Replace("\r","").Split('\n');}
-
+        public static string[] ResourceToStringArray(byte[] Resource) => Encoding.ASCII.GetString(Resource).Replace("\r", "").Split('\n');
     }
 }

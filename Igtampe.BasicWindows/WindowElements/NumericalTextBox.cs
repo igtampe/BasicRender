@@ -3,14 +3,15 @@
 namespace Igtampe.BasicWindows.WindowElements {
 
     /// <summary>Textbox that only accepts numerical values</summary>
-    public class NumericalTextBox:Textbox {
+    public class NumericalTextBox : Textbox {
 
         private int val;
 
         /// <summary>Value of the text this NumericalTextBox Holds</summary>
         public int Value {
-            get { return val; }
-            set { val = Math.Min(value,MaximumVal);
+            get => val;
+            set {
+                val = Math.Min(value, MaximumVal);
                 Text = val.ToString();
             }
         }
@@ -26,7 +27,7 @@ namespace Igtampe.BasicWindows.WindowElements {
         /// <param name="BG"></param>
         /// <param name="HighlightedBG"></param>
         /// <param name="FG"></param>
-        public NumericalTextBox(Window Parent,int MaximumVal,int Length,int LeftPos,int TopPos,ConsoleColor BG,ConsoleColor HighlightedBG,ConsoleColor FG) : base(Parent,Length,LeftPos,TopPos,BG,HighlightedBG,FG) {
+        public NumericalTextBox(Window Parent, int MaximumVal, int Length, int LeftPos, int TopPos, ConsoleColor BG, ConsoleColor HighlightedBG, ConsoleColor FG) : base(Parent, Length, LeftPos, TopPos, BG, HighlightedBG, FG) {
             this.MaximumVal = MaximumVal;
             Value = 0;
         }
@@ -35,9 +36,9 @@ namespace Igtampe.BasicWindows.WindowElements {
         /// <param name="Key"></param>
         /// <returns></returns>
         public override KeyPressReturn OnKeyPress(ConsoleKeyInfo Key) {
-            if(!char.IsLetter(Key.KeyChar)) {
+            if (!char.IsLetter(Key.KeyChar)) {
                 KeyPressReturn Return;
-                String OldText = Text;
+                string OldText = Text;
                 Return = base.OnKeyPress(Key);
 
                 //if the text was modified update value
@@ -48,8 +49,5 @@ namespace Igtampe.BasicWindows.WindowElements {
             }
             return KeyPressReturn.NOTHING;
         }
-
-
-
     }
 }

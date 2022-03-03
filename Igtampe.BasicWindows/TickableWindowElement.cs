@@ -1,9 +1,7 @@
-﻿using System;
-
-namespace Igtampe.BasicWindows {
+﻿namespace Igtampe.BasicWindows {
 
     /// <summary>Tickable window element that will tick on a tickable window every 250ms</summary>
-    public abstract class TickableWindowElement:WindowElement {
+    public abstract class TickableWindowElement : WindowElement {
 
         /// <summary>Creates a tickable window element</summary>
         /// <param name="Parent"></param>
@@ -11,7 +9,7 @@ namespace Igtampe.BasicWindows {
 
         /// <summary>Makes the element "tick". Should occur every 250ms</summary>
         /// <returns>True if execution should continue</returns>
-        public abstract Boolean Tick();
+        public abstract bool Tick();
 
     }
 }

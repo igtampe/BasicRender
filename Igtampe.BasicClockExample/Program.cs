@@ -15,9 +15,9 @@ namespace Igtampe.BasicClockExample {
         static Clock MainClock;
         static BasicFont ClockFont;
 
-        static Boolean Voice = true;
-        static Boolean Audio = true;
-        static Boolean Collapsed = false;
+        static bool Voice = true;
+        static bool Audio = true;
+        static bool Collapsed = false;
 
         static string dir = AppDomain.CurrentDomain.BaseDirectory + "/ClockSettings.dod";
         static string FontDir = "";
@@ -27,15 +27,15 @@ namespace Igtampe.BasicClockExample {
         static void Main(string[] args) {
             ClockFont = BasicFont.DigitalClockFont;
 
-            if(args.Length > 0) {
-                if(args[0].ToUpper().EndsWith(".DOD")) {dir = args[0];}
-                if(args[0].ToUpper().EndsWith(".BFNT")) { FontDir=args[0]; }
+            if (args.Length > 0) {
+                if (args[0].ToUpper().EndsWith(".DOD")) { dir = args[0]; }
+                if (args[0].ToUpper().EndsWith(".BFNT")) { FontDir = args[0]; }
             }
 
             MainClock = LoadClock();
             MainClock.Init();
 
-            if(Collapsed) { Collapse(); } else { Expand(); }
+            if (Collapsed) { Collapse(); } else { Expand(); }
 
             MainClock.RunAsync();
             string[] ReadSplit;
@@ -43,56 +43,47 @@ namespace Igtampe.BasicClockExample {
             StartAudioVoiceBackend();
 
             do {
-                RenderUtils.SetPos(1,10);
-                String Read = Console.ReadLine();
-                Draw.Row(ConsoleColor.Black,Read.Length,1,10);
+                RenderUtils.SetPos(1, 10);
+                string Read = Console.ReadLine();
+                Draw.Row(ConsoleColor.Black, Read.Length, 1, 10);
                 Draw.ClearLine(12);
-                RenderUtils.SetPos(0,12);
-                ReadSplit=Read.Split(' '); 
+                RenderUtils.SetPos(0, 12);
+                ReadSplit = Read.Split(' ');
                 Parse(ReadSplit);
                 Save();
-            } while(ReadSplit[0].ToUpper()!="CLOSE");
+            } while (ReadSplit[0].ToUpper() != "CLOSE");
 
             MainClock.Stop();
             AudioVoiceThread.Abort();
         }
 
-
         /// <summary>Parser for the commands of the demo</summary>
         /// <param name="Read"></param>
-        static void Parse(String[] Read) {
-            switch(Read[0].ToUpper()) {
+        static void Parse(string[] Read) {
+            switch (Read[0].ToUpper()) {
                 case "SETBG":
-                    if(Read.Length == 2) { MainClock.BG = GraphicUtils.ColorCharToConsoleColor(Read[1][0]); } 
-                    else { Draw.Sprite("Incorrect syntax: SetBG (ColorChar)",ConsoleColor.Black,ConsoleColor.Red); }
+                    if (Read.Length == 2) { MainClock.BG = GraphicUtils.ColorCharToConsoleColor(Read[1][0]); } else { Draw.Sprite("Incorrect syntax: SetBG (ColorChar)", ConsoleColor.Black, ConsoleColor.Red); }
                     break;
                 case "SETFG":
-                    if(Read.Length == 2) { MainClock.FG = GraphicUtils.ColorCharToConsoleColor(Read[1][0]); } 
-                    else { Draw.Sprite("Incorrect syntax: SetFG (ColorChar)",ConsoleColor.Black,ConsoleColor.Red); }
+                    if (Read.Length == 2) { MainClock.FG = GraphicUtils.ColorCharToConsoleColor(Read[1][0]); } else { Draw.Sprite("Incorrect syntax: SetFG (ColorChar)", ConsoleColor.Black, ConsoleColor.Red); }
                     break;
                 case "MILITTIME":
-                    if(Read.Length == 2) { if(Boolean.TryParse(Read[1],out bool Flag)) { MainClock.MilitaryTime = Flag; } }
-                    else { Draw.Sprite("Incorrect syntax: MilitTime (bool)",ConsoleColor.Black,ConsoleColor.Red); }
+                    if (Read.Length == 2) { if (bool.TryParse(Read[1], out bool Flag)) { MainClock.MilitaryTime = Flag; } } else { Draw.Sprite("Incorrect syntax: MilitTime (bool)", ConsoleColor.Black, ConsoleColor.Red); }
                     break;
                 case "SHOWDATE":
-                    if(Read.Length == 2) { if(Boolean.TryParse(Read[1],out bool Flag)) { MainClock.ShowDate = Flag; } }
-                    else { Draw.Sprite("Incorrect syntax: ShowDate (bool)",ConsoleColor.Black,ConsoleColor.Red); }
+                    if (Read.Length == 2) { if (bool.TryParse(Read[1], out bool Flag)) { MainClock.ShowDate = Flag; } } else { Draw.Sprite("Incorrect syntax: ShowDate (bool)", ConsoleColor.Black, ConsoleColor.Red); }
                     break;
                 case "SHOWSECONDS":
-                    if(Read.Length == 2) { if(Boolean.TryParse(Read[1],out bool Flag)) { MainClock.ShowSeconds = Flag; } } 
-                    else { Draw.Sprite("Incorrect syntax: ShowSeconds (bool)",ConsoleColor.Black,ConsoleColor.Red); }
+                    if (Read.Length == 2) { if (bool.TryParse(Read[1], out bool Flag)) { MainClock.ShowSeconds = Flag; } } else { Draw.Sprite("Incorrect syntax: ShowSeconds (bool)", ConsoleColor.Black, ConsoleColor.Red); }
                     break;
                 case "ADJUSTHOURS":
-                    if(Read.Length == 2) { if(int.TryParse(Read[1],out int Flag)) { MainClock.HourAdjust = Flag; } } 
-                    else { Draw.Sprite("Incorrect syntax: ShowSeconds (bool)",ConsoleColor.Black,ConsoleColor.Red); }
+                    if (Read.Length == 2) { if (int.TryParse(Read[1], out int Flag)) { MainClock.HourAdjust = Flag; } } else { Draw.Sprite("Incorrect syntax: ShowSeconds (bool)", ConsoleColor.Black, ConsoleColor.Red); }
                     break;
                 case "VOICE":
-                    if(Read.Length == 2) { if(Boolean.TryParse(Read[1],out bool Flag)) { Voice = Flag; } } 
-                    else { Draw.Sprite("Incorrect syntax: ShowSeconds (bool)",ConsoleColor.Black,ConsoleColor.Red); }
+                    if (Read.Length == 2) { if (bool.TryParse(Read[1], out bool Flag)) { Voice = Flag; } } else { Draw.Sprite("Incorrect syntax: ShowSeconds (bool)", ConsoleColor.Black, ConsoleColor.Red); }
                     break;
                 case "AUDIO":
-                    if(Read.Length == 2) { if(Boolean.TryParse(Read[1],out bool Flag)) { Audio = Flag; } } 
-                    else { Draw.Sprite("Incorrect syntax: ShowSeconds (bool)",ConsoleColor.Black,ConsoleColor.Red); }
+                    if (Read.Length == 2) { if (bool.TryParse(Read[1], out bool Flag)) { Audio = Flag; } } else { Draw.Sprite("Incorrect syntax: ShowSeconds (bool)", ConsoleColor.Black, ConsoleColor.Red); }
                     break;
                 case "COLLAPSE":
                     Collapse();
@@ -108,28 +99,28 @@ namespace Igtampe.BasicClockExample {
                     break;
                 case "RESET":
                     MainClock.Stop();
-                    Draw.Box(ConsoleColor.Black,MainClock.Width,MainClock.Height,2,1);
+                    Draw.Box(ConsoleColor.Black, MainClock.Width, MainClock.Height, 2, 1);
                     MainClock = LoadClock();
                     MainClock.RunAsync();
                     break;
                 case "CLOSE":
                     break;
                 default:
-                    Draw.Sprite("Unable to parse command, see HELP",ConsoleColor.Black,ConsoleColor.Red);
+                    Draw.Sprite("Unable to parse command, see HELP", ConsoleColor.Black, ConsoleColor.Red);
                     break;
             }
         }
 
         /// <summary>Collapse the window to a smaller size</summary>
-        static void Collapse(){
+        static void Collapse() {
             Collapsed = true;
             MainClock.Pause();
-            RenderUtils.ResizeConsole(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),13);
+            RenderUtils.ResizeConsole(Math.Max(Console.WindowWidth, (MainClock.Width + ClockFont.Width + 4)), 13);
             //Console.SetWindowSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),13);
             //Console.SetBufferSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),13);
             Console.Clear();
             MainClock.Render();
-            Draw.Sprite(":",Console.BackgroundColor,Console.ForegroundColor,0,10);
+            Draw.Sprite(":", Console.BackgroundColor, Console.ForegroundColor, 0, 10);
             MainClock.Resume();
         }
 
@@ -137,7 +128,7 @@ namespace Igtampe.BasicClockExample {
         static void Expand() {
             Collapsed = false;
             MainClock.Pause();
-            RenderUtils.ResizeConsole(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),34);
+            RenderUtils.ResizeConsole(Math.Max(Console.WindowWidth, (MainClock.Width + ClockFont.Width + 4)), 34);
             //Console.SetBufferSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),34);
             //Console.SetWindowSize(Math.Max(Console.WindowWidth,(MainClock.Width + ClockFont.Width + 4)),34);
             DrawHelp();
@@ -146,8 +137,8 @@ namespace Igtampe.BasicClockExample {
 
         /// <summary>Draws the help</summary>
         static void DrawHelp() {
-            Draw.Sprite(":",Console.BackgroundColor,Console.ForegroundColor,0,10);
-            RenderUtils.SetPos(0,14);
+            Draw.Sprite(":", Console.BackgroundColor, Console.ForegroundColor, 0, 10);
+            RenderUtils.SetPos(0, 14);
             RenderUtils.Echo("Welcome to the Digital Grandfather Clock!\n\n" +
                 "" +
                 "Here you can use the following commands to modify this clock:\n" +
@@ -171,43 +162,42 @@ namespace Igtampe.BasicClockExample {
 
         public static Clock LoadClock() {
 
-            if(!File.Exists(dir)) { return DefaultClock(); }
+            if (!File.Exists(dir)) { return DefaultClock(); }
 
-            Dictionary<String,String> LoadDict = DOD.Load(dir);
+            Dictionary<string, string> LoadDict = DOD.Load(dir);
 
             try {
                 Clock ReturnClock;
 
-                if(string.IsNullOrWhiteSpace(FontDir)) { FontDir = LoadDict["FONT"]; }
+                if (string.IsNullOrWhiteSpace(FontDir)) { FontDir = LoadDict["FONT"]; }
 
-                if(!string.IsNullOrWhiteSpace(FontDir)) { ReturnClock = new Clock(BasicFont.LoadFromFile(FontDir),2,1); } 
-                else { ReturnClock = new Clock(2,1); }
+                ReturnClock = !string.IsNullOrWhiteSpace(FontDir) 
+                    ? new Clock(BasicFont.LoadFromFile(FontDir), 2, 1) 
+                    : new Clock(2, 1);
 
                 ReturnClock.BG = GraphicUtils.ColorCharToConsoleColor(LoadDict["BG"][0]);
                 ReturnClock.FG = GraphicUtils.ColorCharToConsoleColor(LoadDict["FG"][0]);
-                ReturnClock.MilitaryTime = Boolean.Parse(LoadDict["MILITTIME"]);
-                ReturnClock.ShowDate = Boolean.Parse(LoadDict["SHOWDATE"]);
-                ReturnClock.ShowSeconds = Boolean.Parse(LoadDict["SHOWSECONDS"]);
+                ReturnClock.MilitaryTime = bool.Parse(LoadDict["MILITTIME"]);
+                ReturnClock.ShowDate = bool.Parse(LoadDict["SHOWDATE"]);
+                ReturnClock.ShowSeconds = bool.Parse(LoadDict["SHOWSECONDS"]);
                 ReturnClock.HourAdjust = int.Parse(LoadDict["ADJUSTHOURS"]);
 
-                Audio = Boolean.Parse(LoadDict["AUDIO"]);
-                Voice = Boolean.Parse(LoadDict["VOICE"]);
-                Collapsed = Boolean.Parse(LoadDict["COLLAPSED"]);
+                Audio = bool.Parse(LoadDict["AUDIO"]);
+                Voice = bool.Parse(LoadDict["VOICE"]);
+                Collapsed = bool.Parse(LoadDict["COLLAPSED"]);
 
                 return ReturnClock;
-                
-            } catch(Exception) {
-                Draw.CenterText("There was an error loading file " + dir.Split('\\')[dir.Split('\\').Length-1],Console.WindowHeight / 2,ConsoleColor.Red,ConsoleColor.Black);
+
+            } catch (Exception) {
+                Draw.CenterText("There was an error loading file " + dir.Split('\\')[dir.Split('\\').Length - 1], Console.WindowHeight / 2, ConsoleColor.Red, ConsoleColor.Black);
                 RenderUtils.Pause();
                 Draw.ClearLine(Console.WindowHeight / 2);
                 return DefaultClock();
             }
-
-
         }
 
         public static void Save() {
-            Dictionary<string,string> SaveDict = new Dictionary<string,string> {
+            Dictionary<string, string> SaveDict = new Dictionary<string, string> {
                 { "FONT",FontDir },
                 { "BG",BasicFont.ConsoleColorToColorChar(MainClock.BG) + "" },
                 { "FG",BasicFont.ConsoleColorToColorChar(MainClock.FG) + "" },
@@ -219,11 +209,11 @@ namespace Igtampe.BasicClockExample {
                 { "VOICE",Voice.ToString() },
                 { "COLLAPSED",Collapsed.ToString() }
             };
-            DOD.Save(SaveDict,dir);
+            DOD.Save(SaveDict, dir);
         }
 
         public static Clock DefaultClock() {
-            return new Clock(BasicFont.DigitalClockFont,2,1) {
+            return new Clock(BasicFont.DigitalClockFont, 2, 1) {
                 BG = ConsoleColor.Black,
                 FG = ConsoleColor.White,
                 MilitaryTime = false,
@@ -237,27 +227,26 @@ namespace Igtampe.BasicClockExample {
             DateTime CurrentTime;
             Actor TheActor = new Actor();
             int Index = 0;
-            int[] Minutes = { 0,15,30,45 }; //Minutes to activate on IN ASCENDING ORDER.
-            //check the minutes array, cycle to the top the next minute that is to be checked
-            
+            int[] Minutes = { 0, 15, 30, 45 }; //Minutes to activate on IN ASCENDING ORDER.
+                                               //check the minutes array, cycle to the top the next minute that is to be checked
+
             CurrentTime = DateTime.Now;
-            if(!(CurrentTime.Minute >= Minutes[Minutes.Length - 1])) { //Make sure this doesn't get stuck. If its larger than the last index, the next index to check is the first.
-                while(Minutes[Index] < CurrentTime.Minute) { Index++; }
+            if (!(CurrentTime.Minute >= Minutes[Minutes.Length - 1])) { //Make sure this doesn't get stuck. If its larger than the last index, the next index to check is the first.
+                while (Minutes[Index] < CurrentTime.Minute) { Index++; }
             }
 
             //If Voice, say the time.
-            if(Voice) { TheActor.SayAsync("The time is now " + CurrentTime.ToString("h:mm tt")); }
-
+            if (Voice) { TheActor.SayAsync("The time is now " + CurrentTime.ToString("h:mm tt")); }
 
             //now lets go:
-            while(true) {
+            while (true) {
                 CurrentTime = DateTime.Now.AddHours(MainClock.HourAdjust);
-                if(CurrentTime.Minute == Minutes[Index]) {
+                if (CurrentTime.Minute == Minutes[Index]) {
 
                     //its time to activate
                     //if Audio, play the sound
-                    if(Audio) {
-                        switch(CurrentTime.Minute) {
+                    if (Audio) {
+                        switch (CurrentTime.Minute) {
                             case 0:
                                 new SoundPlayer(Resources.Down).PlaySync();
                                 new SoundPlayer(Resources.Up).PlaySync();
@@ -268,7 +257,7 @@ namespace Igtampe.BasicClockExample {
                                 int Bongs = int.Parse(CurrentTime.ToString("hh"));
 
                                 //Play the bongs
-                                for(int x = 0; x < Bongs; x++) {new SoundPlayer(Resources.Bong).PlaySync();}
+                                for (int x = 0; x < Bongs; x++) { new SoundPlayer(Resources.Bong).PlaySync(); }
                                 break;
                             case 15:
                                 new SoundPlayer(Resources.Down).PlaySync();
@@ -288,26 +277,20 @@ namespace Igtampe.BasicClockExample {
                     }
 
                     //If Voice, say the time.
-                    if(Voice) { TheActor.SayAsync("The time is now " + CurrentTime.ToString("h:m tt")); }
+                    if (Voice) { TheActor.SayAsync("The time is now " + CurrentTime.ToString("h:m tt")); }
 
                     //Move us forward
                     Index++;
-                    if(Index >= Minutes.Length) { Index = 0; }
-
+                    if (Index >= Minutes.Length) { Index = 0; }
                 }
                 Thread.Sleep(1000);
             }
-
         }
 
         public static void StartAudioVoiceBackend() {
-            if(AudioVoiceThread?.IsAlive == true) { throw new InvalidOperationException("Thread is running!"); }
+            if (AudioVoiceThread?.IsAlive == true) { throw new InvalidOperationException("Thread is running!"); }
             AudioVoiceThread = new Thread(AudioVoiceBackend);
             AudioVoiceThread.Start();
         }
-
-
     }
-
-
 }

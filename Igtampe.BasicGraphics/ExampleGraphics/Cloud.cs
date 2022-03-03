@@ -20,10 +20,7 @@ namespace Igtampe.BasicGraphics.ExampleGraphics {
                 "111111111111111111111111",
             };
 
-
         /// <summary>Creates an instance of this cloud graphic</summary>
         public Cloud() : base(CloudContent,"Cloud Graphic"){}
-
-
     }
 }

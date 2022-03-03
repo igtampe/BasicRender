@@ -18,26 +18,26 @@ namespace Igtampe.BasicWindows.Utils {
         /// <param name="Text"></param>
         /// <param name="MaxWidth"></param>
         /// <param name="MaxHeight"></param>
-        public FormattedText(String Text,int MaxWidth,int MaxHeight) {
-            
+        public FormattedText(string Text, int MaxWidth, int MaxHeight) {
+
             //this is so we can handle \n
-            Text = Text.Replace("\n"," \n ");
+            Text = Text.Replace("\n", " \n ");
 
             //Split text into words
-            String[] Words = Text.Split(' ');
+            string[] Words = Text.Split(' ');
 
             //Some variables we will need
             int CurrentWord = 0;
-            List<String> Lines = new List<String>();
+            List<string> Lines = new List<string>();
             int LongestLine = 0;
 
-            while(CurrentWord < Words.Length && Lines.Count < MaxHeight) {
-                String Line = "";
+            while (CurrentWord < Words.Length && Lines.Count < MaxHeight) {
+                string Line = "";
                 //If a word is longer than the length of the line, just substring it. Otherwise it will cause nothing to be written a.
-                if(Words[CurrentWord].Length > MaxWidth) { Words[CurrentWord] = Words[CurrentWord].Substring(0,MaxWidth - 1); } 
-                while(CurrentWord < Words.Length && ((Line.Length + Words[CurrentWord].Replace("\n","").Length) < MaxWidth)) {
+                if (Words[CurrentWord].Length > MaxWidth) { Words[CurrentWord] = Words[CurrentWord].Substring(0, MaxWidth - 1); }
+                while (CurrentWord < Words.Length && ((Line.Length + Words[CurrentWord].Replace("\n", "").Length) < MaxWidth)) {
                     //If we have a next word, and the word's length plus whatever we already have is shorter than the maximum width, add it to the line
-                    if(Words[CurrentWord] == "\n") {
+                    if (Words[CurrentWord] == "\n") {
                         CurrentWord++;
                         break;
                     }
@@ -47,13 +47,13 @@ namespace Igtampe.BasicWindows.Utils {
 
                 //The line is as long as its going to be.
                 Lines.Add(Line);
-                LongestLine = Math.Max(LongestLine,Line.Length);
+                LongestLine = Math.Max(LongestLine, Line.Length);
 
             }
 
-            this.Text= String.Join("\n",Lines.ToArray());
+            this.Text = string.Join("\n", Lines.ToArray());
             ActualHeight = Lines.Count;
-            ActualWidth = LongestLine; 
+            ActualWidth = LongestLine;
         }
 
         /// <summary>Returns a string formatted to fit in a box of with maximum dimensions of specified width/height</summary>
@@ -61,7 +61,6 @@ namespace Igtampe.BasicWindows.Utils {
         /// <param name="MaxWidth"></param>
         /// <param name="MaxHeight"></param>
         /// <returns></returns>
-        public static String Format(String Text,int MaxWidth,int MaxHeight) {return new FormattedText(Text,MaxWidth,MaxHeight).Text;}
-
+        public static string Format(string Text, int MaxWidth, int MaxHeight) => new FormattedText(Text, MaxWidth, MaxHeight).Text;
     }
 }

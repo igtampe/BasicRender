@@ -4,20 +4,20 @@ using System;
 namespace Igtampe.BasicWindows.WindowElements {
 
     /// <summary>ProgressBar window element</summary>
-    public class Progressbar:WindowElement {
+    public class Progressbar : WindowElement {
 
         private double percent;
 
         /// <summary>Percent of this progress bar.</summary>
         public double Percent {
-            get { return percent; }
+            get => percent;
             //Make sure any attempt to make this below 0 or above 1 are caught
-            set { percent = Math.Max(0,Math.Min(value,1)); }
+            set => percent = Math.Max(0, Math.Min(value, 1));
         }
 
         /// <summary>Background of this progressbar</summary>
         protected ConsoleColor BG;
-        
+
         /// <summary>Color of the bar that will be drawn on top of this progressbar to indicate progress.</summary>
         protected ConsoleColor BarColor;
         private readonly int Length;
@@ -27,7 +27,7 @@ namespace Igtampe.BasicWindows.WindowElements {
         /// <param name="Length"></param>
         /// <param name="LeftPos"></param>
         /// <param name="TopPos"></param>
-        public Progressbar(Window Parent,int Length,int LeftPos,int TopPos) : this(Parent,Length,LeftPos,TopPos,ConsoleColor.DarkGray,ConsoleColor.DarkBlue) { }
+        public Progressbar(Window Parent, int Length, int LeftPos, int TopPos) : this(Parent, Length, LeftPos, TopPos, ConsoleColor.DarkGray, ConsoleColor.DarkBlue) { }
 
         /// <summary>Creates a ProgressBar</summary>
         /// <param name="Parent"></param>
@@ -36,7 +36,7 @@ namespace Igtampe.BasicWindows.WindowElements {
         /// <param name="TopPos"></param>
         /// <param name="BG"></param>
         /// <param name="BarColor"></param>
-        public Progressbar(Window Parent, int Length, int LeftPos, int TopPos, ConsoleColor BG,ConsoleColor BarColor):base(Parent){
+        public Progressbar(Window Parent, int Length, int LeftPos, int TopPos, ConsoleColor BG, ConsoleColor BarColor) : base(Parent) {
             this.Length = Length;
             this.LeftPos = LeftPos;
             this.TopPos = TopPos;
@@ -46,12 +46,11 @@ namespace Igtampe.BasicWindows.WindowElements {
 
         /// <summary>Draws this progress bar</summary>
         public override void DrawElement() {
-            Draw.Row(BG,Length,LeftPos + Parent.LeftPos,TopPos + Parent.TopPos);
-            Draw.Row(BarColor,Convert.ToInt32(Length * Percent),LeftPos + Parent.LeftPos,TopPos + Parent.TopPos);
-            if((Length * Percent)%1>.5) { 
-                Draw.Sprite(SpecialChars.LEFT_HALF_BLOCK + "",BG,BarColor); 
+            Draw.Row(BG, Length, LeftPos + Parent.LeftPos, TopPos + Parent.TopPos);
+            Draw.Row(BarColor, Convert.ToInt32(Length * Percent), LeftPos + Parent.LeftPos, TopPos + Parent.TopPos);
+            if ((Length * Percent) % 1 > .5) {
+                Draw.Sprite(SpecialChars.LEFT_HALF_BLOCK + "", BG, BarColor);
             }
         }
-
     }
 }

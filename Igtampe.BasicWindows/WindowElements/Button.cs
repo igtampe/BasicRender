@@ -3,7 +3,7 @@ using Igtampe.BasicRender;
 
 namespace Igtampe.BasicWindows.WindowElements {
     /// <summary>Button, though it may as well be a clickable link.</summary>
-    public abstract class Button:WindowElement {
+    public abstract class Button : WindowElement {
 
         /// <summary>Background when this button is highlighted</summary>
         protected ConsoleColor HighlightedBG;
@@ -15,7 +15,7 @@ namespace Igtampe.BasicWindows.WindowElements {
         protected ConsoleColor FG;
 
         /// <summary>Text on this button</summary>
-        protected String Text;
+        protected string Text;
 
         /// <summary>Creates a button</summary>
         /// <param name="Parent"></param>
@@ -25,7 +25,7 @@ namespace Igtampe.BasicWindows.WindowElements {
         /// <param name="HighlightedBG"></param>
         /// <param name="LeftPos"></param>
         /// <param name="TopPos"></param>
-        protected Button(Window Parent,String Text,ConsoleColor BG,ConsoleColor FG,ConsoleColor HighlightedBG,int LeftPos,int TopPos) : base(Parent) {
+        protected Button(Window Parent, string Text, ConsoleColor BG, ConsoleColor FG, ConsoleColor HighlightedBG, int LeftPos, int TopPos) : base(Parent) {
             this.Text = Text;
             this.BG = BG;
             this.FG = FG;
@@ -36,14 +36,14 @@ namespace Igtampe.BasicWindows.WindowElements {
 
         /// <summary>Draws this button</summary>
         public override void DrawElement() {
-            if(Highlighted) { Draw.Sprite(Text,HighlightedBG,FG,Parent.LeftPos + LeftPos,Parent.TopPos + TopPos); } else { Draw.Sprite(Text,BG,FG,Parent.LeftPos + LeftPos,Parent.TopPos + TopPos); }
+            if (Highlighted) { Draw.Sprite(Text, HighlightedBG, FG, Parent.LeftPos + LeftPos, Parent.TopPos + TopPos); } else { Draw.Sprite(Text, BG, FG, Parent.LeftPos + LeftPos, Parent.TopPos + TopPos); }
         }
 
         /// <summary>Handles what happens when a key is pressed and this button is highlighted</summary>
         /// <param name="Key"></param>
         /// <returns></returns>
         public override KeyPressReturn OnKeyPress(ConsoleKeyInfo Key) {
-            switch(Key.Key) {
+            switch (Key.Key) {
                 case ConsoleKey.Enter:
                     return Action();
                 case ConsoleKey.LeftArrow:
@@ -51,7 +51,9 @@ namespace Igtampe.BasicWindows.WindowElements {
                 case ConsoleKey.RightArrow:
                     return KeyPressReturn.NEXT_ELEMENT;
                 case ConsoleKey.Tab:
-                    if(Key.Modifiers == ConsoleModifiers.Shift) { return KeyPressReturn.PREV_ELEMENT; } else { return KeyPressReturn.NEXT_ELEMENT; }
+                    return Key.Modifiers == ConsoleModifiers.Shift
+                        ? KeyPressReturn.PREV_ELEMENT
+                        : KeyPressReturn.NEXT_ELEMENT;
                 default:
                     return KeyPressReturn.NOTHING;
             }
@@ -61,5 +63,4 @@ namespace Igtampe.BasicWindows.WindowElements {
         /// <returns></returns>
         public abstract KeyPressReturn Action();
     }
-
 }

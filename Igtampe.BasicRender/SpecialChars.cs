@@ -118,8 +118,7 @@
         public const char DOUBLE_SINGLE_T_BOTTOM = '╨';
 
         /// <summary>╫</summary>
-        public const char DOUBLE_SINGLE_T= '╫';
-
+        public const char DOUBLE_SINGLE_T = '╫';
 
         //-[Single Double (Single Vertical, Double Horizontal)]---------------------------------------------------------------------
 
@@ -176,7 +175,7 @@
 
         /// <summary>▼</summary>
         public const char TRIANGLE_DOWN = '▼';
-        
+
         /// <summary>◄</summary>
         public const char TRIANGLE_LEFT = '◄';
 
@@ -268,7 +267,7 @@
                 ARROW_UP + ARROW_DOWN + ARROW_LEFT + ARROW_RIGHT +
                 ARROW_UP_DOWN + ARROW_LEFT_RIGHT +
                 ARROW_DOUBLE_LEFT + ARROW_DOUBLE_RIGHT +
-                ""); 
+                "");
         }
     }
 }

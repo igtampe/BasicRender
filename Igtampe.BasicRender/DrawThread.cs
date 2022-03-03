@@ -68,7 +68,7 @@ namespace Igtampe.BasicRender {
             while (!StopPending) {
                 Handle.WaitOne();
                 while (!Tasks.IsEmpty) {
-                    if (Tasks.TryDequeue(out Task R)) { 
+                    if (Tasks.TryDequeue(out Task R)) {
                         R.RunSynchronously();
                         R.Dispose(); //Dispose task once it's complete
                     }
@@ -78,6 +78,5 @@ namespace Igtampe.BasicRender {
 
             StopPending = false;
         }
-
     }
 }

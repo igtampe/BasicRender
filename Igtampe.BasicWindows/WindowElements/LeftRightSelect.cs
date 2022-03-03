@@ -4,19 +4,18 @@ using System.Collections.Generic;
 namespace Igtampe.BasicWindows.WindowElements {
 
     /// <summary>WindowElement that allows a user to select from a list of strings by using the left or right arrow keys</summary>
-    public class LeftRightSelect:Textbox {
+    public class LeftRightSelect : Textbox {
 
         /// <summary>List of strings a user can select from this LeftRightSelect</summary>
-        private readonly List<String> Items;
+        private readonly List<string> Items;
         private int selectedItemIndex;
 
         /// <summary>Selected item index of this LeftRightSelect</summary>
         public int SelectedItemIndex {
-            get { return selectedItemIndex; }
+            get => selectedItemIndex;
             set {
-
                 //Unlike the one in Henja, this means no wrap-around, but I think that's ok. We need to test this eventually.
-                selectedItemIndex = Math.Min(Items.Count - 1,Math.Max(0,value));
+                selectedItemIndex = Math.Min(Items.Count - 1, Math.Max(0, value));
                 Text = Items[selectedItemIndex];
             }
         }
@@ -30,7 +29,7 @@ namespace Igtampe.BasicWindows.WindowElements {
         /// <param name="BG"></param>
         /// <param name="HighlightedBG"></param>
         /// <param name="FG"></param>
-        public LeftRightSelect(Window Parent, List<String> Items, int Length,int LeftPos,int TopPos,ConsoleColor BG,ConsoleColor HighlightedBG,ConsoleColor FG) : base(Parent,Length,LeftPos,TopPos,BG,HighlightedBG,FG) {
+        public LeftRightSelect(Window Parent, List<string> Items, int Length, int LeftPos, int TopPos, ConsoleColor BG, ConsoleColor HighlightedBG, ConsoleColor FG) : base(Parent, Length, LeftPos, TopPos, BG, HighlightedBG, FG) {
             this.Items = Items;
             SelectedItemIndex = 0;
         }
@@ -39,7 +38,7 @@ namespace Igtampe.BasicWindows.WindowElements {
         /// <param name="Key"></param>
         /// <returns></returns>
         public override KeyPressReturn OnKeyPress(ConsoleKeyInfo Key) {
-            switch(Key.Key) {
+            switch (Key.Key) {
                 case ConsoleKey.LeftArrow:
                     SelectedItemIndex--;
                     break;
@@ -52,7 +51,7 @@ namespace Igtampe.BasicWindows.WindowElements {
                 case ConsoleKey.UpArrow:
                     return KeyPressReturn.PREV_ELEMENT;
                 case ConsoleKey.Tab:
-                    if(Key.Modifiers == ConsoleModifiers.Shift) { return KeyPressReturn.PREV_ELEMENT; }
+                    if (Key.Modifiers == ConsoleModifiers.Shift) { return KeyPressReturn.PREV_ELEMENT; }
                     return KeyPressReturn.NEXT_ELEMENT;
                 default:
                     return KeyPressReturn.NOTHING;
@@ -61,6 +60,5 @@ namespace Igtampe.BasicWindows.WindowElements {
             return KeyPressReturn.NOTHING;
 
         }
-
     }
 }

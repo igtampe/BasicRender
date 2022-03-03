@@ -3,7 +3,7 @@ using Igtampe.BasicRender;
 
 namespace Igtampe.BasicWindows.WindowElements {
     /// <summary>Window Element that draws a nice box</summary>
-    public class Box:WindowElement {
+    public class Box : WindowElement {
 
         private readonly int Length;
         private readonly int Height;
@@ -16,7 +16,7 @@ namespace Igtampe.BasicWindows.WindowElements {
         /// <param name="Height"></param>
         /// <param name="LeftPos"></param>
         /// <param name="TopPos"></param>
-        public Box(Window Parent,ConsoleColor Color,int Length,int Height,int LeftPos,int TopPos) : base(Parent) {
+        public Box(Window Parent, ConsoleColor Color, int Length, int Height, int LeftPos, int TopPos) : base(Parent) {
             this.Length = Length;
             this.Color = Color;
             this.Height = Height;
@@ -25,7 +25,6 @@ namespace Igtampe.BasicWindows.WindowElements {
         }
 
         /// <summary>Draws this box</summary>
-        public override void DrawElement() { Draw.Box(Color,Length,Height, Parent.LeftPos + LeftPos,Parent.TopPos + TopPos); }
-
+        public override void DrawElement() => Draw.Box(Color, Length, Height, Parent.LeftPos + LeftPos, Parent.TopPos + TopPos);
     }
 }

@@ -1,16 +1,16 @@
 ﻿using Igtampe.BasicWindows.WindowElements;
 
 namespace Igtampe.BasicWindows.TickableWindowElements {
-    
+
     /// <summary>Example tickable element that counts down from the time given.</summary>
-    public class Timer:TickableWindowElement {
+    public class Timer : TickableWindowElement {
 
         /// <summary>Original time this timer was counting down from in seconds.</summary>
         public readonly double Time;
 
         /// <summary>Window that will execute when time is up</summary>
         public Window TimeUpWindow { get; set; }
-        
+
         /// <summary>
         /// Indicates whether this timer should go from back to front or front to back. <br></br>
         /// Should only be set if this is tied to a progressbar, and should not be set when the progressbar is running.
@@ -25,7 +25,7 @@ namespace Igtampe.BasicWindows.TickableWindowElements {
         /// <param name="Parent"></param>
         /// <param name="Time"></param>
         /// <param name="progressbar"></param>
-        public Timer(Window Parent, int Time, Progressbar progressbar):this(Parent,Time) {
+        public Timer(Window Parent, int Time, Progressbar progressbar) : this(Parent, Time) {
             MyProgressBar = progressbar;
             progressbar.Percent = 1;
             BackToFront = false;
@@ -34,23 +34,22 @@ namespace Igtampe.BasicWindows.TickableWindowElements {
         /// <summary>Creates a silent timer that will cut execution when it reaches 0.</summary>
         /// <param name="Parent"></param>
         /// <param name="Time"></param>
-        public Timer(Window Parent,int Time):base(Parent) {
+        public Timer(Window Parent, int Time) : base(Parent) {
             this.Time = Time * 1000.0;
             TimeLeft = this.Time;
         }
         /// <summary>Draws the progress bar this element holds</summary>
-        public override void DrawElement() {MyProgressBar?.DrawElement();}
+        public override void DrawElement() => MyProgressBar?.DrawElement();
 
         /// <summary>Ticks this element, and takes away 250ms from this timer</summary>
         /// <returns>True if there's still time, false otherwise</returns>
         public override bool Tick() {
             TimeLeft -= 250;
-            if(BackToFront) { MyProgressBar.Percent = (Time-TimeLeft) / Time; } else { MyProgressBar.Percent = TimeLeft / Time; }
+            MyProgressBar.Percent = BackToFront ? (Time - TimeLeft) / Time : TimeLeft / Time;
 
-            
             DrawElement();
 
-            if(TimeLeft <= 0) {
+            if (TimeLeft <= 0) {
                 TimeUpWindow?.Execute();
                 return false;
             }
