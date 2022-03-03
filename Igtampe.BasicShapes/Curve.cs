@@ -101,14 +101,14 @@ namespace Igtampe.BasicShapes {
         //-[Static Fields]-------------------------------------------------------------------------------
 
         /// <summary>Converts degrees to radians</summary>
-        public static double DegToRadians(double Degree) { return Degree * (Math.PI / 180); }
+        internal static double DegToRadians(double Degree) { return Degree * (Math.PI / 180); }
 
         /// <summary>Calculates a point based on its angle (in degrees), a center point, and the radius</summary>
         /// <param name="Angle"></param>
         /// <param name="Center"></param>
         /// <param name="Radius"></param>
         /// <returns></returns>
-        public static PointF CalculatePoint(double Angle,PointF Center,double Radius) {
+        internal static PointF CalculatePoint(double Angle,PointF Center,double Radius) {
             return new PointF(Convert.ToSingle(Center.X + (Math.Cos(DegToRadians(Angle))*Radius)),Convert.ToSingle(Center.Y + (Math.Sin(DegToRadians(Angle))*Radius)));
         }
 
