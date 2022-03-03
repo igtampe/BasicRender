@@ -38,16 +38,7 @@ namespace Igtampe.BasicShapes {
         /// Coordinates are given as CONSOLE coordinates. 0,0 is the TOP-LEFT-MOST coordinate on the console.</summary>
         /// <param name="L"></param>
         /// <param name="C"></param>
-        public static void DrawLine(Line L,ConsoleColor C) {foreach(Point p in L.Points) {DrawBlockAt(p,C);}}
-
-        //-[DrawBlockAt]-------------------------------------------------------------------------------
-
-        //I'm an ***actual idiot*** I had coded this as an OVERRIDE ALREADY IN BASICRENDER WHAT THE HECK WAS I THINKING.
-        
-        /// <summary>Draws a block of color C at point P</summary>
-        /// <param name="P"></param>
-        /// <param name="C"></param>
-        public static void DrawBlockAt(Point P,ConsoleColor C) {Draw.Block(C,P.X,P.Y);}
+        public static void DrawLine(Line L,ConsoleColor C) {foreach(Point p in L.Points) {Draw.Block(C,p.X,p.Y);}}
 
         //-[DrawRectangle]-------------------------------------------------------------------------------
 

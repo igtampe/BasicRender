@@ -108,11 +108,6 @@
             <param name="L"></param>
             <param name="C"></param>
         </member>
-        <member name="M:Igtampe.BasicShapes.DrawShapes.DrawBlockAt(System.Drawing.Point,System.ConsoleColor)">
-            <summary>Draws a block of color C at point P</summary>
-            <param name="P"></param>
-            <param name="C"></param>
-        </member>
         <member name="M:Igtampe.BasicShapes.DrawShapes.DrawRectangle(System.Drawing.Rectangle,System.ConsoleColor)">
             <summary>Draws a rectangle on-screen, but does not fill it.</summary>
             <param name="R"></param>
