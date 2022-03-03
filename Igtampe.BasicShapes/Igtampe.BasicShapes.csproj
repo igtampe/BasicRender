@@ -4,6 +4,18 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>The Chopo Signature.pfx</AssemblyOriginatorKeyFile>
+    <Version>1.0</Version>
+    <Authors>Igtampe</Authors>
+    <Description>BasicShapes is a small geometry package for BasicRender, allowing you to quickly and easily draw lines, curves, and polygons made out of those lines and curves easily. It also allows you to translate and scale these polygons as needed.</Description>
+    <Copyright>(C)2022 Igtampe, No Rights Reserved</Copyright>
+    <PackageProjectUrl>https://github.com/igtampe/BasicRender</PackageProjectUrl>
+    <PackageIcon>BasicRender Icon.png</PackageIcon>
+    <PackageReadmeFile>Readme.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/igtampe/BasicRender</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Console Graphics Geometry</PackageTags>
+    <PackageLicenseFile>C:\Users\Igtam\source\repos\BasicRender\LICENSE</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -11,7 +23,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="A:\Pictures\Program Resources\BasicRender Icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Igtampe.BasicRender\Igtampe.BasicRender.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Readme.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

@@ -6,17 +6,21 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Authors>igtampe</Authors>
     <Description>BasicFonts is the latest extension to BasicRender. Levereging the power of DictionaryOnDisk, BasicGraphics, and BasicRender, large pre-made neatly packaged symbols can be drawn to the screen. For a full documentation, please see the GitHub Repo for BasicRender, or the included comments.</Description>
-    <Copyright>(C)2021 Igtampe, No Rights Reserved</Copyright>
+    <Copyright>(C)2022 Igtampe, No Rights Reserved</Copyright>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/igtampe/BasicRender</PackageProjectUrl>
     <PackageIcon>BasicRender Icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/igtampe/BasicRender</RepositoryUrl>
     <PackageTags>Console Graphics Fonts</PackageTags>
-    <FileVersion>3.0.0.0</FileVersion>
+    <FileVersion>3.1.0.0</FileVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>The Chopo Signature.pfx</AssemblyOriginatorKeyFile>
     <AssemblyName>BasicFonts</AssemblyName>
     <PackageId>Igtampe.BasicFonts</PackageId>
+    <Version>1.1</Version>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryType>git</RepositoryType>
+    <AssemblyVersion>1.2</AssemblyVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -56,6 +60,13 @@
 
   <ItemGroup>
     <PackageReference Include="Igtampe.DictionaryOnDisk" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

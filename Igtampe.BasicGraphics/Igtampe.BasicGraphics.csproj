@@ -7,18 +7,21 @@
     <Description>BasicGraphics is the first extension to BasicRender, making it easy to render graphics onto the console. Choose from either basic 16 color mode, or in BasicGraphic's own proprietary HiColor Mode, which uses the power of dithering to offer around 375 colors.  For a full documentation, please see the GitHub Repo for BasicRender, or the included comments.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Copyright>(C)2021 Igtampe, No Rights Reserved</Copyright>
+    <Copyright>(C)2022 Igtampe, No Rights Reserved</Copyright>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/igtampe/BasicRender</PackageProjectUrl>
     <PackageIcon>BasicRender Icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/igtampe/BasicRender</RepositoryUrl>
     <PackageTags>Console Graphics</PackageTags>
-    <AssemblyVersion>3.0.0.0</AssemblyVersion>
-    <FileVersion>3.0.0.0</FileVersion>
+    <AssemblyVersion>3.1.0.0</AssemblyVersion>
+    <FileVersion>3.1.0.0</FileVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>The Chopo Signature.pfx</AssemblyOriginatorKeyFile>
     <AssemblyName>BasicGraphics</AssemblyName>
     <PackageId>Igtampe.BasicGraphics</PackageId>
+    <Version>1.1</Version>
+    <PackageReadmeFile>README.MD</PackageReadmeFile>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -37,6 +40,13 @@
     <None Include="A:\Pictures\Program Resources\BasicRender Icon.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="README.MD">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 

@@ -7,19 +7,21 @@
     <Description>BasicWindows is an enhancement to Igtampe.BasicRender, which makes it easy to create, render, and manage user interactions via "windows" on the console. For a full documentation, please see the GitHub Repo for BasicRender, or the included comments.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <Copyright>(C)2021 Igtampe, No Rights Reserved</Copyright>
+    <PackageLicenseFile>C:\Users\Igtam\source\repos\BasicRender\LICENSE</PackageLicenseFile>
+    <Copyright>(C)2022 Igtampe, No Rights Reserved</Copyright>
     <PackageProjectUrl>https://github.com/igtampe/BasicRender</PackageProjectUrl>
     <PackageIcon>BasicRender Icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/igtampe/BasicRender</RepositoryUrl>
-    <RepositoryType></RepositoryType>
+    <RepositoryType>git</RepositoryType>
     <PackageTags>Console Graphics UI</PackageTags>
-    <AssemblyVersion>3.0.0.0</AssemblyVersion>
-    <FileVersion>3.0.0.0</FileVersion>
+    <AssemblyVersion>3.1.0.0</AssemblyVersion>
+    <FileVersion>3.1.0.0</FileVersion>
     <SignAssembly>true</SignAssembly>
     <AssemblyOriginatorKeyFile>The Chopo Signature.pfx</AssemblyOriginatorKeyFile>
     <AssemblyName>BasicWindows</AssemblyName>
     <PackageId>Igtampe.BasicWindows</PackageId>
+    <Version>1.1</Version>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -41,6 +43,13 @@
     <None Include="A:\Pictures\Program Resources\BasicRender Icon.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
     </None>
   </ItemGroup>
 
