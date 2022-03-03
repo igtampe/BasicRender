@@ -40,13 +40,6 @@ namespace Igtampe.BasicShapes {
         /// <param name="C"></param>
         public static void DrawLine(Line L,ConsoleColor C) {foreach(Point p in L.Points) {DrawBlockAt(p,C);}}
 
-        //-[DrawCurve]-------------------------------------------------------------------------------
-
-        /// <summary>Draws a curve with specified color</summary>
-        /// <param name="C"></param>
-        /// <param name="Cu"></param>
-        public static void DrawCurve(Curve Cu,ConsoleColor C) { foreach(Point p in Cu.Points) { DrawBlockAt(p,C); } }
-
         //-[DrawBlockAt]-------------------------------------------------------------------------------
 
         //I'm an ***actual idiot*** I had coded this as an OVERRIDE ALREADY IN BASICRENDER WHAT THE HECK WAS I THINKING.

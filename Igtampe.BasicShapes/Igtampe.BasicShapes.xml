@@ -108,11 +108,6 @@
             <param name="L"></param>
             <param name="C"></param>
         </member>
-        <member name="M:Igtampe.BasicShapes.DrawShapes.DrawCurve(Igtampe.BasicShapes.Curve,System.ConsoleColor)">
-            <summary>Draws a curve with specified color</summary>
-            <param name="C"></param>
-            <param name="Cu"></param>
-        </member>
         <member name="M:Igtampe.BasicShapes.DrawShapes.DrawBlockAt(System.Drawing.Point,System.ConsoleColor)">
             <summary>Draws a block of color C at point P</summary>
             <param name="P"></param>
