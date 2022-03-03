@@ -227,19 +227,17 @@ namespace Igtampe.BasicRenderShowcase {
 
             DrawShapes.FillPolygon(Ps,B);
 
-            Curve C1 = new Curve(new System.Drawing.Point(20,13),10,0,180);
-            Curve C2 = new Curve(new System.Drawing.Point(20,13),10,180,360);
+            Curve C1 = Curve.TranslateCurve(new Curve(new System.Drawing.Point(20,13),10,0,360),60,0); //IDK why I did two 180 degree curves when a 0-360 degree curve actually works like que???
 
-            DrawShapes.DrawCurve(C1,ConsoleColor.Cyan);
-            DrawShapes.DrawCurve(C2,ConsoleColor.Cyan);
+            DrawShapes.DrawLine(C1,ConsoleColor.Cyan);
 
             //now turn it into a polygon
-            Line[] CircleCurves = { C1,C2};
+            Line[] CircleCurves = { C1 };
 
             Polygon Circle = new Polygon(CircleCurves);
 
             DrawShapes.FillPolygon(Circle,ConsoleColor.Cyan);
-
+       
             Console.Clear();
 
             //Let's make a line:
