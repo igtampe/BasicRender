@@ -89,7 +89,10 @@ namespace Igtampe.BasicShapes {
             List<Point> NPoints = new List<Point>();
 
             //We're going for a little finer detail here.
-            for(double A = C.A1; A <= C.A2; A+=0.5) {NPoints.Add(ConvertToPoint(CalculatePoint(A,C.Center,C.R)));}
+            for(double A = C.A1; A <= C.A2; A+=0.5) {
+                var P = ConvertToPoint(CalculatePoint(A, C.Center, C.R));
+                if (!NPoints.Contains(P)) { NPoints.Add(P); } //Please no duplicates
+            }
 
             return NPoints;
         
