@@ -5,6 +5,9 @@ The titular library that includes two static classes with a few useful functions
 Draw includes tools for drawing on screen.
 <br><br><b>Take note!</b><br> 
 When asking for positions, these methods use LeftPos and TopPos, or the leftmost coordinate, and topmost coordinate of the object.
+<br><br><b>Also take note!</b><br> 
+As of the most recent update, BasicRender supprots overscan. Making any requests that fall outside of the window will be rendered either partially, or not at all
+
 
 |Method|Result|
 |-|-|
