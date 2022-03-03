@@ -233,7 +233,7 @@ namespace Igtampe.BasicWindows {
             Draw.Sprite(HeaderSprite, HeaderBG, HeaderFG, LeftPos, TopPos);
 
             //Draw the footer
-            Draw.Sprite(RenderUtils.Repeater(SpecialChars.DOUBLE_HORIZONTAL, Length), MainBG, HeaderFG, LeftPos, TopPos + Height - 1);
+            Draw.Sprite(new string(SpecialChars.DOUBLE_HORIZONTAL, Length), MainBG, HeaderFG, LeftPos, TopPos + Height - 1);
             /***
             //RenderUtils.Color(MainBG,HeaderFG);
             //RenderUtils.SetPos(LeftPos,TopPos + Height - 1);

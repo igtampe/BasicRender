@@ -118,10 +118,12 @@ namespace Igtampe.BasicRender {
             //let's do what we should've done when we first coded this thing and just prepare a row string and pass that to Sprite just like Block does.
 
             if (Length == 0) { return; }
-            if (Length < 0) { Length *= -1; }
+            if (Length < 0) { 
+                Length *= -1;
+                LeftPos -= Length; //Move the leftpos back to give the illusion of negative length
+            }
 
-            string Row = "";
-            while (Row.Length != Length) { Row += " "; }
+            string Row = new string(' ',Length); //optimize this
             Sprite(Row, RowColor, RowColor, LeftPos, TopPos);
 
             /***If we get a position, move the cursor to that position

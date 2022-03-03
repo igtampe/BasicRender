@@ -138,10 +138,7 @@ namespace Igtampe.BasicRender {
         /// The character, repeated Amount times. IE: <br></br>
         /// Repeater('-',4) --> "----"
         /// </returns>
-        public static string Repeater(char Repeat, int Amount) {
-            string ReturnString = "";
-            for (int i = 0; i < Amount; i++) { ReturnString += Repeat; }
-            return ReturnString;
-        }
+        [Obsolete("DO NOT USE THIS! THERE IS AN ACTUAL INBUILT STRING FUNCTION FOR THIS. WE LITERALLY EXCHANGED IT FOR THAT ONE")]
+        public static string Repeater(char Repeat, int Amount) => new string(Repeat, Amount);
     }
 }

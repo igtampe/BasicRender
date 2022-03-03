@@ -195,7 +195,7 @@
         </member>
         <member name="M:Igtampe.BasicWindows.TickableWindow.Tick">
             <summary>
-            Subroutine that runs every 250ms while the window is waiting for user input.
+            Method that runs every 250ms while the window is waiting for user input.
             At Base, it ticks every tickable element.
             </summary>
             <returns>True if execution should continue</returns>
