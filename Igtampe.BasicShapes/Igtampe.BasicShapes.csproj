@@ -14,8 +14,6 @@
     <RepositoryUrl>https://github.com/igtampe/BasicRender</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>Console Graphics Geometry</PackageTags>
-    <PackageLicenseFile>C:\Users\Igtam\source\repos\BasicRender\LICENSE</PackageLicenseFile>
-    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

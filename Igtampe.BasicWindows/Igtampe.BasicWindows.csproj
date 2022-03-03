@@ -7,7 +7,7 @@
     <Description>BasicWindows is an enhancement to Igtampe.BasicRender, which makes it easy to create, render, and manage user interactions via "windows" on the console. For a full documentation, please see the GitHub Repo for BasicRender, or the included comments.</Description>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <PackageLicenseFile>C:\Users\Igtam\source\repos\BasicRender\LICENSE</PackageLicenseFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <Copyright>(C)2022 Igtampe, No Rights Reserved</Copyright>
     <PackageProjectUrl>https://github.com/igtampe/BasicRender</PackageProjectUrl>
     <PackageIcon>BasicRender Icon.png</PackageIcon>
