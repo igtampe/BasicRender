@@ -10,7 +10,7 @@ Here are some other more specific examples of what BasicRender and its extension
 |||
 |-|-|
 |![BasicGraphics](https://raw.githubusercontent.com/igtampe/ImageToBasicGraphic/master/Examples/20211121_082015-EFFECTS%20Combine.png)|![BasicWindows](https://media.discordapp.net/attachments/335464035921428480/770415215035940884/unknown.png)|
-|[BasicGrpahics](https://github.com/igtampe/BasicRender/tree/master/Igtampe.BasicGraphics), and a showcase of a sample image, its HC (middle) and DF (right) modes|[BasicWindows](https://github.com/igtampe/BasicRender/tree/master/Igtampe.BasicWindows)' Exception Dialogbox|
+|[BasicGrpahics](https://github.com/igtampe/BasicRender/tree/master/Igtampe.BasicGraphics)' HC (middle) and DF (right) rendering modes|[BasicWindows](https://github.com/igtampe/BasicRender/tree/master/Igtampe.BasicWindows)' Exception Dialogbox|
 |![BasicFonts](https://cdn.discordapp.com/attachments/335464035921428480/771588571294597120/unknown.png)|![BasicShapes](https://raw.githubusercontent.com/igtampe/BasicRender/master/Images/BasicShapes/Shapes.png)|
 |[BasicFonts](https://github.com/igtampe/BasicRender/tree/master/Igtampe.BasicFonts)' BasicClock example, showing its clock font|[BasicShapes](https://github.com/igtampe/BasicRender/tree/master/Igtampe.BasicShapes)' demo portion showing lines, curves, polygons, and translation|
 
