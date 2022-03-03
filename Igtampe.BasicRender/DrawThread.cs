@@ -21,11 +21,7 @@ namespace Igtampe.BasicRender {
         private Task T;
 
         /// <summary>Status of the inner task of drawing</summary>
-        public TaskStatus Status {
-            get {
-                return T != null ? T.Status : TaskStatus.Created; //Que belleza *chefs kiss*
-            }
-        }
+        public TaskStatus Status => T != null ? T.Status : TaskStatus.Created; //Que belleza *chefs kiss*
 
         /// <summary>Count of remaining tasks</summary>
         public int TaskCount => Tasks.Count;
@@ -59,9 +55,7 @@ namespace Igtampe.BasicRender {
         }
 
         /// <summary>Stops the drawthread asynchronously (essentially only sends call to make cancellation)</summary>
-        public void StopAsync() {
-            StopPending = true;
-        }
+        public void StopAsync() => StopPending = true;
 
         /// <summary>Stops and resets the drawthread</summary>
         public void Stop() {
