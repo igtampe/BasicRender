@@ -67,7 +67,7 @@ namespace Igtampe.BasicShapes {
         /// <summary>Creates a line</summary>
         public Line(int X1, int Y1, int X2, int Y2) : this(new PointF(X1, Y1), new PointF(X2, Y2)) { }
 
-        /// <summary>Creates a line wit hfloating point precision</summary>
+        /// <summary>Creates a line with floating point precision</summary>
         /// <param name="X1"></param>
         /// <param name="Y1"></param>
         /// <param name="X2"></param>
