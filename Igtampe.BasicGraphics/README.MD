@@ -33,7 +33,7 @@ A Static class that holds some utilities that are used by the graphic drawers, b
 |Method|Result|
 |-|-|
 |ResourceToStringarray()|Gets a resource as an array of bytes, and turns it into an array of strings, where each index is a line of the resource's text. <br> Essentially, it's like File.ReadAllLines(), but for resources instead of files.|
-|ColorCharToConsoleCholor()| Converts a ColorChar (a hexadecimal number) to a ConsoleColor. </br></br> ColorChars are based on the way the windows command line asks for colors. Below this is a table of ColorChars|
+|ColorCharToConsoleColor()| Converts a ColorChar (a hexadecimal number) to a ConsoleColor. </br></br> ColorChars are based on the way the windows command line asks for colors. Below this is a table of ColorChars|
 
 |Number|Color|
 |-|-|
